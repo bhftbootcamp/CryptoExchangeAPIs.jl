@@ -47,4 +47,4 @@ jobs:
               body: ':blue_book: A preview of the documentation will be [here](${{env.preview_url}}) soon'
             })
         env:
-          preview_url: https://${{ github.event.repository.owner }}.github.io/${{ github.event.repository.name }}/previews/PR${{ github.event.number }}/
+          preview_url: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/previews/PR${{ github.event.number }}/
