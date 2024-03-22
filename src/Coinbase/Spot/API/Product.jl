@@ -37,7 +37,7 @@ struct ProductData <: CoinbaseData
     high_bid_limit_percentage::Maybe{Float64}
 end
 
-function Serde.isempty(::Type{D}, x)::Bool where {D<:ProductData}
+function Serde.isempty(::Type{<:ProductData}, x)::Bool
     return x === ""
 end
 
