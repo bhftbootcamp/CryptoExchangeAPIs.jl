@@ -15,4 +15,5 @@ CryptoAPIs.Coinbase.Spot.public_client
 CryptoAPIs.Coinbase.Spot.candle
 CryptoAPIs.Coinbase.Spot.currency
 CryptoAPIs.Coinbase.Spot.ticker
+CryptoAPIs.Coinbase.Spot.product
 ```

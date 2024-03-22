@@ -17,4 +17,7 @@ using .Currency
 include("API/Ticker.jl")
 using .Ticker
 
+include("API/Product.jl")
+using .Product
+
 end
