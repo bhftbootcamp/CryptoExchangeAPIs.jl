@@ -1,0 +1,68 @@
+name: Update registry
+
+env:
+    repository_path: ${{ github.repository }}
+    registry_path: "bhftbootcamp/Green"
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+    
+jobs:
+  registry:
+    name: Update registry
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v1
+        with:
+          version: 1.9
+      - uses: julia-actions/cache@v1
+      - name: Configure Git
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq git
+          git config --global user.name github-actions[bot]
+          git config --global user.email github-actions[bot]@users.noreply.github.com
+      - name: Add registry to environment
+        run: |
+          julia -e '
+            using Pkg
+            Pkg.update()
+            Pkg.Registry.add(Pkg.RegistrySpec(; url = "https://${{ secrets.REGISTRATOR_TOKEN }}@github.com/${{ env.registry_path }}.git"))
+            Pkg.Registry.update()
+            '
+      - name: Updating package version in registers
+        run: |
+          julia -e '
+            using Pkg
+            
+            Pkg.add("LocalRegistry")
+            Pkg.develop(url = "https://${{ secrets.REGISTRATOR_TOKEN }}@github.com/${{ github.repository }}.git")
+
+            using LocalRegistry
+            using TOML
+    
+            package_name = match(r"^.*/(.*?)(\.jl)?(\.git)?$", "${{ env.repository_path }}")
+            package_name == nothing && error("Invalid package name: ${{ env.repository_path }}")
+            package_name = package_name[1]
+
+            package_dir = joinpath(DEPOT_PATH[1], "dev", package_name)
+            project_toml = TOML.parsefile(joinpath(package_dir, "Project.toml"))
+            version = VersionNumber(project_toml["version"])
+    
+            LocalRegistry.register(
+                package_name,
+                repo = "https://github.com/${{ github.repository }}.git",
+                registry = "https://${{ secrets.REGISTRATOR_TOKEN }}@github.com/${{ env.registry_path }}.git",
+                ignore_reregistration = true,
+            )
+  
+            run(Cmd(`git tag -f "v$version"`, dir = package_dir))
+            run(Cmd(`git push --force origin "v$version"`, dir = package_dir))
+            '
+            

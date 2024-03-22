@@ -1,0 +1,3 @@
+[deps]
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+CryptoAPIs = "5e3d4798-c815-4641-85e1-deed530626d3"

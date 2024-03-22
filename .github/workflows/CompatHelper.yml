@@ -1,0 +1,39 @@
+name: CompatHelper
+
+env:
+  registry_path: bhftbootcamp/Green
+
+on:
+  schedule:
+    - cron: 0 0 * * *
+  workflow_dispatch:
+
+jobs:
+  CompatHelper:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v1
+      - uses: julia-actions/cache@v1
+      - name: Add registry to environment
+        run: |
+          julia -e '
+            using Pkg
+            Pkg.update()
+            Pkg.Registry.add(Pkg.RegistrySpec(; url = "https://github.com/${{ env.registry_path }}.git"))
+            Pkg.Registry.update()
+            '
+      - name: Configure CompatHelper
+        run: |
+          julia -e '
+            using Pkg
+            Pkg.add("CompatHelper")
+            using CompatHelper
+            CompatHelper.main(use_existing_registries = true)
+          '
+        env:
+          GITHUB_TOKEN: ${{ github.token }} # Token required to create a pull request to the same repository
+          

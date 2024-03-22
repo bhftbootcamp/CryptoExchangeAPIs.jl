@@ -1,0 +1,49 @@
+name: Documenter
+
+env:
+  registry_path: bhftbootcamp/Green
+
+on:
+  push:
+    tags: [v*]
+  pull_request:
+
+jobs:
+  Documenter:
+    permissions:
+      contents: write
+      statuses: write
+      actions: write
+    name: Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@latest
+      - uses: julia-actions/cache@v1
+      - name: Add registry to environment
+        run: |
+          julia -e '
+            using Pkg
+            Pkg.update()
+            Pkg.Registry.add(Pkg.RegistrySpec(; url = "https://github.com/${{ env.registry_path }}.git"))
+            Pkg.Registry.update()
+            '
+      - name: Install dependencies
+        run: julia --project=docs/ -e 'using Pkg; Pkg.develop(PackageSpec(path = pwd())); Pkg.instantiate()'
+      - name: Build and deploy
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: julia --project=docs/ docs/make.jl
+      - name: Make comment with preview link
+        if: ${{ github.event_name == 'pull_request' && github.event.action == 'opened'}}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: ':blue_book: A preview of the documentation will be [here](${{env.preview_url}}) soon'
+            })
+        env:
+          preview_url: https://${{ github.event.repository.owner }}.github.io/${{ github.event.repository.name }}/previews/${{ github.event.number }}/
