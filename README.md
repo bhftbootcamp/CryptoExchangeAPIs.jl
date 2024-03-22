@@ -38,28 +38,28 @@ Then, to install CryptoAPIs, simply use the Julia package manager:
                 <td><a href="https://www.binance.com/en/trade">Binance</a></td>
                 <td><a href="https://binance-docs.github.io/apidocs/spot/en/">Spot</a></td>
                 <td><a href="src/Binance/Spot">CryptoAPIs.Binance.Spot</a></td>
-                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Binance/#Spot/">Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Binance/#Spot">Spot</a></td>
             </tr>
             <tr>
                 <td><img src="docs/src/assets/binance.png" alt="Binance Logo" width="20" height="20"></td>
                 <td><a href="https://www.binance.com/futures">Binance</a></td>
                 <td><a href="https://binance-docs.github.io/apidocs/futures/en/#change-log">USD-M Futures</a></td>
                 <td><a href="src/Binance/USDMFutures">CryptoAPIs.Binance.USDMFutures</a></td>
-                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Binance/#USDMFutures/">USD-M Futures</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Binance/#USDMFutures">USD-M Futures</a></td>
             </tr>
             <tr>
                 <td><img src="docs/src/assets/binance.png" alt="Binance Logo" width="20" height="20"></td>
                 <td><a href="https://www.binance.com/delivery">Binance</a></td>
                 <td><a href="https://binance-docs.github.io/apidocs/delivery/en/">Coin-M Futures</a></td>
                 <td><a href="src/Binance/CoinMFutures">CryptoAPIs.Binance.CoinMFutures</a></td>
-                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Binance/#CoinMFutures/">Coin-M Futures</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Binance/#CoinMFutures">Coin-M Futures</a></td>
             </tr>
             <tr>
                 <td><img src="docs/src/assets/coinbase.png" alt="Coinbase Logo" width="20" height="20"></td>
                 <td><a href="https://www.coinbase.com/">Coinbase Exchange</a></td>
                 <td><a href="https://docs.cloud.coinbase.com/exchange/reference/">Spot</a></td>
                 <td><a href="src/Coinbase/Spot">CryptoAPIs.Coinbase.Spot</a></td>
-                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Coinbase/#Spot/">Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Coinbase/#Spot">Spot</a></td>
             </tr>
         </table>
     </body>
