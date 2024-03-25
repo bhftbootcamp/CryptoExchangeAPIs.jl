@@ -90,8 +90,8 @@ function CryptoAPIs.request_sign!(client::UpbitClient, query::Q, ::String)::Q wh
         "access_key" => client.public_key,
         "nonce" => string(UUIDs.uuid1()),
     )
-    if !isempty(Serde.to_query(query))
-        qstr = Serde.to_query(query)
+    qstr = Serde.to_query(query)
+    if !isempty(qstr)
         merge!(body, Dict{String,String}(
             "query_hash" => hexdigest("sha512", qstr),
             "query_hash_alg" => "SHA512",
