@@ -17,6 +17,9 @@ using .MarketList
 include("API/OrderBook.jl")
 using .OrderBook
 
+include("API/StatusWallet.jl")
+using .StatusWallet
+
 include("API/Ticker.jl")
 using .Ticker
 

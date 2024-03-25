@@ -1,7 +1,7 @@
 # Upbit/Utils
 
 function Serde.deser(::Type{<:UpbitData}, ::Type{<:Maybe{NanoDate}}, x::Int64)::NanoDate 
-    return unixnanos2nanodate(x*1e6)
+    return unixnanos2nanodate(x * 1e6)
 end
 
 function Serde.deser(::Type{<:UpbitData}, ::Type{<:Maybe{NanoDate}}, x::String)::NanoDate 

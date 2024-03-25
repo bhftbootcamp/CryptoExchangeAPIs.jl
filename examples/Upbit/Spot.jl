@@ -16,5 +16,7 @@ CryptoAPIs.Upbit.Spot.market_list(; isDetails = true)
 
 CryptoAPIs.Upbit.Spot.order_book(; markets = "KRW-BTC")
 
+CryptoAPIs.Upbit.Spot.status_wallet()
+
 CryptoAPIs.Upbit.Spot.ticker(; markets = "KRW-BTC")
 CryptoAPIs.Upbit.Spot.ticker(; markets = ["KRW-BTC", "BTC-ETH"])
