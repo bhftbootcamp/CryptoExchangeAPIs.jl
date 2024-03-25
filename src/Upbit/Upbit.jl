@@ -75,7 +75,7 @@ function Base.show(io::IO, e::UpbitAPIError)
     return print(io, "name = ", "\"", e.error.name, "\"", ", ", "msg = ", "\"", e.error.message, "\"")
 end
 
-struct UpbitUndefError <: CCTX.AbstractAPIsError
+struct UpbitUndefError <: AbstractAPIsError
     e::Exception
     msg::String
 end
@@ -84,7 +84,7 @@ function CryptoAPIs.request_sign!(::UpbitClient, query::Q, ::String)::Q where {Q
     return query
 end
 
-function CryptoAPIs.request_sign!(client::UpbitClient, query::Q, ::String)::Q where {Q<:UpbitPublicQuery}
+function CryptoAPIs.request_sign!(client::UpbitClient, query::Q, ::String)::Q where {Q<:UpbitPrivateQuery}
     query.signature = nothing
     body = Dict{String,String}(
         "access_key" => client.public_key,
