@@ -20,5 +20,9 @@ Binance.USDMFutures.candle(;
 
 Binance.USDMFutures.exchange_info()
 
+Binance.USDMFutures.funding_rate(; symbol = "BTCUSDT")
+
 Binance.USDMFutures.order_book(; symbol = "BTCUSDT")
 Binance.USDMFutures.order_book(; symbol = "BTCUSDT", limit = 10)
+
+Binance.USDMFutures.ticker(; symbol = "BTCUSDT")
