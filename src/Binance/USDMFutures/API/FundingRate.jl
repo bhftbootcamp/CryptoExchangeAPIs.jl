@@ -51,7 +51,9 @@ Get funding rate history
 using Serde
 using CryptoAPIs.Binance
 
-result = Binance.USDMFutures.funding_rate(; symbol = "BTCUSDT")
+result = Binance.USDMFutures.funding_rate(;
+    symbol = "BTCUSDT",
+)
 
 to_pretty_json(result.result)
 ```
