@@ -18,6 +18,7 @@ Base.@kwdef struct DayCandleQuery <: UpbitPublicQuery
 end
 
 struct DayCandleData <: UpbitData
+    market::Maybe{String}
     candle_acc_trade_price::Maybe{Float64}
     candle_acc_trade_volume::Maybe{Float64}
     candle_date_time_kst::Maybe{NanoDate}
@@ -26,7 +27,6 @@ struct DayCandleData <: UpbitData
     change_rate::Maybe{Float64}
     high_price::Maybe{Float64}
     low_price::Maybe{Float64}
-    market::Maybe{String}
     opening_price::Maybe{Float64}
     prev_closing_price::Maybe{Float64}
     timestamp::Maybe{NanoDate}
@@ -68,6 +68,7 @@ to_pretty_json(result.result)
 ```json
 [
   {
+    "market":"KRW-BTC",
     "candle_acc_trade_price":2.0574363150768314e11,
     "candle_acc_trade_volume":2137.74569241,
     "candle_date_time_kst":"2024-03-25T09:00:00",
@@ -76,7 +77,6 @@ to_pretty_json(result.result)
     "change_rate":-0.0043363968,
     "high_price":9.7e7,
     "low_price":9.56e7,
-    "market":"KRW-BTC",
     "opening_price":9.6624e7,
     "prev_closing_price":9.6624e7,
     "timestamp":"2024-03-25T10:22:43.660999936",

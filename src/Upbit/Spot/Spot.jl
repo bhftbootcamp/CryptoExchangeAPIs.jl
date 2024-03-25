@@ -3,10 +3,10 @@ module Spot
 using CryptoAPIs.Upbit
 
 """
-    public_client = UpbitClient(; base_url = "https://api.UPbit.com")
+    public_client = UpbitClient(; base_url = "https://api.upbit.com")
 """
 const public_client =
-    UpbitClient(; base_url = "https://api.UPbit.com")
+    UpbitClient(; base_url = "https://api.upbit.com")
 
 include("API/DayCandle.jl")
 using .DayCandle

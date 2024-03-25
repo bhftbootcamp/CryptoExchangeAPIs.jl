@@ -9,12 +9,12 @@ function Serde.deser(::Type{<:UpbitData}, ::Type{<:Maybe{NanoDate}}, x::String):
 end
 
 function Serde.deser(::Type{<:UpbitData}, ::Type{<:Maybe{Date}}, x::String)::Date
-    if length(x) == 10
-        return Date(x, "yyyy-mm-dd")
-    elseif length(x) == 8
-        return Date(x, "yyyymmdd")
+    return if occursin(r"^\d{4}-\d{2}-\d{2}$", x)
+        Date(x, "yyyy-mm-dd")
+    elseif occursin(r"^\d{8}$", x)
+        Date(x, "yyyymmdd")
     else
-        throw("New data format in Upbit")
+        throw("Unrecognized data format in Upbit: $x")
     end
 end
 
@@ -27,7 +27,7 @@ function Serde.SerQuery.ser_value(::Type{<:UpbitCommonQuery}, ::Val{:signature},
 end
 
 function Serde.SerQuery.ser_type(::Type{<:UpbitCommonQuery}, x::Vector{String})::String
-    return string(join(x, ","))
+    return join(x, ",")
 end
 
 function Serde.SerQuery.ser_type(::Type{<:UpbitCommonQuery}, x::DateTime)::String
