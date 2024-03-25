@@ -63,7 +63,7 @@ Then, to install CryptoAPIs, simply use the Julia package manager:
             </tr>
             <tr>
                 <td><img src="docs/src/assets/upbit.png" alt="UpBit Logo" width="20" height="20"></td>
-                <td><a href="https://upbit.com/">UpBit</a></td>
+                <td><a href="https://upbit.com/">Upbit</a></td>
                 <td><a href="https://global-docs.upbit.com/">Spot</a></td>
                 <td><a href="src/Upbit/Spot">CryptoAPIs.Upbit.Spot</a></td>
                 <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Upbit/#Spot">Spot</a></td>
