@@ -1,8 +1,8 @@
-module FundingRateLog
+module FundingRate
 
-export FundingRateLogQuery,
-    FundingRateLogData,
-    funding_rate_log
+export FundingRateQuery,
+    FundingRateData,
+    funding_rate
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -10,27 +10,27 @@ using Dates, NanoDates, TimeZones
 using CryptoAPIs.Binance
 using CryptoAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct FundingRateLogQuery <: BinancePublicQuery
+Base.@kwdef struct FundingRateQuery <: BinancePublicQuery
     symbol::String
     endTime::Maybe{DateTime} = nothing
     limit::Maybe{Int64} = nothing
     startTime::Maybe{DateTime} = nothing
 end
 
-struct FundingRateLogData <: BinanceData
+struct FundingRateData <: BinanceData
     symbol::String
     fundingRate::Float64
     fundingTime::NanoDate
     markPrice::Maybe{Float64}
 end
 
-function Serde.isempty(::Type{FundingRateLogData}, x)::Bool
+function Serde.isempty(::Type{<:FundingRateData}, x)::Bool
     return x === ""
 end
 
 """
-    funding_rate_log(client::BinanceClient, query::FundingRateLogQuery)
-    funding_rate_log(client::BinanceClient = Binance.USDMFutures.public_client; kw...)
+    funding_rate(client::BinanceClient, query::FundingRateQuery)
+    funding_rate(client::BinanceClient = Binance.USDMFutures.public_client; kw...)
 
 Get funding rate history
 
@@ -51,7 +51,7 @@ Get funding rate history
 using Serde
 using CryptoAPIs.Binance
 
-result = Binance.USDMFutures.funding_rate_log(; symbol = "BTCUSDT")
+result = Binance.USDMFutures.funding_rate(; symbol = "BTCUSDT")
 
 to_pretty_json(result.result)
 ```
@@ -70,12 +70,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function funding_rate_log(client::BinanceClient, query::FundingRateLogQuery)
-    return APIsRequest{Vector{FundingRateLogData}}("GET", "fapi/v1/fundingRate", query)(client)
+function funding_rate(client::BinanceClient, query::FundingRateQuery)
+    return APIsRequest{Vector{FundingRateData}}("GET", "fapi/v1/fundingRate", query)(client)
 end
 
-function funding_rate_log(client::BinanceClient = Binance.USDMFutures.public_client; kw...)
-    return funding_rate_log(client, FundingRateLogQuery(; kw...))
+function funding_rate(client::BinanceClient = Binance.USDMFutures.public_client; kw...)
+    return funding_rate(client, FundingRateQuery(; kw...))
 end
 
 end

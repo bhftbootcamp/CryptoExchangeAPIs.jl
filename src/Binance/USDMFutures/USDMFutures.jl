@@ -14,8 +14,8 @@ using .Candle
 include("API/ExchangeInfo.jl")
 using .ExchangeInfo
 
-include("API/FundingRateLog.jl")
-using .FundingRateLog
+include("API/FundingRate.jl")
+using .FundingRate
 
 include("API/OrderBook.jl")
 using .OrderBook
