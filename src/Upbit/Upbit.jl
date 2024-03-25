@@ -57,9 +57,12 @@ end
 
 Exception thrown when an API method fails with code `T`.
 
-## Required fields
+## Required fields in UpbitAPIsErrorMsg
 - `name::Int64`: Error code.
 - `message::String`: Error message.
+
+## Required fields
+- `error::UpbitAPIsErrorMsg`: Error struct.
 """
 struct UpbitAPIError{T} <: AbstractAPIsError
     error::UpbitAPIsErrorMsg
