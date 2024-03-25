@@ -41,7 +41,7 @@ Listing Market List
 using Serde
 using CryptoAPIs.Upbit
 
-result = Upbit.Spot.market_list(;)
+result = Upbit.Spot.market_list()
 
 to_pretty_json(result.result)
 ```
@@ -51,39 +51,13 @@ to_pretty_json(result.result)
 ```json
 [
   {
-    "market": "KRW-BTC",
-    "korean_name": "비트코인",
-    "english_name": "Bitcoin",
-    "market_warning": "NONE",
-    "market_event": {
-      "warning": false,
-      "caution": {
-        "PRICE_FLUCTUATIONS": false,
-        "TRADING_VOLUME_SOARING": false,
-        "DEPOSIT_AMOUNT_SOARING": true,
-        "GLOBAL_PRICE_DIFFERENCES": false,
-        "CONCENTRATION_OF_SMALL_ACCOUNTS": false
-      }
-    }
+    "english_name":"Bitcoin",
+    "korean_name":"비트코인",
+    "market":"KRW-BTC",
+    "market_warning":"NONE"
   },
-  {
-    "market": "KRW-ETH",
-    "korean_name": "이더리움",
-    "english_name": "Ethereum",
-    "market_warning": "CAUTION",
-    "market_event": {
-      "warning": true,
-      "caution": {
-        "PRICE_FLUCTUATIONS": false,
-        "TRADING_VOLUME_SOARING": false,
-        "DEPOSIT_AMOUNT_SOARING": false,
-        "GLOBAL_PRICE_DIFFERENCES": false,
-        "CONCENTRATION_OF_SMALL_ACCOUNTS": false
-      }
-    }
-  },
- ...
-] 
+  ...
+]
 ```
 """
 function market_list(client::UpbitClient, query::MarketListQuery)

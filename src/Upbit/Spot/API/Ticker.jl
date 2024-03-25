@@ -57,9 +57,9 @@ Returns a snapshot of the stock at the time of the request
 
 ## Parameters:
 
-| Parameter | Type                   | Required | Description |
-|:----------|:-----------------------|:---------|:------------|
-| markets   | Vector{String},String) | true     |             |
+| Parameter | Type                     | Required | Description |
+|:----------|:-------------------------|:---------|:------------|
+| markets   | String OR Vector{String} | true     |             |
 
 ## Code samples:
 
@@ -79,32 +79,32 @@ to_pretty_json(result.result)
 ```json
 [
   {
-    "market": "KRW-BTC",
-    "trade_date": "20180418",
-    "trade_time": "102340",
-    "trade_date_kst": "20180418",
-    "trade_time_kst": "192340",
-    "trade_timestamp": 1524047020000,
-    "opening_price": 8450000,
-    "high_price": 8679000,
-    "low_price": 8445000,
-    "trade_price": 8621000,
-    "prev_closing_price": 8450000,
-    "change": "RISE",
-    "change_price": 171000,
-    "change_rate": 0.0202366864,
-    "signed_change_price": 171000,
-    "signed_change_rate": 0.0202366864,
-    "trade_volume": 0.02467802,
-    "acc_trade_price": 108024804862.58253,
-    "acc_trade_price_24h": 232702901371.09308,
-    "acc_trade_volume": 12603.53386105,
-    "acc_trade_volume_24h": 27181.31137002,
-    "highest_52_week_price": 28885000,
-    "highest_52_week_date": "2018-01-06",
-    "lowest_52_week_price": 4175000,
-    "lowest_52_week_date": "2017-09-25",
-    "timestamp": 1524047026072
+    "acc_trade_price":2.1238782327620905e11,
+    "acc_trade_price_24h":4.622074226861333e11,
+    "acc_trade_volume":2206.86731219,
+    "acc_trade_volume_24h":4823.01685822,
+    "change":"FALL",
+    "change_price":544000.0,
+    "change_rate":0.0056300712,
+    "high_price":9.7e7,
+    "highest_52_week_date":"2024-03-14",
+    "highest_52_week_price":1.05e8,
+    "low_price":9.56e7,
+    "lowest_52_week_date":"2023-06-15",
+    "lowest_52_week_price":3.251e7,
+    "market":"KRW-BTC",
+    "opening_price":9.6624e7,
+    "prev_closing_price":9.6624e7,
+    "signed_change_price":-544000.0,
+    "signed_change_rate":-0.0056300712,
+    "timestamp":"2024-03-25T10:53:39.956999936",
+    "trade_date":"2024-03-25",
+    "trade_date_kst":"2024-03-25",
+    "trade_price":9.608e7,
+    "trade_time":"10:53:39",
+    "trade_time_kst":"19:53:39",
+    "trade_timestamp":"2024-03-25T10:53:39.924",
+    "trade_volume":0.0198534
   }
 ]
 ```

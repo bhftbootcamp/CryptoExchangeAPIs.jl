@@ -2,10 +2,10 @@ module DayCandle
 
 export DayCandleQuery,
     DayCandleData, 
-    daily_candle
+    day_candle
 
 using Serde
-using Dates, ManoDates, TimeZones
+using Dates, NanoDates, TimeZones
 
 using CryptoAPIs.Upbit
 using CryptoAPIs: Maybe, APIsRequest
@@ -34,8 +34,8 @@ struct DayCandleData <: UpbitData
 end
 
 """
-    daily_candle(client::UpbitClient, query::DayCandleQuery)
-    daily_candle(client::UpbitClient = Upbit.Spot.public_client; kw...)
+    day_candle(client::UpbitClient, query::DayCandleQuery)
+    day_candle(client::UpbitClient = Upbit.Spot.public_client; kw...)
 
 Daily candle data.
 
@@ -56,7 +56,7 @@ Daily candle data.
 using Serde
 using CryptoAPIs.Upbit
 
-result = Upbit.Spot.daily_candle(;
+result = Upbit.Spot.day_candle(;
     market = "KRW-BTC"
 ) 
 
@@ -68,29 +68,29 @@ to_pretty_json(result.result)
 ```json
 [
   {
-    "market": "KRW-BTC",
-    "candle_date_time_utc": "2018-04-18T00:00:00",
-    "candle_date_time_kst": "2018-04-18T09:00:00",
-    "opening_price": 8450000,
-    "high_price": 8679000,
-    "low_price": 8445000,
-    "trade_price": 8626000,
-    "timestamp": 1524046650532,
-    "candle_acc_trade_price": 107184005903.68721,
-    "candle_acc_trade_volume": 12505.93101659,
-    "prev_closing_price": 8450000,
-    "change_price": 176000,
-    "change_rate": 0.0208284024
+    "candle_acc_trade_price":2.0574363150768314e11,
+    "candle_acc_trade_volume":2137.74569241,
+    "candle_date_time_kst":"2024-03-25T09:00:00",
+    "candle_date_time_utc":"2024-03-25T00:00:00",
+    "change_price":-419000.0,
+    "change_rate":-0.0043363968,
+    "high_price":9.7e7,
+    "low_price":9.56e7,
+    "market":"KRW-BTC",
+    "opening_price":9.6624e7,
+    "prev_closing_price":9.6624e7,
+    "timestamp":"2024-03-25T10:22:43.660999936",
+    "trade_price":9.6205e7
   }
 ]
 ```
 """
-function daily_candle(client::UpbitClient, query::DayCandleQuery)
+function day_candle(client::UpbitClient, query::DayCandleQuery)
     return APIsRequest{Vector{DayCandleData}}("GET", "v1/candles/days", query)(client)
 end
 
-function daily_candle(client::UpbitClient = Upbit.Spot.public_client; kw...)
-    return daily_candle(client, DayCandleQuery(; kw...))
+function day_candle(client::UpbitClient = Upbit.Spot.public_client; kw...)
+    return day_candle(client, DayCandleQuery(; kw...))
 end
 
 end
