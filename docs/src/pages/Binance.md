@@ -28,6 +28,7 @@ CryptoAPIs.Binance.USDMFutures.public_client
 ```@docs
 CryptoAPIs.Binance.USDMFutures.candle
 CryptoAPIs.Binance.USDMFutures.exchange_info
+CryptoAPIs.Binance.USDMFutures.funding_rate
 CryptoAPIs.Binance.USDMFutures.order_book
 CryptoAPIs.Binance.USDMFutures.ticker
 ```
