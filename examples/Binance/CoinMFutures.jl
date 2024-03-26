@@ -25,8 +25,8 @@ Binance.CoinMFutures.order_book(; symbol = "BTCUSD_PERP", limit = 10)
 
 binance_client = BinanceClient(;
     base_url = "https://dapi.binance.com",
-    public_key = ENV["BINANCE_FUT_PUBLIC_KEY"],
-    secret_key = ENV["BINANCE_FUT_SECRET_KEY"],
+    public_key = ENV["BINANCE_PUBLIC_KEY"],
+    secret_key = ENV["BINANCE_SECRET_KEY"],
 )
 
 Binance.CoinMFutures.income_log(binance_client)
