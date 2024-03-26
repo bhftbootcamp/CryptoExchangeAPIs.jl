@@ -14,3 +14,11 @@ Bybit.Spot.candle(;
 )
 
 Bybit.Spot.symbols_info()
+
+bybit_client = BybitClient(;
+    base_url = "https://api.bybit.com",
+    public_key = ENV["BYBIT_PUBLIC_KEY"],
+    secret_key = ENV["BYBIT_SECRET_KEY"],
+)
+
+CryptoAPIs.Bybit.Spot.deposit(bybit_client)

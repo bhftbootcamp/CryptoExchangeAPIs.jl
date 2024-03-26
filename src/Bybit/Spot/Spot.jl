@@ -14,4 +14,7 @@ using .Candle
 include("API/SymbolsInfo.jl")
 using .SymbolsInfo
 
+include("API/Deposit.jl")
+using .Deposit
+
 end
