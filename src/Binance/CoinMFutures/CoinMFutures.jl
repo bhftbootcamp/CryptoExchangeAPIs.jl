@@ -11,6 +11,9 @@ const public_client =
 include("API/Candle.jl")
 using .Candle
 
+include("API/continuousCandle.jl")
+using .ConitinousCandle
+
 include("API/ExchangeInfo.jl")
 using .ExchangeInfo
 
