@@ -23,4 +23,7 @@ using .IncomeLog
 include("API/OrderBook.jl")
 using .OrderBook
 
+include("API/premiumIndex.jl")
+using .PremiumIndex
+
 end

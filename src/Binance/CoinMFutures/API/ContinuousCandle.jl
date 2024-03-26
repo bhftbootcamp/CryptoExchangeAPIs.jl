@@ -65,7 +65,7 @@ end
     con_candle(client::BinanceClient, query::ConitinousCandleQuery)
     con_candle(client::BinanceClient = Binance.CoinMFutures.public_client; kw...)
 
-Kline/candlestick bars for a symbol.
+Kline/candlestick bars for a specific contract type.
 
 [`GET dapi/v1/continuousKlines`](https://binance-docs.github.io/apidocs/delivery/en/#continuous-contract-kline-candlestick-data)
 
@@ -74,8 +74,8 @@ Kline/candlestick bars for a symbol.
 | Parameter    | Type     | Required | Description |
 |:-------------|:---------|:---------|:------------|
 | pair         | String   | true     |             |
-| contractType | ?        | true     |             |
-| interval     | Period   | true     |             |
+| contractType | enum     | true     |             |
+| interval     | enum     | true     |             |
 | endTime      | DateTime | false    |             |
 | limit        | Int64    | false    |             |
 | startTime    | DateTime | false    |             |
@@ -125,14 +125,3 @@ function continuous_candle(client::BinanceClient = Binance.CoinMFutures.public_c
 end
 
 end
-
-using Serde
-using CryptoAPIs.Binance.CoinMFutures.ConitinousCandle
-
-result = Binance.CoinMFutures.continuous_candle(;
-    pair = "BTCUSD",
-    contractType = Binance.CoinMFutures.ConitinousCandle.PERPETUAL,
-    interval = Binance.CoinMFutures.ConitinousCandle.M1,
-)
-
-to_pretty_json(result.result)
