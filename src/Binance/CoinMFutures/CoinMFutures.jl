@@ -29,4 +29,7 @@ using .PremiumIndex
 include("API/FundingRate.jl")
 using .FundingRate
 
+include("API/Ticker24hr.jl")
+using .Ticker24hr
+
 end

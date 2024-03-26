@@ -47,4 +47,5 @@ CryptoAPIs.Binance.CoinMFutures.income_log
 CryptoAPIs.Binance.CoinMFutures.ConitinousCandle
 CryptoAPIs.Binance.CoinMFutures.PremiumIndex
 CryptoAPIs.Binance.CoinMFutures.FundingRate
+CryptoAPIs.Binance.CoinMFutures.Ticker24hr
 ```
