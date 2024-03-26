@@ -29,6 +29,11 @@ struct StatusWalletData <: UpbitData
     network_name::String
 end
 
+function Serde.deser(::Type{<:StatusWalletData}, ::Type{<:Maybe{NanoDate}}, x::String)::NanoDate
+    tz = ZonedDateTime(x, "yyyy-mm-ddTHH:MM:SS.ssszzzz")
+    return NanoDate(DateTime(astimezone(tz, tz"UTC+0")))
+end
+
 """
     status_wallet(client::UpbitClient, query::StatusWalletQuery)
     status_wallet(client::UpbitClient; kw...)

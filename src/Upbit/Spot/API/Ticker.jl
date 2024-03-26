@@ -14,10 +14,6 @@ Base.@kwdef struct TickerQuery <: UpbitPublicQuery
     markets::Union{Vector{String},String}
 end
 
-function Serde.SerQuery.ser_type(::Type{TickerQuery}, x::Vector{String})::String
-    return "[\"" * join(x, "\",\"") * "\"]"
-end
-
 struct TickerData <: UpbitData
     acc_trade_price::Maybe{Float64}
     acc_trade_price_24h::Maybe{Float64}
