@@ -18,6 +18,7 @@ makedocs(;
         "API Reference" => "pages/api_reference.md",
         "pages/Binance.md",
         "pages/Coinbase.md",
+        "pages/Upbit.md",
         "pages/developers.md",
     ],
     warnonly = [:doctest, :missing_docs],
