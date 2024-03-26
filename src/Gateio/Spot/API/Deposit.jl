@@ -17,7 +17,7 @@ Base.@kwdef mutable struct DepositQuery <: GateioPrivateQuery
     offset::Maybe{Int64} = nothing
     to::Maybe{DateTime} = nothing
 
-    sign::Maybe{String} = nothing
+    signature::Maybe{String} = nothing
     signTimestamp::Maybe{DateTime} = nothing
 end
 
