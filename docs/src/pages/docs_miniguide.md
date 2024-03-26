@@ -47,7 +47,7 @@ general description of the exchange (clients, errors, etc.) -->
 ## New market
 
 When adding a new market type for an exchange, you need to make the following changes:
-- Similar to [adding a new exchange](@ref new_exchange), you need to add a new row to the table with `supported exchanges` (in the readme and on the main page of the documentation) corresponding to the new type of market.
+- Similar to [adding a new exchange](@ref new_exchange), you need to add a new row to the table with `Supported Exchange APIs` (in the README.md and on the main page of the documentation `docs/src/index.md`) corresponding to the new type of market.
 - Add a docstring describing key types and methods related to the market (public client, etc.).
 - Add a new section corresponding to the exchange market in the file `docs/src/pages/EXCHANGE_NAME.md`:
 ````
