@@ -37,6 +37,13 @@ CryptoAPIs is a library written in Julia that combines API wrappers from various
                 <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Binance/#CoinMFutures">Coin-M Futures</a></td>
             </tr>
             <tr>
+                <td><img src="assets/bybit.png" alt="Bybit Logo" width="20" height="20"></td>
+                <td><a href="https://www.bybit.com/en/trade/spot/BTC/USDT">Bybit</a></td>
+                <td><a href="https://bybit-exchange.github.io/docs/">Spot</a></td>
+                <td><a href="src/Bybit/Spot">CryptoAPIs.Bybit.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Bybit/#Spot">Spot</a></td>
+            </tr>
+            <tr>
                 <td><img src="assets/coinbase.png" alt="Coinbase Logo" width="20" height="20"></td>
                 <td><a href="https://www.coinbase.com/">Coinbase Exchange</a></td>
                 <td><a href="https://docs.cloud.coinbase.com/exchange/reference/">Spot</a></td>

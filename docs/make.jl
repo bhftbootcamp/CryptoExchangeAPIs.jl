@@ -17,6 +17,7 @@ makedocs(;
         "Home"    => "index.md",
         "API Reference" => "pages/api_reference.md",
         "pages/Binance.md",
+        "pages/Bybit.md",
         "pages/Coinbase.md",
         "pages/Gateio.md",
         "pages/Upbit.md",
