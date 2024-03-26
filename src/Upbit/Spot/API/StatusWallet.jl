@@ -10,9 +10,9 @@ using Dates, NanoDates, TimeZones
 using CryptoAPIs.Upbit
 using CryptoAPIs: Maybe, APIsRequest
 
-@enum WalletState working, withdraw_only, deposit_only, paused, unsupported
+@enum WalletState working withdraw_only deposit_only paused unsupported
 
-@enum BlockState normal, delayed, inactive
+@enum BlockState normal delayed inactive
 
 Base.@kwdef mutable struct StatusWalletQuery <: UpbitPrivateQuery
     signature::Maybe{String} = nothing
