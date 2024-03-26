@@ -1,4 +1,6 @@
-# For Developers
+# Docs mini-guide
+
+Here's a quick reference about what changes you need to make to the package description and documentation when adding new content.
 
 ## [New exchange](@id new_exchange)
 
