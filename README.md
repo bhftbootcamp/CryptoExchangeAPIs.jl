@@ -62,6 +62,13 @@ Then, to install CryptoAPIs, simply use the Julia package manager:
                 <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Coinbase/#Spot">Spot</a></td>
             </tr>
             <tr>
+                <td><img src="docs/src/assets/gateio.png" alt="Gateio Logo" width="20" height="20"></td>
+                <td><a href="https://www.gate.io/">Gate.io</a></td>
+                <td><a href="https://www.gate.io/docs/developers/apiv4/">Spot</a></td>
+                <td><a href="src/Gateio/Spot">CryptoAPIs.Gateio.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Gateio/#Spot">Spot</a></td>
+            </tr>
+            <tr>
                 <td><img src="docs/src/assets/upbit.png" alt="Upbit Logo" width="20" height="20"></td>
                 <td><a href="https://upbit.com/">Upbit</a></td>
                 <td><a href="https://global-docs.upbit.com/">Spot</a></td>
