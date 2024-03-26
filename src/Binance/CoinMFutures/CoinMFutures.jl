@@ -26,4 +26,7 @@ using .OrderBook
 include("API/premiumIndex.jl")
 using .PremiumIndex
 
+include("API/FundingRate.jl")
+using .FundingRate
+
 end

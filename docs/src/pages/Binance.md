@@ -45,4 +45,6 @@ CryptoAPIs.Binance.CoinMFutures.exchange_info
 CryptoAPIs.Binance.CoinMFutures.order_book
 CryptoAPIs.Binance.CoinMFutures.income_log
 CryptoAPIs.Binance.CoinMFutures.ConitinousCandle
+CryptoAPIs.Binance.CoinMFutures.PremiumIndex
+CryptoAPIs.Binance.CoinMFutures.FundingRate
 ```

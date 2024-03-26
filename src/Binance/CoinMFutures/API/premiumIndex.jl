@@ -58,7 +58,8 @@ to_pretty_json(result.result)
 ## Result:
 
 ```json
-{
+[
+ {
     "symbol":"BTCUSD_240329",
     "pair":"BTCUSD",
     "markPrice":70397.85306869,
