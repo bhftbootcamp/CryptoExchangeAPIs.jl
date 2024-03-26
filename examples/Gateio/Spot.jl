@@ -11,7 +11,7 @@ CryptoAPIs.Gateio.Spot.candle(;
 )
 
 gateio_client = GateioClient(;
-    base_url = "https://api.Gateio.ws",
+    base_url = "https://api.gateio.ws",
     public_key = ENV["GATEIO_PUBLIC_KEY"],
     secret_key = ENV["GATEIO_SECRET_KEY"],
 )

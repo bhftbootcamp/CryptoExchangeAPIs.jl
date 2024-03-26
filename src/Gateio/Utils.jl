@@ -8,12 +8,12 @@ function Serde.deser(::Type{<:GateioData}, ::Type{<:Maybe{NanoDate}}, x::Abstrac
     return unixnanos2nanodate(parse(Int64, x) * 1e9)
 end
 
-function Serde.SerQuery.ser_value(::Type{<:GateioCommonQuery}, ::Val{:signTimestamp}, v::Any)::Nothing
-    return nothing
+function Serde.ser_ignore_field(::Type{<:GateioCommonQuery}, ::Val{:signTimestamp})::Bool
+    return true
 end
 
-function Serde.SerQuery.ser_value(::Type{<:GateioCommonQuery}, ::Val{:sign}, v::Any)::Nothing
-    return nothing
+function Serde.ser_ignore_field(::Type{<:GateioCommonQuery}, ::Val{:signature})::Bool
+    return true
 end
 
 function Serde.SerQuery.ser_type(::Type{<:GateioCommonQuery}, x::D)::Int64 where {D<:DateTime}

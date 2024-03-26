@@ -84,9 +84,9 @@ end
 
 function CryptoAPIs.request_sign!(client::GateioClient, query::Q, endpoint::String)::Q where {Q<:GateioPrivateQuery}
     query.signTimestamp = Dates.now(UTC)
-    query.sign = nothing
+    query.signature = nothing
     endpoint = "/" * endpoint
-    query.sign = hexdigest("sha512", client.secret_key, gen_sign("GET", query, endpoint))
+    query.signature = hexdigest("sha512", client.secret_key, gen_sign("GET", query, endpoint))
     return query
 end
 
@@ -107,7 +107,7 @@ end
 function CryptoAPIs.request_headers(client::GateioClient, query::GateioPrivateQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "KEY"          => client.public_key,
-        "SIGN"         => query.sign,
+        "SIGN"         => query.signature,
         "Timestamp"    => string(round(Int64, datetime2unix(query.signTimestamp))),
         "Content-Type" => "application/json",
     ]

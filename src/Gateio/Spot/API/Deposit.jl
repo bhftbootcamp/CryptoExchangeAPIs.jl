@@ -21,7 +21,21 @@ Base.@kwdef mutable struct DepositQuery <: GateioPrivateQuery
     signTimestamp::Maybe{DateTime} = nothing
 end
 
-@enum RecordStatus DONE CANCEL REQUEST MANUAL BCODE EXTPEND FAIL INVALID VERIFY PROCES PEND DMOVE SPLITPEND
+@enum RecordStatus begin
+    DONE
+    CANCEL
+    REQUEST
+    MANUAL
+    BCODE
+    EXTPEND
+    FAIL
+    INVALID
+    VERIFY
+    PROCES
+    PEND
+    DMOVE
+    SPLITPEND
+end
 
 struct DepositData <: GateioData
     address::String
