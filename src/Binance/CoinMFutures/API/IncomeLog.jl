@@ -65,8 +65,8 @@ using CryptoAPIs.Binance
 
 binance_client = BinanceClient(;
     base_url = "https://dapi.binance.com",
-    public_key = ENV["BINANCE_FUT_PUBLIC_KEY"],
-    secret_key = ENV["BINANCE_FUT_SECRET_KEY"],
+    public_key = ENV["BINANCE_PUBLIC_KEY"],
+    secret_key = ENV["BINANCE_SECRET_KEY"],
 )
 
 result = Binance.CoinMFutures.income_log(
