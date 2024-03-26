@@ -48,7 +48,7 @@ end
     candle(client::GateioClient, query::CandleQuery)
     candle(client::GateioClient = Gateio.Spot.public_client; kw...)
 
-Market candlesticks
+Market candlesticks.
 
 [`GET api/v4/spot/candlesticks`](https://www.gate.io/docs/developers/apiv4/#market-candlesticks)
 

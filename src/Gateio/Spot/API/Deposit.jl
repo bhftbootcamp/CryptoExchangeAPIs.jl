@@ -45,7 +45,7 @@ end
     deposit(client::GateioClient, query::CandleQuery)
     deposit(client::GateioClient; kw...)
 
-Retrieve deposit records
+Retrieve deposit records.
 
 [`GET api/v4/wallet/deposits`](https://www.gate.io/docs/developers/apiv4/#retrieve-deposit-records)
 
