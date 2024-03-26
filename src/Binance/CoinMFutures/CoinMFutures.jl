@@ -32,4 +32,7 @@ using .PremiumIndex
 include("API/Ticker.jl")
 using .Ticker
 
+include("API/Ticker24hr.jl")
+using .Ticker24hr
+
 end
