@@ -162,5 +162,7 @@ end
 include("Interface.jl")
 include("Binance/Binance.jl")
 include("Coinbase/Coinbase.jl")
+include("Gateio/Gateio.jl")
+include("Upbit/Upbit.jl")
 
 end
