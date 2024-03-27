@@ -99,12 +99,10 @@ to_pretty_json(result.result)
                 "toAddress": "xxxxxxxxxxx",
                 "tag": "",
                 "depositFee": "",
-                "successAt": "1671018256000",
+                "successAt": "2024-02-27T14:22:12.000",
                 "confirmations": "10000",
                 "txIndex": "",
                 "blockHash": "",
-                "batchReleaseLimit": "-1",
-                "depositType": 0
             },
             {
                 "coin": "USDT",
@@ -115,18 +113,16 @@ to_pretty_json(result.result)
                 "toAddress": "xxxxxxxxxxx",
                 "tag": "",
                 "depositFee": "",
-                "successAt": "1669197900000",
+                "successAt": "2023-12-15T12:03:40.000",
                 "confirmations": "10000",
                 "txIndex": "",
                 "blockHash": "",
-                "batchReleaseLimit": "-1",
-                "depositType": 0
             }
         ],
-        "nextPageCursor": "X780tg5x2ZtYiQ94R3ZzcPaavGg6jUL5tA3GnKJ9tx89"
+        "nextPageCursor": "X78...x89"
     },
     "retExtInfo": {},
-    "time": 1671166430718
+    "time": "2024-03-27T14:22:12.088"
 }
 ```
 """
