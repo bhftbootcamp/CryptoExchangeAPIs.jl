@@ -41,9 +41,6 @@ function Serde.ser_type(::Type{<:ContinuousCandleQuery}, x::TimeInterval)::Strin
     x == M1  && return "1M"
 end
 
-function Serde.ser_value(::Type{<:ContinuousCandleQuery}, ::Val{:contractType}, v::String)
-end
-
 struct ContinuousCandleData <: BinanceData
     openTime::NanoDate
     openPrice::Maybe{Float64}
@@ -122,3 +119,14 @@ function continuous_candle(client::BinanceClient = Binance.CoinMFutures.public_c
 end
 
 end
+
+using Serde
+using CryptoAPIs.Binance.CoinMFutures.ContinuousCandle
+
+result = Binance.CoinMFutures.continuous_candle(;
+    pair = "BTCUSD",
+    contractType = Binance.CoinMFutures.ContinuousCandle.PERPETUAL,
+    interval = Binance.CoinMFutures.ContinuousCandle.M1,
+)
+
+to_pretty_json(result.result)
