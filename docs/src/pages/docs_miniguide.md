@@ -5,7 +5,10 @@ Here's a quick reference about what changes you need to make to the package desc
 ## [New exchange](@id new_exchange)
 
 When adding a new exchange to the package, you need to make the following changes:
-- In the `Supported Exchange APIs` table in the README.md you need to add a new row with links to relevant resources:
+
+---
+
+In the [`Supported Exchange APIs`](https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/master/README.md#supported-exchange-apis) table in the README.md you need to add a new row with links to relevant resources:
 ```html
 ...
 <tr>
@@ -17,7 +20,10 @@ When adding a new exchange to the package, you need to make the following change
 </tr>
 ...
 ```
-- Similarly, add a new line to the table on the main documentation page in the file `docs/src/index.md` (the only difference will be the path of the logo: `<img src="assets/EXCHANGE_LOGO.png" ...>`).
+
+---
+
+Similarly, add a new line to the table on the main documentation page in the file `docs/src/index.md` (the only difference will be the path of the logo: `<img src="assets/EXCHANGE_LOGO.png" ...>`).
 ```html
 ...
 <tr>
@@ -29,9 +35,18 @@ When adding a new exchange to the package, you need to make the following change
 </tr>
 ...
 ```
-- Add a docstring describing key types and methods (clients, errors, etc.).
-- Create a new documentation page in the `docs/src/pages/` folder in markdown format with the appropriate exchange name, for example `docs/src/pages/Binance.md`.
-- The documentation page should have the following section structure:
+
+---
+
+Add a docstring describing key types and methods (clients, errors, etc.).
+
+---
+
+Create a new documentation page in the `docs/src/pages/` folder in markdown format with the appropriate exchange name, for example `docs/src/pages/Binance.md`.
+
+---
+
+The documentation page should have the following section structure:
 ````
 # EXCHANGE_NAME
 
@@ -47,9 +62,18 @@ general description of the exchange (clients, errors, etc.) -->
 ## New market
 
 When adding a new market type for an exchange, you need to make the following changes:
-- Similar to [adding a new exchange](@ref new_exchange), you need to add a new row to the table with `Supported Exchange APIs` (in the README.md and on the main page of the documentation `docs/src/index.md`) corresponding to the new type of market.
-- Add a docstring describing key types and methods related to the market (public client, etc.).
-- Add a new section corresponding to the exchange market in the file `docs/src/pages/EXCHANGE_NAME.md`:
+
+---
+
+Similar to [adding a new exchange](@ref new_exchange), you need to add a new row to the table with [`Supported Exchange APIs`](https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/master/README.md#supported-exchange-apis) (in the README.md and on the main page of the documentation `docs/src/index.md`) corresponding to the new type of market.
+
+---
+
+Add a docstring describing key types and methods related to the market (public client, etc.).
+
+---
+
+Add a new section corresponding to the exchange market in the file `docs/src/pages/EXCHANGE_NAME.md`:
 ````
 ## MARKET_TYPE
 
@@ -67,6 +91,9 @@ CryptoAPIs.EXCHANGE_NAME.MARKET_TYPE.<...>
 ## New API method
 
 When adding a new API method, it is enough to add a docstring with a description of the method according to [template](@ref template).
+
+---
+
 After that, add the method to the section of the corresponding market in the documentation (in the file `docs/src/pages/EXCHANGE_NAME.md`):
 ````
 ## MARKET_TYPE
