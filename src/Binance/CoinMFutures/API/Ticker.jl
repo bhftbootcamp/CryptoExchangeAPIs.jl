@@ -1,8 +1,8 @@
-module Ticker24hr
+module Ticker
 
-export Ticker24hrQuery,
-    Ticker24hrData,
-    ticker_24hr
+export TickerQuery,
+    TickerData,
+    ticker
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -10,12 +10,12 @@ using Dates, NanoDates, TimeZones
 using CryptoAPIs.Binance
 using CryptoAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct Ticker24hrQuery <: BinancePublicQuery
+Base.@kwdef struct TickerQuery <: BinancePublicQuery
     symbol::Maybe{String} = nothing
     pair::Maybe{String} = nothing
 end
 
-struct Ticker24hrData <: BinanceData
+struct TickerData <: BinanceData
     symbol::String
     pair::String
     pricechange::Maybe{Float64}
@@ -36,8 +36,8 @@ struct Ticker24hrData <: BinanceData
 end
 
 """
-    ticker_24hr(client::BinanceClient, query::Ticker24hrQuery)
-    ticker_24hr(client::BinanceClient = Binance.CoinMFutures.public_client; kw...)
+    ticker(client::BinanceClient, query::TickerQuery)
+    ticker(client::BinanceClient = Binance.CoinMFutures.public_client; kw...)
 
 
 [`GET dapi/v1/ticker/24hr`](https://binance-docs.github.io/apidocs/delivery/en/#24hr-ticker-price-change-statistics)
@@ -54,9 +54,9 @@ end
 
 ```julia
 using Serde
-using CryptoAPIs.Binance.CoinMFutures.Ticker24hr
+using CryptoAPIs.Binance.CoinMFutures.Ticker
 
-result = ticker_24hr(;
+result = ticker(;
     pair = "BTCUSD",
 )
 
@@ -90,12 +90,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function ticker_24hr(client::BinanceClient, query::Ticker24hrQuery)
-    return APIsRequest{Vector{Ticker24hrData}}("GET", "/dapi/v1/ticker/24hr", query)(client)
+function ticker(client::BinanceClient, query::TickerQuery)
+    return APIsRequest{Vector{TickerData}}("GET", "/dapi/v1/ticker/24hr", query)(client)
 end
 
-function ticker_24hr(client::BinanceClient = Binance.CoinMFutures.public_client; kw...)
-    return ticker_24hr(client, Ticker24hrQuery(; kw...))
+function ticker(client::BinanceClient = Binance.CoinMFutures.public_client; kw...)
+    return ticker(client, TickerQuery(; kw...))
 end
 
 end

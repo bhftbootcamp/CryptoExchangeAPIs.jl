@@ -11,11 +11,14 @@ const public_client =
 include("API/Candle.jl")
 using .Candle
 
-include("API/continuousCandle.jl")
-using .ConitinousCandle
+include("API/ContinuousCandle.jl")
+using .ContinuousCandle
 
 include("API/ExchangeInfo.jl")
 using .ExchangeInfo
+
+include("API/FundingRate.jl")
+using .FundingRate
 
 include("API/IncomeLog.jl")
 using .IncomeLog
@@ -23,13 +26,10 @@ using .IncomeLog
 include("API/OrderBook.jl")
 using .OrderBook
 
-include("API/premiumIndex.jl")
+include("API/PremiumIndex.jl")
 using .PremiumIndex
 
-include("API/FundingRate.jl")
-using .FundingRate
-
-include("API/Ticker24hr.jl")
-using .Ticker24hr
+include("API/Ticker.jl")
+using .Ticker
 
 end

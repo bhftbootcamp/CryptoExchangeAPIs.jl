@@ -22,7 +22,6 @@ struct FundingRateData <: BinanceData
     fundingTime::NanoDate
     fundingRate::Maybe{Float64}
     markPrice::Maybe{Float64}
-    
 end
 
 """

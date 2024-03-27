@@ -1,7 +1,7 @@
-module ConitinousCandle
+module ContinuousCandle
 
-export ConitinousCandleQuery,
-    ConitinousCandleData,
+export ContinuousCandleQuery,
+    ContinuousCandleData,
     continuous_candle
 
 using Serde
@@ -14,7 +14,7 @@ using CryptoAPIs: Maybe, APIsRequest
 
 @enum TypeOfContract PERPETUAL CURRENT_QUARTER NEXT_QUARTER
 
-Base.@kwdef struct ConitinousCandleQuery <: BinancePublicQuery
+Base.@kwdef struct ContinuousCandleQuery <: BinancePublicQuery
     pair::String
     contractType::TypeOfContract
     interval::TimeInterval
@@ -23,7 +23,7 @@ Base.@kwdef struct ConitinousCandleQuery <: BinancePublicQuery
     startTime::Maybe{DateTime} = nothing
 end
 
-function Serde.ser_type(::Type{<:ConitinousCandleQuery}, x::TimeInterval)::String
+function Serde.ser_type(::Type{<:ContinuousCandleQuery}, x::TimeInterval)::String
     x == m1  && return "1m"
     x == m3  && return "3m"
     x == m5  && return "5m"
@@ -41,13 +41,10 @@ function Serde.ser_type(::Type{<:ConitinousCandleQuery}, x::TimeInterval)::Strin
     x == M1  && return "1M"
 end
 
-function Serde.ser_type(::Type{<:ConitinousCandleQuery}, x::TypeOfContract)::String
-    x == PERPETUAL  && return "PERPETUAL"
-    x == CURRENT_QUARTER  && return "CURRENT_QUARTER"
-    x == NEXT_QUARTER  && return "NEXT_QUARTER"
+function Serde.ser_value(::Type{<:ContinuousCandleQuery}, ::Val{:contractType}, v::String)
 end
 
-struct ConitinousCandleData <: BinanceData
+struct ContinuousCandleData <: BinanceData
     openTime::NanoDate
     openPrice::Maybe{Float64}
     highPrice::Maybe{Float64}
@@ -62,8 +59,8 @@ struct ConitinousCandleData <: BinanceData
 end
 
 """
-    con_candle(client::BinanceClient, query::ConitinousCandleQuery)
-    con_candle(client::BinanceClient = Binance.CoinMFutures.public_client; kw...)
+    continuous_candle(client::BinanceClient, query::ContinuousCandleQuery)
+    continuous_candle(client::BinanceClient = Binance.CoinMFutures.public_client; kw...)
 
 Kline/candlestick bars for a specific contract type.
 
@@ -71,25 +68,25 @@ Kline/candlestick bars for a specific contract type.
 
 ## Parameters:
 
-| Parameter    | Type     | Required | Description |
-|:-------------|:---------|:---------|:------------|
-| pair         | String   | true     |             |
-| contractType | enum     | true     |             |
-| interval     | enum     | true     |             |
-| endTime      | DateTime | false    |             |
-| limit        | Int64    | false    |             |
-| startTime    | DateTime | false    |             |
+| Parameter    | Type           | Required | Description                              |
+|:-------------|:---------------|:---------|:-----------------------------------------|
+| pair         | String         | true     |                                          |
+| contractType | TypeOfContract | true     |PERPETUAL, CURRENT\_QUARTER, NEXT\_QUARTER|
+| interval     | TimeInterval   | true     |                                          |
+| endTime      | DateTime       | false    |                                          |
+| limit        | Int64          | false    |                                          |
+| startTime    | DateTime       | false    |                                          |
 
 ## Code samples:
 
 ```julia
 using Serde
-using CryptoAPIs.Binance.CoinMFutures.ConitinousCandle
+using CryptoAPIs.Binance.CoinMFutures.ContinuousCandle
 
 result = Binance.CoinMFutures.continuous_candle(;
     pair = "BTCUSD",
-    contractType = Binance.CoinMFutures.ConitinousCandle.PERPETUAL,
-    interval = Binance.CoinMFutures.ConitinousCandle.M1,
+    contractType = Binance.CoinMFutures.ContinuousCandle.PERPETUAL,
+    interval = Binance.CoinMFutures.ContinuousCandle.M1,
 )
 
 to_pretty_json(result.result)
@@ -116,12 +113,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function continuous_candle(client::BinanceClient, query::ConitinousCandleQuery)
-    return APIsRequest{Vector{ConitinousCandleData}}("GET", "dapi/v1/continuousKlines", query)(client)
+function continuous_candle(client::BinanceClient, query::ContinuousCandleQuery)
+    return APIsRequest{Vector{ContinuousCandleData}}("GET", "dapi/v1/continuousKlines", query)(client)
 end
 
 function continuous_candle(client::BinanceClient = Binance.CoinMFutures.public_client; kw...)
-    return continuous_candle(client, ConitinousCandleQuery(; kw...))
+    return continuous_candle(client, ContinuousCandleQuery(; kw...))
 end
 
 end
