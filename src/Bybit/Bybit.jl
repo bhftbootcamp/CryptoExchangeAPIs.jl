@@ -13,6 +13,7 @@ using Dates, NanoDates, TimeZones, Base64, Nettle
 
 using ..CryptoAPIs
 import ..CryptoAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
+
 abstract type BybitData <: AbstractAPIsData end
 abstract type BybitCommonQuery  <: AbstractAPIsQuery end
 abstract type BybitPublicQuery  <: BybitCommonQuery end
