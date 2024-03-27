@@ -11,6 +11,9 @@ const public_client =
 include("API/Candle.jl")
 using .Candle
 
+include("API/CoinInfo.jl")
+using .CoinInfo
+
 include("API/Deposit.jl")
 using .Deposit
 

@@ -22,3 +22,5 @@ bybit_client = BybitClient(;
 )
 
 CryptoAPIs.Bybit.Spot.deposit(bybit_client)
+
+CryptoAPIs.Bybit.Spot.coin_info(bybit_client)
