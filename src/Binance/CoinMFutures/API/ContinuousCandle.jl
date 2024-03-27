@@ -71,7 +71,7 @@ Kline/candlestick bars for a specific contract type.
 | Parameter    | Type           | Required | Description                              |
 |:-------------|:---------------|:---------|:-----------------------------------------|
 | pair         | String         | true     |                                          |
-| contractType | TypeOfContract | true     |PERPETUAL, CURRENT\_QUARTER, NEXT\_QUARTER|
+| contractType | TypeOfContract | true     | PERPETUAL, CURRENT_QUARTER, NEXT_QUARTER |
 | interval     | TimeInterval   | true     |                                          |
 | endTime      | DateTime       | false    |                                          |
 | limit        | Int64          | false    |                                          |
