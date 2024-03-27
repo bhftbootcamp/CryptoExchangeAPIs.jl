@@ -119,7 +119,7 @@ to_pretty_json(result.result)
 ```
 """
 function coin_info(client::BybitClient, query::CoinInfoQuery)
-    return CctxQuery{Data{Rows{CoinInfoData}}}("GET", "asset/v3/private/coin-info/query", query)(client)
+    return APIsRequest{Data{Rows{CoinInfoData}}}("GET", "asset/v3/private/coin-info/query", query)(client)
 end
 
 function coin_info(client::BybitClient; kw...)
