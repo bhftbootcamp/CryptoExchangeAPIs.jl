@@ -36,7 +36,7 @@ end
     symbol_info(client::BybitClient, query::SymbolInfoQuery)
     symbol_info(client::BybitClient = Bybit.Spot.public_client; kw...)
 
-Get the spec of symbol information.
+Get the specification of symbol information.
 
 [`GET /spot/v3/public/symbols`](https://bybit-exchange.github.io/docs/spot/public/instrument#http-request)
 

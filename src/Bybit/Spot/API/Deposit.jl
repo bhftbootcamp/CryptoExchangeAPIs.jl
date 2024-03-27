@@ -53,17 +53,17 @@ Query Deposit Records.
 
 ## Parameters:
 
-| Parameter   | Type     | Required | Description                                   |
-|:------------|:---------|:---------|:----------------------------------------------|
-| coin        | String   | false    |                                               |
-| cursor      | String   | false    |                                               |
-| endTime     | DateTime | false    |                                               |
-| limit       | Int64    | false    | Default value is 50, max 50                   |
-| startTime   | DateTime | false    |                                               |
-| api_key     | String   | false    |                                               |
-| recv_window | Int64    | false    | Default value is 5000                         |
-| signature   | String   | false    |                                               |
-| timestamp   | DateTime | false    |                                               |
+| Parameter   | Type     | Required | Description                 |
+|:------------|:---------|:---------|:----------------------------|
+| coin        | String   | false    |                             |
+| cursor      | String   | false    |                             |
+| endTime     | DateTime | false    |                             |
+| limit       | Int64    | false    | Default value is 50, max 50 |
+| startTime   | DateTime | false    |                             |
+| api_key     | String   | false    |                             |
+| recv_window | Int64    | false    | Default value is 5000       |
+| signature   | String   | false    |                             |
+| timestamp   | DateTime | false    |                             |
 
 ## Code samples:
 
@@ -71,9 +71,13 @@ Query Deposit Records.
 using Serde
 using CryptoAPIs.Bybit
 
-result = Bybit.Spot.deposit(;
-    ...
+bybit_client = BybitClient(;
+    base_url = "https://api.bybit.com",
+    public_key = ENV["BYBIT_PUBLIC_KEY"],
+    secret_key = ENV["BYBIT_SECRET_KEY"],
 )
+
+result = Bybit.Spot.deposit(bybit_client)
 
 to_pretty_json(result.result)
 ```
@@ -82,7 +86,47 @@ to_pretty_json(result.result)
 
 ```json
 {
-    ...
+    "retCode": 0,
+    "retMsg": "success",
+    "result": {
+        "rows": [
+            {
+                "coin": "USDT",
+                "chain": "ETH",
+                "amount": "10000",
+                "txID": "1234567890",
+                "status": 3,
+                "toAddress": "xxxxxxxxxxx",
+                "tag": "",
+                "depositFee": "",
+                "successAt": "1671018256000",
+                "confirmations": "10000",
+                "txIndex": "",
+                "blockHash": "",
+                "batchReleaseLimit": "-1",
+                "depositType": 0
+            },
+            {
+                "coin": "USDT",
+                "chain": "ETH",
+                "amount": "10000",
+                "txID": "01234567890",
+                "status": 3,
+                "toAddress": "xxxxxxxxxxx",
+                "tag": "",
+                "depositFee": "",
+                "successAt": "1669197900000",
+                "confirmations": "10000",
+                "txIndex": "",
+                "blockHash": "",
+                "batchReleaseLimit": "-1",
+                "depositType": 0
+            }
+        ],
+        "nextPageCursor": "X780tg5x2ZtYiQ94R3ZzcPaavGg6jUL5tA3GnKJ9tx89"
+    },
+    "retExtInfo": {},
+    "time": 1671166430718
 }
 ```
 """

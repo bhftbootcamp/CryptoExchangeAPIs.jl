@@ -1,26 +1,14 @@
 # Bybit/Utils
 
-function Serde.deser(
-    ::Type{<:AbstractAPIsData},
-    ::Type{<:Maybe{NanoDate}},
-    x::Int64,
-)::NanoDate
+function Serde.deser(::Type{<:AbstractAPIsData}, ::Type{<:Maybe{NanoDate}}, x::Int64)::NanoDate
     return unixnanos2nanodate(x * 1e6)
 end
 
-function Serde.deser(
-    ::Type{<:AbstractAPIsData},
-    ::Type{<:Maybe{NanoDate}},
-    x::String,
-)::NanoDate
+function Serde.deser(::Type{<:AbstractAPIsData}, ::Type{<:Maybe{NanoDate}}, x::String)::NanoDate
     return unixnanos2nanodate(parse(Int64, x) * 1e6)
 end
 
-function Serde.deser(
-    ::Type{<:BybitAPIError},
-    ::Type{<:Maybe{NanoDate}},
-    x::Int64,
-)::NanoDate
+function Serde.deser(::Type{<:BybitAPIError}, ::Type{<:Maybe{NanoDate}}, x::Int64)::NanoDate
     return unixnanos2nanodate(x * 1e6)
 end
 
@@ -36,7 +24,7 @@ function Serde.ser_ignore_field(::Type{<:BybitCommonQuery}, ::Val{:recv_window})
     return true
 end
 
-function Serde.ser_ignore_field(::Type{<:BybitCommonQuery}, ::Val{:sign})::Bool
+function Serde.ser_ignore_field(::Type{<:BybitCommonQuery}, ::Val{:signature})::Bool
     return true
 end
 

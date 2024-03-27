@@ -28,7 +28,7 @@ abstract type BybitPrivateQuery <: BybitCommonQuery end
 - `list::Vector{D}`: Result values.
 
 ## Optional fields
-- `nextPageCursor::String`: Cursor. Used to pagination.
+- `nextPageCursor::String`: Pagination cursor.
 - `category::String`: Product type
 """
 struct List{D<:AbstractAPIsData} <: AbstractAPIsData
@@ -44,7 +44,7 @@ end
 - `rows::Vector{D}`: Result values.
 
 ## Optional fields
-- `nextPageCursor::String`: Cursor. Used to pagination.
+- `nextPageCursor::String`: Pagination cursor.
 """
 struct Rows{D<:AbstractAPIsData} <: AbstractAPIsData
     rows::Vector{D}
@@ -56,10 +56,10 @@ end
 
 ## Required fields
 - `retCode::Int64`: Return code.
-- `retMsg::String`: Return message.
-- `result::D`: Request result.
+- `retMsg::String`: Return msg.
+- `result::D`: Request result data.
 - `retExtInfo::Dict{String,Any}`: Request extended information.
-- `time::NanoDate`: Time of the request.
+- `time::NanoDate`: Current timestamp (ms).
 """
 struct Data{D<:Maybe{<:AbstractAPIsData}} <: AbstractAPIsData
     retCode::Int64
@@ -103,9 +103,9 @@ Exception thrown when an API method fails with code `T`.
 ## Required fields
 - `retCode::Int64`: Error code.
 - `retMsg::String`: Error message.
-- `result::Dict{String,Any}`: Error result.
+- `result::Dict{String,Any}`: Error result data.
 - `retExtInfo::Dict{String,Any}`: Extended error information.
-- `time::NanoDate`: Error time.
+- `time::NanoDate`: Error timestamp (ms).
 """
 struct BybitAPIError{T} <: AbstractAPIsError
     retCode::Int64

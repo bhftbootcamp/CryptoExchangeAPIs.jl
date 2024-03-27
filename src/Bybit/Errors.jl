@@ -1,7 +1,8 @@
 # Errors
 # https://bybit-exchange.github.io/docs/v5/error
 
-import ..CryptoAPIs: APIsResult, APIsUndefError, isretriable, retry_maxcount, retry_timeout
+import ..CryptoAPIs: APIsResult, APIsUndefError
+import ..CryptoAPIs:  isretriable, retry_maxcount, retry_timeout
 
 # UNDEF
 isretriable(::APIsResult{BybitAPIError}) = true
@@ -286,7 +287,7 @@ isretriable(e::APIsResult{BybitAPIError{110069}}) = false
 # ETP symbols cannot be traded.
 isretriable(e::APIsResult{BybitAPIError{110070}}) = false
 
-# Sorry, we're revamping the Unified Margin Account! Currently, new upgrades are not supported. If you have any questions, please contact our 24/7 customer support.
+# Unified Margin Account is being revamped.
 isretriable(e::APIsResult{BybitAPIError{110071}}) = false
 
 # OrderLinkedID is duplicate
