@@ -54,9 +54,9 @@ end
 
 ```julia
 using Serde
-using CryptoAPIs.Binance.CoinMFutures.Ticker
+using CryptoAPIs.Binance
 
-result = ticker(;
+result = Binance.CoinMFutures.ticker(;
     pair = "BTCUSD",
 )
 

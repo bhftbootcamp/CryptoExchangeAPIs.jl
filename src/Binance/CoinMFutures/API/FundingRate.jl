@@ -45,9 +45,9 @@ end
 
 ```julia
 using Serde
-using CryptoAPIs.Binance.CoinMFutures.FundingRate
+using CryptoAPIs.Binance
 
-result = funding_rate(;
+result = Binance.CoinMFutures.funding_rate(;
     symbol = "BTCUSD_PERP",
 )
 

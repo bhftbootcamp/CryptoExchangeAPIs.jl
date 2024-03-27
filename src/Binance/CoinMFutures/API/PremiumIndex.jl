@@ -31,7 +31,6 @@ end
     premium_index(client::BinanceClient, query::PremiumIndexQuery)
     premium_index(client::BinanceClient = Binance.CoinMFutures.public_client; kw...)
 
-
 [`GET dapi/v1/premiumIndex`](https://binance-docs.github.io/apidocs/delivery/en/#index-price-and-mark-price)
 
 ## Parameters:
@@ -46,9 +45,9 @@ end
 
 ```julia
 using Serde
-using CryptoAPIs.Binance.CoinMFutures.PremiumIndex
+using CryptoAPIs.Binance
 
-result = premium_index(;
+result = Binance.CoinMFutures.premium_index(;
     pair = "BTCUSD",
 )
 

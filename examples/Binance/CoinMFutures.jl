@@ -18,10 +18,17 @@ Binance.CoinMFutures.candle(;
     limit = 5,
 )
 
+Binance.CoinMFutures.continuous_candle(;
+    pair = "BTCUSD_PERP",
+    contractType = Binance.CoinMFutures.ContinuousCandle.PERPETUAL,
+    interval = Binance.CoinMFutures.ContinuousCandle.M1,
+)
+
 Binance.CoinMFutures.exchange_info()
 
-Binance.CoinMFutures.order_book(; symbol = "BTCUSD_PERP")
-Binance.CoinMFutures.order_book(; symbol = "BTCUSD_PERP", limit = 10)
+Binance.CoinMFutures.funding_rate(;
+    symbol = "BTCUSD_PERP",
+)
 
 binance_client = BinanceClient(;
     base_url = "https://dapi.binance.com",
@@ -38,4 +45,15 @@ Binance.CoinMFutures.income_log(
     startTime = DateTime("2023-06-22"),
     endTime = DateTime("2023-07-23"),
     limit = 1000,
+)
+
+Binance.CoinMFutures.order_book(; symbol = "BTCUSD_PERP")
+Binance.CoinMFutures.order_book(; symbol = "BTCUSD_PERP", limit = 10)
+
+Binance.CoinMFutures.premium_index(;
+    pair = "BTCUSD_PERP",
+)
+
+Binance.CoinMFutures.ticker(;
+    pair = "BTCUSD_PERP",
 )
