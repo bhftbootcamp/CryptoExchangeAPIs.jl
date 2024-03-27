@@ -122,14 +122,3 @@ function continuous_candle(client::BinanceClient = Binance.CoinMFutures.public_c
 end
 
 end
-
-using Serde
-using CryptoAPIs.Binance.CoinMFutures.ContinuousCandle
-
-result = Binance.CoinMFutures.continuous_candle(;
-    pair = "BTCUSD",
-    contractType = Binance.CoinMFutures.ContinuousCandle.PERPETUAL,
-    interval = Binance.CoinMFutures.ContinuousCandle.M1,
-)
-
-to_pretty_json(result.result)

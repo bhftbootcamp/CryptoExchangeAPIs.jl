@@ -53,3 +53,14 @@ Binance.CoinMFutures.income_log(
     endTime = DateTime("2023-07-23"),
     limit = 1000,
 )
+
+Binance.CoinMFutures.order_book(; symbol = "BTCUSD_PERP")
+Binance.CoinMFutures.order_book(; symbol = "BTCUSD_PERP", limit = 10)
+
+Binance.CoinMFutures.premium_index(;
+    pair = "BTCUSD_PERP",
+)
+
+Binance.CoinMFutures.ticker(;
+    pair = "BTCUSD_PERP",
+)
