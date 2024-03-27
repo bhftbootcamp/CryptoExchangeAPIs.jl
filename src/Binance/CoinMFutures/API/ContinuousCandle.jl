@@ -12,11 +12,11 @@ using CryptoAPIs: Maybe, APIsRequest
 
 @enum TimeInterval m1 m3 m5 m15 m30 h1 h2 h4 h6 h8 h12 d1 d3 w1 M1
 
-@enum TypeOfContract PERPETUAL CURRENT_QUARTER NEXT_QUARTER
+@enum ContractType PERPETUAL CURRENT_QUARTER NEXT_QUARTER
 
 Base.@kwdef struct ContinuousCandleQuery <: BinancePublicQuery
     pair::String
-    contractType::TypeOfContract
+    contractType::ContractType
     interval::TimeInterval
     limit::Maybe{Int64} = nothing
     endTime::Maybe{DateTime} = nothing
@@ -68,7 +68,7 @@ Kline/candlestick bars for a specific contract type.
 | Parameter    | Type           | Required | Description                              |
 |:-------------|:---------------|:---------|:-----------------------------------------|
 | pair         | String         | true     |                                          |
-| contractType | TypeOfContract | true     | PERPETUAL, CURRENT_QUARTER, NEXT_QUARTER |
+| contractType | ContractType   | true     | PERPETUAL, CURRENT_QUARTER, NEXT_QUARTER |
 | interval     | TimeInterval   | true     |                                          |
 | endTime      | DateTime       | false    |                                          |
 | limit        | Int64          | false    |                                          |
