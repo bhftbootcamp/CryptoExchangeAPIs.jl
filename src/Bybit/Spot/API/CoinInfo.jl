@@ -58,7 +58,7 @@ Query Coin Information.
 ## Parameters:
 
 | Parameter   | Type     | Required | Description   |
-|:------------|:---------|:---------|:------------- |
+|:------------|:---------|:---------|:--------------|
 | coin        | String   | false    |               |
 | api_key     | String   | false    |               |
 | recv_window | Int64    | false    | Default: 5000 |
@@ -87,7 +87,34 @@ to_pretty_json(result.result)
 
 ```json
 {
-    ...
+  "retCode":0,
+  "retMsg":"",
+  "result":{
+    "rows":[
+      {
+        "chains":[
+          {
+            "chain":"ETH",
+            "chainDeposit":1,
+            "chainType":"ERC20",
+            "chainWithdraw":1,
+            "confirmation":6,
+            "depositMin":0.0,
+            "minAccuracy":8,
+            "withdrawFee":3.0,
+            "withdrawMin":3.0
+          }
+        ],
+        "coin":"AGLD",
+        "name":"AGLD",
+        "remainAmount":256400
+      },
+      ...
+    ],
+    "nextPageCursor":null
+  },
+  "retExtInfo":{},
+  "time":"2024-03-27T14:22:12.088"
 }
 ```
 """

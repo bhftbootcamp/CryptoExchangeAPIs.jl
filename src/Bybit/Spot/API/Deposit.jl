@@ -39,7 +39,7 @@ struct DepositData <: BybitData
     txIndex::Maybe{Int64}
 end
 
-function Serde.isempty(::Type{DepositData}, x)::Bool
+function Serde.isempty(::Type{<:DepositData}, x)::Bool
     return x === ""
 end
 

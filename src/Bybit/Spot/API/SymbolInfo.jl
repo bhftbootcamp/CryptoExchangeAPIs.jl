@@ -80,9 +80,7 @@ to_pretty_json(result.result)
     "nextPageCursor":null,
     "category":null
   },
-  "retExtInfo":{
-    
-  },
+  "retExtInfo":{},
   "time":"2024-03-25T18:58:15.868999936"
 }
 ```
