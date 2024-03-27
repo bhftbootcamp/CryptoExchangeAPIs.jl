@@ -8,6 +8,8 @@ When adding a new exchange to the package, you need to make the following change
 
 ---
 
+> `README.md`
+
 In the [`Supported Exchange APIs`](https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/master/README.md#supported-exchange-apis) table in the README.md you need to add a new row with links to relevant resources:
 ```html
 ...
@@ -22,6 +24,8 @@ In the [`Supported Exchange APIs`](https://github.com/bhftbootcamp/CryptoAPIs.jl
 ```
 
 ---
+
+> `docs/src/index.md`
 
 Similarly, add a new line to the table on the main documentation page in the file `docs/src/index.md` (the only difference will be the path of the logo: `<img src="assets/EXCHANGE_LOGO.png" ...>`).
 ```html
@@ -38,14 +42,15 @@ Similarly, add a new line to the table on the main documentation page in the fil
 
 ---
 
+> `src/EXCHANGE_NAME/EXCHANGE_NAME.jl`
+
 Add a docstring describing key types and methods (clients, errors, etc.).
 
 ---
 
+> `docs/src/pages/EXCHANGE_NAME.md`
+
 Create a new documentation page in the `docs/src/pages/` folder in markdown format with the appropriate exchange name, for example `docs/src/pages/Binance.md`.
-
----
-
 The documentation page should have the following section structure:
 ````
 # EXCHANGE_NAME
@@ -65,13 +70,19 @@ When adding a new market type for an exchange, you need to make the following ch
 
 ---
 
+> `README.md` and `docs/src/index.md`
+
 Similar to [adding a new exchange](@ref new_exchange), you need to add a new row to the table with [`Supported Exchange APIs`](https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/master/README.md#supported-exchange-apis) (in the README.md and on the main page of the documentation `docs/src/index.md`) corresponding to the new type of market.
 
 ---
 
+> `src/EXCHANGE_NAME/MARKET_TYPE/MARKET_TYPE.jl`
+
 Add a docstring describing key types and methods related to the market (public client, etc.).
 
 ---
+
+> `docs/src/pages/EXCHANGE_NAME.md`
 
 Add a new section corresponding to the exchange market in the file `docs/src/pages/EXCHANGE_NAME.md`:
 ````
@@ -90,9 +101,13 @@ CryptoAPIs.EXCHANGE_NAME.MARKET_TYPE.<...>
 
 ## New API method
 
+> `src/EXCHANGE_NAME/MARKET_TYPE/API/METHOD_NAME.jl`
+
 When adding a new API method, it is enough to add a docstring with a description of the method according to [template](@ref template).
 
 ---
+
+> `docs/src/pages/EXCHANGE_NAME.md`
 
 After that, add the method to the section of the corresponding market in the documentation (in the file `docs/src/pages/EXCHANGE_NAME.md`):
 ````
@@ -144,4 +159,106 @@ to_pretty_json(result.result)
 }
 ```
 """
+````
+
+## Example
+
+> `README.md`
+
+```html
+## Supported Exchange APIs
+
+<html>
+    <body>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Exchange</th>
+                <th>API Documentation</th>
+                <th>Module</th>
+                <th>Documentation</th>
+            </tr>
+            ...
+            <tr>
+                <td><img src="docs/src/assets/binance.png" alt="Binance Logo" width="20" height="20"></td>
+                <td><a href="https://www.binance.com/en/trade">Binance</a></td>
+                <td><a href="https://binance-docs.github.io/apidocs/spot/en/">Spot</a></td>
+                <td><a href="src/Binance/Spot">CryptoAPIs.Binance.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Binance/#Spot">Spot</a></td>
+            </tr>
+            ...
+        </table>
+    </body>
+</html>
+```
+
+---
+
+> `docs/src/index.md`
+
+````
+## Supported Exchange APIs
+
+```@raw html
+<html>
+    <body>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Exchange</th>
+                <th>API Documentation</th>
+                <th>Module</th>
+                <th>Documentation</th>
+            </tr>
+            ...
+            <tr>
+                <td><img src="assets/binance.png" alt="Binance Logo" width="20" height="20"></td>
+                <td><a href="https://www.binance.com/en/trade">Binance</a></td>
+                <td><a href="https://binance-docs.github.io/apidocs/spot/en/">Spot</a></td>
+                <td><a href="src/Binance/Spot">CryptoAPIs.Binance.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Binance/#Spot">Spot</a></td>
+            </tr>
+            ...
+        </table>
+    </body>
+</html>
+```
+````
+
+---
+
+> `docs/src/pages/EXCHANGE_NAME.md`
+
+````
+# Binance
+
+```@docs
+CryptoAPIs.Binance.BinanceClient
+CryptoAPIs.Binance.BinanceAPIError
+```
+
+## Spot
+
+```@docs
+CryptoAPIs.Binance.Spot.public_client
+```
+
+```@docs
+CryptoAPIs.Binance.Spot.candle
+CryptoAPIs.Binance.Spot.avg_price
+...
+```
+
+## USDMFutures
+
+```@docs
+CryptoAPIs.Binance.USDMFutures.public_client
+```
+
+```@docs
+CryptoAPIs.Binance.USDMFutures.candle
+CryptoAPIs.Binance.USDMFutures.exchange_info
+...
+```
+
 ````
