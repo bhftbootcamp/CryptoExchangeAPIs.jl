@@ -34,10 +34,7 @@ isretriable(e::APIsResult{BybitAPIError{10005}}) = false
 
 # Too many visits. Exceeded the API Rate Limit.
 isretriable(e::APIsResult{BybitAPIError{10006}}) = true
-function retry_timeout(e::APIsResult{BybitAPIError{10006}})
-    diff = e.http_headers.x_bapi_limit_reset_timestamp - e.http_headers.timenow
-    return value(convert(Nanosecond, diff)) * 1e-9
-end
+retry_timeout(e::APIsResult{BybitAPIError{10006}}) = 10
 retry_maxcount(e::APIsResult{BybitAPIError{10006}}) = 50
 
 # User authentication failed.

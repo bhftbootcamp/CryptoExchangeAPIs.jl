@@ -61,7 +61,7 @@ end
 - `retExtInfo::Dict{String,Any}`: Request extended information.
 - `time::NanoDate`: Time of the request.
 """
-struct Data{D<:Maybe{A} where {A<:AbstractAPIsData}} <: AbstractAPIsData
+struct Data{D<:Maybe{<:AbstractAPIsData}} <: AbstractAPIsData
     retCode::Int64
     retMsg::String
     result::D
@@ -103,11 +103,9 @@ Exception thrown when an API method fails with code `T`.
 ## Required fields
 - `retCode::Int64`: Error code.
 - `retMsg::String`: Error message.
+- `result::Dict{String,Any}`: Error result.
+- `retExtInfo::Dict{String,Any}`: Extended error information.
 - `time::NanoDate`: Error time.
-
-## Optional fields
-- `result::String`: Error result.
-- `retExtInfo::String`: Extended error information.
 """
 struct BybitAPIError{T} <: AbstractAPIsError
     retCode::Int64
@@ -132,17 +130,13 @@ function CryptoAPIs.request_sign!(::BybitClient, query::Q, ::String)::Q where {Q
     return query
 end
 
-function time2unix(x::DateTime; digits::Real = 1000)
-    return round(Int64, digits * datetime2unix(x))
-end
-
 function CryptoAPIs.request_sign!(client::BybitClient, query::Q, ::String)::Q where {Q<:BybitPrivateQuery}
     query.timestamp = Dates.now(UTC)
     query.api_key = client.public_key
-    query.sign = nothing
+    query.signature = nothing
     body::String = Serde.to_query(query)
-    salt = join([string(time2unix(query.timestamp)), client.public_key, query.recv_window, body])
-    query.sign = hexdigest("sha256", client.secret_key, salt)
+    salt = join([string(round(Int64, 1000 * datetime2unix(query.timestamp))), client.public_key, query.recv_window, body])
+    query.signature = hexdigest("sha256", client.secret_key, salt)
     return query
 end
 
@@ -163,9 +157,9 @@ end
 function CryptoAPIs.request_headers(client::BybitClient, query::BybitPrivateQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "X-BAPI-SIGN-TYPE" => "2",
-        "X-BAPI-SIGN" => query.sign,
+        "X-BAPI-SIGN" => query.signature,
         "X-BAPI-API-KEY" => client.public_key,
-        "X-BAPI-TIMESTAMP" => string(time2unix(query.timestamp)),
+        "X-BAPI-TIMESTAMP" => string(round(Int64, 1000 * datetime2unix(query.timestamp))),
         "X-BAPI-RECV-WINDOW" => string(query.recv_window),
         "Content-Type" => "application/x-www-form-urlencoded",
     ]

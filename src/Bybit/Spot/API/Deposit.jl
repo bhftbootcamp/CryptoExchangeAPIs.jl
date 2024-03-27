@@ -20,7 +20,7 @@ Base.@kwdef mutable struct DepositQuery <: BybitPrivateQuery
 
     api_key::Maybe{String} = nothing
     recv_window::Maybe{Int64} = 5000
-    sign::Maybe{String} = nothing
+    signature::Maybe{String} = nothing
     timestamp::Maybe{DateTime} = nothing
 end
 
@@ -62,7 +62,7 @@ Query Deposit Records.
 | startTime   | DateTime | false    |                                               |
 | api_key     | String   | false    |                                               |
 | recv_window | Int64    | false    | Default value is 5000                         |
-| sign        | String   | false    |                                               |
+| signature   | String   | false    |                                               |
 | timestamp   | DateTime | false    |                                               |
 
 ## Code samples:

@@ -5,15 +5,15 @@ using Dates
 using CryptoAPIs
 using CryptoAPIs.Bybit
 
-Bybit.Spot.candle(;
+CryptoAPIs.Bybit.Spot.candle(;
     symbol = "ADAUSDT",
-    interval = Bybit.Spot.Candle.m1,
+    interval = CryptoAPIs.Bybit.Spot.Candle.m1,
     startTime = DateTime("2022-10-27T08:00:00"),
     endTime = DateTime("2022-10-27T08:00:00") + Hour(1),
     limit = 4,
 )
 
-Bybit.Spot.symbols_info()
+CryptoAPIs.Bybit.Spot.symbol_info()
 
 bybit_client = BybitClient(;
     base_url = "https://api.bybit.com",

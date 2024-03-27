@@ -2,14 +2,6 @@
 
 function Serde.deser(
     ::Type{<:AbstractAPIsData},
-    ::Type{<:DateTime},
-    x::String,
-)::DateTime
-    return unix2datetime(parse(Int64, x) * 1e-3)
-end
-
-function Serde.deser(
-    ::Type{<:AbstractAPIsData},
     ::Type{<:Maybe{NanoDate}},
     x::Int64,
 )::NanoDate
@@ -32,20 +24,20 @@ function Serde.deser(
     return unixnanos2nanodate(x * 1e6)
 end
 
-function Serde.SerQuery.ser_value(::Type{<:BybitCommonQuery}, ::Val{:timestamp}, v::Any)::Nothing
-    return nothing
+function Serde.ser_ignore_field(::Type{<:BybitCommonQuery}, ::Val{:timestamp})::Bool
+    return true
 end
 
-function Serde.SerQuery.ser_value(::Type{<:BybitCommonQuery}, ::Val{:api_key}, v::Any)::Nothing
-    return nothing
+function Serde.ser_ignore_field(::Type{<:BybitCommonQuery}, ::Val{:api_key})::Bool
+    return true
 end
 
-function Serde.SerQuery.ser_value(::Type{<:BybitCommonQuery}, ::Val{:recv_window}, v::Any)::Nothing
-    return nothing
+function Serde.ser_ignore_field(::Type{<:BybitCommonQuery}, ::Val{:recv_window})::Bool
+    return true
 end
 
-function Serde.SerQuery.ser_value(::Type{<:BybitCommonQuery}, ::Val{:sign}, v::Any)::Nothing
-    return nothing
+function Serde.ser_ignore_field(::Type{<:BybitCommonQuery}, ::Val{:sign})::Bool
+    return true
 end
 
 function Serde.SerQuery.ser_name(::Type{<:BybitCommonQuery}, ::Val{:_end})::String
@@ -53,5 +45,5 @@ function Serde.SerQuery.ser_name(::Type{<:BybitCommonQuery}, ::Val{:_end})::Stri
 end
 
 function Serde.SerQuery.ser_type(::Type{<:BybitCommonQuery}, dt::DateTime)::Int64
-    return time2unix(dt)
+    return round(Int64, 1000 * datetime2unix(dt))
 end

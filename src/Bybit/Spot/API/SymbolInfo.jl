@@ -1,8 +1,8 @@
-module SymbolsInfo
+module SymbolInfo
 
-export SymbolsInfoQuery,
-    SymbolsInfoData,
-    symbols_info
+export SymbolInfoQuery,
+    SymbolInfoData,
+    symbol_info
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -11,11 +11,11 @@ using CryptoAPIs.Bybit
 using CryptoAPIs.Bybit: Data, List, Rows
 using CryptoAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct SymbolsInfoQuery <: BybitPublicQuery
+Base.@kwdef struct SymbolInfoQuery <: BybitPublicQuery
     #__ empty
 end
 
-struct SymbolsInfoData <: BybitData
+struct SymbolInfoData <: BybitData
     alias::String
     baseCoin::String
     basePrecision::Float64
@@ -33,8 +33,8 @@ struct SymbolsInfoData <: BybitData
 end
 
 """
-    symbols_info(client::BybitClient, query::SymbolsInfoQuery)
-    symbols_info(client::BybitClient = Bybit.Spot.public_client; kw...)
+    symbol_info(client::BybitClient, query::SymbolInfoQuery)
+    symbol_info(client::BybitClient = Bybit.Spot.public_client; kw...)
 
 Get the spec of symbol information.
 
@@ -46,7 +46,7 @@ Get the spec of symbol information.
 using Serde
 using CryptoAPIs.Bybit
 
-result = Bybit.Spot.symbols_info()
+result = Bybit.Spot.symbol_info()
 
 to_pretty_json(result.result)
 ```
@@ -87,12 +87,12 @@ to_pretty_json(result.result)
 }
 ```
 """
-function symbols_info(client::BybitClient, query::SymbolsInfoQuery)
-    return APIsRequest{Data{List{SymbolsInfoData}}}("GET", "/spot/v3/public/symbols", query)(client)
+function symbol_info(client::BybitClient, query::SymbolInfoQuery)
+    return APIsRequest{Data{List{SymbolInfoData}}}("GET", "/spot/v3/public/symbols", query)(client)
 end
 
-function symbols_info(client::BybitClient = Bybit.Spot.public_client; kw...)
-    return symbols_info(client, SymbolsInfoQuery(; kw...))
+function symbol_info(client::BybitClient = Bybit.Spot.public_client; kw...)
+    return symbol_info(client, SymbolInfoQuery(; kw...))
 end
 
 end

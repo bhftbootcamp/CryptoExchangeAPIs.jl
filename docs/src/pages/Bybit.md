@@ -16,6 +16,6 @@ CryptoAPIs.Bybit.Spot.public_client
 
 ```@docs
 CryptoAPIs.Bybit.Spot.candle
-CryptoAPIs.Bybit.Spot.symbols_info
+CryptoAPIs.Bybit.Spot.symbol_info
 CryptoAPIs.Bybit.Spot.deposit
 ```
