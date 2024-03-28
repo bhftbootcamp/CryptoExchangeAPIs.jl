@@ -57,10 +57,8 @@ Binance.CoinMFutures.income_log(
 Binance.CoinMFutures.order_book(; symbol = "BTCUSD_PERP")
 Binance.CoinMFutures.order_book(; symbol = "BTCUSD_PERP", limit = 10)
 
-Binance.CoinMFutures.premium_index(;
-    pair = "BTCUSD_PERP",
-)
+Binance.CoinMFutures.premium_index(; pair = "BTCUSD")
+Binance.CoinMFutures.premium_index(; symbol = "BTCUSD_PERP")
 
-Binance.CoinMFutures.ticker(;
-    pair = "BTCUSD_PERP",
-)
+Binance.CoinMFutures.ticker(; pair = "BTCUSD")
+Binance.CoinMFutures.ticker(; symbol = "BTCUSD_PERP")
