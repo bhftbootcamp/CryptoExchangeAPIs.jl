@@ -14,14 +14,16 @@ makedocs(;
         sidebar_sitename = true,
     ),
     pages = [
-        "Home"    => "index.md",
+        "Home" => "index.md",
         "API Reference" => "pages/api_reference.md",
         "pages/Binance.md",
         "pages/Bybit.md",
         "pages/Coinbase.md",
         "pages/Gateio.md",
         "pages/Upbit.md",
-        "pages/developers.md",
+        "For Developers" => [
+            "pages/docs_miniguide.md",
+        ],
     ],
     warnonly = [:doctest, :missing_docs],
 )
