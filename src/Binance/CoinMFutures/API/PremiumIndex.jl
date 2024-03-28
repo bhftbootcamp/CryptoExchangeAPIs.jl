@@ -40,7 +40,6 @@ end
 | symbol    | String   | false    |             |
 | pair      | String   | false    |             |
 
-
 ## Code samples:
 
 ```julia
