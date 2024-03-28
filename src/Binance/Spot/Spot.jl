@@ -8,6 +8,9 @@ using CryptoAPIs.Binance
 const public_client =
     BinanceClient(; base_url = "https://api.binance.com")
 
+include("API/AccountTrade.jl")
+using .AccountTrade
+
 include("API/AvgPrice.jl")
 using .AvgPrice
 
@@ -17,10 +20,19 @@ using .Candle
 include("API/CoinInformation.jl")
 using .CoinInformation
 
+include("API/DepositLog.jl")
+using .DepositLog
+
+include("API/ExchangeInfo.jl")
+using .ExchangeInfo
+
 include("API/OrderBook.jl")
 using .OrderBook
 
 include("API/Ticker.jl")
 using .Ticker
+
+include("API/WithdrawalLog.jl")
+using .WithdrawalLog
 
 end
