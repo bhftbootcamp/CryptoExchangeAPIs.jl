@@ -39,7 +39,6 @@ end
     ticker(client::BinanceClient, query::TickerQuery)
     ticker(client::BinanceClient = Binance.CoinMFutures.public_client; kw...)
 
-
 [`GET dapi/v1/ticker/24hr`](https://binance-docs.github.io/apidocs/delivery/en/#24hr-ticker-price-change-statistics)
 
 ## Parameters:
@@ -48,7 +47,6 @@ end
 |:----------|:---------|:---------|:------------|
 | symbol    | String   | false    |             |
 | pair      | String   | false    |             |
-
 
 ## Code samples:
 

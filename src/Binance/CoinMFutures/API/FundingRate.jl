@@ -28,7 +28,6 @@ end
     funding_rate(client::BinanceClient, query::FundingRateQuery)
     funding_rate(client::BinanceClient = Binance.CoinMFutures.public_client; kw...)
 
-
 [`GET /dapi/v1/fundingRate`](https://binance-docs.github.io/apidocs/delivery/en/#get-funding-rate-history-of-perpetual-futures)
 
 ## Parameters:
@@ -39,7 +38,6 @@ end
 | endTime   | DateTime | false    |             |
 | limit     | Int64    | false    |             |
 | startTime | DateTime | false    |             |
-
 
 ## Code samples:
 
@@ -68,7 +66,6 @@ to_pretty_json(result.result)
 ]
 ```
 """
-
 function funding_rate(client::BinanceClient, query::FundingRateQuery)
     return APIsRequest{Vector{FundingRateData}}("GET", "/dapi/v1/fundingRate", query)(client)
 end

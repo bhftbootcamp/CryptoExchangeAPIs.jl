@@ -92,8 +92,8 @@ to_pretty_json(result.result)
 ## Result:
 
 ```json
-       
-{
+[       
+ {
     "openTime":"2023-10-01T00:00:00",
     "openPrice":26957.3,
     "highPrice":35811.9,

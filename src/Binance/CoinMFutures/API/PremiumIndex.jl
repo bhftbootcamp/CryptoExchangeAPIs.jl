@@ -73,7 +73,6 @@ to_pretty_json(result.result)
 ]
 ```
 """
-
 function premium_index(client::BinanceClient, query::PremiumIndexQuery)
     return APIsRequest{Vector{PremiumIndexData}}("GET", "dapi/v1/premiumIndex", query)(client)
 end
