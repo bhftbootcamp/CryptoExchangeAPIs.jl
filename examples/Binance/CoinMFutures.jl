@@ -28,6 +28,15 @@ Binance.CoinMFutures.exchange_info()
 
 Binance.CoinMFutures.funding_rate(; symbol = "BTCUSD_PERP")
 
+Binance.CoinMFutures.order_book(; symbol = "BTCUSD_PERP")
+Binance.CoinMFutures.order_book(; symbol = "BTCUSD_PERP", limit = 10)
+
+Binance.CoinMFutures.premium_index(; pair = "BTCUSD")
+Binance.CoinMFutures.premium_index(; symbol = "BTCUSD_PERP")
+
+Binance.CoinMFutures.ticker(; pair = "BTCUSD")
+Binance.CoinMFutures.ticker(; symbol = "BTCUSD_PERP")
+
 binance_client = BinanceClient(;
     base_url = "https://dapi.binance.com",
     public_key = ENV["BINANCE_PUBLIC_KEY"],
