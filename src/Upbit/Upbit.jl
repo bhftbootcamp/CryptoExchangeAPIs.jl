@@ -27,7 +27,7 @@ abstract type UpbitPrivateQuery <: UpbitCommonQuery end
 Client info.
 
 ## Required fields
-- `base_url::String`: Base URL for the client. 
+- `base_url::String`: Base URL for the client.
 
 ## Optional fields
 - `public_key::String`: Public key for authentication.
