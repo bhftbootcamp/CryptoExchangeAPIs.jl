@@ -73,7 +73,7 @@ Gets a list of all known currencies.
 using Serde
 using CryptoAPIs.Coinbase
 
-result = Coinbase.Spot.currency() 
+result = Coinbase.Spot.currency()
 
 to_pretty_json(result.result)
 ```
@@ -90,7 +90,7 @@ to_pretty_json(result.result)
     "message":null,
     "max_precision":1.0e-8,
     "convertible_to":[
-        
+
     ],
     "details":{
         "type":"crypto",
@@ -100,10 +100,10 @@ to_pretty_json(result.result)
         "crypto_address_link":"https://etherscan.io/token/0x881ba05de1e78f549cc63a8f6cabb1d4ad32250d?a={{address}}",
         "crypto_transaction_link":"https://etherscan.io/tx/0x{{txId}}",
         "push_payment_methods":[
-        
+
         ],
         "group_types":[
-        
+
         ],
         "display_name":null,
         "processing_time_seconds":null,

@@ -9,7 +9,7 @@ CryptoAPIs.Upbit.Spot.day_candle(;
     market = "KRW-BTC",
     convertingPriceUnit = "KRW",
     count = 1,
-    to = DateTime("2023-01-01T00:00:00")
+    to = DateTime("2023-01-01T00:00:00"),
 )
 
 CryptoAPIs.Upbit.Spot.market_list(; isDetails = true)

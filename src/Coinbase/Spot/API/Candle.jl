@@ -61,7 +61,7 @@ using CryptoAPIs.Coinbase
 
 result = Coinbase.Spot.candle(;
     granularity = Coinbase.Spot.Candle.d1
-) 
+)
 
 to_pretty_json(result.result)
 ```
