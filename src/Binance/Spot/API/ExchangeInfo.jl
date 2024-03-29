@@ -123,51 +123,51 @@ to_pretty_json(result.result)
 
 ```json
 {
-    "timezone": "UTC",
-    "serverTime": 1565246363776,
-    "rateLimits": [
-        {
-        }
-    ],
-    "exchangeFilters": [
-    ],
-    "symbols": [
-        {
-            "symbol": "ETHBTC",
-            "status": "TRADING",
-            "baseAsset": "ETH",
-            "baseAssetPrecision": 8,
-            "quoteAsset": "BTC",
-            "quotePrecision": 8,
-            "quoteAssetPrecision": 8,
-            "orderTypes": [
-                "LIMIT",
-                "LIMIT_MAKER",
-                "MARKET",
-                "STOP_LOSS",
-                "STOP_LOSS_LIMIT",
-                "TAKE_PROFIT",
-                "TAKE_PROFIT_LIMIT"
-            ],
-            "icebergAllowed": true,
-            "ocoAllowed": true,
-            "quoteOrderQtyMarketAllowed": true,
-            "allowTrailingStop": false,
-            "cancelReplaceAllowed": false,
-            "isSpotTradingAllowed": true,
-            "isMarginTradingAllowed": true,
-            "filters": [
-            ],
-            "permissions": [
-                "SPOT",
-                "MARGIN"
-            ],
-            "defaultSelfTradePreventionMode": "NONE",
-            "allowedSelfTradePreventionModes": [
-                "NONE"
-            ]
-        }
-    ]
+  "timezone": "UTC",
+  "serverTime": 1565246363776,
+  "rateLimits": [
+      {
+      }
+  ],
+  "exchangeFilters": [
+  ],
+  "symbols": [
+    {
+      "symbol": "ETHBTC",
+      "status": "TRADING",
+      "baseAsset": "ETH",
+      "baseAssetPrecision": 8,
+      "quoteAsset": "BTC",
+      "quotePrecision": 8,
+      "quoteAssetPrecision": 8,
+      "orderTypes": [
+        "LIMIT",
+        "LIMIT_MAKER",
+        "MARKET",
+        "STOP_LOSS",
+        "STOP_LOSS_LIMIT",
+        "TAKE_PROFIT",
+        "TAKE_PROFIT_LIMIT"
+      ],
+      "icebergAllowed": true,
+      "ocoAllowed": true,
+      "quoteOrderQtyMarketAllowed": true,
+      "allowTrailingStop": false,
+      "cancelReplaceAllowed": false,
+      "isSpotTradingAllowed": true,
+      "isMarginTradingAllowed": true,
+      "filters": [
+      ],
+      "permissions": [
+        "SPOT",
+        "MARGIN"
+      ],
+      "defaultSelfTradePreventionMode": "NONE",
+      "allowedSelfTradePreventionModes": [
+        "NONE"
+      ]
+    }
+  ]
 }
 ```
 """
