@@ -49,17 +49,17 @@ Get trades for a specific account and symbol.
 
 ## Parameters:
 
-| Parameter  | Type     | Required | Description |
-|:-----------|:---------|:---------|:------------|
-| symbol     | String   | true     |             |
-| orderId    | Int64    | false    |             |
-| startTime  | DateTime | false    |             |
-| endTime    | DateTime | false    |             |
-| fromId     | Int64    | false    |             |
-| limit      | Int64    | false    |             |
-| recvWindow | Int64    | false    |             |
-| signature  | String   | false    |             |
-| timestamp  | DateTime | false    |             |
+| Parameter  | Type     | Required | Description   |
+|:-----------|:---------|:---------|:--------------|
+| symbol     | String   | true     |               |
+| orderId    | Int64    | false    |               |
+| startTime  | DateTime | false    |               |
+| endTime    | DateTime | false    |               |
+| fromId     | Int64    | false    |               |
+| limit      | Int64    | false    | Default: 1000 |
+| recvWindow | Int64    | false    |               |
+| signature  | String   | false    |               |
+| timestamp  | DateTime | false    |               |
 
 ## Code samples:
 

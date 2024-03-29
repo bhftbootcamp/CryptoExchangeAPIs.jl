@@ -62,18 +62,18 @@ Fetch deposit history.
 
 ## Parameters:
 
-| Parameter  | Type          | Required | Description |
-|:-----------|:--------------|:---------|:------------|
-| coin       | String        | false    |             |
-| endTime    | DateTime      | false    |             |
-| limit      | Int64         | false    |             |
-| offset     | Int64         | false    |             |
-| startTime  | DateTime      | false    |             |
-| status     | DepositStatus | false    |             |
-| txId       | String        | false    |             |
-| recvWindow | Int64         | false    |             |
-| timestamp  | DateTime      | false    |             |
-| signature  | String        | false    |             |
+| Parameter  | Type          | Required | Description   |
+|:-----------|:--------------|:---------|:--------------|
+| coin       | String        | false    |               |
+| endTime    | DateTime      | false    |               |
+| limit      | Int64         | false    | Default: 1000 |
+| offset     | Int64         | false    |               |
+| startTime  | DateTime      | false    |               |
+| status     | DepositStatus | false    |               |
+| txId       | String        | false    |               |
+| recvWindow | Int64         | false    |               |
+| timestamp  | DateTime      | false    |               |
+| signature  | String        | false    |               |
 
 ## Code samples:
 
