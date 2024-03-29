@@ -15,6 +15,10 @@ CryptoAPIs.Bybit.Spot.candle(;
 
 CryptoAPIs.Bybit.Spot.symbol_info()
 
+CryptoAPIs.Bybit.Spot.order_book(symbol = "ADAUSDT")
+
+CryptoAPIs.Bybit.Spot.ticker(symbol = "ADAUSDT")
+
 bybit_client = BybitClient(;
     base_url = "https://api.bybit.com",
     public_key = ENV["BYBIT_PUBLIC_KEY"],

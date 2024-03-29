@@ -17,7 +17,13 @@ using .CoinInfo
 include("API/Deposit.jl")
 using .Deposit
 
+include("API/OrderBook.jl")
+using .OrderBook
+
 include("API/SymbolInfo.jl")
 using .SymbolInfo
+
+include("API/Ticker.jl")
+using .Ticker
 
 end
