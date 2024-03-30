@@ -1,8 +1,8 @@
-module LongShortRatio
+module OpenInterestHist
 
-export LongShortRatioQuery,
-    LongShortRatioData,
-    longshort_ratio
+export OpenInterestHistQuery,
+    OpenInterestHistData,
+    open_interest_hist
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -12,7 +12,7 @@ using CryptoAPIs: Maybe, APIsRequest
 
 @enum Period m5 m15 m30 h1 h2 h4 h6 h12 d1
 
-Base.@kwdef struct LongShortRatioQuery <: BinancePublicQuery
+Base.@kwdef struct OpenInterestHistQuery <: BinancePublicQuery
     symbol::String
     period::Period
     limit::Maybe{Int64} = nothing
@@ -20,7 +20,7 @@ Base.@kwdef struct LongShortRatioQuery <: BinancePublicQuery
     startTime::Maybe{DateTime} = nothing
 end
 
-function Serde.ser_type(::Type{<:LongShortRatioQuery}, x::Period)::String
+function Serde.ser_type(::Type{<:OpenInterestHistQuery}, x::Period)::String
     x == m5  && return "5m"
     x == m15 && return "15m"
     x == m30 && return "30m"
@@ -32,19 +32,18 @@ function Serde.ser_type(::Type{<:LongShortRatioQuery}, x::Period)::String
     x == d1  && return "1d"
 end
 
-struct LongShortRatioData <: BinanceData
+struct OpenInterestHistData <: BinanceData
     symbol::String
-    longShortRatio::Maybe{Float64}
-    longAccount::Maybe{Float64}
-    shortAccount::Maybe{Float64}
+    sumOpenInterest::Maybe{Float64}
+    sumOpenInterestValue::Maybe{Float64}
     timestamp::NanoDate
 end
 
 """
-    longshort_ratio(client::BinanceClient, query::LongShortRatioQuery)
-    longshort_ratio(client::BinanceClient = Binance.USDMFutures.public_client; kw...)
+    open_interest_hist(client::BinanceClient, query::OpenInterestHistQuery)
+    open_interest_hist(client::BinanceClient = Binance.USDMFutures.public_client; kw...)
 
-[`GET futures/data/globalLongShortAccountRatio`](https://binance-docs.github.io/apidocs/futures/en/#long-short-ratio)
+[`GET futures/data/openInterestHist`](https://binance-docs.github.io/apidocs/futures/en/#open-interest-statistics)
 
 ## Parameters:
 
@@ -62,9 +61,9 @@ end
 using Serde
 using CryptoAPIs.Binance
 
-result = Binance.USDMFutures.longshort_ratio(;
+result = Binance.USDMFutures.open_interest_hist(;
     symbol = "BTCUSDT",
-    period = Binance.USDMFutures.LongShortRatio.h1,
+    period = Binance.USDMFutures.OpenInterestHist.h1,
 )
 
 to_pretty_json(result.result)
@@ -76,21 +75,20 @@ to_pretty_json(result.result)
 [
   {
     "symbol":"BTCUSDT",
-    "longShortRatio":1.3305,
-    "longAccount":0.5709,
-    "shortAccount":0.4291,
-    "timestamp":"2024-03-29T12:00:00"
+    "sumOpenInterest":81737.468,
+    "sumOpenInterestValue":5.730969977716018e9,
+    "timestamp":"2024-03-29T15:00:00"
   },
   ...
 ]
 ```
 """
-function longshort_ratio(client::BinanceClient, query::LongShortRatioQuery)
-    return APIsRequest{Vector{LongShortRatioData}}("GET", "futures/data/globalLongShortAccountRatio", query)(client)
+function open_interest_hist(client::BinanceClient, query::OpenInterestHistQuery)
+    return APIsRequest{Vector{OpenInterestHistData}}("GET", "futures/data/openInterestHist", query)(client)
 end
 
-function longshort_ratio(client::BinanceClient = Binance.USDMFutures.public_client; kw...)
-    return longshort_ratio(client, LongShortRatioQuery(; kw...))
+function open_interest_hist(client::BinanceClient = Binance.USDMFutures.public_client; kw...)
+    return open_interest_hist(client, OpenInterestHistQuery(; kw...))
 end
 
 end

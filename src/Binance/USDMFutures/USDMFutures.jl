@@ -23,6 +23,9 @@ using .FundingRate
 include("API/LongShortRatio.jl")
 using .LongShortRatio
 
+include("API/OpenInterestHist.jl")
+using .OpenInterestHist
+
 include("API/OrderBook.jl")
 using .OrderBook
 
