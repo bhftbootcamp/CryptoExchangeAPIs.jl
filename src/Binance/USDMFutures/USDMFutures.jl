@@ -20,6 +20,9 @@ using .ExchangeInfo
 include("API/FundingRate.jl")
 using .FundingRate
 
+include("API/LongShortRatio.jl")
+using .LongShortRatio
+
 include("API/OrderBook.jl")
 using .OrderBook
 
