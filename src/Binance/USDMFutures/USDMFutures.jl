@@ -29,6 +29,9 @@ using .OpenInterestHist
 include("API/OrderBook.jl")
 using .OrderBook
 
+include("API/PremiumIndex.jl")
+using .PremiumIndex
+
 include("API/Ticker.jl")
 using .Ticker
 
