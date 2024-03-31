@@ -32,6 +32,9 @@ using .OrderBook
 include("API/PremiumIndex.jl")
 using .PremiumIndex
 
+include("API/TakerLongShortRatio.jl")
+using .TakerLongShortRatio
+
 include("API/Ticker.jl")
 using .Ticker
 
