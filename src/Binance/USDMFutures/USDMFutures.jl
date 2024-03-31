@@ -35,13 +35,13 @@ using .PremiumIndex
 include("API/TakerLongShortRatio.jl")
 using .TakerLongShortRatio
 
+include("API/Ticker.jl")
+using .Ticker
+
 include("API/TopLongShortAccountRatio.jl")
 using .TopLongShortAccountRatio
 
 include("API/TopLongShortPositionRatio.jl")
 using .TopLongShortPositionRatio
-
-include("API/Ticker.jl")
-using .Ticker
 
 end

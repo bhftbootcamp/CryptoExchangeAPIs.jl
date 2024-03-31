@@ -78,5 +78,3 @@ function premium_index(client::BinanceClient = Binance.USDMFutures.public_client
 end
 
 end
-
-
