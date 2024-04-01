@@ -12,11 +12,15 @@ CryptoAPIs.Binance.Spot.public_client
 ```
 
 ```@docs
-CryptoAPIs.Binance.Spot.candle
+CryptoAPIs.Binance.Spot.account_trade
 CryptoAPIs.Binance.Spot.avg_price
+CryptoAPIs.Binance.Spot.candle
+CryptoAPIs.Binance.Spot.coin_information
+CryptoAPIs.Binance.Spot.deposit_log
+CryptoAPIs.Binance.Spot.exchange_info
 CryptoAPIs.Binance.Spot.order_book
 CryptoAPIs.Binance.Spot.ticker
-CryptoAPIs.Binance.Spot.coin_information
+CryptoAPIs.Binance.Spot.withdrawal_log
 ```
 
 ## USDMFutures

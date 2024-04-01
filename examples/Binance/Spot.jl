@@ -15,6 +15,8 @@ Binance.Spot.candle(;
     limit = 4,
 )
 
+Binance.Spot.exchange_info()
+
 Binance.Spot.order_book(; symbol = "BTCUSDT", limit = 10)
 
 Binance.Spot.ticker()
@@ -27,4 +29,13 @@ binance_client = BinanceClient(;
     secret_key = ENV["BINANCE_SECRET_KEY"],
 )
 
+Binance.Spot.account_trade(
+    binance_client;
+    symbol = "BTCUSDT",
+)
+
 Binance.Spot.coin_information(binance_client)
+
+Binance.Spot.deposit_log(binance_client)
+
+Binance.Spot.withdrawal_log(binance_client)
