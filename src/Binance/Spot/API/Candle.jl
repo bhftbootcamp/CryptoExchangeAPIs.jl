@@ -88,20 +88,20 @@ to_pretty_json(result.result)
 
 ```json
 [
-    {
-        "openTime":"2018-04-01T00:00:00",
-        "openPrice":0.25551,
-        "highPrice":0.3866,
-        "lowPrice":0.23983,
-        "closePrice":0.34145,
-        "volume":1.17451580874e9,
-        "closeTime":"2018-04-30T23:59:59.999000064",
-        "quoteAssetVolume":3.597636214561159e8,
-        "tradesNumber":759135,
-        "takerBuyBaseAssetVolume":5.556192707e8,
-        "takerBuyQuoteAssetVolume":1.706766832130686e8
-    },
-    ...
+  {
+    "openTime":"2018-04-01T00:00:00",
+    "openPrice":0.25551,
+    "highPrice":0.3866,
+    "lowPrice":0.23983,
+    "closePrice":0.34145,
+    "volume":1.17451580874e9,
+    "closeTime":"2018-04-30T23:59:59.999000064",
+    "quoteAssetVolume":3.597636214561159e8,
+    "tradesNumber":759135,
+    "takerBuyBaseAssetVolume":5.556192707e8,
+    "takerBuyQuoteAssetVolume":1.706766832130686e8
+  },
+  ...
 ]
 ```
 """
