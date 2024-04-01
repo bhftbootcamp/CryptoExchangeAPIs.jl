@@ -46,7 +46,7 @@ end
 using Serde
 using CryptoAPIs.Bybit
 
-result = Bybit.Spot.order_book(
+result = Bybit.Spot.order_book(;
     symbol = "ADAUSDT",
 )
 
