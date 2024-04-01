@@ -1,7 +1,7 @@
 module DayCandle
 
 export DayCandleQuery,
-    DayCandleData, 
+    DayCandleData,
     day_candle
 
 using Serde
@@ -58,7 +58,7 @@ using CryptoAPIs.Upbit
 
 result = Upbit.Spot.day_candle(;
     market = "KRW-BTC"
-) 
+)
 
 to_pretty_json(result.result)
 ```
