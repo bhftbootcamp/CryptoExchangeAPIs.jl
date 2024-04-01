@@ -10,17 +10,17 @@ using Dates, NanoDates, TimeZones
 using CryptoAPIs.Binance
 using CryptoAPIs: Maybe, APIsRequest
 
-@enum Period m5 m15 m30 h1 h2 h4 h6 h12 d1
+@enum TimeInterval m5 m15 m30 h1 h2 h4 h6 h12 d1
 
 Base.@kwdef struct TakerLongShortRatioQuery <: BinancePublicQuery
     symbol::String
-    period::Period
+    period::TimeInterval
     limit::Maybe{Int64} = nothing
     endTime::Maybe{DateTime} = nothing
     startTime::Maybe{DateTime} = nothing
 end
 
-function Serde.ser_type(::Type{<:TakerLongShortRatioQuery}, x::Period)::String
+function Serde.ser_type(::Type{<:TakerLongShortRatioQuery}, x::TimeInterval)::String
     x == m5  && return "5m"
     x == m15 && return "15m"
     x == m30 && return "30m"
@@ -50,7 +50,7 @@ end
 | Parameter    | Type           | Required | Description                                    |
 |:-------------|:---------------|:---------|:-----------------------------------------------|
 | symbol       | String         | true     |                                                |
-| period       | Period         | true     | m5, m15, m30, h1, h2, h4, h6, h12, d1          |
+| period       | TimeInterval   | true     | m5, m15, m30, h1, h2, h4, h6, h12, d1          |
 | endTime      | DateTime       | false    |                                                |
 | limit        | Int64          | false    | default 30, max 500                            |
 | startTime    | DateTime       | false    |                                                |

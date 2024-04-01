@@ -45,7 +45,7 @@ using CryptoAPIs.Binance
 
 result = Binance.USDMFutures.premium_index(;
     symbol = "BTCUSDT",
-    )
+)
 
 to_pretty_json(result.result)
 ```
