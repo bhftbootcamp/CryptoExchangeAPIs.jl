@@ -112,12 +112,9 @@ to_pretty_json(result.result)
 """
 function continuous_candle(client::BinanceClient, query::ContinuousCandleQuery)
     return APIsRequest{Vector{ContinuousCandleData}}("GET", "dapi/v1/continuousKlines", query)(client)
-function continuous_candle(client::BinanceClient, query::ContinuousCandleQuery)
-    return APIsRequest{Vector{ContinuousCandleData}}("GET", "dapi/v1/continuousKlines", query)(client)
 end
 
 function continuous_candle(client::BinanceClient = Binance.CoinMFutures.public_client; kw...)
-    return continuous_candle(client, ContinuousCandleQuery(; kw...))
     return continuous_candle(client, ContinuousCandleQuery(; kw...))
 end
 
