@@ -114,7 +114,9 @@ Current exchange trading rules and symbol information.
 using Serde
 using CryptoAPIs.Binance
 
-result = Binance.Spot.exchange_info()
+result = Binance.Spot.exchange_info(;
+    symbol = "ADAUSDT"
+)
 
 to_pretty_json(result.result)
 ```
@@ -123,51 +125,86 @@ to_pretty_json(result.result)
 
 ```json
 {
-  "timezone": "UTC",
-  "serverTime": 1565246363776,
-  "rateLimits": [
-      {
-      }
-  ],
-  "exchangeFilters": [
-  ],
-  "symbols": [
+  "exchangeFilters":[],
+  "rateLimits":[
     {
-      "symbol": "ETHBTC",
-      "status": "TRADING",
-      "baseAsset": "ETH",
-      "baseAssetPrecision": 8,
-      "quoteAsset": "BTC",
-      "quotePrecision": 8,
-      "quoteAssetPrecision": 8,
-      "orderTypes": [
+      "limit":6000,
+      "rateLimitType":"REQUEST_WEIGHT",
+      "interval":"MINUTE",
+      "intervalNum":1
+    },
+    ...
+  ],
+  "serverTime":"2024-04-01T09:35:01.003000064",
+  "symbols":[
+    {
+      "allowTrailingStop":true,
+      "allowedSelfTradePreventionModes":[
+        "EXPIRE_TAKER",
+        "EXPIRE_MAKER",
+        "EXPIRE_BOTH"
+      ],
+      "baseAsset":"ADA",
+      "baseAssetPrecision":8,
+      "baseCommissionPrecision":8,
+      "cancelReplaceAllowed":true,
+      "defaultSelfTradePreventionMode":"EXPIRE_MAKER",
+      "filters":[
+        {
+          "applyToMarket":null,
+          "askMultiplierDown":null,
+          "askMultiplierUp":null,
+          "avgPriceMins":null,
+          "bidMultiplierDown":null,
+          "bidMultiplierUp":null,
+          "filterType":"PRICE_FILTER",
+          "limit":null,
+          "maxNumAlgoOrders":null,
+          "maxNumOrders":null,
+          "maxPosition":null,
+          "maxPrice":1000.0,
+          "maxQty":null,
+          "maxTrailingAboveDelta":null,
+          "maxTrailingBelowDelta":null,
+          "minNotional":null,
+          "minPrice":0.0001,
+          "minQty":null,
+          "minTrailingAboveDelta":null,
+          "minTrailingBelowDelta":null,
+          "multiplierDown":null,
+          "multiplierUp":null,
+          "stepSize":null,
+          "tickSize":0.0001
+        },
+        ...
+      ],
+      "icebergAllowed":true,
+      "isMarginTradingAllowed":true,
+      "isSpotTradingAllowed":true,
+      "ocoAllowed":true,
+      "orderTypes":[
         "LIMIT",
         "LIMIT_MAKER",
         "MARKET",
-        "STOP_LOSS",
         "STOP_LOSS_LIMIT",
-        "TAKE_PROFIT",
         "TAKE_PROFIT_LIMIT"
       ],
-      "icebergAllowed": true,
-      "ocoAllowed": true,
-      "quoteOrderQtyMarketAllowed": true,
-      "allowTrailingStop": false,
-      "cancelReplaceAllowed": false,
-      "isSpotTradingAllowed": true,
-      "isMarginTradingAllowed": true,
-      "filters": [
-      ],
-      "permissions": [
+      "permissions":[
         "SPOT",
-        "MARGIN"
+        "MARGIN",
+        "TRD_GRP_004",
+        ...
       ],
-      "defaultSelfTradePreventionMode": "NONE",
-      "allowedSelfTradePreventionModes": [
-        "NONE"
-      ]
+      "quoteAsset":"USDT",
+      "quoteAssetPrecision":8,
+      "quoteCommissionPrecision":8,
+      "quoteOrderQtyMarketAllowed":true,
+      "quotePrecision":8,
+      "status":"TRADING",
+      "symbol":"ADAUSDT"
     }
-  ]
+  ],
+  "timezone":"UTC"
 }
 ```
 """

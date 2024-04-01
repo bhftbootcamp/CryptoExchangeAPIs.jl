@@ -97,22 +97,19 @@ to_pretty_json(result.result)
 ```json
 [
   {
-    "id": "b6ae22b3aa844210a7041aee7589627c",
-    "amount": "8.91000000",
-    "transactionFee": "0.004",
-    "coin": "USDT",
-    "status": 6,
-    "address": "0x94df8b352de7f46f64b01d3666bf6e936e44ce60",
-    "txId": "0xb5ef8c13b968a406cc62a93a8bd80f9e9a906ef1b3fcf20a2e48573c17659268",
-    "applyTime": "2019-10-12 11:12:02",
-    "network": "ETH",
-    "transferType": 0,
-    "withdrawOrderId": "WITHDRAWtest123",
-    "info": "The address is not valid. Please confirm with the recipient",
-    "confirmNo":3,
-    "walletType": 1,
-    "txKey": "",
-    "completeTime": "2023-03-23 16:52:41"
+    "id":769800519366885376,
+    "amount":0.001,
+    "coin":"BNB",
+    "network":"BNB",
+    "status":0,
+    "address":"bnb136ns6lfw4zs5hg4n85vdthaad7hq5m4gtkgf23",
+    "addressTag":"101764890",
+    "txId":"98A3EA560C6B3336D348B6C83F0F95ECE4F1F5919E94BD006E5BF3BF264FACFC",
+    "insertTime":"2022-08-26T05:52:26",
+    "transferType":0,
+    "confirmTimes":"1/1",
+    "unlockConfirm":0,
+    "walletType":0
   },
   ...
 ]

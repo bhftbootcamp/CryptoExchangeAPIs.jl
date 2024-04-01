@@ -86,19 +86,19 @@ to_pretty_json(result.result)
 ```json
 [
   {
-    "symbol": "BNBBTC",
-    "id": 28457,
-    "orderId": 100234,
-    "orderListId": -1,
-    "price": "4.00000100",
-    "qty": "12.00000000",
-    "quoteQty": "48.000012",
-    "commission": "10.10000000",
-    "commissionAsset": "BNB",
-    "time": 1499865549590,
-    "isBuyer": true,
-    "isMaker": false,
-    "isBestMatch": true
+    "symbol":"BNBBTC",
+    "id":28457,
+    "orderId":100234,
+    "orderListId":-1,
+    "price":4.00000100,
+    "qty":12.00000000,
+    "quoteQty":48.000012,
+    "commission":10.10000000,
+    "commissionAsset":"BNB",
+    "time":"2017-07-12T13:19:09",
+    "isBuyer":true,
+    "isMaker":false,
+    "isBestMatch":true
   },
   ...
 ]
