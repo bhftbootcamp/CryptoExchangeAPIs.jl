@@ -31,10 +31,17 @@ CryptoAPIs.Binance.USDMFutures.public_client
 
 ```@docs
 CryptoAPIs.Binance.USDMFutures.candle
+CryptoAPIs.Binance.USDMFutures.continuous_candle
 CryptoAPIs.Binance.USDMFutures.exchange_info
 CryptoAPIs.Binance.USDMFutures.funding_rate
+CryptoAPIs.Binance.USDMFutures.long_short_ratio
+CryptoAPIs.Binance.USDMFutures.open_interest_hist
 CryptoAPIs.Binance.USDMFutures.order_book
+CryptoAPIs.Binance.USDMFutures.premium_index
+CryptoAPIs.Binance.USDMFutures.taker_long_short_ratio
 CryptoAPIs.Binance.USDMFutures.ticker
+CryptoAPIs.Binance.USDMFutures.top_long_short_account_ratio
+CryptoAPIs.Binance.USDMFutures.top_long_short_position_ratio
 ```
 
 ## CoinMFutures
