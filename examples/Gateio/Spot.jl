@@ -10,7 +10,7 @@ CryptoAPIs.Gateio.Spot.candle(;
     interval = Gateio.Spot.Candle.d1,
 )
 
-CryptoAPIs.Gateio.Spot.ticker(currency_pair = "BTC_USDT")
+CryptoAPIs.Gateio.Spot.ticker(; currency_pair = "BTC_USDT")
 
 gateio_client = GateioClient(;
     base_url = "https://api.gateio.ws",
