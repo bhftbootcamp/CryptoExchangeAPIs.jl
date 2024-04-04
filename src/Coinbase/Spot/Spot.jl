@@ -14,10 +14,16 @@ using .Candle
 include("API/Currency.jl")
 using .Currency
 
-include("API/Ticker.jl")
-using .Ticker
+include("API/FeeEstimate.jl")
+using .FeeEstimate
 
 include("API/Product.jl")
 using .Product
+
+include("API/ProductStats.jl")
+using .ProductStats
+
+include("API/Ticker.jl")
+using .Ticker
 
 end

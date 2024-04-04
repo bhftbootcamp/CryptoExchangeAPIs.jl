@@ -14,4 +14,8 @@ CryptoAPIs.Coinbase.Spot.candle(;
 
 CryptoAPIs.Coinbase.Spot.currency()
 
+CryptoAPIs.Coinbase.Spot.fee_estimate()
+
+CryptoAPIs.Coinbase.Spot.product_stats(; product_id = "BTC-USD")
+
 CryptoAPIs.Coinbase.Spot.ticker(; product_id = "BTC-USDT")
