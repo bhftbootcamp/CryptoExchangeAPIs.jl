@@ -10,10 +10,13 @@ using Dates, NanoDates, TimeZones
 using CryptoAPIs.Coinbase
 using CryptoAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct FeeEstimateQuery <: CoinbasePublicQuery
+Base.@kwdef struct FeeEstimateQuery <: CoinbasePrivateQuery
     currency::Maybe{String} = nothing
     crypto_address::Maybe{String} = nothing
     network::Maybe{String} = nothing
+
+    timestamp::Maybe{DateTime} = nothing
+    signature::Maybe{String} = nothing
 end
 
 struct FeeEstimateData <: CoinbaseData
@@ -23,7 +26,7 @@ end
 
 """
     fee_estimate(client::CoinbaseClient, query::FeeEstimateQuery)
-    fee_estimate(client::CoinbaseClient = Coinbase.Spot.public_client; kw...)
+    fee_estimate(client::CoinbaseClient; kw...)
 
 Gets the fee estimate for the crypto withdrawal to crypto address.
 
@@ -36,6 +39,8 @@ Gets the fee estimate for the crypto withdrawal to crypto address.
 | currency       | String       | false    |             |
 | crypto_address | String       | false    |             |
 | network        | String       | false    |             |
+| signature      | String       | false    |             |
+| timestamp      | DateTime     | false    |             |
 
 ## Code samples:
 
@@ -43,7 +48,13 @@ Gets the fee estimate for the crypto withdrawal to crypto address.
 using Serde
 using CryptoAPIs.Coinbase
 
-result = Coinbase.Spot.fee_estimate()
+coinbase_client = CoinbaseClient(;
+    base_url = "https://api.exchange.coinbase.com",
+    public_key = ENV["COINBASE_PUBLIC_KEY"],
+    secret_key = ENV["COINBASE_SECRET_KEY"],
+)
+
+result = Coinbase.Spot.fee_estimate(coinbase_client)
 
 to_pretty_json(result.result)
 ```
