@@ -72,6 +72,14 @@ function CryptoAPIs.request_sign!(::CoinbaseClient, query::Q, ::String)::Q where
     return query
 end
 
+function CryptoAPIs.request_sign!(client::CoinbaseClient, query::Q, ::String)::Q where {Q<:CoinbasePrivateQuery}
+    query.timestamp = Dates.now(UTC)
+    query.signature = nothing
+    str_query = Serde.to_query(query)
+    query.signature = hexdigest("sha256", client.secret_key, str_query)
+    return query
+end
+
 function CryptoAPIs.request_body(::Q)::String where {Q<:CoinbaseCommonQuery}
     return ""
 end
@@ -84,6 +92,13 @@ function CryptoAPIs.request_headers(client::CoinbaseClient, ::CoinbaseCommonQuer
     return Pair{String,String}[
         "Content-Type" => "application/json",
         "User-Agent" => "CryptoAPIs.Coinbase",
+    ]
+end
+
+function CryptoAPIs.request_headers(client::CoinbaseClient, ::CoinbasePrivateQuery)::Vector{Pair{String,String}}
+    return Pair{String,String}[
+        "Content-Type" => "application/json",
+        "CB-ACCESS-KEY" => client.public_key,
     ]
 end
 
