@@ -66,7 +66,7 @@ function fee_estimate(client::CoinbaseClient, query::FeeEstimateQuery)
     return APIsRequest{FeeEstimateData}("GET", "withdrawals/fee-estimate", query)(client)
 end
 
-function fee_estimate(client::CoinbaseClient = Coinbase.Spot.public_client; kw...)
+function fee_estimate(client::CoinbaseClient; kw...)
     return fee_estimate(client, FeeEstimateQuery(; kw...))
 end
 

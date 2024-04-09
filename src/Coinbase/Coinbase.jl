@@ -68,15 +68,15 @@ function Base.show(io::IO, e::CoinbaseAPIError)
     return print(io, "message = ", "\"", e.message)
 end
 
-function CryptoAPIs.request_sign!(::CoinbaseClient, query::Q, ::String)::Q where {Q<:CoinbaseCommonQuery}
+function CryptoAPIs.request_sign!(::CoinbaseClient, query::Q, ::String)::Q where {Q<:CoinbasePublicQuery}
     return query
 end
 
 function CryptoAPIs.request_sign!(client::CoinbaseClient, query::Q, ::String)::Q where {Q<:CoinbasePrivateQuery}
-    query.timestamp = Dates.now(UTC)
+    query.timestamp = string(round(Int64, datetime2unix(Dates.now(UTC))))
     query.signature = nothing
-    str_query = Serde.to_query(query)
-    query.signature = hexdigest("sha256", client.secret_key, str_query)
+    message = join([query.timestamp, method, endpoint, query])
+    query.signature = hexdigest("sha256", client.secret_key, message)
     return query
 end
 
@@ -88,17 +88,19 @@ function CryptoAPIs.request_query(query::Q)::String where {Q<:CoinbaseCommonQuer
     return Serde.to_query(query)
 end
 
-function CryptoAPIs.request_headers(client::CoinbaseClient, ::CoinbaseCommonQuery)::Vector{Pair{String,String}}
+function CryptoAPIs.request_headers(client::CoinbaseClient, ::CoinbasePublicQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json",
         "User-Agent" => "CryptoAPIs.Coinbase",
     ]
 end
 
-function CryptoAPIs.request_headers(client::CoinbaseClient, ::CoinbasePrivateQuery)::Vector{Pair{String,String}}
+function CryptoAPIs.request_headers(client::CoinbaseClient, query::CoinbasePrivateQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json",
         "CB-ACCESS-KEY" => client.public_key,
+        "CB-ACCESS-SIGN" => query.signature,
+        "CB-ACCESS-TIMESTAMP" => query.timestamp,
     ]
 end
 
