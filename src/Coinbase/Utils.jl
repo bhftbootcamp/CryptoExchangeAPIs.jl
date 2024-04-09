@@ -8,6 +8,10 @@ function Serde.deser(::Type{<:CoinbaseData}, ::Type{<:NanoDate}, x::Int64)::Nano
     return unixnanos2nanodate(x*1e9)
 end
 
+function Serde.ser_ignore_field(::Type{<:CoinbaseCommonQuery}, ::Val{:timestamp})::Bool
+    return true
+end
+
 function Serde.SerQuery.ser_name(::Type{<:CoinbaseCommonQuery}, ::Val{:_end})::String
     return "end"
 end
