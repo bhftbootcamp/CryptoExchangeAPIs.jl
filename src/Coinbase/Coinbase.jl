@@ -75,7 +75,8 @@ end
 function CryptoAPIs.request_sign!(client::CoinbaseClient, query::Q, endpoint::String)::Q where {Q<:CoinbasePrivateQuery}
     query.timestamp = string(round(Int64, datetime2unix(Dates.now(UTC))))
     query.signature = nothing
-    message = join([query.timestamp, "GET", endpoint])
+    str_query = Serde.to_query(query)
+    message = join([query.timestamp, "GET", endpoint, str_query])
     query.signature = hexdigest("sha256", client.secret_key, message)
     return query
 end
