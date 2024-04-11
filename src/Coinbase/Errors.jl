@@ -5,6 +5,9 @@ import ..CryptoAPIs: APIsResult, APIsUndefError, isretriable, retry_maxcount, re
 # UNHANDLED
 isretriable(::APIsResult{CoinbaseAPIError}) = true
 
+# Invalid Passphrase
+isretriable(e::APIsResult{CoinbaseAPIError{Symbol("Invalid Passphrase")}}) = false
+
 # Invalid Price
 isretriable(e::APIsResult{CoinbaseAPIError{Symbol("Invalid Price")}}) = false
 
