@@ -72,10 +72,10 @@ function CryptoAPIs.request_sign!(::CoinbaseClient, query::Q, ::String)::Q where
     return query
 end
 
-function CryptoAPIs.request_sign!(client::CoinbaseClient, query::Q, ::String)::Q where {Q<:CoinbasePrivateQuery}
+function CryptoAPIs.request_sign!(client::CoinbaseClient, query::Q, endpoint::String)::Q where {Q<:CoinbasePrivateQuery}
     query.timestamp = string(round(Int64, datetime2unix(Dates.now(UTC))))
     query.signature = nothing
-    message = join([query.timestamp, method, endpoint, query])
+    message = join([query.timestamp, "GET", endpoint, query])
     query.signature = hexdigest("sha256", client.secret_key, message)
     return query
 end

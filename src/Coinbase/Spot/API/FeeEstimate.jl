@@ -10,12 +10,12 @@ using Dates, NanoDates, TimeZones
 using CryptoAPIs.Coinbase
 using CryptoAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct FeeEstimateQuery <: CoinbasePrivateQuery
+Base.@kwdef mutable struct FeeEstimateQuery <: CoinbasePrivateQuery
     currency::Maybe{String} = nothing
     crypto_address::Maybe{String} = nothing
     network::Maybe{String} = nothing
 
-    timestamp::Maybe{DateTime} = nothing
+    timestamp::Maybe{String} = nothing
     signature::Maybe{String} = nothing
 end
 
