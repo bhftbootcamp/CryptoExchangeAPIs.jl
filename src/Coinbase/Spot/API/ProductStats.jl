@@ -35,15 +35,6 @@ Get rates for a single product by product ID, grouped in buckets.
 
 [`GET products/{product_id}/stats`](https://docs.cloud.coinbase.com/exchange/reference/exchangerestapi_getproductstats)
 
-## Parameters:
-
-| Parameter   | Type         | Required | Description |
-|:------------|:-------------|:---------|:------------|
-| granularity | TimeInterval | true     |             |
-| start       | DateTime     | false    |             |
-| _end        | DateTime     | false    |             |
-
-
 ## Code samples:
 
 ```julia
