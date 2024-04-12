@@ -16,4 +16,6 @@ CryptoAPIs.Coinbase.Spot.candle
 CryptoAPIs.Coinbase.Spot.currency
 CryptoAPIs.Coinbase.Spot.ticker
 CryptoAPIs.Coinbase.Spot.product
+CryptoAPIs.Coinbase.Spot.fee_estimate
+CryptoAPIs.Coinbase.Spot.product_stats
 ```
