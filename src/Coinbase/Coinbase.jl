@@ -40,6 +40,7 @@ Base.@kwdef struct CoinbaseClient <: AbstractAPIsClient
     base_url::String
     public_key::Maybe{String} = nothing
     secret_key::Maybe{String} = nothing
+    passphrase::Maybe{String} = nothing
     interface::Maybe{String} = nothing
     proxy::Maybe{String} = nothing
     account_name::Maybe{String} = nothing
@@ -75,13 +76,10 @@ end
 function CryptoAPIs.request_sign!(client::CoinbaseClient, query::Q, endpoint::String)::Q where {Q<:CoinbasePrivateQuery}
     query.timestamp = string(round(Int64, datetime2unix(Dates.now(UTC))))
     query.signature = nothing
-    str_query = Serde.to_query(query)
-    if !isempty(str_query)
-        str_query = "?" * str_query
-    end
     endpoint = "/" * endpoint
-    message = join([query.timestamp, "GET", endpoint, str_query])
-    query.signature = hexdigest("sha256", client.secret_key, message)
+    message = join([query.timestamp, "GET", endpoint])
+    decoded_secret_key = base64decode(client.secret_key)
+    query.signature = hexdigest("sha256", decoded_secret_key, message)
     return query
 end
 
@@ -106,6 +104,7 @@ function CryptoAPIs.request_headers(client::CoinbaseClient, query::CoinbasePriva
         "CB-ACCESS-KEY" => client.public_key,
         "CB-ACCESS-SIGN" => query.signature,
         "CB-ACCESS-TIMESTAMP" => query.timestamp,
+        "CB-ACCESS-PASSPHRASE" => client.passphrase,
     ]
 end
 

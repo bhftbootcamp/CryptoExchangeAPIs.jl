@@ -52,6 +52,7 @@ coinbase_client = CoinbaseClient(;
     base_url = "https://api.exchange.coinbase.com",
     public_key = ENV["COINBASE_PUBLIC_KEY"],
     secret_key = ENV["COINBASE_SECRET_KEY"],
+    passphrase = ENV["COINBASE_PASSPHRASE"],
 )
 
 result = Coinbase.Spot.fee_estimate(coinbase_client)
