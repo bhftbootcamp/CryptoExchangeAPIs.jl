@@ -5,7 +5,7 @@ function Serde.deser(::Type{<:CoinbaseData}, ::Type{<:NanoDate}, x::AbstractStri
 end
 
 function Serde.deser(::Type{<:CoinbaseData}, ::Type{<:NanoDate}, x::Int64)::NanoDate
-    return unixnanos2nanodate(x*1e9)
+    return unixnanos2nanodate(x * 1e9)
 end
 
 function Serde.ser_ignore_field(::Type{<:CoinbaseCommonQuery}, ::Val{:timestamp})::Bool
