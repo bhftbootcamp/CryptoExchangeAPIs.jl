@@ -20,8 +20,8 @@ Base.@kwdef mutable struct FeeEstimateQuery <: CoinbasePrivateQuery
 end
 
 struct FeeEstimateData <: CoinbaseData
-    fee::Maybe{String}
-    fee_before_subsidy::Maybe{String}
+    fee::Maybe{Float64}
+    fee_before_subsidy::Maybe{Float64}
 end
 
 """
@@ -40,7 +40,7 @@ Gets the fee estimate for the crypto withdrawal to crypto address.
 | crypto_address | String       | false    |             |
 | network        | String       | false    |             |
 | signature      | String       | false    |             |
-| timestamp      | DateTime     | false    |             |
+| timestamp      | String       | false    |             |
 
 ## Code samples:
 
@@ -62,6 +62,12 @@ to_pretty_json(result.result)
 
 ## Result:
 
+```json
+{
+  "fee": 0.1,
+  "fee_before_subsidy": 0.01
+}
+```
 """
 function fee_estimate(client::CoinbaseClient, query::FeeEstimateQuery)
     return APIsRequest{FeeEstimateData}("GET", "withdrawals/fee-estimate", query)(client)
