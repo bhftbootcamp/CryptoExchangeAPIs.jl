@@ -8,66 +8,59 @@ using Serde
 using Dates, NanoDates, TimeZones
 
 using CryptoAPIs.Crypto
+using CryptoAPIs.Crypto: Data
 using CryptoAPIs: Maybe, APIsRequest
-
-@enum TimeInterval m1 m5 m15 m30 h1 h4 h6 h12 d1 d7 d14 M1
 
 Base.@kwdef struct CandleQuery <: CryptoPublicQuery
     instrument_name::String
-    timeframe::TimeInterval
+    timeframe::Maybe{String} = nothing
+    count::Maybe{Int64} = nothing
+    start_ts::Maybe{Int64} = nothing
+    end_ts::Maybe{Int64} = nothing
 end
 
-function Serde.ser_type(::Type{<:CandleQuery}, x::TimeInterval)::String
-    x == m1  && return "1m"
-    x == m5  && return "5m"
-    x == m15 && return "15m"
-    x == m30 && return "30m"
-    x == h1  && return "1h"
-    x == h4  && return "4h"
-    x == h6  && return "6h"
-    x == h12 && return "12h"
-    x == d1  && return "1d"
-    x == d7  && return "7d"
-    x == d14  && return "14d"
-    x == M1  && return "1M"
+struct CandleStruct <:CryptoData
+    o::String
+    h::String
+    l::String
+    c::String
+    v::String
+    t::Int64
 end
 
 struct CandleData <: CryptoData
-    o::Maybe{Float64}
-    h::Maybe{Float64}
-    l::Maybe{Float64}
-    c::Maybe{Float64}
-    v::Maybe{Float64}
-    t::Maybe{NanoDate}
+    interval::String
+    data::Vector{CandleStruct}
+    instrument_name::String
 end
 
 """
-    candle(client::BinanceClient, query::CandleQuery)
-    candle(client::BinanceClient = Binance.Spot.public_client; kw...)
+    candle(client::CryptoClient, query::CandleQuery)
+    candle(client::CryptoClient = Crypto.Spot.public_client; kw...)
 
-Kline/candlestick bars for a symbol.
+Retrieves candlesticks (k-line data history) over a given period for an instrument.
 
-[`GET api/v3/klines`](https://binance-docs.github.io/apidocs/spot/en/#kline-candlestick-data)
+[`GET public/get-candlestick`](https://exchange-docs.crypto.com/exchange/v1/rest-ws/index.html#public-get-candlestick)
 
 ## Parameters:
 
-| Parameter | Type     | Required | Description |
-|:----------|:---------|:---------|:------------|
-| symbol    | String   | true     |             |
-| interval  | Period   | true     |             |
-| endTime   | DateTime | false    |             |
-| limit     | Int64    | false    |             |
-| startTime | DateTime | false    |             |
+| Parameter       | Type     | Required | Description |
+|:----------------|:---------|:---------|:------------|
+| instrument_name | String   | true     |             |
+| timeframe       | String   | false    |             |
+| count           | Int64    | false    |             |
+| start_ts        | Int64    | false    |             |
+| end_ts          | Int64    | false    |             |
 
 ## Code samples:
 
 ```julia
 using Serde
-using CryptoAPIs.Binance
+using CryptoAPIs.Crypto
 
-result = Binance.Spot.candle(;
-    symbol = "ADAUSDT",
-    interval = Binance.Spot.Candle.M1,
+result = Crypto.Spot.candle(;
+    instrument_name = "BTC_USDT",
+    timeframe = "M1",
 ) 
 
 to_pretty_json(result.result)
@@ -76,26 +69,30 @@ to_pretty_json(result.result)
 ## Result:
 
 ```json
-[
-  {
-    "openTime":"2018-04-01T00:00:00",
-    "openPrice":0.25551,
-    "highPrice":0.3866,
-    "lowPrice":0.23983,
-    "closePrice":0.34145,
-    "volume":1.17451580874e9,
-    "closeTime":"2018-04-30T23:59:59.999000064",
-    "quoteAssetVolume":3.597636214561159e8,
-    "tradesNumber":759135,
-    "takerBuyBaseAssetVolume":5.556192707e8,
-    "takerBuyQuoteAssetVolume":1.706766832130686e8
-  },
-  ...
-]
+{
+  "id":-1,
+  "method":"public/get-candlestick",
+  "code":"0",
+  "result":{
+    "interval":"M1",
+    "data":[
+      {
+        "o":"64098.90",
+        "h":"64166.31",
+        "l":"64091.36",
+        "c":"64159.22",
+        "v":"5.7552",
+        "t":1713107100000
+      },
+        ...
+    ],
+    "instrument_name":"BTC_USDT"
+  }
+}
 ```
 """
 function candle(client::CryptoClient, query::CandleQuery)
-    return APIsRequest{Vector{CandleData}}("GET", "public/get-candlestick", query)(client)
+    return APIsRequest{Data{CandleData}}("GET", "public/get-candlestick", query)(client)
 end
 
 function candle(client::CryptoClient = Crypto.Spot.public_client; kw...)
@@ -103,13 +100,3 @@ function candle(client::CryptoClient = Crypto.Spot.public_client; kw...)
 end
 
 end
-
-using Serde
-using CryptoAPIs.Crypto.Spot.Candle
-
-result = Crypto.Spot.Candle.candle(;
-    instrument_name = "BTC_USDT",
-    timeframe = Crypto.Spot.Candle.M1,
-)
-
-to_pretty_json(result.result) |> String |> print

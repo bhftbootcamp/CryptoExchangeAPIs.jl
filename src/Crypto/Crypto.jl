@@ -22,6 +22,22 @@ abstract type CryptoAccessQuery <: CryptoCommonQuery end
 abstract type CryptoPrivateQuery <: CryptoCommonQuery end
 
 """
+    Data{D} <: AbstractAPIsData
+
+## Required fields
+- `id::Int64`: Return id.
+- `method::String`: Return method endpoint.
+- `code::String`: Return code.
+- `result::D`: Request result data.
+"""
+struct Data{D<:Maybe{<:AbstractAPIsData}} <: AbstractAPIsData
+    id::Int64
+    method::String
+    code::String
+    result::D
+end
+
+"""
     CryptoClient <: AbstractAPIsClient
 
 Client info.
