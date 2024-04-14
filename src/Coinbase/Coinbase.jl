@@ -40,6 +40,7 @@ Base.@kwdef struct CoinbaseClient <: AbstractAPIsClient
     base_url::String
     public_key::Maybe{String} = nothing
     secret_key::Maybe{String} = nothing
+    passphrase::Maybe{String} = nothing
     interface::Maybe{String} = nothing
     proxy::Maybe{String} = nothing
     account_name::Maybe{String} = nothing
@@ -68,7 +69,17 @@ function Base.show(io::IO, e::CoinbaseAPIError)
     return print(io, "message = ", "\"", e.message)
 end
 
-function CryptoAPIs.request_sign!(::CoinbaseClient, query::Q, ::String)::Q where {Q<:CoinbaseCommonQuery}
+function CryptoAPIs.request_sign!(::CoinbaseClient, query::Q, ::String)::Q where {Q<:CoinbasePublicQuery}
+    return query
+end
+
+function CryptoAPIs.request_sign!(client::CoinbaseClient, query::Q, endpoint::String)::Q where {Q<:CoinbasePrivateQuery}
+    query.timestamp = string(round(Int64, datetime2unix(Dates.now(UTC))))
+    query.signature = nothing
+    str_query = isempty(Serde.to_query(query)) ? "" : "?" * Serde.to_query(query)
+    endpoint = "/" * endpoint * str_query
+    message = join([query.timestamp, "GET", endpoint, ""])
+    query.signature = base64encode(digest("sha256", base64decode(client.secret_key), message))
     return query
 end
 
@@ -80,10 +91,20 @@ function CryptoAPIs.request_query(query::Q)::String where {Q<:CoinbaseCommonQuer
     return Serde.to_query(query)
 end
 
-function CryptoAPIs.request_headers(client::CoinbaseClient, ::CoinbaseCommonQuery)::Vector{Pair{String,String}}
+function CryptoAPIs.request_headers(client::CoinbaseClient, ::CoinbasePublicQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json",
         "User-Agent" => "CryptoAPIs.Coinbase",
+    ]
+end
+
+function CryptoAPIs.request_headers(client::CoinbaseClient, query::CoinbasePrivateQuery)::Vector{Pair{String,String}}
+    return Pair{String,String}[
+        "Content-Type" => "application/json",
+        "CB-ACCESS-KEY" => client.public_key,
+        "CB-ACCESS-SIGN" => query.signature,
+        "CB-ACCESS-TIMESTAMP" => query.timestamp,
+        "CB-ACCESS-PASSPHRASE" => client.passphrase,
     ]
 end
 
