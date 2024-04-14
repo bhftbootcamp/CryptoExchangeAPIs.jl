@@ -10,4 +10,6 @@ CryptoAPIs.Crypto.Spot.candle(;
     timeframe = "M1",
 ) 
 
+CryptoAPIs.Crypto.Spot.get_instruments()
+
 CryptoAPIs.Crypto.Spot.ticker(; instrument_name = "BTCUSD-PERP") 

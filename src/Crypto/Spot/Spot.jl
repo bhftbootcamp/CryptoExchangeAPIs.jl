@@ -11,6 +11,9 @@ const public_client =
 include("API/Candle.jl")
 using .Candle
 
+include("API/GetInstruments.jl")
+using .GetInstruments
+
 include("API/Ticker.jl")
 using .Ticker
 

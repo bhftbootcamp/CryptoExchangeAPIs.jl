@@ -84,7 +84,7 @@ to_pretty_json(result.result)
         "v":"5.7552",
         "t":1713107100000
       },
-        ...
+      ...
     ],
     "instrument_name":"BTC_USDT"
   }

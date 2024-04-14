@@ -64,7 +64,7 @@ Base.@kwdef struct CryptoClient <: AbstractAPIsClient
 end
 
 struct CryptoAPIsErrorMsg
-    name::Int64
+    code::Int64
     message::String
 end
 
@@ -74,7 +74,7 @@ end
 Exception thrown when an API method fails with code `T`.
 
 ## Required fields in CryptoAPIsErrorMsg
-- `name::Int64`: Error code.
+- `code::Int64`: Error code.
 - `message::String`: Error message.
 
 ## Required fields
@@ -84,14 +84,14 @@ struct CryptoAPIError{T} <: AbstractAPIsError
     error::CryptoAPIsErrorMsg
 
     function CryptoAPIError(error::CryptoAPIsErrorMsg)
-        return new{error.name}(error)
+        return new{error.code}(error)
     end
 end
 
 CryptoAPIs.error_type(::CryptoClient) = CryptoAPIError
 
 function Base.show(io::IO, e::CryptoAPIError)
-    return print(io, "name = ", "\"", e.error.name, "\"", ", ", "msg = ", "\"", e.error.message, "\"")
+    return print(io, "code = ", "\"", e.error.code, "\"", ", ", "msg = ", "\"", e.error.message, "\"")
 end
 
 struct CryptoUndefError <: AbstractAPIsError
@@ -100,25 +100,6 @@ struct CryptoUndefError <: AbstractAPIsError
 end
 
 function CryptoAPIs.request_sign!(::CryptoClient, query::Q, ::String)::Q where {Q<:CryptoPublicQuery}
-    return query
-end
-
-function CryptoAPIs.request_sign!(client::CryptoClient, query::Q, ::String)::Q where {Q<:CryptoPrivateQuery}
-    query.signature = nothing
-    body = Dict{String,String}(
-        "access_key" => client.public_key,
-        "nonce" => string(UUIDs.uuid1()),
-    )
-    qstr = Serde.to_query(query)
-    if !isempty(qstr)
-        merge!(body, Dict{String,String}(
-            "query_hash" => hexdigest("sha512", qstr),
-            "query_hash_alg" => "SHA512",
-        ))
-    end
-    hs512 = JSONWebTokens.HS512(client.secret_key)
-    token = JSONWebTokens.encode(hs512, body)
-    query.signature = "Bearer $token"
     return query
 end
 
@@ -133,12 +114,6 @@ end
 function CryptoAPIs.request_headers(client::CryptoClient, ::CryptoPublicQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json"
-    ]
-end
-
-function CryptoAPIs.request_headers(client::CryptoClient, query::CryptoPrivateQuery)::Vector{Pair{String,String}}
-    return Pair{String,String}[
-        "Authorization" => query.signature,
     ]
 end
 
