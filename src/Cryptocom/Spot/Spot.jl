@@ -1,12 +1,12 @@
 module Spot
 
-using CryptoAPIs.Crypto
+using CryptoAPIs.Cryptocom
 
 """
-    public_client = CryptoClient(; base_url = "https://api.crypto.com/exchange/v1")
+    public_client = CryptocomClient(; base_url = "https://api.crypto.com/exchange/v1")
 """
 const public_client =
-    CryptoClient(; base_url = "https://api.crypto.com/exchange/v1")
+    CryptocomClient(; base_url = "https://api.crypto.com/exchange/v1")
 
 include("API/Candle.jl")
 using .Candle

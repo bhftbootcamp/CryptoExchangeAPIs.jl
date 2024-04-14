@@ -65,11 +65,11 @@ CryptoAPIs is a library written in Julia that combines API wrappers from various
                 <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Upbit/#Spot">Spot</a></td>
             </tr>
             <tr>
-                <td><img src="assets/cryptocom.png" alt="Crypto Logo" width="20" height="20"></td>
-                <td><a href="https://crypto.com/">Upbit</a></td>
+                <td><img src="assets/cryptocom.png" alt="Cryptocom Logo" width="20" height="20"></td>
+                <td><a href="https://crypto.com/">Cryptocom</a></td>
                 <td><a href="https://exchange-docs.crypto.com/exchange/v1/rest-ws/index.html#introduction">Spot</a></td>
-                <td><a href="src/Crypto/Spot">CryptoAPIs.Crypto.Spot</a></td>
-                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Crypto/#Spot">Spot</a></td>
+                <td><a href="src/Cryptocom/Spot">CryptoAPIs.Cryptocom.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Cryptocom/#Spot">Spot</a></td>
             </tr>
         </table>
     </body>

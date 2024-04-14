@@ -1,25 +1,24 @@
-module Crypto
+module Cryptocom
 
-export CryptoCommonQuery,
-    CryptoPublicQuery,
-    CryptoAccessQuery,
-    CryptoPrivateQuery,
-    CryptoAPIError,
-    CryptoClient,
-    CryptoData
+export CryptocomCommonQuery,
+    CryptocomPublicQuery,
+    CryptocomAccessQuery,
+    CryptocomPrivateQuery,
+    CryptocomAPIError,
+    CryptocomClient,
+    CryptocomData
 
 using Serde
 using Dates, NanoDates, Base64, Nettle
-using UUIDs, JSONWebTokens
 
 using ..CryptoAPIs
 using ..CryptoAPIs: Maybe,  AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
 
-abstract type CryptoData <: AbstractAPIsData end
-abstract type CryptoCommonQuery <: AbstractAPIsQuery end
-abstract type CryptoPublicQuery <: CryptoCommonQuery end
-abstract type CryptoAccessQuery <: CryptoCommonQuery end
-abstract type CryptoPrivateQuery <: CryptoCommonQuery end
+abstract type CryptocomData <: AbstractAPIsData end
+abstract type CryptocomCommonQuery <: AbstractAPIsQuery end
+abstract type CryptocomPublicQuery <: CryptocomCommonQuery end
+abstract type CryptocomAccessQuery <: CryptocomCommonQuery end
+abstract type CryptocomPrivateQuery <: CryptocomCommonQuery end
 
 """
     Data{D} <: AbstractAPIsData
@@ -38,7 +37,7 @@ struct Data{D<:Maybe{<:AbstractAPIsData}} <: AbstractAPIsData
 end
 
 """
-    CryptoClient <: AbstractAPIsClient
+    CryptocomClient <: AbstractAPIsClient
 
 Client info.
 
@@ -53,7 +52,7 @@ Client info.
 - `account_name::String`: Account name associated with the client.
 - `description::String`: Description of the client.
 """
-Base.@kwdef struct CryptoClient <: AbstractAPIsClient
+Base.@kwdef struct CryptocomClient <: AbstractAPIsClient
     base_url::String
     public_key::Maybe{String} = nothing
     secret_key::Maybe{String} = nothing
@@ -63,55 +62,55 @@ Base.@kwdef struct CryptoClient <: AbstractAPIsClient
     description::Maybe{String} = nothing
 end
 
-struct CryptoAPIsErrorMsg
+struct CryptocomAPIsErrorMsg
     code::Int64
     message::String
 end
 
 """
-    CryptoAPIError{T} <: AbstractAPIsError
+    CryptocomAPIError{T} <: AbstractAPIsError
 
 Exception thrown when an API method fails with code `T`.
 
-## Required fields in CryptoAPIsErrorMsg
+## Required fields in CryptocomAPIsErrorMsg
 - `code::Int64`: Error code.
 - `message::String`: Error message.
 
 ## Required fields
-- `error::CryptoAPIsErrorMsg`: Error struct.
+- `error::CryptocomAPIsErrorMsg`: Error struct.
 """
-struct CryptoAPIError{T} <: AbstractAPIsError
-    error::CryptoAPIsErrorMsg
+struct CryptocomAPIError{T} <: AbstractAPIsError
+    error::CryptocomAPIsErrorMsg
 
-    function CryptoAPIError(error::CryptoAPIsErrorMsg)
+    function CryptocomAPIError(error::CryptocomAPIsErrorMsg)
         return new{error.code}(error)
     end
 end
 
-CryptoAPIs.error_type(::CryptoClient) = CryptoAPIError
+CryptoAPIs.error_type(::CryptocomClient) = CryptocomAPIError
 
-function Base.show(io::IO, e::CryptoAPIError)
+function Base.show(io::IO, e::CryptocomAPIError)
     return print(io, "code = ", "\"", e.error.code, "\"", ", ", "msg = ", "\"", e.error.message, "\"")
 end
 
-struct CryptoUndefError <: AbstractAPIsError
+struct CryptocomUndefError <: AbstractAPIsError
     e::Exception
     msg::String
 end
 
-function CryptoAPIs.request_sign!(::CryptoClient, query::Q, ::String)::Q where {Q<:CryptoPublicQuery}
+function CryptoAPIs.request_sign!(::CryptocomClient, query::Q, ::String)::Q where {Q<:CryptocomPublicQuery}
     return query
 end
 
-function CryptoAPIs.request_body(::Q)::String where {Q<:CryptoCommonQuery}
+function CryptoAPIs.request_body(::Q)::String where {Q<:CryptocomCommonQuery}
     return ""
 end
 
-function CryptoAPIs.request_query(query::Q)::String where {Q<:CryptoCommonQuery}
+function CryptoAPIs.request_query(query::Q)::String where {Q<:CryptocomCommonQuery}
     return Serde.to_query(query)
 end
 
-function CryptoAPIs.request_headers(client::CryptoClient, ::CryptoPublicQuery)::Vector{Pair{String,String}}
+function CryptoAPIs.request_headers(client::CryptocomClient, ::CryptocomPublicQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json"
     ]

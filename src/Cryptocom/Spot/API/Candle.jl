@@ -7,11 +7,11 @@ export CandleQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Crypto
-using CryptoAPIs.Crypto: Data
+using CryptoAPIs.Cryptocom
+using CryptoAPIs.Cryptocom: Data
 using CryptoAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct CandleQuery <: CryptoPublicQuery
+Base.@kwdef struct CandleQuery <: CryptocomPublicQuery
     instrument_name::String
     timeframe::Maybe{String} = nothing
     count::Maybe{Int64} = nothing
@@ -19,24 +19,24 @@ Base.@kwdef struct CandleQuery <: CryptoPublicQuery
     end_ts::Maybe{Int64} = nothing
 end
 
-struct CandleStruct <:CryptoData
-    o::String
-    h::String
-    l::String
-    c::String
-    v::String
-    t::Int64
+struct CandleStruct <: CryptocomData
+  o::Maybe{Float64}
+  h::Maybe{Float64}
+  l::Maybe{Float64}
+  c::Maybe{Float64}
+  v::Maybe{Float64}
+  t::Maybe{Int64}
 end
 
-struct CandleData <: CryptoData
+struct CandleData <: CryptocomData
     interval::String
     data::Vector{CandleStruct}
     instrument_name::String
 end
 
 """
-    candle(client::CryptoClient, query::CandleQuery)
-    candle(client::CryptoClient = Crypto.Spot.public_client; kw...)
+    candle(client::CryptocomClient, query::CandleQuery)
+    candle(client::CryptocomClient = Cryptocom.Spot.public_client; kw...)
 
 Retrieves candlesticks (k-line data history) over a given period for an instrument.
 
@@ -56,9 +56,9 @@ Retrieves candlesticks (k-line data history) over a given period for an instrume
 
 ```julia
 using Serde
-using CryptoAPIs.Crypto
+using CryptoAPIs.Cryptocom
 
-result = Crypto.Spot.candle(;
+result = Cryptocom.Spot.candle(;
     instrument_name = "BTC_USDT",
     timeframe = "M1",
 ) 
@@ -91,11 +91,11 @@ to_pretty_json(result.result)
 }
 ```
 """
-function candle(client::CryptoClient, query::CandleQuery)
+function candle(client::CryptocomClient, query::CandleQuery)
     return APIsRequest{Data{CandleData}}("GET", "public/get-candlestick", query)(client)
 end
 
-function candle(client::CryptoClient = Crypto.Spot.public_client; kw...)
+function candle(client::CryptocomClient = Cryptocom.Spot.public_client; kw...)
     return candle(client, CandleQuery(; kw...))
 end
 

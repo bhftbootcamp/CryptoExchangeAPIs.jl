@@ -7,35 +7,35 @@ export TickerQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Crypto
-using CryptoAPIs.Crypto: Data
+using CryptoAPIs.Cryptocom
+using CryptoAPIs.Cryptocom: Data
 using CryptoAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct TickerQuery <: CryptoPublicQuery
+Base.@kwdef struct TickerQuery <: CryptocomPublicQuery
     instrument_name::Maybe{String} = nothing
 end
 
-struct TickerStruct <:CryptoData
-    h::Maybe{String}
-    l::Maybe{String}
-    a::Maybe{String}
-    i::Maybe{String}
-    v::Maybe{String}
-    vv::Maybe{String}
-    oi::Maybe{String}
-    c::Maybe{String}
-    b::Maybe{String}
-    k::Maybe{String}
-    t::Maybe{Int64}
+struct TickerStruct <:CryptocomData
+    h::Float64
+    l::Maybe{Float64}
+    a::Maybe{Float64}
+    i::String
+    v::Float64
+    vv::Float64
+    oi::Float64
+    c::Maybe{Float64}
+    b::Maybe{Float64}
+    k::Maybe{Float64}
+    t::Int64
 end
 
-struct TickerData <: CryptoData
+struct TickerData <: CryptocomData
     data::Vector{TickerStruct}
 end
 
 """
-    ticker(client::CryptoClient, query::TickerQuery)
-    ticker(client::CryptoClient = Crypto.Spot.public_client; kw...)
+    ticker(client::CryptocomClient, query::TickerQuery)
+    ticker(client::CryptocomClient = Cryptocom.Spot.public_client; kw...)
 
 Fetches the public tickers for all or a particular instrument.
 
@@ -51,11 +51,11 @@ Fetches the public tickers for all or a particular instrument.
 
 ```julia
 using Serde
-using CryptoAPIs.Crypto
+using CryptoAPIs.Cryptocom
 
-result = Crypto.Spot.ticker(; instrument_name = "BTCUSD-PERP") 
+result = Cryptocom.Spot.ticker(; instrument_name = "BTCUSD-PERP") 
 
-to_pretty_json(result.result)
+to_pretty_json(result.result) |> String |> print
 ```
 
 ## Result:
@@ -85,11 +85,11 @@ to_pretty_json(result.result)
 }
 ```
 """
-function ticker(client::CryptoClient, query::TickerQuery)
+function ticker(client::CryptocomClient, query::TickerQuery)
     return APIsRequest{Data{TickerData}}("GET", "public/get-tickers", query)(client)
 end
 
-function ticker(client::CryptoClient = Crypto.Spot.public_client; kw...)
+function ticker(client::CryptocomClient = Cryptocom.Spot.public_client; kw...)
     return ticker(client, TickerQuery(; kw...))
 end
 
