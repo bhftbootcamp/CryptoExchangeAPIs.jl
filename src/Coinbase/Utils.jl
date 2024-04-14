@@ -16,14 +16,6 @@ function Serde.ser_ignore_field(::Type{<:CoinbaseCommonQuery}, ::Val{:signature}
     return true
 end
 
-function Serde.ser_ignore_field(::Type{<:CoinbaseCommonQuery}, ::Val{:timestamp})::Bool
-    return true
-end
-
-function Serde.ser_ignore_field(::Type{<:CoinbaseCommonQuery}, ::Val{:signature})::Bool
-    return true
-end
-
 function Serde.SerQuery.ser_name(::Type{<:CoinbaseCommonQuery}, ::Val{:_end})::String
     return "end"
 end
