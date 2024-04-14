@@ -55,7 +55,7 @@ using CryptoAPIs.Cryptocom
 
 result = Cryptocom.Spot.ticker(; instrument_name = "BTCUSD-PERP") 
 
-to_pretty_json(result.result) |> String |> print
+to_pretty_json(result.result)
 ```
 
 ## Result:
