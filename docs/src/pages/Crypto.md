@@ -1,8 +1,8 @@
 # Crypto
 
 ```@docs
-CryptoAPIs.Crypto.BybitClient
-CryptoAPIs.Crypto.BybitAPIError
+CryptoAPIs.Crypto.CryptoClient
+CryptoAPIs.Crypto.CryptoAPIError
 CryptoAPIs.Crypto.Data
 ```
 
