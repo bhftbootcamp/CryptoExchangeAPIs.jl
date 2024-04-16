@@ -14,4 +14,7 @@ using .Contracts
 include("API/OrderBook.jl")
 using .OrderBook
 
+include("API/Ticker.jl")
+using .Ticker
+
 end

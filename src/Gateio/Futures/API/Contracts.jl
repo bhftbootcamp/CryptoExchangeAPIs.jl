@@ -16,42 +16,48 @@ Base.@kwdef struct ContractsQuery <: GateioPublicQuery
 end
 
 struct ContractsData <: GateioData
-    name::Maybe{String}
-    type::Maybe{String}
-    quanto_multiplier::Maybe{String}
-    leverage_min::Maybe{String}
-    leverage_max::Maybe{String}
-    maintenance_rate::Maybe{String}
-    mark_type::Maybe{String}
-    mark_price::Maybe{String}
-    index_price::Maybe{String}
-    last_price::Maybe{String}
-    maker_fee_rate::Maybe{String}
-    taker_fee_rate::Maybe{String}
-    order_price_round::Maybe{String}
-    mark_price_round::Maybe{String}
-    funding_rate::Maybe{String}
-    funding_interval::Maybe{Int64}
-    funding_next_apply::Maybe{Float64}
-    risk_limit_base::Maybe{String}
-    risk_limit_step::Maybe{String}
-    risk_limit_max::Maybe{String}
+    name::String
+    type::String
+    quanto_multiplier::Maybe{Float64}
+    ref_discount_rate::Maybe{Float64}
+    order_price_deviate::Maybe{Float64}
+    maintenance_rate::Maybe{Float64}
+    mark_type::String
+    last_price::Maybe{Float64}
+    mark_price::Maybe{Float64}
+    index_price::Maybe{Float64}
+    funding_rate_indicative::Maybe{Float64}
+    mark_price_round::Maybe{Float64}
+    funding_offset::Maybe{Int64}
+    in_delisting::Maybe{Bool}
+    risk_limit_base::Maybe{Float64}
+    interest_rate::Maybe{Float64}
+    order_price_round::Maybe{Float64}
     order_size_min::Maybe{Int64}
+    ref_rebate_rate::Maybe{Float64}
+    funding_interval::Maybe{Int64}
+    risk_limit_step::Maybe{Float64}
+    leverage_min::Maybe{Float64}
+    leverage_max::Maybe{Float64}
+    risk_limit_max::Maybe{Float64}
+    maker_fee_rate::Maybe{Float64}
+    taker_fee_rate::Maybe{Float64}
+    funding_rate::Maybe{Float64}
     order_size_max::Maybe{Int64}
-    order_price_deviate::Maybe{String}
-    ref_discount_rate::Maybe{String}
-    ref_rebate_rate::Maybe{String}
-    orderbook_id::Maybe{Int64}
-    trade_id::Maybe{Int64}
+    funding_next_apply::Maybe{Int64}
+    short_users::Maybe{Int64}
+    config_change_time::Maybe{Int64}
     trade_size::Maybe{Int64}
     position_size::Maybe{Int64}
-    config_change_time::Maybe{Float64}
-    in_delisting::Maybe{Bool}
+    long_users::Maybe{Int64}
+    funding_impact_value::Maybe{Float64}
     orders_limit::Maybe{Int64}
+    trade_id::Maybe{Int64}
+    orderbook_id::Maybe{Int64}
     enable_bonus::Maybe{Bool}
     enable_credit::Maybe{Bool}
-    create_time::Maybe{Float64}
-    funding_cap_ratio::Maybe{String}
+    create_time::Maybe{Int64}
+    funding_cap_ratio::Maybe{Float64}
 end
 
 """
@@ -80,40 +86,46 @@ to_pretty_json(result.result)
   {
     "name":"BTC_USD",
     "type":"inverse",
-    "quanto_multiplier":"0",
-    "leverage_min":"1",
-    "leverage_max":"100",
-    "maintenance_rate":"0.005",
+    "quanto_multiplier":0.0,
+    "ref_discount_rate":0.0,
+    "order_price_deviate":0.5,
+    "maintenance_rate":0.005,
     "mark_type":"index",
-    "mark_price":"63440.66",
-    "index_price":"63437.21",
-    "last_price":"63406.2",
-    "maker_fee_rate":"-0.0002",
-    "taker_fee_rate":"0.00075",
-    "order_price_round":"0.1",
-    "mark_price_round":"0.01",
-    "funding_rate":"0.0001",
-    "funding_interval":28800,
-    "funding_next_apply":1.7132256e9,
-    "risk_limit_base":"100",
-    "risk_limit_step":"100",
-    "risk_limit_max":"800",
-    "order_size_min":1,
-    "order_size_max":1000000,
-    "order_price_deviate":"0.5",
-    "ref_discount_rate":"0",
-    "ref_rebate_rate":"0.2",
-    "orderbook_id":4464237107,
-    "trade_id":42779627,
-    "trade_size":57536481481,
-    "position_size":12413281,
-    "config_change_time":1.692326979e9,
+    "last_price":62543.5,
+    "mark_price":62628.97,
+    "index_price":62628.44,
+    "funding_rate_indicative":1.5e-5,
+    "mark_price_round":0.01,
+    "funding_offset":0,
     "in_delisting":false,
+    "risk_limit_base":100.0,
+    "interest_rate":0.0003,
+    "order_price_round":0.1,
+    "order_size_min":1,
+    "ref_rebate_rate":0.2,
+    "funding_interval":28800,
+    "risk_limit_step":100.0,
+    "leverage_min":1.0,
+    "leverage_max":100.0,
+    "risk_limit_max":800.0,
+    "maker_fee_rate":-0.0002,
+    "taker_fee_rate":0.00075,
+    "funding_rate":1.5e-5,
+    "order_size_max":1000000,
+    "funding_next_apply":1713283200,
+    "short_users":164,
+    "config_change_time":1692326979,
+    "trade_size":57546798366,
+    "position_size":12855226,
+    "long_users":540,
+    "funding_impact_value":1.0,
     "orders_limit":50,
+    "trade_id":42799286,
+    "orderbook_id":4466034561,
     "enable_bonus":false,
     "enable_credit":true,
-    "create_time":0.0,
-    "funding_cap_ratio":"0.75"
+    "create_time":0,
+    "funding_cap_ratio":0.75
   }
 ]
 ```
