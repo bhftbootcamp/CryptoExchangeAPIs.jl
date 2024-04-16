@@ -15,7 +15,7 @@ Base.@kwdef struct TickerQuery <: CryptocomPublicQuery
     instrument_name::Maybe{String} = nothing
 end
 
-struct TickerStruct <:CryptocomData
+struct TickerInfo <:CryptocomData
     h::Float64
     l::Maybe{Float64}
     a::Maybe{Float64}
@@ -30,7 +30,7 @@ struct TickerStruct <:CryptocomData
 end
 
 struct TickerData <: CryptocomData
-    data::Vector{TickerStruct}
+    data::Vector{TickerInfo}
 end
 
 """

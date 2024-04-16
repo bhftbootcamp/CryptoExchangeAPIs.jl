@@ -36,7 +36,7 @@ function Serde.ser_type(::Type{<:CandleQuery}, x::TimeInterval)::String
   x == M1  && return "1M"
 end
 
-struct CandleStruct <: CryptocomData
+struct CandleInfo <: CryptocomData
   o::Maybe{Float64}
   h::Maybe{Float64}
   l::Maybe{Float64}
@@ -47,7 +47,7 @@ end
 
 struct CandleData <: CryptocomData
     interval::String
-    data::Vector{CandleStruct}
+    data::Vector{CandleInfo}
     instrument_name::String
 end
 

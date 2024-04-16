@@ -15,7 +15,7 @@ Base.@kwdef struct GetInstrumentsQuery <: CryptocomPublicQuery
     #__ empty
 end
 
-struct GetInstrumentsStruct <:CryptocomData
+struct InstrumentInfo <:CryptocomData
     symbol::String
     inst_type::String
     display_name::String
@@ -32,7 +32,7 @@ struct GetInstrumentsStruct <:CryptocomData
 end
 
 struct GetInstrumentsData <: CryptocomData
-    data::Vector{GetInstrumentsStruct}
+    data::Vector{InstrumentInfo}
 end
 
 """
