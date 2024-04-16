@@ -29,7 +29,7 @@ abstract type CryptocomPrivateQuery <: CryptocomCommonQuery end
 - `code::String`: Return code.
 - `result::D`: Request result data.
 """
-struct Data{D<:Maybe{<:AbstractAPIsData}} <: AbstractAPIsData
+struct Data{D<:AbstractAPIsData} <: AbstractAPIsData
     id::Int64
     method::String
     code::String

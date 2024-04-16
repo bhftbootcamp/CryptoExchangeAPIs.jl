@@ -3,7 +3,7 @@
 
 import ..CryptoAPIs: APIsResult, APIsUndefError, isretriable, retry_maxcount, retry_timeout
 
-# UNHANDLED
+# UNDEF
 isretriable(::APIsResult{CryptocomAPIError}) = true
 
 # Success

@@ -11,12 +11,29 @@ using CryptoAPIs.Cryptocom
 using CryptoAPIs.Cryptocom: Data
 using CryptoAPIs: Maybe, APIsRequest
 
+@enum TimeInterval m1 m5 m15 m30 h1 h2 h4 h12 d1 d7 d14 M1
+
 Base.@kwdef struct CandleQuery <: CryptocomPublicQuery
     instrument_name::String
-    timeframe::Maybe{String} = nothing
+    timeframe::Maybe{TimeInterval} = nothing
     count::Maybe{Int64} = nothing
-    start_ts::Maybe{Int64} = nothing
-    end_ts::Maybe{Int64} = nothing
+    start_ts::Maybe{NanoDate} = nothing
+    end_ts::Maybe{NanoDate} = nothing
+end
+
+function Serde.ser_type(::Type{<:CandleQuery}, x::TimeInterval)::String
+  x == m1  && return "1m"
+  x == m5  && return "5m"
+  x == m15 && return "15m"
+  x == m30 && return "30m"
+  x == h1  && return "1h"
+  x == h2  && return "2h"
+  x == h4  && return "4h"
+  x == h12 && return "12h"
+  x == d1  && return "1D"
+  x == d7  && return "7D"
+  x == d14  && return "14D"
+  x == M1  && return "1M"
 end
 
 struct CandleStruct <: CryptocomData
@@ -25,7 +42,7 @@ struct CandleStruct <: CryptocomData
   l::Maybe{Float64}
   c::Maybe{Float64}
   v::Maybe{Float64}
-  t::Maybe{Int64}
+  t::NanoDate
 end
 
 struct CandleData <: CryptocomData
@@ -44,13 +61,13 @@ Retrieves candlesticks (k-line data history) over a given period for an instrume
 
 ## Parameters:
 
-| Parameter       | Type     | Required | Description |
-|:----------------|:---------|:---------|:------------|
-| instrument_name | String   | true     |             |
-| timeframe       | String   | false    |             |
-| count           | Int64    | false    |             |
-| start_ts        | Int64    | false    |             |
-| end_ts          | Int64    | false    |             |
+| Parameter       | Type         | Required | Description                             |
+|:----------------|:-------------|:---------|:----------------------------------------|
+| instrument_name | String       | true     |                                         |
+| timeframe       | TimeInterval | false    | m1 m5 m15 m30 h1 h2 h4 h12 d1 d7 d14 M1 |
+| count           | Int64        | false    |                                         |
+| start_ts        | Int64        | false    |                                         |
+| end_ts          | Int64        | false    |                                         |
 
 ## Code samples:
 
@@ -60,7 +77,7 @@ using CryptoAPIs.Cryptocom
 
 result = Cryptocom.Spot.candle(;
     instrument_name = "BTC_USDT",
-    timeframe = "M1",
+    timeframe = Cryptocom.Spot.Candle.M1,
 ) 
 
 to_pretty_json(result.result)
@@ -74,16 +91,23 @@ to_pretty_json(result.result)
   "method":"public/get-candlestick",
   "code":"0",
   "result":{
-    "interval":"M1",
+    "interval":"1M",
     "data":[
       {
-        "o":"64098.90",
-        "h":"64166.31",
-        "l":"64091.36",
-        "c":"64159.22",
-        "v":"5.7552",
-        "t":1713107100000
+        "o":19000.0,
+        "h":22982.05,
+        "l":15492.33,
+        "c":17170.28,
+        "v":150666.07457,
+        "t":"2022-11-01T00:00:00"
       },
+      {
+        "o":17166.5,
+        "h":18372.46,
+        "l":16263.22,
+        "c":16539.69,
+        "v":51215.88412,
+        "t":"2022-12-01T00:00:00"
       ...
     ],
     "instrument_name":"BTC_USDT"

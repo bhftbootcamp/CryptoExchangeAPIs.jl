@@ -7,7 +7,7 @@ using CryptoAPIs.Cryptocom
 
 CryptoAPIs.Cryptocom.Spot.candle(;
     instrument_name = "BTC_USDT",
-    timeframe = "M1",
+    ttimeframe = Cryptocom.Spot.Candle.M1,
 ) 
 
 CryptoAPIs.Cryptocom.Spot.get_instruments()
