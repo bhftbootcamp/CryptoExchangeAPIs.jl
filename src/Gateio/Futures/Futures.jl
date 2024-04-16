@@ -11,6 +11,9 @@ const public_client =
 include("API/Contracts.jl")
 using .Contracts
 
+include("API/FundingRate.jl")
+using .FundingRate
+
 include("API/OrderBook.jl")
 using .OrderBook
 
