@@ -17,7 +17,7 @@ Base.@kwdef struct OrderBookQuery <: GateioPublicQuery
     with_id::Maybe{Bool} = nothing
 end
 
-struct Item <: GateioData
+struct Order <: GateioData
     p::String
     s::Int64
 end
@@ -26,8 +26,8 @@ struct OrderBookData <: GateioData
     id::Maybe{Int64}
     current::Float64
     update::Float64
-    asks::Vector{Item}
-    bids::Vector{Item}
+    asks::Vector{Order}
+    bids::Vector{Order}
 end
 
 """
@@ -37,6 +37,15 @@ end
 List all currencies' details.
 
 [`GET api/v4/futures/{settle}/order_book`](https://www.gate.io/docs/developers/apiv4/en/#futures-order-book)
+
+## Parameters:
+
+| Parameter | Type     | Required | Description |
+|:----------|:---------|:---------|:------------|
+| contract  | String   | true     |             |
+| interval  | String   | false    |             |
+| limit     | Int64    | false    |             |
+| with_id   | Bool     | false    |             |
 
 ## Code samples:
 

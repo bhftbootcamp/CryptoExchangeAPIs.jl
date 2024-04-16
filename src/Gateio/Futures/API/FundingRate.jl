@@ -28,6 +28,13 @@ Funding rate history.
 
 [`GET api/v4/futures/{settle}/funding_rate`](https://www.gate.io/docs/developers/apiv4/en/#funding-rate-history)
 
+## Parameters:
+
+| Parameter | Type     | Required | Description |
+|:----------|:---------|:---------|:------------|
+| contract  | String   | true     |             |
+| limit     | Int64    | false    |             |
+
 ## Code samples:
 
 ```julia

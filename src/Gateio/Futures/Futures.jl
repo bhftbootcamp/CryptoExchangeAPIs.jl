@@ -8,6 +8,9 @@ using CryptoAPIs.Gateio
 const public_client =
     GateioClient(; base_url = "https://api.gateio.ws")
 
+include("API/Candle.jl")
+using .Candle
+
 include("API/Contracts.jl")
 using .Contracts
 

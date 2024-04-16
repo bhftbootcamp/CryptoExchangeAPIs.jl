@@ -44,9 +44,9 @@ struct ContractsData <: GateioData
     taker_fee_rate::Maybe{Float64}
     funding_rate::Maybe{Float64}
     order_size_max::Maybe{Int64}
-    funding_next_apply::Maybe{Int64}
+    funding_next_apply::Maybe{NanoDate}
     short_users::Maybe{Int64}
-    config_change_time::Maybe{Int64}
+    config_change_time::Maybe{NanoDate}
     trade_size::Maybe{Int64}
     position_size::Maybe{Int64}
     long_users::Maybe{Int64}
@@ -56,7 +56,7 @@ struct ContractsData <: GateioData
     orderbook_id::Maybe{Int64}
     enable_bonus::Maybe{Bool}
     enable_credit::Maybe{Bool}
-    create_time::Maybe{Int64}
+    create_time::Maybe{NanoDate}
     funding_cap_ratio::Maybe{Float64}
 end
 
@@ -67,6 +67,13 @@ end
 List all currencies' details.
 
 [`GET api/v4/futures/{settle}/contracts`](https://www.gate.io/docs/developers/apiv4/en/#list-all-futures-contracts)
+
+## Parameters:
+
+| Parameter | Type     | Required | Description |
+|:----------|:---------|:---------|:------------|
+| limit     | Int64    | false    |             |
+| offset    | Int64    | false    |             |
 
 ## Code samples:
 
@@ -91,10 +98,10 @@ to_pretty_json(result.result)
     "order_price_deviate":0.5,
     "maintenance_rate":0.005,
     "mark_type":"index",
-    "last_price":62543.5,
-    "mark_price":62628.97,
-    "index_price":62628.44,
-    "funding_rate_indicative":1.5e-5,
+    "last_price":62583.8,
+    "mark_price":62646.43,
+    "index_price":62642.32,
+    "funding_rate_indicative":7.5e-5,
     "mark_price_round":0.01,
     "funding_offset":0,
     "in_delisting":false,
@@ -110,21 +117,21 @@ to_pretty_json(result.result)
     "risk_limit_max":800.0,
     "maker_fee_rate":-0.0002,
     "taker_fee_rate":0.00075,
-    "funding_rate":1.5e-5,
+    "funding_rate":7.5e-5,
     "order_size_max":1000000,
-    "funding_next_apply":1713283200,
-    "short_users":164,
-    "config_change_time":1692326979,
-    "trade_size":57546798366,
-    "position_size":12855226,
-    "long_users":540,
+    "funding_next_apply":"2024-04-17T00:00:00",
+    "short_users":163,
+    "config_change_time":"2023-08-18T02:49:39",
+    "trade_size":57555397672,
+    "position_size":12785272,
+    "long_users":544,
     "funding_impact_value":1.0,
     "orders_limit":50,
-    "trade_id":42799286,
-    "orderbook_id":4466034561,
+    "trade_id":42816960,
+    "orderbook_id":4467223346,
     "enable_bonus":false,
     "enable_credit":true,
-    "create_time":0,
+    "create_time":"1970-01-01T00:00:00",
     "funding_cap_ratio":0.75
   }
 ]

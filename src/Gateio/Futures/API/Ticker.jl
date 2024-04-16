@@ -21,12 +21,12 @@ struct TickerData <: GateioData
     high_24h::Maybe{Float64}
     change_percentage::Maybe{Float64}
     total_size::Maybe{Int64}
-    volume_24h::Maybe{Float64}
-    volume_24h_btc::Maybe{Float64}
-    volume_24h_usd::Maybe{Float64}
-    volume_24h_base::Maybe{Float64}
-    volume_24h_quote::Maybe{Float64}
-    volume_24h_settle::Maybe{Float64}
+    volume_24h::Maybe{Int64}
+    volume_24h_btc::Maybe{Int64}
+    volume_24h_usd::Maybe{Int64}
+    volume_24h_base::Maybe{Int64}
+    volume_24h_quote::Maybe{Int64}
+    volume_24h_settle::Maybe{Int64}
     mark_price::Maybe{Float64}
     funding_rate::Maybe{Float64}
     funding_rate_indicative::Maybe{Float64}
@@ -42,6 +42,12 @@ end
 List futures tickers.
 
 [`GET api/v4/futures/{settle}/tickers`](https://www.gate.io/docs/developers/apiv4/en/#list-futures-tickers)
+
+## Parameters:
+
+| Parameter | Type     | Required | Description |
+|:----------|:---------|:---------|:------------|
+| contract  | String   | false    |             |
 
 ## Code samples:
 
@@ -60,23 +66,23 @@ to_pretty_json(result.result)
 [
   {
     "contract":"BTC_USD",
-    "last":62463.6,
+    "last":62157.4,
     "low_24h":61568.7,
-    "high_24h":66376.4,
-    "change_percentage":-5.2,
-    "total_size":12856564,
-    "volume_24h":1.7531128e7,
-    "volume_24h_btc":280.0,
-    "volume_24h_usd":1.7531128e7,
-    "volume_24h_base":280.0,
-    "volume_24h_quote":1.7531128e7,
-    "volume_24h_settle":280.0,
-    "mark_price":62509.05,
-    "funding_rate":1.7e-5,
-    "funding_rate_indicative":1.7e-5,
-    "index_price":62508.43,
-    "highest_bid":62452.8,
-    "lowest_ask":62458.5
+    "high_24h":64746.7,
+    "change_percentage":-3.12,
+    "total_size":12791802,
+    "volume_24h":21362145,
+    "volume_24h_btc":343,
+    "volume_24h_usd":21362145,
+    "volume_24h_base":343,
+    "volume_24h_quote":21362145,
+    "volume_24h_settle":343,
+    "mark_price":62221.82,
+    "funding_rate":0.0001,
+    "funding_rate_indicative":0.0001,
+    "index_price":62216.21,
+    "highest_bid":62129.9,
+    "lowest_ask":62133.1
   }
 ]
 ```
