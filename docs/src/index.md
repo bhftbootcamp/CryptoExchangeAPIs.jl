@@ -58,6 +58,13 @@ CryptoAPIs is a library written in Julia that combines API wrappers from various
                 <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Gateio/#Spot">Spot</a></td>
             </tr>
             <tr>
+                <td><img src="assets/gateio.png" alt="Gateio Logo" width="20" height="20"></td>
+                <td><a href="https://www.gate.io/">Gate.io</a></td>
+                <td><a href="https://www.gate.io/docs/developers/apiv4/">Futures</a></td>
+                <td><a href="src/Gateio/Futures">CryptoAPIs.Gateio.Futures</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Gateio/#Futures">Futures</a></td>
+            </tr>
+            <tr>
                 <td><img src="assets/upbit.png" alt="Upbit Logo" width="20" height="20"></td>
                 <td><a href="https://upbit.com/">Upbit</a></td>
                 <td><a href="https://global-docs.upbit.com/">Spot</a></td>

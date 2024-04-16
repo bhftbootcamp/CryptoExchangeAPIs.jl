@@ -58,13 +58,13 @@ Get futures candlesticks.
 
 ## Parameters:
 
-| Parameter | Type         | Required | Description |
-|:----------|:-------------|:---------|:------------|
-| contract  | String       | true     |             |
-| from      | Int64        | false    |             |
-| to        | Int64        | false    |             |
-| limit     | Int64        | false    |             |
-| interval  | TimeInterval | false    |             |
+| Parameter | Type         | Required | Description                          |
+|:----------|:-------------|:---------|:-------------------------------------|
+| contract  | String       | true     |                                      |
+| interval  | TimeInterval | false    | s10 m1 m5 m15 m30 h1 h4 h8 d1 d7 d30 |
+| from      | Int64        | false    |                                      |
+| to        | Int64        | false    |                                      |
+| limit     | Int64        | false    |                                      |
 
 ## Code samples:
 
