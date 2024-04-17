@@ -62,10 +62,6 @@ to_pretty_json(result.result)
       "size":1478.6
     },
     ...
-    {
-      "price":0.6439,
-      "size":1862.3
-    }
   ],
   "bids":[
     {
@@ -73,10 +69,6 @@ to_pretty_json(result.result)
       "size":28448.6
     },
     ...
-    {
-      "price":0.624,
-      "size":3339.8
-    }
   ],
   "lastUpdateId":8394873195
 }

@@ -62,13 +62,13 @@ Retrieve the candlestick charts.
 
 ## Parameters:
 
-| Parameter | Type         | Required | Description |
-|:----------|:-------------|:---------|:------------|
-| instId    | String       | true     |             |
-| after     | DateTime     | false    |             |
-| bar       | TimeInterval | false    |             |
-| before    | DateTime     | false    |             |
-| limit     | Int64        | false    |             |
+| Parameter | Type         | Required | Description                                        |
+|:----------|:-------------|:---------|:---------------------------------------------------|
+| instId    | String       | true     |                                                    |
+| after     | DateTime     | false    |                                                    |
+| bar       | TimeInterval | false    | m1 m3 m5 m15 m30 h1 h2 h4 h6 h12 d1 d2 d3 w1 M1 M3 |
+| before    | DateTime     | false    |                                                    |
+| limit     | Int64        | false    |                                                    |
 
 ## Code samples:
 

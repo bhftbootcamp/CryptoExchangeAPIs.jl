@@ -65,7 +65,6 @@ Query Coin Information.
 | signature   | String   | false    |               |
 | timestamp   | DateTime | false    |               |
 
-
 ## Code samples:
 
 ```julia

@@ -32,7 +32,7 @@ end
     funding_rate(client::BinanceClient, query::FundingRateQuery)
     funding_rate(client::BinanceClient = Binance.USDMFutures.public_client; kw...)
 
-Get funding rate history
+Get funding rate history.
 
 [`GET fapi/v1/fundingRate`](https://binance-docs.github.io/apidocs/futures/en/#get-funding-rate-history)
 

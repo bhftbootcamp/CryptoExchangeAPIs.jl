@@ -75,4 +75,3 @@ function funding_rate(client::BinanceClient = Binance.CoinMFutures.public_client
 end
 
 end
-

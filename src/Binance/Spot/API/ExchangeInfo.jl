@@ -102,11 +102,11 @@ Current exchange trading rules and symbol information.
 
 ## Parameters:
 
-| Parameter   | Type   | Required | Description |
-|:------------|:-------|:---------|:------------|
-| permissions | Vector | false    |             |
-| symbol      | String | false    |             |
-| symbols     | Vector | false    |             |
+| Parameter   | Type   | Required | Description                                                                                                           |
+|:------------|:-------|:---------|:----------------------------------------------------------------------------------------------------------------------|
+| permissions | Vector | false    | SPOT MARGIN LEVERAGED TRD\\_GRP\\_002 TRD\\_GRP\\_003 TRD\\_GRP\\_004 TRD\\_GRP\\_005 TRD\\_GRP\\_006 TRD\\_GRP\\_007 |
+| symbol      | String | false    |                                                                                                                       |
+| symbols     | Vector | false    |                                                                                                                       |
 
 ## Code samples:
 
