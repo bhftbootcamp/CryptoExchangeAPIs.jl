@@ -65,6 +65,13 @@ CryptoAPIs is a library written in Julia that combines API wrappers from various
                 <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Gateio/#Futures">Futures</a></td>
             </tr>
             <tr>
+                <td><img src="assets/okex.png" alt="Okex Logo" width="20" height="20"></td>
+                <td><a href="https://www.okx.com/">Okex</a></td>
+                <td><a href="https://www.okx.com/docs-v5/en/">Spot</a></td>
+                <td><a href="src/Okex/Spot">CryptoAPIs.Okex.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Okex/#Spot">Spot</a></td>
+            </tr>
+            <tr>
                 <td><img src="assets/upbit.png" alt="Upbit Logo" width="20" height="20"></td>
                 <td><a href="https://upbit.com/">Upbit</a></td>
                 <td><a href="https://global-docs.upbit.com/">Spot</a></td>

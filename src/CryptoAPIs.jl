@@ -164,6 +164,7 @@ include("Binance/Binance.jl")
 include("Bybit/Bybit.jl")
 include("Coinbase/Coinbase.jl")
 include("Gateio/Gateio.jl")
+include("Okex/Okex.jl")
 include("Upbit/Upbit.jl")
 
 end
