@@ -6,9 +6,10 @@ using CryptoAPIs
 using CryptoAPIs.Gateio
 
 CryptoAPIs.Gateio.Futures.candle(; 
+    type = Gateio.Futures.Candle.mark,
+    instrument_name = "BTC_USDT",
     settle = "usdt",
-    contract = "BTC_USDT", # "mark_" prefix will be prepended by default
-    interval = Gateio.Futures.Candle.d1,
+    interval = Gateio.Futures.Candle.d30,
 )
 
 CryptoAPIs.Gateio.Futures.contract(; settle = "btc")

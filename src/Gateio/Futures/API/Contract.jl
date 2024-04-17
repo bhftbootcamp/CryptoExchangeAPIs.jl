@@ -137,12 +137,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function contract(client::GateioClient, query::ContractQuery; settle::String)
+function contract(client::GateioClient, settle::String, query::ContractQuery)
     return APIsRequest{Vector{ContractData}}("GET", "api/v4/futures/$settle/contracts", query)(client)
 end
 
 function contract(client::GateioClient = Gateio.Futures.public_client; settle::String, kw...)
-    return contract(client, ContractQuery(; kw...); settle = settle)
+    return contract(client, settle, ContractQuery(; kw...))
 end
 
 end

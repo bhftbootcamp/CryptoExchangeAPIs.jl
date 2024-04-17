@@ -12,20 +12,26 @@ using CryptoAPIs: Maybe, APIsRequest
 
 @enum TimeInterval s10 m1 m5 m15 m30 h1 h4 h8 d1 d7 d30
 
-Base.@kwdef struct CandleQuery <: GateioPublicQuery
+@enum ContractType mark index
+
+struct CandleQuery <: GateioPublicQuery
     contract::String
-    from::Maybe{DateTime} = nothing
-    to::Maybe{DateTime} = nothing
-    limit::Maybe{Int64} = nothing
-    interval::Maybe{TimeInterval} = nothing
+    from::Maybe{DateTime}
+    to::Maybe{DateTime}
+    limit::Maybe{Int64} 
+    interval::Maybe{TimeInterval}
 end
 
-function CandleQuery(contract::String)
-    if occursin("mark_", contract)
-        return CandleQuery(contract)
-    else
-        return CandleQuery("mark_" * contract)
-    end
+function CandleQuery(;
+    type::ContractType,
+    instrument_name::String,
+    from::Maybe{DateTime} = nothing,
+    to::Maybe{DateTime} = nothing,
+    limit::Maybe{Int64} = nothing,
+    interval::Maybe{TimeInterval} = nothing,
+    )
+    contract = string(type, "_", instrument_name) 
+    return CandleQuery(contract, from, to, limit, interval)
 end
 
 function Serde.ser_type(::Type{<:CandleQuery}, x::TimeInterval)::String
@@ -77,8 +83,9 @@ using Serde
 using CryptoAPIs.Gateio
 
 result = Gateio.Futures.candle(; 
+    type = Gateio.Futures.Candle.mark,
+    instrument_name = "BTC_USDT",
     settle = "usdt",
-    contract = "BTC_USDT", # "mark_" prefix will be prepended by default
     interval = Gateio.Futures.Candle.d30,
 )
 
@@ -102,12 +109,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function candle(client::GateioClient, query::CandleQuery; settle::String)
+function candle(client::GateioClient, settle::String, query::CandleQuery)
     return APIsRequest{Vector{CandleData}}("GET", "api/v4/futures/$settle/candlesticks", query)(client)
 end
 
 function candle(client::GateioClient = Gateio.Futures.public_client; settle::String, kw...)
-    return candle(client, CandleQuery(; kw...); settle = settle)
+    return candle(client, settle, CandleQuery(; kw...))
 end
 
 end

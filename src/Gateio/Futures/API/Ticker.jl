@@ -87,12 +87,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function ticker(client::GateioClient, query::TickerQuery; settle::String)
+function ticker(client::GateioClient, settle::String, query::TickerQuery)
     return APIsRequest{Vector{TickerData}}("GET", "api/v4/futures/$settle/tickers", query)(client)
 end
 
 function ticker(client::GateioClient = Gateio.Futures.public_client; settle::String, kw...)
-    return ticker(client, TickerQuery(; kw...); settle = settle)
+    return ticker(client, settle, TickerQuery(; kw...))
 end
 
 end

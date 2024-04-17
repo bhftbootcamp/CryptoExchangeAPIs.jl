@@ -61,12 +61,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function funding_rate(client::GateioClient, query::FundingRateQuery; settle::String)
+function funding_rate(client::GateioClient, settle::String, query::FundingRateQuery)
     return APIsRequest{Vector{FundingRateData}}("GET", "api/v4/futures/$settle/funding_rate", query)(client)
 end
 
 function funding_rate(client::GateioClient = Gateio.Futures.public_client; settle::String, kw...)
-    return funding_rate(client, FundingRateQuery(; kw...); settle = settle)
+    return funding_rate(client, settle, FundingRateQuery(; kw...))
 end
 
 end

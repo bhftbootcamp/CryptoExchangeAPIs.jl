@@ -85,12 +85,12 @@ to_pretty_json(result.result)
 }
 ```
 """
-function order_book(client::GateioClient, query::OrderBookQuery; settle::String)
+function order_book(client::GateioClient, settle::String, query::OrderBookQuery)
     return APIsRequest{OrderBookData}("GET", "api/v4/futures/$settle/order_book", query)(client)
 end
 
 function order_book(client::GateioClient = Gateio.Futures.public_client; settle::String, kw...)
-    return order_book(client, OrderBookQuery(; kw...); settle = settle)
+    return order_book(client, settle, OrderBookQuery(; kw...))
 end
 
 end
