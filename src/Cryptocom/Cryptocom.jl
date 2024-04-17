@@ -62,36 +62,32 @@ Base.@kwdef struct CryptocomClient <: AbstractAPIsClient
     description::Maybe{String} = nothing
 end
 
-struct CryptocomAPIsErrorMsg
-    id::Maybe{Int64}
-    code::Int64
-    message::String
-end
-
 """
     CryptocomAPIError{T} <: AbstractAPIsError
 
 Exception thrown when an API method fails with code `T`.
 
-## Required fields in CryptocomAPIsErrorMsg
-- `code::Int64`: Error code.
-- `message::String`: Error message.
-
 ## Required fields
-- `error::CryptocomAPIsErrorMsg`: Error struct.
+- `code::Int64`: Error code.
+
+## Optional fields
+- `message::String`: Error message.
+- `description::String`: Error description.
 """
 struct CryptocomAPIError{T} <: AbstractAPIsError
-    error::CryptocomAPIsErrorMsg
+    code::Int64
+    message::Maybe{String}
+    description::Maybe{String}
 
-    function CryptocomAPIError(error::CryptocomAPIsErrorMsg)
-        return new{error.code}(error)
+    function CryptocomAPIError(code::Int64, x...)
+        return new{code}(code, x...)
     end
 end
 
 CryptoAPIs.error_type(::CryptocomClient) = CryptocomAPIError
 
 function Base.show(io::IO, e::CryptocomAPIError)
-    return print(io, "id = ", "\"", e.error.id, "\"", "code = ", "\"", e.error.code, "\"", ", ", "msg = ", "\"", e.error.message, "\"")
+    return print(io, "code = ", "\"", e.code, "\"", ", ", "msg = ", "\"", e.message, "\"", "desc = ", "\"", e.description, "\"")
 end
 
 struct CryptocomUndefError <: AbstractAPIsError
