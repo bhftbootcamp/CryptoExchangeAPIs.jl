@@ -31,8 +31,16 @@ struct InstrumentInfo <:CryptocomData
     underlying_symbol::Maybe{String}
 end
 
+function Serde.isempty(::Type{InstrumentInfo}, x)::Bool
+  return x === ""
+end
+
 struct GetInstrumentsData <: CryptocomData
     data::Vector{InstrumentInfo}
+end
+
+function Serde.isempty(::Type{GetInstrumentsData}, x)::Bool
+  return x == []
 end
 
 """

@@ -29,8 +29,16 @@ struct TickerInfo <:CryptocomData
     t::Int64
 end
 
+function Serde.isempty(::Type{TickerInfo}, x)::Bool
+  return x === ""
+end
+
 struct TickerData <: CryptocomData
     data::Vector{TickerInfo}
+end
+
+function Serde.isempty(::Type{TickerData}, x)::Bool
+  return x == []
 end
 
 """

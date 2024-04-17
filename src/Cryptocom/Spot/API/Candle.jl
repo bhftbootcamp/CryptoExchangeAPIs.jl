@@ -45,10 +45,18 @@ struct CandleInfo <: CryptocomData
   t::NanoDate
 end
 
+function Serde.isempty(::Type{CandleInfo}, x)::Bool
+  return x === ""
+end
+
 struct CandleData <: CryptocomData
     interval::String
     data::Vector{CandleInfo}
     instrument_name::String
+end
+
+function Serde.isempty(::Type{CandleData}, x)::Bool
+  return x == []
 end
 
 """
