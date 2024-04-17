@@ -63,6 +63,7 @@ Base.@kwdef struct CryptocomClient <: AbstractAPIsClient
 end
 
 struct CryptocomAPIsErrorMsg
+    id::Int64
     code::Int64
     message::String
 end
@@ -90,7 +91,7 @@ end
 CryptoAPIs.error_type(::CryptocomClient) = CryptocomAPIError
 
 function Base.show(io::IO, e::CryptocomAPIError)
-    return print(io, "code = ", "\"", e.error.code, "\"", ", ", "msg = ", "\"", e.error.message, "\"")
+    return print(io, "id = ", "\"", e.error.id, "\"", "code = ", "\"", e.error.code, "\"", ", ", "msg = ", "\"", e.error.message, "\"")
 end
 
 struct CryptocomUndefError <: AbstractAPIsError
