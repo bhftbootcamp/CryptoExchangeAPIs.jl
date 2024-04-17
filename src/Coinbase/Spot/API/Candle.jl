@@ -46,12 +46,11 @@ Get rates for a single product by product ID, grouped in buckets.
 
 ## Parameters:
 
-| Parameter   | Type         | Required | Description |
-|:------------|:-------------|:---------|:------------|
-| granularity | TimeInterval | true     |             |
-| start       | DateTime     | false    |             |
-| _end        | DateTime     | false    |             |
-
+| Parameter   | Type         | Required | Description        |
+|:------------|:-------------|:---------|:-------------------|
+| granularity | TimeInterval | true     | m1 m5 m15 h1 h6 d1 |
+| start       | DateTime     | false    |                    |
+| _end        | DateTime     | false    |                    |
 
 ## Code samples:
 

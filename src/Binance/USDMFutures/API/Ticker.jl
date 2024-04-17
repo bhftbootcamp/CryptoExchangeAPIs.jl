@@ -47,7 +47,6 @@ end
 |:----------|:-------|:---------|:------------|
 | symbol    | String | false    |             |
 
-
 ## Code samples:
 
 ```julia

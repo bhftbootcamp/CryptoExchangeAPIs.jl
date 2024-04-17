@@ -66,18 +66,18 @@ Fetch withdraw history.
 
 ## Parameters:
 
-| Parameter       | Type           | Required | Description   |
-|:----------------|:---------------|:---------|:--------------|
-| coin            | String         | false    |               |
-| endTime         | DateTime       | false    |               |
-| limit           | Int64          | false    | Default: 1000 |
-| offset          | Int64          | false    |               |
-| startTime       | DateTime       | false    |               |
-| status          | WithdrawStatus | false    |               |
-| withdrawOrderId | String         | false    |               |
-| recvWindow      | Int64          | false    |               |
-| signature       | String         | false    |               |
-| timestamp       | DateTime       | false    |               |
+| Parameter       | Type           | Required | Description                                                                                                        |
+|:----------------|:---------------|:---------|:-------------------------------------------------------------------------------------------------------------------|
+| coin            | String         | false    |                                                                                                                    |
+| endTime         | DateTime       | false    |                                                                                                                    |
+| limit           | Int64          | false    | Default: 1000                                                                                                      |
+| offset          | Int64          | false    |                                                                                                                    |
+| startTime       | DateTime       | false    |                                                                                                                    |
+| status          | WithdrawStatus | false    | EMAIL\\_SENT (0), CANCELLED (1), AWAITING\\_APPROVAL (2), REJECTED (3), PROCESSING (4), FAILURE (5), COMPLETED (6) |
+| withdrawOrderId | String         | false    |                                                                                                                    |
+| recvWindow      | Int64          | false    |                                                                                                                    |
+| signature       | String         | false    |                                                                                                                    |
+| timestamp       | DateTime       | false    |                                                                                                                    |
 
 ## Code samples:
 
