@@ -8,6 +8,8 @@ using CryptoAPIs.Cryptocom
 CryptoAPIs.Cryptocom.Spot.candle(;
     instrument_name = "BTC_USDT",
     timeframe = Cryptocom.Spot.Candle.M1,
+    start_ts = Dates.now() - Dates.Day(1),
+    end_ts = Dates.now(),
 )
 
 CryptoAPIs.Cryptocom.Spot.get_instruments()

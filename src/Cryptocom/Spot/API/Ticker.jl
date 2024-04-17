@@ -15,7 +15,7 @@ Base.@kwdef struct TickerQuery <: CryptocomPublicQuery
     instrument_name::Maybe{String} = nothing
 end
 
-struct TickerInfo <:CryptocomData
+struct TickerInfo <: CryptocomData
     h::Float64
     l::Maybe{Float64}
     a::Maybe{Float64}

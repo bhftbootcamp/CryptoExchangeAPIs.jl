@@ -15,7 +15,7 @@ Base.@kwdef struct GetInstrumentsQuery <: CryptocomPublicQuery
     #__ empty
 end
 
-struct InstrumentInfo <:CryptocomData
+struct InstrumentInfo <: CryptocomData
     symbol::String
     inst_type::String
     display_name::String

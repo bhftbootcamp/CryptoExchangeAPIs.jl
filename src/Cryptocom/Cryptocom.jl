@@ -63,7 +63,7 @@ Base.@kwdef struct CryptocomClient <: AbstractAPIsClient
 end
 
 struct CryptocomAPIsErrorMsg
-    id::Int64
+    id::Maybe{Int64}
     code::Int64
     message::String
 end
@@ -116,6 +116,8 @@ function CryptoAPIs.request_headers(client::CryptocomClient, ::CryptocomPublicQu
         "Content-Type" => "application/json"
     ]
 end
+
+include("Utils.jl")
 
 include("Spot/Spot.jl")
 using .Spot

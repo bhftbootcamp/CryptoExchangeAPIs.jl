@@ -19,6 +19,7 @@ makedocs(;
         "pages/Binance.md",
         "pages/Bybit.md",
         "pages/Coinbase.md",
+        "pages/Cryptocom.md",
         "pages/Gateio.md",
         "pages/Upbit.md",
         "For Developers" => [

@@ -17,8 +17,8 @@ Base.@kwdef struct CandleQuery <: CryptocomPublicQuery
     instrument_name::String
     timeframe::Maybe{TimeInterval} = nothing
     count::Maybe{Int64} = nothing
-    start_ts::Maybe{NanoDate} = nothing
-    end_ts::Maybe{NanoDate} = nothing
+    start_ts::Maybe{DateTime} = nothing
+    end_ts::Maybe{DateTime} = nothing
 end
 
 function Serde.ser_type(::Type{<:CandleQuery}, x::TimeInterval)::String
@@ -132,3 +132,4 @@ function candle(client::CryptocomClient = Cryptocom.Spot.public_client; kw...)
 end
 
 end
+
