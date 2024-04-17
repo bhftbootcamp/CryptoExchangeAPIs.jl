@@ -11,8 +11,8 @@ const public_client =
 include("API/Candle.jl")
 using .Candle
 
-include("API/Contracts.jl")
-using .Contracts
+include("API/Contract.jl")
+using .Contract
 
 include("API/FundingRate.jl")
 using .FundingRate

@@ -1,8 +1,8 @@
-module Contracts
+module Contract
 
-export ContractsQuery,
-    ContractsData,
-    contracts
+export ContractQuery,
+    ContractData,
+    contract
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -10,12 +10,12 @@ using Dates, NanoDates, TimeZones
 using CryptoAPIs.Gateio
 using CryptoAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct ContractsQuery <: GateioPublicQuery
+Base.@kwdef struct ContractQuery <: GateioPublicQuery
     limit::Maybe{Int64} = nothing
     offset::Maybe{Int64} = nothing
 end
 
-struct ContractsData <: GateioData
+struct ContractData <: GateioData
     name::String
     type::String
     quanto_multiplier::Maybe{Float64}
@@ -61,10 +61,10 @@ struct ContractsData <: GateioData
 end
 
 """
-    contracts(client::GateioClient, query::ContractsQuery)
-    contracts(client::GateioClient = Gateio.Futures.public_client; kw...)
+    contract(client::GateioClient, query::ContractQuery)
+    contract(client::GateioClient = Gateio.Futures.public_client; kw...)
 
-List all currencies' details.
+List all futures contracts.
 
 [`GET api/v4/futures/{settle}/contracts`](https://www.gate.io/docs/developers/apiv4/en/#list-all-futures-contracts)
 
@@ -81,7 +81,7 @@ List all currencies' details.
 using Serde
 using CryptoAPIs.Gateio
 
-result = Gateio.Futures.contracts(; settle = "btc")
+result = Gateio.Futures.contract(; settle = "btc")
 
 to_pretty_json(result.result)
 ```
@@ -137,12 +137,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function contracts(client::GateioClient, query::ContractsQuery; settle::String)
-    return APIsRequest{Vector{ContractsData}}("GET", "api/v4/futures/$settle/contracts", query)(client)
+function contract(client::GateioClient, query::ContractQuery; settle::String)
+    return APIsRequest{Vector{ContractData}}("GET", "api/v4/futures/$settle/contracts", query)(client)
 end
 
-function contracts(client::GateioClient = Gateio.Futures.public_client; settle::String, kw...)
-    return contracts(client, ContractsQuery(; kw...); settle = settle)
+function contract(client::GateioClient = Gateio.Futures.public_client; settle::String, kw...)
+    return contract(client, ContractQuery(; kw...); settle = settle)
 end
 
 end

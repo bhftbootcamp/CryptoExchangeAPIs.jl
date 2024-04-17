@@ -14,14 +14,18 @@ using CryptoAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct CandleQuery <: GateioPublicQuery
     contract::String
-    from::Maybe{Int64} = nothing
-    to::Maybe{Int64} = nothing
+    from::Maybe{DateTime} = nothing
+    to::Maybe{DateTime} = nothing
     limit::Maybe{Int64} = nothing
     interval::Maybe{TimeInterval} = nothing
 end
 
 function CandleQuery(contract::String)
-    CandleQuery("mark_" * contract)
+    if occursin("mark_", contract)
+        return CandleQuery(contract)
+    else
+        return CandleQuery("mark_" * contract)
+    end
 end
 
 function Serde.ser_type(::Type{<:CandleQuery}, x::TimeInterval)::String
@@ -62,8 +66,8 @@ Get futures candlesticks.
 |:----------|:-------------|:---------|:-------------------------------------|
 | contract  | String       | true     |                                      |
 | interval  | TimeInterval | false    | s10 m1 m5 m15 m30 h1 h4 h8 d1 d7 d30 |
-| from      | Int64        | false    |                                      |
-| to        | Int64        | false    |                                      |
+| from      | DateTime     | false    |                                      |
+| to        | DateTime     | false    |                                      |
 | limit     | Int64        | false    |                                      |
 
 ## Code samples:
@@ -74,7 +78,7 @@ using CryptoAPIs.Gateio
 
 result = Gateio.Futures.candle(; 
     settle = "usdt",
-    contract = "BTC_USDT",
+    contract = "BTC_USDT", # "mark_" prefix will be prepended by default
     interval = Gateio.Futures.Candle.d30,
 )
 
@@ -94,15 +98,7 @@ to_pretty_json(result.result)
     "o":62415.7,
     "sum":4.003183751397624e10
   },
-  {
-    "t":"2024-04-01T00:00:00",
-    "v":3093789338,
-    "c":62584.3,
-    "h":72828.6,
-    "l":59900.0,
-    "o":71360.4,
-    "sum":2.077669387145627e10
-  }
+  ...
 ]
 ```
 """

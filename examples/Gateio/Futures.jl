@@ -7,11 +7,11 @@ using CryptoAPIs.Gateio
 
 CryptoAPIs.Gateio.Futures.candle(; 
     settle = "usdt",
-    contract = "BTC_USDT",
+    contract = "BTC_USDT", # "mark_" prefix will be prepended by default
     interval = Gateio.Futures.Candle.d1,
 )
 
-CryptoAPIs.Gateio.Futures.contracts(; settle = "btc")
+CryptoAPIs.Gateio.Futures.contract(; settle = "btc")
 
 CryptoAPIs.Gateio.Futures.funding_rate(; 
     settle = "usdt",

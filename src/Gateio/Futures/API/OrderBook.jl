@@ -24,8 +24,8 @@ end
 
 struct OrderBookData <: GateioData
     id::Maybe{Int64}
-    current::Float64
-    update::Float64
+    current::NanoDate
+    update::NanoDate
     asks::Vector{Order}
     bids::Vector{Order}
 end
@@ -34,7 +34,7 @@ end
     order_book(client::GateioClient, query::OrderBookQuery)
     order_book(client::GateioClient = Gateio.Futures.public_client; kw...)
 
-List all currencies' details.
+Futures order book.
 
 [`GET api/v4/futures/{settle}/order_book`](https://www.gate.io/docs/developers/apiv4/en/#futures-order-book)
 
@@ -73,20 +73,12 @@ to_pretty_json(result.result)
       "p":"63167.4",
       "s":1903
     },
-    {
-      "p":"63168.3",
-      "s":2
-    },
     ...
   ],
   "bids":[
     {
       "p":"63167.3",
       "s":10650
-    },
-    {
-      "p":"63167.2",
-      "s":252
     },
     ...
   ]
