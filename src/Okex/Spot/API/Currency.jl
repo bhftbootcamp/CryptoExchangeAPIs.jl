@@ -44,7 +44,7 @@ struct CurrencyData <: OkexData
 end
 
 function Serde.isempty(::Type{<:CurrencyData}, x)::Bool
-    return x === ""
+    return isempty(x)
 end
 
 """
