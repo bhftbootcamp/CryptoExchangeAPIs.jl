@@ -20,6 +20,7 @@ makedocs(;
         "pages/Bybit.md",
         "pages/Coinbase.md",
         "pages/Gateio.md",
+        "pages/Okex.md",
         "pages/Upbit.md",
         "For Developers" => [
             "pages/docs_miniguide.md",
