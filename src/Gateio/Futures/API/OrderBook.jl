@@ -24,8 +24,8 @@ end
 
 struct OrderBookData <: GateioData
     id::Maybe{Int64}
-    current::NanoDate
-    update::NanoDate
+    current::Float64
+    update::Float64
     asks::Vector{Order}
     bids::Vector{Order}
 end
