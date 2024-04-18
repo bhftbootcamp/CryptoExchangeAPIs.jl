@@ -92,7 +92,7 @@ end
     exchange_info(client::BinanceClient, query::ExchangeInfoQuery)
     exchange_info(client::BinanceClient = Binance.USDMFutures.public_client; kw...)
 
-Current exchange trading rules and symbol information
+Current exchange trading rules and symbol information.
 
 [`GET fapi/v1/exchangeInfo`](https://binance-docs.github.io/apidocs/futures/en/#exchange-information)
 

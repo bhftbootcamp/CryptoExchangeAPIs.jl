@@ -10,12 +10,9 @@ using Dates, NanoDates, TimeZones
 using CryptoAPIs.Coinbase
 using CryptoAPIs: Maybe, APIsRequest
 
-# Products
-
 Base.@kwdef struct ProductQuery <: CoinbasePublicQuery
     type::Maybe{String} = nothing
 end
-
 struct ProductData <: CoinbaseData
     id::String
     base_currency::Maybe{String}

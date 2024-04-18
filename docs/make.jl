@@ -7,7 +7,7 @@ makedocs(;
     modules = [CryptoAPIs],
     sitename = "CryptoAPIs.jl",
     format = Documenter.HTML(;
-        repolink = "https://github.com/bhftbootcamp/CryptoAPIs.jl.git",
+        repolink = "https://github.com/bhftbootcamp/CryptoAPIs.jl",
         canonical = "https://bhftbootcamp.github.io/CryptoAPIs.jl",
         edit_link = "master",
         assets = String["assets/favicon.ico"],
@@ -21,6 +21,7 @@ makedocs(;
         "pages/Coinbase.md",
         "pages/Cryptocom.md",
         "pages/Gateio.md",
+        "pages/Okex.md",
         "pages/Upbit.md",
         "For Developers" => [
             "pages/docs_miniguide.md",

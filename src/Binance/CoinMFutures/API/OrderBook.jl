@@ -43,7 +43,6 @@ Gets current exchange orders.
 | symbol    | String | true     |             |
 | limit     | Int64  | false    |             |
 
-
 ## Code samples:
 
 ```julia

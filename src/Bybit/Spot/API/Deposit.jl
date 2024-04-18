@@ -53,17 +53,17 @@ Query Deposit Records.
 
 ## Parameters:
 
-| Parameter   | Type     | Required | Description                 |
-|:------------|:---------|:---------|:----------------------------|
-| coin        | String   | false    |                             |
-| cursor      | String   | false    |                             |
-| endTime     | DateTime | false    |                             |
-| limit       | Int64    | false    | Default value is 50, max 50 |
-| startTime   | DateTime | false    |                             |
-| api_key     | String   | false    |                             |
-| recv_window | Int64    | false    | Default value is 5000       |
-| signature   | String   | false    |                             |
-| timestamp   | DateTime | false    |                             |
+| Parameter   | Type     | Required | Description          |
+|:------------|:---------|:---------|:---------------------|
+| coin        | String   | false    |                      |
+| cursor      | String   | false    |                      |
+| endTime     | DateTime | false    |                      |
+| limit       | Int64    | false    | Default: 50, Max: 50 |
+| startTime   | DateTime | false    |                      |
+| api_key     | String   | false    |                      |
+| recv_window | Int64    | false    | Default: 5000        |
+| signature   | String   | false    |                      |
+| timestamp   | DateTime | false    |                      |
 
 ## Code samples:
 

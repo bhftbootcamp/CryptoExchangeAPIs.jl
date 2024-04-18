@@ -47,7 +47,7 @@ Daily candle data.
 |:--------------------|:---------|:---------|:------------|
 | market              | String   | true     |             |
 | convertingPriceUnit | String   | false    |             |
-| count               | Int64    | false    |             |
+| count               | Int64    | false    | Max: 200    |
 | to                  | DateTime | false    |             |
 
 ## Code samples:

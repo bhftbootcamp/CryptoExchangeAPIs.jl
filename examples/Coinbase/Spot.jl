@@ -14,6 +14,12 @@ CryptoAPIs.Coinbase.Spot.candle(;
 
 CryptoAPIs.Coinbase.Spot.currency()
 
+CryptoAPIs.Coinbase.Spot.product(; type = "BTC-USD")
+
+CryptoAPIs.Coinbase.Spot.product_stats(; product_id = "BTC-USD")
+
+CryptoAPIs.Coinbase.Spot.ticker(; product_id = "BTC-USDT")
+
 coinbase_client = CoinbaseClient(;
     base_url = "https://api.exchange.coinbase.com",
     public_key = ENV["COINBASE_PUBLIC_KEY"],
@@ -22,7 +28,3 @@ coinbase_client = CoinbaseClient(;
 )
 
 CryptoAPIs.Coinbase.Spot.fee_estimate(coinbase_client)
-
-CryptoAPIs.Coinbase.Spot.product_stats(; product_id = "BTC-USD")
-
-CryptoAPIs.Coinbase.Spot.ticker(; product_id = "BTC-USDT")

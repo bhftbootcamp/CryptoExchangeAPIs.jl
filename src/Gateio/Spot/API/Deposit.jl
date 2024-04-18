@@ -10,17 +10,6 @@ using Dates, NanoDates, TimeZones
 using CryptoAPIs.Gateio
 using CryptoAPIs: Maybe, APIsRequest
 
-Base.@kwdef mutable struct DepositQuery <: GateioPrivateQuery
-    currency::Maybe{String} = nothing
-    from::Maybe{DateTime} = nothing
-    limit::Maybe{Int64} = nothing
-    offset::Maybe{Int64} = nothing
-    to::Maybe{DateTime} = nothing
-
-    signature::Maybe{String} = nothing
-    signTimestamp::Maybe{DateTime} = nothing
-end
-
 @enum RecordStatus begin
     DONE
     CANCEL
@@ -35,6 +24,17 @@ end
     PEND
     DMOVE
     SPLITPEND
+end
+
+Base.@kwdef mutable struct DepositQuery <: GateioPrivateQuery
+    currency::Maybe{String} = nothing
+    from::Maybe{DateTime} = nothing
+    limit::Maybe{Int64} = nothing
+    offset::Maybe{Int64} = nothing
+    to::Maybe{DateTime} = nothing
+
+    signature::Maybe{String} = nothing
+    signTimestamp::Maybe{DateTime} = nothing
 end
 
 struct DepositData <: GateioData
