@@ -16,8 +16,13 @@ using CryptoAPIs: Maybe, APIsRequest
 
 @enum Settle btc usdt usd
 
+struct Contract
+    type::ContractType
+    name::String
+end
+
 struct CandleQuery <: GateioPublicQuery
-    contract::String
+    contract::Contract
     from::Maybe{DateTime}
     to::Maybe{DateTime}
     limit::Maybe{Int64} 
@@ -26,14 +31,17 @@ end
 
 function CandleQuery(;
     type::ContractType,
-    instrument_name::String,
+    name::String,
     from::Maybe{DateTime} = nothing,
     to::Maybe{DateTime} = nothing,
     limit::Maybe{Int64} = nothing,
     interval::Maybe{TimeInterval} = nothing,
-    )
-    contract = string(type, "_", instrument_name) 
-    return CandleQuery(contract, from, to, limit, interval)
+)
+    return CandleQuery(Contract(type, name), from, to, limit, interval)
+end
+
+function Serde.ser_type(::Type{<:CandleQuery}, x::Contract)::String
+    return string(x.type, "_", x.name)
 end
 
 function Serde.ser_type(::Type{<:CandleQuery}, x::TimeInterval)::String
@@ -86,7 +94,7 @@ using CryptoAPIs.Gateio
 
 result = Gateio.Futures.candle(; 
     type = Gateio.Futures.Candle.mark,
-    instrument_name = "BTC_USDT",
+    name = "BTC_USDT",
     settle = Gateio.Futures.Candle.usdt,
     interval = Gateio.Futures.Candle.d30,
 )

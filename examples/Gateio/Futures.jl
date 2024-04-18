@@ -7,7 +7,7 @@ using CryptoAPIs.Gateio
 
 CryptoAPIs.Gateio.Futures.candle(; 
     type = Gateio.Futures.Candle.mark,
-    instrument_name = "BTC_USDT",
+    name = "BTC_USDT",
     settle = Gateio.Futures.Candle.usdt,
     from = DateTime("2024-04-01T10:00:00"),
     to = DateTime("2024-04-01T10:00:00") + Hour(1),
