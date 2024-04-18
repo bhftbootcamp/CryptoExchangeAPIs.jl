@@ -10,6 +10,8 @@ using Dates, NanoDates, TimeZones
 using CryptoAPIs.Gateio
 using CryptoAPIs: Maybe, APIsRequest
 
+@enum Settle btc usdt usd
+
 Base.@kwdef struct OrderBookQuery <: GateioPublicQuery
     contract::String
     interval::Maybe{String} = nothing
@@ -54,7 +56,7 @@ using Serde
 using CryptoAPIs.Gateio
 
 result = Gateio.Futures.order_book(; 
-    settle = "usdt",
+    settle = Gateio.Futures.OrderBook.usdt,
     contract = "BTC_USDT",
 )
 
@@ -85,11 +87,11 @@ to_pretty_json(result.result)
 }
 ```
 """
-function order_book(client::GateioClient, settle::String, query::OrderBookQuery)
+function order_book(client::GateioClient, settle::Settle, query::OrderBookQuery)
     return APIsRequest{OrderBookData}("GET", "api/v4/futures/$settle/order_book", query)(client)
 end
 
-function order_book(client::GateioClient = Gateio.Futures.public_client; settle::String, kw...)
+function order_book(client::GateioClient = Gateio.Futures.public_client; settle::Settle, kw...)
     return order_book(client, settle, OrderBookQuery(; kw...))
 end
 

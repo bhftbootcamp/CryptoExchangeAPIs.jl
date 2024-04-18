@@ -10,6 +10,8 @@ using Dates, NanoDates, TimeZones
 using CryptoAPIs.Gateio
 using CryptoAPIs: Maybe, APIsRequest
 
+@enum Settle btc usdt usd
+
 Base.@kwdef struct TickerQuery <: GateioPublicQuery
     contract::Maybe{String} = nothing
 end
@@ -55,7 +57,7 @@ List futures tickers.
 using Serde
 using CryptoAPIs.Gateio
 
-result = Gateio.Futures.ticker(; settle = "btc")
+result = Gateio.Futures.ticker(; settle = Gateio.Futures.Ticker.btc)
 
 to_pretty_json(result.result)
 ```
@@ -87,11 +89,11 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function ticker(client::GateioClient, settle::String, query::TickerQuery)
+function ticker(client::GateioClient, settle::Settle, query::TickerQuery)
     return APIsRequest{Vector{TickerData}}("GET", "api/v4/futures/$settle/tickers", query)(client)
 end
 
-function ticker(client::GateioClient = Gateio.Futures.public_client; settle::String, kw...)
+function ticker(client::GateioClient = Gateio.Futures.public_client; settle::Settle, kw...)
     return ticker(client, settle, TickerQuery(; kw...))
 end
 

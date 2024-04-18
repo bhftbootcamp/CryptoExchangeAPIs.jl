@@ -10,6 +10,8 @@ using Dates, NanoDates, TimeZones
 using CryptoAPIs.Gateio
 using CryptoAPIs: Maybe, APIsRequest
 
+@enum Settle btc usdt usd
+
 Base.@kwdef struct ContractQuery <: GateioPublicQuery
     limit::Maybe{Int64} = nothing
     offset::Maybe{Int64} = nothing
@@ -81,7 +83,7 @@ List all futures contracts.
 using Serde
 using CryptoAPIs.Gateio
 
-result = Gateio.Futures.contract(; settle = "btc")
+result = Gateio.Futures.contract(; settle = Gateio.Futures.Contract.btc)
 
 to_pretty_json(result.result)
 ```
@@ -137,11 +139,11 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function contract(client::GateioClient, settle::String, query::ContractQuery)
+function contract(client::GateioClient, settle::Settle, query::ContractQuery)
     return APIsRequest{Vector{ContractData}}("GET", "api/v4/futures/$settle/contracts", query)(client)
 end
 
-function contract(client::GateioClient = Gateio.Futures.public_client; settle::String, kw...)
+function contract(client::GateioClient = Gateio.Futures.public_client; settle::Settle, kw...)
     return contract(client, settle, ContractQuery(; kw...))
 end
 

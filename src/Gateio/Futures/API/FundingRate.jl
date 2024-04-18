@@ -10,6 +10,8 @@ using Dates, NanoDates, TimeZones
 using CryptoAPIs.Gateio
 using CryptoAPIs: Maybe, APIsRequest
 
+@enum Settle btc usdt usd
+
 Base.@kwdef struct FundingRateQuery <: GateioPublicQuery
     contract::String
     limit::Maybe{Int64} = nothing
@@ -42,7 +44,7 @@ using Serde
 using CryptoAPIs.Gateio
 
 result = Gateio.Futures.funding_rate(; 
-    settle = "usdt",
+    settle = Gateio.Futures.FundingRate.usdt,
     contract = "BTC_USDT",
 )
 
@@ -61,11 +63,11 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function funding_rate(client::GateioClient, settle::String, query::FundingRateQuery)
+function funding_rate(client::GateioClient, settle::Settle, query::FundingRateQuery)
     return APIsRequest{Vector{FundingRateData}}("GET", "api/v4/futures/$settle/funding_rate", query)(client)
 end
 
-function funding_rate(client::GateioClient = Gateio.Futures.public_client; settle::String, kw...)
+function funding_rate(client::GateioClient = Gateio.Futures.public_client; settle::Settle, kw...)
     return funding_rate(client, settle, FundingRateQuery(; kw...))
 end
 

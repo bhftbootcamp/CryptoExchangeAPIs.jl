@@ -14,6 +14,8 @@ using CryptoAPIs: Maybe, APIsRequest
 
 @enum ContractType mark index
 
+@enum Settle btc usdt usd
+
 struct CandleQuery <: GateioPublicQuery
     contract::String
     from::Maybe{DateTime}
@@ -85,7 +87,7 @@ using CryptoAPIs.Gateio
 result = Gateio.Futures.candle(; 
     type = Gateio.Futures.Candle.mark,
     instrument_name = "BTC_USDT",
-    settle = "usdt",
+    settle = Gateio.Futures.Candle.usdt,
     interval = Gateio.Futures.Candle.d30,
 )
 
@@ -109,11 +111,11 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function candle(client::GateioClient, settle::String, query::CandleQuery)
+function candle(client::GateioClient, settle::Settle, query::CandleQuery)
     return APIsRequest{Vector{CandleData}}("GET", "api/v4/futures/$settle/candlesticks", query)(client)
 end
 
-function candle(client::GateioClient = Gateio.Futures.public_client; settle::String, kw...)
+function candle(client::GateioClient = Gateio.Futures.public_client; settle::Settle, kw...)
     return candle(client, settle, CandleQuery(; kw...))
 end
 
