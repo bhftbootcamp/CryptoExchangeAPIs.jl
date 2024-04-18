@@ -57,7 +57,7 @@ Exception thrown when an API method fails with code `T`.
 """
 struct GateioAPIError{T} <: AbstractAPIsError
     label::String
-    message::String
+    message::Maybe{String}
 
     function GateioAPIError(label::String, x...)
         return new{Symbol(label)}(label, x...)
