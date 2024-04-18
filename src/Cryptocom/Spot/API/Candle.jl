@@ -22,31 +22,31 @@ Base.@kwdef struct CandleQuery <: CryptocomPublicQuery
 end
 
 function Serde.ser_type(::Type{<:CandleQuery}, x::TimeInterval)::String
-  x == m1  && return "1m"
-  x == m5  && return "5m"
-  x == m15 && return "15m"
-  x == m30 && return "30m"
-  x == h1  && return "1h"
-  x == h2  && return "2h"
-  x == h4  && return "4h"
-  x == h12 && return "12h"
-  x == d1  && return "1D"
-  x == d7  && return "7D"
-  x == d14  && return "14D"
-  x == M1  && return "1M"
+    x == m1  && return "1m"
+    x == m5  && return "5m"
+    x == m15 && return "15m"
+    x == m30 && return "30m"
+    x == h1  && return "1h"
+    x == h2  && return "2h"
+    x == h4  && return "4h"
+    x == h12 && return "12h"
+    x == d1  && return "1D"
+    x == d7  && return "7D"
+    x == d14  && return "14D"
+    x == M1  && return "1M"
 end
 
 struct CandleInfo <: CryptocomData
-  o::Maybe{Float64}
-  h::Maybe{Float64}
-  l::Maybe{Float64}
-  c::Maybe{Float64}
-  v::Maybe{Float64}
-  t::NanoDate
+    o::Maybe{Float64}
+    h::Maybe{Float64}
+    l::Maybe{Float64}
+    c::Maybe{Float64}
+    v::Maybe{Float64}
+    t::NanoDate
 end
 
 function Serde.isempty(::Type{CandleInfo}, x)::Bool
-  return x === ""
+    return x === ""
 end
 
 struct CandleData <: CryptocomData
@@ -56,7 +56,7 @@ struct CandleData <: CryptocomData
 end
 
 function Serde.isempty(::Type{CandleData}, x)::Bool
-  return x == []
+    return x == []
 end
 
 """

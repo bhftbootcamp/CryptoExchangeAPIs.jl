@@ -30,7 +30,7 @@ struct TickerInfo <: CryptocomData
 end
 
 function Serde.isempty(::Type{TickerInfo}, x)::Bool
-  return x === ""
+    return x === ""
 end
 
 struct TickerData <: CryptocomData
@@ -38,7 +38,7 @@ struct TickerData <: CryptocomData
 end
 
 function Serde.isempty(::Type{TickerData}, x)::Bool
-  return x == []
+    return x == []
 end
 
 """

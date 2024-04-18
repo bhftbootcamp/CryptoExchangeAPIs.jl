@@ -32,7 +32,7 @@ struct InstrumentInfo <: CryptocomData
 end
 
 function Serde.isempty(::Type{InstrumentInfo}, x)::Bool
-  return x === ""
+    return x === ""
 end
 
 struct GetInstrumentsData <: CryptocomData
@@ -40,7 +40,7 @@ struct GetInstrumentsData <: CryptocomData
 end
 
 function Serde.isempty(::Type{GetInstrumentsData}, x)::Bool
-  return x == []
+    return x == []
 end
 
 """
