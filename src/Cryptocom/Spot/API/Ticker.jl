@@ -26,7 +26,7 @@ struct TickerInfo <: CryptocomData
     c::Maybe{Float64}
     b::Maybe{Float64}
     k::Maybe{Float64}
-    t::Int64
+    t::NanoDate
 end
 
 function Serde.isempty(::Type{TickerInfo}, x)::Bool
@@ -76,17 +76,17 @@ to_pretty_json(result.result)
   "result":{
     "data":[
       {
-        "h":"67273.3",
-        "l":"60120.8",
-        "a":"64502.3",
+        "h":63090.7,
+        "l":59671.8,
+        "a":62296.2,
         "i":"BTCUSD-PERP",
-        "v":"12027.5429",
-        "vv":"770370279.39",
-        "oi":"1805.8306",
-        "c":"-0.0394",
-        "b":"64493.6",
-        "k":"64501.4",
-        "t":1713114666097
+        "v":10797.3637,
+        "vv":6.6340329849e8,
+        "oi":1844.5729,
+        "c":0.0003,
+        "b":62294.3,
+        "k":62297.0,
+        "t":"2024-04-18T13:08:36.304999936"
       }
     ]
   }
