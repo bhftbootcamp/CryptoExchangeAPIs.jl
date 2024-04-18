@@ -13,9 +13,9 @@ CryptoAPIs.Bybit.Spot.candle(;
     limit = 4,
 )
 
-CryptoAPIs.Bybit.Spot.symbol_info()
-
 CryptoAPIs.Bybit.Spot.order_book(; symbol = "ADAUSDT")
+
+CryptoAPIs.Bybit.Spot.symbol_info()
 
 CryptoAPIs.Bybit.Spot.ticker(; symbol = "ADAUSDT")
 
@@ -25,6 +25,6 @@ bybit_client = BybitClient(;
     secret_key = ENV["BYBIT_SECRET_KEY"],
 )
 
-CryptoAPIs.Bybit.Spot.deposit(bybit_client)
-
 CryptoAPIs.Bybit.Spot.coin_info(bybit_client)
+
+CryptoAPIs.Bybit.Spot.deposit(bybit_client)

@@ -56,7 +56,6 @@ end
 | timestamp  | DateTime | false    |             |
 | signature  | String   | false    |             |
 
-
 ## Code samples:
 
 ```julia

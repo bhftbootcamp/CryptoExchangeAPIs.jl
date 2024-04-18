@@ -54,13 +54,13 @@ Market candlesticks.
 
 ## Parameters:
 
-| Parameter     | Type         | Required | Description |
-|:--------------|:-------------|:---------|:------------|
-| currency_pair | String       | true     |             |
-| from          | DateTime     | false    |             |
-| interval      | TimeInterval | false    |             |
-| limit         | Int64        | false    |             |
-| _end          | DateTime     | false    |             |
+| Parameter     | Type         | Required | Description                          |
+|:--------------|:-------------|:---------|:-------------------------------------|
+| currency_pair | String       | true     |                                      |
+| from          | DateTime     | false    |                                      |
+| interval      | TimeInterval | false    | s10 m1 m5 m15 m30 h1 h4 h8 d1 d7 d30 |
+| limit         | Int64        | false    |                                      |
+| _end          | DateTime     | false    |                                      |
 
 ## Code samples:
 

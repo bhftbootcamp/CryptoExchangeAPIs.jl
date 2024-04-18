@@ -47,13 +47,13 @@ end
 
 ## Parameters:
 
-| Parameter    | Type           | Required | Description                                    |
-|:-------------|:---------------|:---------|:-----------------------------------------------|
-| symbol       | String         | true     |                                                |
-| period       | TimeInterval   | true     | m5, m15, m30, h1, h2, h4, h6, h12, d1          |
-| endTime      | DateTime       | false    |                                                |
-| limit        | Int64          | false    | default 30, max 500                            |
-| startTime    | DateTime       | false    |                                                |
+| Parameter    | Type           | Required | Description                   |
+|:-------------|:---------------|:---------|:------------------------------|
+| symbol       | String         | true     |                               |
+| period       | TimeInterval   | true     | m5 m15 m30 h1 h2 h4 h6 h12 d1 |
+| endTime      | DateTime       | false    |                               |
+| limit        | Int64          | false    | Default: 30, Max: 500         |
+| startTime    | DateTime       | false    |                               |
 
 ## Code samples:
 

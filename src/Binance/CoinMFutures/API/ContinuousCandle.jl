@@ -65,14 +65,14 @@ Kline/candlestick bars for a specific contract type.
 
 ## Parameters:
 
-| Parameter    | Type           | Required | Description                                  |
-|:-------------|:---------------|:---------|:---------------------------------------------|
-| pair         | String         | true     |                                              |
-| contractType | ContractType   | true     | PERPETUAL, CURRENT\\_QUARTER, NEXT\\_QUARTER |
-| interval     | TimeInterval   | true     |                                              |
-| endTime      | DateTime       | false    |                                              |
-| limit        | Int64          | false    |                                              |
-| startTime    | DateTime       | false    |                                              |
+| Parameter    | Type           | Required | Description                                |
+|:-------------|:---------------|:---------|:-------------------------------------------|
+| pair         | String         | true     |                                            |
+| contractType | ContractType   | true     | PERPETUAL CURRENT\\_QUARTER NEXT\\_QUARTER |
+| interval     | TimeInterval   | true     |                                            |
+| endTime      | DateTime       | false    |                                            |
+| limit        | Int64          | false    |                                            |
+| startTime    | DateTime       | false    |                                            |
 
 ## Code samples:
 
