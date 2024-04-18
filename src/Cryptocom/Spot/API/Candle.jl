@@ -109,13 +109,6 @@ to_pretty_json(result.result)
         "v":150666.07457,
         "t":"2022-11-01T00:00:00"
       },
-      {
-        "o":17166.5,
-        "h":18372.46,
-        "l":16263.22,
-        "c":16539.69,
-        "v":51215.88412,
-        "t":"2022-12-01T00:00:00"
       ...
     ],
     "instrument_name":"BTC_USDT"
@@ -132,4 +125,3 @@ function candle(client::CryptocomClient = Cryptocom.Spot.public_client; kw...)
 end
 
 end
-
