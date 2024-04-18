@@ -69,6 +69,13 @@ Then, to install CryptoAPIs, simply use the Julia package manager:
                 <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Coinbase/#Spot">Spot</a></td>
             </tr>
             <tr>
+                <td><img src="docs/src/assets/cryptocom.png" alt="Cryptocom Logo" width="20" height="20"></td>
+                <td><a href="https://crypto.com/">Cryptocom</a></td>
+                <td><a href="https://exchange-docs.crypto.com/exchange/v1/rest-ws/index.html#introduction">Spot</a></td>
+                <td><a href="src/Cryptocom/Spot">CryptoAPIs.Cryptocom.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Cryptocom/#Spot">Spot</a></td>
+            </tr>
+            <tr>
                 <td><img src="docs/src/assets/gateio.png" alt="Gateio Logo" width="20" height="20"></td>
                 <td><a href="https://www.gate.io/">Gate.io</a></td>
                 <td><a href="https://www.gate.io/docs/developers/apiv4/">Spot</a></td>
@@ -95,13 +102,6 @@ Then, to install CryptoAPIs, simply use the Julia package manager:
                 <td><a href="https://global-docs.upbit.com/">Spot</a></td>
                 <td><a href="src/Upbit/Spot">CryptoAPIs.Upbit.Spot</a></td>
                 <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Upbit/#Spot">Spot</a></td>
-            </tr>
-            <tr>
-                <td><img src="docs/src/assets/cryptocom.png" alt="Cryptocom Logo" width="20" height="20"></td>
-                <td><a href="https://crypto.com/">Cryptocom</a></td>
-                <td><a href="https://exchange-docs.crypto.com/exchange/v1/rest-ws/index.html#introduction">Spot</a></td>
-                <td><a href="src/Cryptocom/Spot">CryptoAPIs.Cryptocom.Spot</a></td>
-                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Cryptocom/#Spot">Spot</a></td>
             </tr>
         </table>
     </body>
