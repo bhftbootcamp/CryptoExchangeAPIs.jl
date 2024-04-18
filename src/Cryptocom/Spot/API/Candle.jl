@@ -32,7 +32,7 @@ function Serde.ser_type(::Type{<:CandleQuery}, x::TimeInterval)::String
     x == h12 && return "12h"
     x == d1  && return "1D"
     x == d7  && return "7D"
-    x == d14  && return "14D"
+    x == d14 && return "14D"
     x == M1  && return "1M"
 end
 
