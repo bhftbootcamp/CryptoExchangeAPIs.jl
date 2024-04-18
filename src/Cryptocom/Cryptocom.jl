@@ -87,7 +87,7 @@ end
 CryptoAPIs.error_type(::CryptocomClient) = CryptocomAPIError
 
 function Base.show(io::IO, e::CryptocomAPIError)
-    return print(io, "code = ", "\"", e.code, "\"", ", ", "msg = ", "\"", e.message, "\"", "desc = ", "\"", e.description, "\"")
+    return print(io, "code = ", "\"", e.code, "\"", ", ", "msg = ", "\"", e.message, "\"", ", ", "desc = ", "\"", e.description, "\"")
 end
 
 struct CryptocomUndefError <: AbstractAPIsError
