@@ -26,10 +26,14 @@ end
 
 struct OrderBookData <: GateioData
     id::Maybe{Int64}
-    current::Float64
-    update::Float64
+    current::NanoDate
+    update::NanoDate
     asks::Vector{Order}
     bids::Vector{Order}
+end
+
+function Serde.deser(::Type{OrderBookData}, ::Type{<:Maybe{NanoDate}}, x::Float64)::NanoDate
+  return unixmillis2nanodate(x * 1000)
 end
 
 """
