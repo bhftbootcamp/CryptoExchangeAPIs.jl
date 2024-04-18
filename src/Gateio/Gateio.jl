@@ -119,4 +119,7 @@ include("Errors.jl")
 include("Spot/Spot.jl")
 using .Spot
 
+include("Futures/Futures.jl")
+using .Futures
+
 end
