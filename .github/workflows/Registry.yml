@@ -22,7 +22,7 @@ jobs:
       - uses: julia-actions/setup-julia@v2
         with:
           version: 1.9
-      - uses: julia-actions/cache@v1
+      - uses: julia-actions/cache@v2
       - name: Configure Git
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq git
