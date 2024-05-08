@@ -1,9 +1,21 @@
+![terminal](assets/terminal.gif)
+
 # CryptoAPIs.jl
 
 CryptoAPIs is a library written in Julia that combines API wrappers from various exchanges, simplifying access to market 💹 data.
 
-## Supported Exchange APIs
+## Installation
+If you haven't installed our [local registry](https://github.com/bhftbootcamp/Green) yet, do that first:
+```
+] registry add https://github.com/bhftbootcamp/Green.git
+```
 
+Then, to install CryptoAPIs, simply use the Julia package manager:
+```
+] add CryptoAPIs
+```
+
+## Supported Exchange APIs
 ```@raw html
 <html>
     <body>
@@ -88,28 +100,4 @@ CryptoAPIs is a library written in Julia that combines API wrappers from various
         </table>
     </body>
 </html>
-```
-
-## Quickstart
-
-```julia
-using CryptoAPIs
-using CryptoAPIs.Binance
-
-Binance.Spot.ticker(;
-    symbols = ["ADAUSDT", "BTCUSDT"]
-)
-
-Binance.Spot.candle(;
-    symbol = "ADAUSDT",
-    interval = Binance.Spot.Candle.M1
-)
-
-Binance.Spot.avg_price(;
-    symbol = "ADAUSDT"
-)
-
-Binance.Spot.order_book(;
-    symbol = "ADAUSDT"
-)
 ```
