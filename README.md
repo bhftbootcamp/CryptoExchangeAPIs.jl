@@ -88,7 +88,14 @@ Then, to install CryptoAPIs, simply use the Julia package manager:
                 <td><a href="https://www.gate.io/docs/developers/apiv4/">Futures</a></td>
                 <td><a href="src/Gateio/Futures">CryptoAPIs.Gateio.Futures</a></td>
                 <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Gateio/#Futures">Futures</a></td>
-            </tr>     
+            </tr>
+            <tr>
+                <td><img src="docs/src/assets/kucoin.png" alt="Kucoin Logo" width="20" height="20"></td>
+                <td><a href="https://www.kucoin.com/">Kucoin</a></td>
+                <td><a href="https://www.kucoin.com/docs/beginners/introduction">Spot</a></td>
+                <td><a href="src/Kucoin/Spot">CryptoAPIs.Kucoin.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Kucoin/#Spot">Spot</a></td>
+            </tr>
             <tr>
                 <td><img src="docs/src/assets/okex.png" alt="Okex Logo" width="20" height="20"></td>
                 <td><a href="https://www.okx.com/">Okex</a></td>
