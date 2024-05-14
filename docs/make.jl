@@ -22,6 +22,7 @@ makedocs(;
         "pages/Coinbase.md",
         "pages/Cryptocom.md",
         "pages/Gateio.md",
+        "pages/Kucoin.md",
         "pages/Okex.md",
         "pages/Upbit.md",
         "For Developers" => [
