@@ -27,7 +27,7 @@ abstract type KucoinPrivateQuery <: KucoinCommonQuery end
 - `code::Int64`: Result code.
 - `data::D`: Result data.
 """
-struct Data{D<:Union{A,Vector{A}} where {A<:AbstractAPIsData}}
+struct Data{D<:Union{A,Vector{A}} where {A<:AbstractAPIsData}} <: AbstractAPIsData
     code::Int64
     data::D
 end

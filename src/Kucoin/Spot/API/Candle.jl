@@ -52,16 +52,16 @@ end
 
 Request via this endpoint to get the kline of the specified symbol.
 
-[`GET api/v1/market/candles`](https://docs.kucoin.com/#get-klines)
+[`GET api/v1/market/candles`](https://www.kucoin.com/docs/rest/spot-trading/market-data/get-klines)
 
 ## Parameters:
 
-| Parameter | Type         | Required | Description |
-|:----------|:-------------|:---------|:------------|
-| symbol    | String       | true     |             |
-| type      | TimeInterval | true     |             |
-| endAt     | DateTime     | false    |             |
-| startAt   | DateTime     | false    |             |
+| Parameter | Type         | Required | Description                               |
+|:----------|:-------------|:---------|:------------------------------------------|
+| symbol    | String       | true     |                                           |
+| type      | TimeInterval | true     | m1 m3 m5 m15 m30 h1 h2 h4 h6 h8 h12 d1 w1 |
+| endAt     | DateTime     | false    |                                           |
+| startAt   | DateTime     | false    |                                           |
 
 ## Code samples:
 
@@ -80,7 +80,21 @@ to_pretty_json(result.result)
 ## Result:
 
 ```json
-
+{
+  "code":200000,
+  "data":[
+    {
+      "time":"2024-05-14T10:37:00",
+      "open":61665.9,
+      "close":61676.4,
+      "high":61676.4,
+      "low":61660.3,
+      "volume":0.61931855,
+      "turnover":38189.806617378
+    },
+    ...
+  ]
+}
 ```
 """
 function candle(client::KucoinClient, query::CandleQuery)

@@ -41,21 +41,21 @@ end
     deposit(client::KucoinClient, query::DepositQuery)
     deposit(client::KucoinClient; kw...)
 
-equest via this endpoint to get the V1 historical deposits list on KuCoin.
+Request via this endpoint to get the V1 historical deposits list on KuCoin.
 
-[`GET api/v1/hist-deposits`](https://docs.kucoin.com/#get-v1-historical-deposits-list)
+[`GET api/v1/hist-deposits`](https://www.kucoin.com/docs/rest/funding/deposit/get-v1-historical-deposits-list)
 
 ## Parameters:
 
-| Parameter  | Type     | Required | Description |
-|:---------- |:---------|:---------|:------------|
-| currency   | String   | false    |             |
-| endAt      | DateTime | false    |             |
-| startAt    | DateTime | false    |             |
-| status     | Status   | false    |             |
-| passphrase | String   | false    |             |
-| signature  | String   | false    |             |
-| timestamp  | DateTime | false    |             |
+| Parameter  | Type     | Required | Description                  |
+|:---------- |:---------|:---------|:-----------------------------|
+| currency   | String   | false    |                              |
+| endAt      | DateTime | false    |                              |
+| startAt    | DateTime | false    |                              |
+| status     | Status   | false    | PROCESSING, SUCCESS, FAILURE |
+| passphrase | String   | false    |                              |
+| signature  | String   | false    |                              |
+| timestamp  | DateTime | false    |                              |
 
 ## Code samples:
 
