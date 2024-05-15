@@ -65,7 +65,7 @@ kraken_client = Kraken.KrakenClient(;
 result = Kraken.Spot.deposit_method(
     kraken_client;
     asset = "XBT",
-) 
+)
 
 to_pretty_json(result.result)
 ```

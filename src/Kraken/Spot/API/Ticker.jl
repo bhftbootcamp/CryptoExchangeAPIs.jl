@@ -63,7 +63,7 @@ using CryptoAPIs.Kraken
 
 result = Kraken.Spot.ticker(;
     air = "XBTUSD",
-) 
+)
 
 to_pretty_json(result.result)
 ```

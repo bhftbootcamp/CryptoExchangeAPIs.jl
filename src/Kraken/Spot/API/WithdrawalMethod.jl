@@ -60,7 +60,7 @@ kraken_client = Kraken.KrakenClient(;
 result = Kraken.Spot.withdrawal_method(
     kraken_client;
     asset = "XBT"
-) 
+)
 
 to_pretty_json(result.result)
 ```

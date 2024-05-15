@@ -59,7 +59,7 @@ using CryptoAPIs.Kraken
 result = Kraken.Spot.order_book(;
     pair = "XBTUSD",
     count = 10,
-) 
+)
 
 to_pretty_json(result.result)
 ```

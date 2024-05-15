@@ -93,7 +93,7 @@ result = Kraken.Spot.ledger_info_log(
     asset = "XBT",
     start = Dates.DateTime("2021-04-03T15:33:20"),
     _end = Dates.DateTime("2022-04-03T15:33:20"),
-) 
+)
 
 to_pretty_json(result.result)
 ```

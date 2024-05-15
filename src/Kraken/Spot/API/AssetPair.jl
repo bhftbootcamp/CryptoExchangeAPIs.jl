@@ -86,7 +86,7 @@ using CryptoAPIs.Kraken
 
 result = Kraken.Spot.asset_pair(;
     pair = "ACAUSD"
-) 
+)
 
 to_pretty_json(result.result)
 ```
