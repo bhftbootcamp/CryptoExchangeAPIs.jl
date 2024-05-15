@@ -63,7 +63,6 @@ struct LeverageData <: KrakenData
     leverage_sell::Maybe{Vector{Int64}}
 end
 
-
 """
     asset_pair(client::KrakenClient, query::AssetPairQuery)
     asset_pair(client::KrakenClient = Kraken.Spot.public_client; kw...)
