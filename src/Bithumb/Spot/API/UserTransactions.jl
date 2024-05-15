@@ -90,10 +90,8 @@ bithumb_client = Bithumb.Client(;
 
 result = Bithumb.Spot.user_transactions(
     bithumb_client;
-    order_currency = "ETH",
-    payment_currency = "BTC",
-    count = 50,
-    searchGb = Bithumb.Spot.UserTransactions.ALL,
+    order_currency = "BTC",
+    payment_currency = "KRW",
 )
 
 to_pretty_json(result.result)
@@ -102,7 +100,26 @@ to_pretty_json(result.result)
 ## Result:
 
 ```json
-
+{
+  "status": "0000",
+  "date":null,
+  "data": [
+    {
+      "search":1,
+      "transfer_date":"2019-10-28T11:44:57.148",
+      "order_currency":"BTC",
+      "payment_currency":"KRW",
+      "units":0.0001,
+      "price":10000000.0,
+      "amount":1000.0,
+      "fee_currency":"KRW",
+      "fee":2.5,
+      "order_balance":6.498881591872,
+      "payment_balance":1140499718.0
+    },
+    ...
+  ]
+}
 ```
 """
 function user_transactions(client::BithumbClient, query::UserTransactionsQuery)
