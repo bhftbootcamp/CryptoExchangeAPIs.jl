@@ -49,6 +49,8 @@ end
     ticker(client::BithumbClient, query::TikerQuery)
     ticker(client::BithumbClient = Bithumb.Spot.public_client; kw...)
 
+Provides information on the current price of virtual assets at the time of request.
+
 [`GET /public/ticker/{order_currency}_{payment_currency}`](https://apidocs.bithumb.com/reference/현재가-정보-조회)
 
 ## Parameters:

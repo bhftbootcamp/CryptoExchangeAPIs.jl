@@ -48,6 +48,8 @@ end
     candle(client::BithumbClient, query::CandleQuery)
     candle(client::BithumbClient = Bithumb.Spot.public_client; kw...)
 
+Provides virtual asset price and trading volume information by time and section.
+
 [`GET public/candlestick/{order_currency}_{payment_currency}/{chart_intervals}`](https://apidocs.bithumb.com/reference/candlestick-rest-api)
 
 ## Parameters:

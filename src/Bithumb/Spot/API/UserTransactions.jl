@@ -59,6 +59,8 @@ end
     user_transactions(client::BithumbClient, query::UserTransactionsQuery)
     user_transactions(client::BithumbClient; kw...)
 
+Provides information on member transaction completion details.
+
 [`POST /info/user_transactions`](https://apidocs.bithumb.com/reference/거래-체결내역-조회)
 
 ## Parameters:

@@ -50,6 +50,8 @@ end
     order_book(client::BithumbClient, query::OrderBookQuery)
     order_book(client::BithumbClient = Bithumb.Spot.public_client; kw...)
 
+  Provides exchange quote information.
+
 [`GET /public/orderbook/{order_currency}_{payment_currency}`](https://apidocs.bithumb.com/reference/%ED%98%B8%EA%B0%80-%EC%A0%95%EB%B3%B4-%EC%A1%B0%ED%9A%8C)
 
 ## Parameters:

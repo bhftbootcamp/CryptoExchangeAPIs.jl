@@ -28,6 +28,8 @@ end
     asset_status(client::BithumbClient, query::AssetStatusQuery)
     asset_status(client::BithumbClient = Bithumb.Spot.public_client; kw...)
 
+Provides information on the deposit/withdrawal status of virtual assets.
+
 [`GET /public/assetsstatus/multichain/{currency}`](https://apidocs.bithumb.com/reference/%EC%9E%85%EC%B6%9C%EA%B8%88-%EC%A7%80%EC%9B%90-%ED%98%84%ED%99%A9)
 
 ## Parameters:
