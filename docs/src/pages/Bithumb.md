@@ -17,5 +17,5 @@ CryptoAPIs.Bithumb.Spot.asset_status
 CryptoAPIs.Bithumb.Spot.candle
 CryptoAPIs.Bithumb.Spot.order_book
 CryptoAPIs.Bithumb.Spot.ticker
-CryptoAPIs.Bithumb.Spot.user_transactions_log
+CryptoAPIs.Bithumb.Spot.user_transactions
 ```

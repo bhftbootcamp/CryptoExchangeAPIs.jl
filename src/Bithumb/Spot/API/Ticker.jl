@@ -18,7 +18,6 @@ Base.@kwdef struct TickerQuery <: BithumbPublicQuery
 end
 
 Serde.SerQuery.ser_ignore_field(::Type{TickerQuery}, ::Val{:order_currency}) = true
-
 Serde.SerQuery.ser_ignore_field(::Type{TickerQuery}, ::Val{:payment_currency}) = true
 
 struct TickerData <: BithumbData

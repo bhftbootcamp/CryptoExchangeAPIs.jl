@@ -20,7 +20,7 @@ using .OrderBook
 include("API/Ticker.jl")
 using .Ticker
 
-include("API/UserTransactionsLog.jl")
-using .UserTransactionsLog
+include("API/UserTransactions.jl")
+using .UserTransactions
 
 end

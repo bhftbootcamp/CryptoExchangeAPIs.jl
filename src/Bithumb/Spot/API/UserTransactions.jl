@@ -1,8 +1,8 @@
-module UserTransactionsLog
+module UserTransactions
 
-export UserTransactionsLogQuery,
-    UserTransactionsLogData,
-    user_transactions_log
+export UserTransactionsQuery,
+    UserTransactionsData,
+    user_transactions
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -25,7 +25,7 @@ function Serde.SerQuery.ser_type(::Type{<:BithumbPrivateQuery}, x::SearchStatus)
     return Int64(x)
 end
 
-Base.@kwdef mutable struct UserTransactionsLogQuery <: BithumbPrivateQuery
+Base.@kwdef mutable struct UserTransactionsQuery <: BithumbPrivateQuery
     order_currency::String
     payment_currency::String
     count::Int64 = 20
@@ -37,7 +37,7 @@ Base.@kwdef mutable struct UserTransactionsLogQuery <: BithumbPrivateQuery
     signature::Maybe{String} = nothing
 end
 
-struct UserTransactionsLogData <: BithumbData
+struct UserTransactionsData <: BithumbData
     amount::Float64
     fee::Float64
     fee_currency::String
@@ -51,13 +51,13 @@ struct UserTransactionsLogData <: BithumbData
     units::Float64
 end
 
-function Serde.deser(::Type{<:UserTransactionsLogData}, ::Type{<:Maybe{Float64}}, x::String)::Float64
+function Serde.deser(::Type{<:UserTransactionsData}, ::Type{<:Maybe{Float64}}, x::String)::Float64
     return parse(Float64, replace(x, "," => "", " " => ""))
 end
 
 """
-    user_transactions_log(client::BithumbClient, query::UserTransactionsLogQuery)
-    user_transactions_log(client::BithumbClient; kw...)
+    user_transactions(client::BithumbClient, query::UserTransactionsQuery)
+    user_transactions(client::BithumbClient; kw...)
 
 [`POST /info/user_transactions`](https://apidocs.bithumb.com/reference/거래-체결내역-조회)
 
@@ -86,12 +86,12 @@ bithumb_client = Bithumb.Client(;
     secret_key = ENV["BITHUMB_SECRET_KEY"],
 )
 
-result = Bithumb.Spot.user_transactions_log(
+result = Bithumb.Spot.user_transactions(
     bithumb_client;
     order_currency = "ETH",
     payment_currency = "BTC",
     count = 50,
-    searchGb = Bithumb.Spot.UserTransactionsLog.ALL,
+    searchGb = Bithumb.Spot.UserTransactions.ALL,
 )
 
 to_pretty_json(result.result)
@@ -103,12 +103,12 @@ to_pretty_json(result.result)
 
 ```
 """
-function user_transactions_log(client::BithumbClient, query::UserTransactionsLogQuery)
-    return APIsRequest{Data{Vector{UserTransactionsLogData}}}("POST", "info/user_transactions", query)(client)
+function user_transactions(client::BithumbClient, query::UserTransactionsQuery)
+    return APIsRequest{Data{Vector{UserTransactionsData}}}("POST", "info/user_transactions", query)(client)
 end
 
-function user_transactions_log(client::BithumbClient = Bithumb.Spot.public_client; kw...)
-    return user_transactions_log(client, UserTransactionsLogQuery(; kw...))
+function user_transactions(client::BithumbClient = Bithumb.Spot.public_client; kw...)
+    return user_transactions(client, UserTransactionsQuery(; kw...))
 end
 
 end

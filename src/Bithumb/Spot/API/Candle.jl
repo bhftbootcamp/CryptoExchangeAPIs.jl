@@ -32,9 +32,7 @@ function Serde.ser_type(::Type{<:CandleQuery}, x::TimeInterval)::String
 end
 
 Serde.SerQuery.ser_ignore_field(::Type{CandleQuery}, ::Val{:order_currency}) = true
-
 Serde.SerQuery.ser_ignore_field(::Type{CandleQuery}, ::Val{:payment_currency}) = true
-
 Serde.SerQuery.ser_ignore_field(::Type{CandleQuery}, ::Val{:interval}) = true
 
 struct CandleData <: BithumbData

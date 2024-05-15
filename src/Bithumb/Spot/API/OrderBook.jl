@@ -7,10 +7,10 @@ export OrderBookQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs
 using CryptoAPIs.Bithumb
 using CryptoAPIs.Bithumb: Data
 using CryptoAPIs: Maybe, APIsRequest
+import CryptoAPIs: prepare_json!
 
 Base.@kwdef struct OrderBookQuery <: BithumbPublicQuery
     count::Maybe{Int64} = nothing
@@ -19,7 +19,6 @@ Base.@kwdef struct OrderBookQuery <: BithumbPublicQuery
 end
 
 Serde.SerQuery.ser_ignore_field(::Type{OrderBookQuery}, ::Val{:order_currency}) = true
-
 Serde.SerQuery.ser_ignore_field(::Type{OrderBookQuery}, ::Val{:payment_currency}) = true
 
 struct Level
@@ -35,7 +34,7 @@ struct OrderBookData <: BithumbData
     timestamp::NanoDate
 end
 
-function CryptoAPIs.prepare_json!(::Type{T}, json::Dict{String,Any}) where {T<:Data{Dict{String,OrderBookData}}}
+function prepare_json!(::Type{T}, json::Dict{String,Any}) where {T<:Data{Dict{String,OrderBookData}}}
     for (_, item) in json["data"]
         if item isa AbstractDict
             item["payment_currency"] = json["data"]["payment_currency"]
