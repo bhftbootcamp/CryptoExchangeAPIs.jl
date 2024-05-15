@@ -24,7 +24,7 @@ struct TickerData <: BithumbData
     acc_trade_value::Maybe{Float64}
     acc_trade_value_24H::Maybe{Float64}
     closing_price::Maybe{Float64}
-    date::Maybe{NanoDate}
+    date::NanoDate
     fluctate_24H::Maybe{Float64}
     fluctate_rate_24H::Maybe{Float64}
     max_price::Maybe{Float64}
