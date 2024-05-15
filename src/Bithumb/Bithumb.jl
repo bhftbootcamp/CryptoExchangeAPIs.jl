@@ -97,7 +97,7 @@ function CryptoAPIs.request_sign!(client::BithumbClient, query::Q, endpoint::Str
     query.endpoint = replace("/$endpoint", "/" => "%2F")
     query.signature = nothing
     body = Serde.to_query(query)
-    salt = string("/", endpoint, Char(0), body, Char(0), 1000 * datetime2unix(query.nonce))
+    salt = string("/", endpoint, Char(0), body, Char(0), round(Int64, 1000 * datetime2unix(query.nonce)))
     query.signature = Base64.base64encode(hexdigest("sha512", client.secret_key, salt))
     return query
 end
@@ -124,7 +124,7 @@ function CryptoAPIs.request_headers(client::BithumbClient, query::BithumbPrivate
     return Pair{String,String}[
         "Api-Key"   => client.public_key,
         "Api-Sign"  => query.signature,
-        "Api-Nonce" => string(1000 * datetime2unix(query.nonce)),
+        "Api-Nonce" => string(round(Int64, 1000 * datetime2unix(query.nonce))),
     ]
 end
 
