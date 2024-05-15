@@ -109,7 +109,7 @@ function user_transactions(client::BithumbClient, query::UserTransactionsQuery)
     return APIsRequest{Data{Vector{UserTransactionsData}}}("POST", "info/user_transactions", query)(client)
 end
 
-function user_transactions(client::BithumbClient = Bithumb.Spot.public_client; kw...)
+function user_transactions(client::BithumbClient; kw...)
     return user_transactions(client, UserTransactionsQuery(; kw...))
 end
 
