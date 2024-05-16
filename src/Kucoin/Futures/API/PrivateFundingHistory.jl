@@ -25,7 +25,7 @@ Base.@kwdef mutable struct PrivateFundingHistoryQuery <: KucoinPrivateQuery
     timestamp::Maybe{DateTime} = nothing
 end
 
-struct Datalist <: KucoinData
+struct DataList <: KucoinData
     id::Int64
     symbol::String
     timePoint::NanoDate
@@ -37,12 +37,12 @@ struct Datalist <: KucoinData
     settleCurrency::String
 end
 
-function Serde.isempty(::Type{Datalist}, x)::Bool
+function Serde.isempty(::Type{DataList}, x)::Bool
     return x === ""
 end
 
 struct PrivateFundingHistoryData <: KucoinData
-    dataList::Vector{Datalist}
+    dataList::Vector{DataList}
     hasMore::Bool
 end
 
