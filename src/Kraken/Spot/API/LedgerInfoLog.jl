@@ -81,7 +81,7 @@ Retrieve information about ledger entries. 50 results are returned at a time, th
 using Serde
 using CryptoAPIs.Kraken
 
-kraken_client = Kraken.KrakenClient(;
+kraken_client = KrakenClient(;
     base_url = "https://api.kraken.com",
     public_key = ENV["KRAKEN_PUBLIC_KEY"],
     secret_key = ENV["KRAKEN_SECRET_KEY"],

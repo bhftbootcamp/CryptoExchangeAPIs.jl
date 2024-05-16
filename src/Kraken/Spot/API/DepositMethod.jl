@@ -56,7 +56,7 @@ Retrieve methods available for depositing a particular asset.
 using Serde
 using CryptoAPIs.Kraken
 
-kraken_client = Kraken.KrakenClient(;
+kraken_client = KrakenClient(;
     base_url = "https://api.kraken.com",
     public_key = ENV["KRAKEN_PUBLIC_KEY"],
     secret_key = ENV["KRAKEN_SECRET_KEY"],

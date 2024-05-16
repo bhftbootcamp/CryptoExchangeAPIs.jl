@@ -36,14 +36,6 @@ struct AssetData <: KrakenData
     status::AssetStatus
 end
 
-function Serde.deser(::Type{AssetData}, ::Type{AssetStatus}, x::String)::AssetStatus
-    x == "enabled"                      && return enabled
-    x == "deposit_only"                 && return deposit_only
-    x == "withdrawal_only"              && return withdrawal_only
-    x == "funding_temporarily_disabled" && return funding_temporarily_disabled
-    nothing
-end
-
 """
     asset(client::KrakenClient, query::AssetQuery)
     asset(client::KrakenClient = Kraken.Spot.public_client; kw...)

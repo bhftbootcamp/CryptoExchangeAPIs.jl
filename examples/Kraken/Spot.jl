@@ -21,7 +21,7 @@ CryptoAPIs.Kraken.Spot.order_book(; pair = "XBTUSD", count = 10)
 CryptoAPIs.Kraken.Spot.ticker()
 CryptoAPIs.Kraken.Spot.ticker(; pair = "XBTUSD")
 
-kraken_client = CryptoAPIs.Kraken.KrakenClient(;
+kraken_client = KrakenClient(;
     base_url = "https://api.kraken.com",
     public_key = ENV["KRAKEN_PUBLIC_KEY"],
     secret_key = ENV["KRAKEN_SECRET_KEY"],

@@ -69,7 +69,7 @@ Exception thrown when an API method fails with code `T`.
 struct KrakenAPIError{T} <: AbstractAPIsError
     error::Vector{String}
 
-    function APIsError(error::Vector{String})
+    function KrakenAPIError(error::Vector{String})
         return new{Symbol(error[1])}(error)
     end
 end
