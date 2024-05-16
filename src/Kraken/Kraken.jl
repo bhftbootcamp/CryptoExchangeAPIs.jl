@@ -98,12 +98,20 @@ function CryptoAPIs.request_sign!(::KrakenClient, query::Q, ::String)::Q where {
     return query
 end
 
-function CryptoAPIs.request_body(::Q)::String where {Q<:KrakenCommonQuery}
+function CryptoAPIs.request_body(::Q)::String where {Q<:KrakenPublicQuery}
     return ""
 end
 
-function CryptoAPIs.request_query(query::Q)::String where {Q<:KrakenCommonQuery}
+function CryptoAPIs.request_body(query::Q)::String where {Q<:KrakenPrivateQuery}
     return Serde.to_query(query)
+end
+
+function CryptoAPIs.request_query(query::Q)::String where {Q<:KrakenPublicQuery}
+    return Serde.to_query(query)
+end
+
+function CryptoAPIs.request_query(::Q)::String where {Q<:KrakenPrivateQuery}
+    return ""
 end
 
 function CryptoAPIs.request_headers(::KrakenClient, ::KrakenPublicQuery)::Vector{Pair{String,String}}
