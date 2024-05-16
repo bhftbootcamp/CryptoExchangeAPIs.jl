@@ -51,8 +51,8 @@ struct CandleData <: BybitData
 end
 
 """
-    Bybit(client::BybitClient, query::CandleQuery)
-    Bybit(client::BybitClient = Bybit.Spot.public_client; kw...)
+    candle(client::BybitClient, query::CandleQuery)
+    candle(client::BybitClient = Bybit.Spot.public_client; kw...)
 
 [`GET /spot/v3/public/quote/kline`](https://bybit-exchange.github.io/docs/spot/public/kline#http-request)
 
