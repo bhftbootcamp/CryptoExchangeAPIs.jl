@@ -8,6 +8,7 @@ export BithumbCommonQuery,
     BithumbClient,
     BithumbData
 
+using EasyCurl
 using Serde
 using Dates, NanoDates, TimeZones, Base64, Nettle
 
@@ -94,7 +95,7 @@ end
 
 function CryptoAPIs.request_sign!(client::BithumbClient, query::Q, endpoint::String)::Q where {Q<:BithumbPrivateQuery}
     query.nonce = Dates.now(UTC)
-    query.endpoint = replace("/$endpoint", "/" => "%2F")
+    query.endpoint = EasyCurl.urlencode(endpoint)
     query.signature = nothing
     body = Serde.to_query(query)
     salt = string("/", endpoint, Char(0), body, Char(0), round(Int64, 1000 * datetime2unix(query.nonce)))
