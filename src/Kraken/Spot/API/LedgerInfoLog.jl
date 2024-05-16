@@ -45,7 +45,7 @@ struct Ledger <: KrakenData
     fee::Maybe{String}
     refid::Maybe{String}
     subtype::Maybe{String}
-    time::Maybe{NanoDate}
+    time::NanoDate
     type::Maybe{String}
 end
 
@@ -56,7 +56,7 @@ end
 
 """
     ledger_info_log(client::KrakenClient, query::LedgerInfoLogQuery)
-    ledger_info_log(client::KrakenClient = Kraken.Spot.public_client; kw...)
+    ledger_info_log(client::KrakenClient; kw...)
 
 Retrieve information about ledger entries. 50 results are returned at a time, the most recent by default.
 

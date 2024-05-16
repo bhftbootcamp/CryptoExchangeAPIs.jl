@@ -29,7 +29,7 @@ end
 
 """
     withdrawal_method(client::KrakenClient, query::WithdrawalMethodQuery)
-    withdrawal_method(client::KrakenClient = Kraken.Spot.public_client; kw...)
+    withdrawal_method(client::KrakenClient; kw...)
 
 Retrieve a list of withdrawal methods available for the user.
 

@@ -13,5 +13,5 @@ function Serde.ser_ignore_field(::Type{<:KrakenCommonQuery}, ::Val{:signature}):
 end
 
 function Serde.SerQuery.ser_type(::Type{<:KrakenCommonQuery}, dt::D)::Int64 where {D<:DateTime}
-    return round(Int64, 1000 * datetime2unix(dt))
+    return round(Int64, datetime2unix(dt))
 end

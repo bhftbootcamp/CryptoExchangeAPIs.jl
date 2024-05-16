@@ -33,7 +33,7 @@ function Serde.ser_type(::Type{CandleQuery}, x::TimeInterval)::Int64
 end
 
 struct CandleData <: KrakenData
-    time::Maybe{NanoDate}
+    time::NanoDate
     open::Maybe{Float64}
     high::Maybe{Float64}
     low::Maybe{Float64}

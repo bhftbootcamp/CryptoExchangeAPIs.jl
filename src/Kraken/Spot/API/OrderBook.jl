@@ -27,14 +27,6 @@ struct OrderBookData <: KrakenData
     bids::Vector{OrderBookLevel}
 end
 
-function Serde.deser(::Type{OrderBookLevel}, x::Vector{Any})::OrderBookLevel
-    return OrderBookLevel(
-        tryparse(Float64, x[1]),
-        tryparse(Float64, x[2]),
-        unix2datetime(x[3]),
-    )
-end
-
 """
     order_book(client::KrakenClient, query::OrderBookQuery)
     order_book(client::KrakenClient = Kraken.Spot.public_client; kw...)

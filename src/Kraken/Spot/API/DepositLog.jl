@@ -42,13 +42,16 @@ struct DepositLogData <: KrakenData
 end
 
 function Serde.deser(::Type{DepositLogData}, ::Type{StatusProp}, x::String)::StatusProp
-    x == "return" && return _return
-    x == "onhold" && return onhold
+    x == "cancel-pending" && return cancel_pending
+    x == "canceled"       && return canceled
+    x == "cancel-denied"  && return cancel_denied
+    x == "return"         && return _return
+    x == "onhold"         && return onhold
 end
 
 """
     deposit_log(client::KrakenClient, query::DepositLogQuery)
-    deposit_log(client::KrakenClient = Kraken.Spot.public_client; kw...)
+    deposit_log(client::KrakenClient; kw...)
 
 Retrieve information about recent deposits. Any deposits initiated in the past 90 days will be included in the response.
 

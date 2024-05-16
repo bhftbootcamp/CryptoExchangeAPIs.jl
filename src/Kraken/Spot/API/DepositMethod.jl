@@ -36,7 +36,7 @@ end
 
 """
     deposit_method(client::KrakenClient, query::DepositMethodQuery)
-    deposit_method(client::KrakenClient = Kraken.Spot.public_client; kw...)
+    deposit_method(client::KrakenClient; kw...)
 
 Retrieve methods available for depositing a particular asset.
 

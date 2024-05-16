@@ -30,15 +30,7 @@ struct TickerData <: KrakenData
     t::Maybe{Vector{Int64}}
     l::Maybe{Vector{Float64}}
     h::Maybe{Vector{Float64}}
-    o::Maybe{Float64}
-end
-
-function Serde.deser(::Type{Level}, x::Vector{Any})::Level
-    return Level(
-        tryparse(Float64, x[1]),
-        tryparse(Float64, x[2]),
-        tryparse(Float64, x[3]),
-    )
+    o::Float64
 end
 
 """

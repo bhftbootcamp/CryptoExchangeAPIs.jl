@@ -1,7 +1,9 @@
 module AssetPair
 
 export AssetPairQuery,
-    AssetPairData,
+    AssetPairInfoData,
+    AssetPairFeeData,
+    AssetPairLeverageData,
     asset_pair
 
 using Serde
@@ -23,7 +25,7 @@ struct Fee <: KrakenData
     percent::Float64
 end
 
-struct AssetPairData <: KrakenData
+struct AssetPairInfoData <: KrakenData
     _quote::String
     aclass_base::String
     aclass_quote::String
@@ -48,7 +50,7 @@ struct AssetPairData <: KrakenData
     wsname::String
 end
 
-function Serde.custom_name(::Type{AssetPairData}, ::Val{:_quote})
+function Serde.custom_name(::Type{AssetPairInfoData}, ::Val{:_quote})
     return "quote"
 end
 
@@ -59,8 +61,8 @@ struct AssetPairFeeData <: KrakenData
 end
 
 struct AssetPairLeverageData <: KrakenData
-    leverage_buy::Maybe{Vector{Int64}}
-    leverage_sell::Maybe{Vector{Int64}}
+    leverage_buy::Vector{Int64}
+    leverage_sell::Vector{Int64}
 end
 
 """
@@ -139,7 +141,7 @@ to_pretty_json(result.result)
 """
 function asset_pair(client::KrakenClient, query::AssetPairQuery)
     T = if query.info == info
-        Dict{String,AssetPairData}
+        Dict{String,AssetPairInfoData}
     elseif query.info == fees
         Dict{String,AssetPairFeeData}
     elseif query.info == leverage
