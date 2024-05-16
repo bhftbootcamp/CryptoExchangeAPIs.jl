@@ -23,6 +23,7 @@ makedocs(;
         "pages/Gateio.md",
         "pages/Kucoin.md",
         "pages/Okex.md",
+        "pages/Poloniex.md",
         "pages/Upbit.md",
         "For Developers" => [
             "pages/docs_miniguide.md",
