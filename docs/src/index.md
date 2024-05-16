@@ -84,6 +84,13 @@ Then, to install CryptoAPIs, simply use the Julia package manager:
                 <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Gateio/#Futures">Futures</a></td>
             </tr>
             <tr>
+                <td><img src="assets/huobi.png" alt="Huobi Logo" width="20" height="20"></td>
+                <td><a href="https://www.htx.com/">Huobi</a></td>
+                <td><a href="https://www.htx.com/en-us/opend/newApiPages">Spot</a></td>
+                <td><a href="src/Huobi/Futures">CryptoAPIs.Huobi.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Huobi/#Spot">Spot</a></td>
+            </tr>
+            <tr>
                 <td><img src="assets/kucoin.png" alt="Kucoin Logo" width="20" height="20"></td>
                 <td><a href="https://www.kucoin.com/">Kucoin</a></td>
                 <td><a href="https://www.kucoin.com/docs/beginners/introduction">Spot</a></td>
