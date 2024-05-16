@@ -94,7 +94,7 @@ end
 
 function CryptoAPIs.request_sign!(client::BithumbClient, query::Q, endpoint::String)::Q where {Q<:BithumbPrivateQuery}
     query.nonce = Dates.now(UTC)
-    query.endpoint = Serde.SerQuery.escape_query(endpoint)
+    query.endpoint = Serde.SerQuery.escape_query("/" * endpoint)
     query.signature = nothing
     body = Serde.to_query(query)
     salt = string("/", endpoint, Char(0), body, Char(0), round(Int64, 1000 * datetime2unix(query.nonce)))
