@@ -27,14 +27,6 @@ end
     onhold                  # withdrawal is on hold pending review
 end
 
-function Serde.deser(::Type{DepositLogQuery}, ::Type{StatusProp}, x::String)::StatusProp
-    x == "cancel-pending" && return cancel_pending
-    x == "canceled"       && return canceled
-    x == "cancel-denied"  && return cancel_denied
-    x == "return"         && return _return
-    x == "onhold"         && return onhold
-end
-
 struct DepositLogData <: KrakenData
     aclass::String
     amount::Float64

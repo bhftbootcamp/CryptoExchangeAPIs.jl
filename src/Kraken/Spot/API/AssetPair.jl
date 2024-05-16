@@ -18,7 +18,7 @@ Base.@kwdef struct AssetPairQuery <: KrakenPublicQuery
     info::AssetPairInfo = info
 end
 
-struct Fee
+struct Fee <: KrakenData
     volume::Int64
     percent::Float64
 end
@@ -52,13 +52,13 @@ function Serde.custom_name(::Type{AssetPairData}, ::Val{:_quote})
     return "quote"
 end
 
-struct FeeData <: KrakenData
+struct AssetPairFeeData <: KrakenData
     fee_volume_currency::String
     fees::Vector{Fee}
     fees_maker::Vector{Fee}
 end
 
-struct LeverageData <: KrakenData
+struct AssetPairLeverageData <: KrakenData
     leverage_buy::Maybe{Vector{Int64}}
     leverage_sell::Maybe{Vector{Int64}}
 end
@@ -141,9 +141,9 @@ function asset_pair(client::KrakenClient, query::AssetPairQuery)
     T = if query.info == info
         Dict{String,AssetPairData}
     elseif query.info == fees
-        Dict{String,FeeData}
+        Dict{String,AssetPairFeeData}
     elseif query.info == leverage
-        Dict{String,LeverageData}
+        Dict{String,AssetPairLeverageData}
     end
     return APIsRequest{Data{T}}("GET", "0/public/AssetPairs", query)(client)
 end

@@ -8,14 +8,6 @@ function Serde.deser(::Type{<:KrakenData}, ::Type{<:Maybe{NanoDate}}, x::Abstrac
     return NanoDate(DateTime(x, "yyyy-mm-ddTHH:MM:SS.ssszzzz"))
 end
 
-# function Serde.deser(
-#     ::Type{A},
-#     ::Type{T},
-#     x::String,
-# )::NanoDate where {A<:AbstractResult,T<:Maybe{Date}}
-#     return NanoDate(x)
-# end
-
 function Serde.ser_ignore_field(::Type{<:KrakenCommonQuery}, ::Val{:signature})::Bool
     return true
 end

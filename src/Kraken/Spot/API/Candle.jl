@@ -32,10 +32,6 @@ function Serde.ser_type(::Type{CandleQuery}, x::TimeInterval)::Int64
     x == d15 && return 21600
 end
 
-function Serde.SerQuery.ser_type(::Type{CandleQuery}, x::DateTime)::Int64
-    return round(Int64, 1000 * datetime2unix(x))
-end
-
 struct CandleData <: KrakenData
     time::Maybe{NanoDate}
     open::Maybe{Float64}

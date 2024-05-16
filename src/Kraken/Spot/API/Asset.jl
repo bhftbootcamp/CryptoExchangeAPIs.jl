@@ -16,6 +16,10 @@ Base.@kwdef struct AssetQuery <: KrakenPublicQuery
     aclass::Maybe{String} = nothing
 end
 
+function Serde.SerQuery.ser_type(::Type{AssetQuery}, x::Vector{String})::String
+    return join(x, ",")
+end
+
 @enum AssetStatus begin
     enabled
     deposit_only
@@ -30,10 +34,6 @@ struct AssetData <: KrakenData
     display_decimals::Int64
     collateral_value::Maybe{Float64}
     status::AssetStatus
-end
-
-function Serde.SerQuery.ser_type(::Type{AssetQuery}, x::Vector{String})::String
-    return join(x, ",")
 end
 
 function Serde.deser(::Type{AssetData}, ::Type{AssetStatus}, x::String)::AssetStatus
