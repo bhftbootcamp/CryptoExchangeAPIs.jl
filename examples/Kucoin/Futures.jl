@@ -1,8 +1,8 @@
 # Kucoin/Futures
 # https://docs.kucoin.com/
 
+using Dates
 using CryptoAPIs
-using Dates, NanoDates
 using CryptoAPIs.Kucoin
 
 CryptoAPIs.Kucoin.Futures.candle(;

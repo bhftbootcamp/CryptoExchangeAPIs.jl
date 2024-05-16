@@ -17,3 +17,16 @@ CryptoAPIs.Kucoin.Spot.public_client
 CryptoAPIs.Kucoin.Spot.candle
 CryptoAPIs.Kucoin.Spot.deposit
 ```
+
+## Futures
+
+```@docs
+CryptoAPIs.Kucoin.Futures.public_client
+```
+
+```@docs
+CryptoAPIs.Kucoin.Futures.candle
+CryptoAPIs.Kucoin.Futures.contract
+CryptoAPIs.Kucoin.Futures.private_funding_history
+CryptoAPIs.Kucoin.Futures.public_funding_history
+```

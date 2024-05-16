@@ -14,6 +14,9 @@ using .Candle
 include("API/Contract.jl")
 using .Contract
 
+include("API/PrivateFundingHistory.jl")
+using .PrivateFundingHistory
+
 include("API/PublicFundingHistory.jl")
 using .PublicFundingHistory
 

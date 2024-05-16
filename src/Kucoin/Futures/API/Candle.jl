@@ -35,7 +35,7 @@ function Serde.ser_type(::Type{<:CandleQuery}, x::TimeInterval)::String
 end
 
 struct CandleData <: KucoinData
-    time::Maybe{NanoDate}
+    time::NanoDate
     open::Maybe{Float64}
     close::Maybe{Float64}
     high::Maybe{Float64}
@@ -57,8 +57,8 @@ Request via this endpoint to get the kline of the specified symbol.
 |:-----------------|:-------------|:---------|:------------------------------------|
 | symbol           | String       | true     |                                     |
 | granularity      | TimeInterval | true     | m1 m5 m15 m30 h1 h2 h4 h8 h12 d1 w1 |
-| from             | DateTime     | false    |                                     |
-| to               | DateTime     | false    |                                     |
+| from             | NanoDate     | false    |                                     |
+| to               | NanoDate     | false    |                                     |
 
 ## Code samples:
 
