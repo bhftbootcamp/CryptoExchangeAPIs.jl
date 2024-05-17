@@ -20,6 +20,10 @@ Base.@kwdef struct CandleQuery <: KrakenPublicQuery
     since::Maybe{DateTime} = nothing
 end
 
+function Serde.SerQuery.ser_type(::Type{CandleQuery}, x::DateTime)::Int64
+    return round(Int64, datetime2unix(x))
+end
+
 function Serde.ser_type(::Type{CandleQuery}, x::TimeInterval)::Int64
     x == m1  && return 1
     x == m5  && return 5
