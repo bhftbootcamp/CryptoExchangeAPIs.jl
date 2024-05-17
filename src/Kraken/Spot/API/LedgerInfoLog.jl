@@ -127,16 +127,6 @@ function ledger_info_log(client::KrakenClient, query::LedgerInfoLogQuery)
     return APIsRequest{Data{LedgerInfoLogData}}("POST", "0/private/Ledgers", query)(client)
 end
 
-aclass::Maybe{String}
-amount::Maybe{String}
-asset::Maybe{String}
-balance::Maybe{String}
-fee::Maybe{String}
-refid::Maybe{String}
-subtype::Maybe{String}
-time::NanoDate
-type::Maybe{String}
-
 function ledger_info_log(client::KrakenClient; kw...)
     return ledger_info_log(client, LedgerInfoLogQuery(; kw...))
 end
