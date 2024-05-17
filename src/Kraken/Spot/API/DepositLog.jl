@@ -89,7 +89,25 @@ to_pretty_json(result.result)
 ## Result:
 
 ```json
-
+{
+  "error":[],
+  "result":[
+    {
+      "method":"Bitcoin",
+      "aclass":"currency",
+      "asset":"XXBT",
+      "refid":"FTQcuak-V6Za8qrWnhzTx67yYHz8Tg",
+      "txid":"6544b41b607d8b2512baf801755a3a87b6890eacdb451be8a94059fb11f0a8d9",
+      "info":"2Myd4eaAW96ojk38A2uDK4FbioCayvkEgVq",
+      "amount":0.78125,
+      "fee":0.0,
+      "time":"2023-07-10T12:38:42",
+      "status":"Success",
+      "status_prop":"return"
+    },
+    ...
+  ]
+}
 ```
 """
 function deposit_log(client::KrakenClient, query::DepositLogQuery)

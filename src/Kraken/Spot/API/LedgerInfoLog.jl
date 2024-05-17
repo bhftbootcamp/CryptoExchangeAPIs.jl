@@ -101,7 +101,26 @@ to_pretty_json(result.result)
 ## Result:
 
 ```json
-
+{
+  "error":[],
+  "result":{
+    "ledger":{
+      "L4UESK-KG3EQ-UFO4T5":{
+        "refid":"TJKLXF-PGMUI-4NTLXU",
+        "time":"2023-07-04T09:54:44.178700032",
+        "type":"trade",
+        "subtype":"",
+        "aclass":"currency",
+        "asset":"ZGBP",
+        "amount":-24.5,
+        "fee":0.049,
+        "balance":459567.9171
+      },
+      ...
+    },
+    "count":2
+  }
+}
 ```
 """
 function ledger_info_log(client::KrakenClient, query::LedgerInfoLogQuery)
