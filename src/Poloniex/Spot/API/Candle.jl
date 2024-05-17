@@ -54,7 +54,7 @@ struct CandleData <: PoloniexData
     ts::Maybe{Int64}
     weightedAverage::Maybe{Float64}
     interval::Maybe{String}
-    startTime::Maybe{NanoDate}
+    startTime::NanoDate
     closeTime::Maybe{NanoDate}
 end
 

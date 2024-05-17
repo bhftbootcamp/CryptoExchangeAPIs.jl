@@ -45,15 +45,6 @@ struct WithdrawalLog <: PoloniexData
     withdrawalRequestsId::Int64
 end
 
-function Serde.deser(::Type{<:WithdrawalLog}, ::Type{Status}, x::AbstractString)::Status
-    x == "PENDING"        && return PENDING 
-    x == "PROCESSING"     && return PROCESSING 
-    x == "AWAITING"       && return AWAITING 
-    x == "APPROVAL"       && return APPROVAL 
-    x == "COMPLETED"      && return COMPLETED 
-    x == "COMPLETE_ERROR" && return COMPLETE_ERROR 
-end
-
 struct DepositLog <: PoloniexData
     address::Union{Float64,String}
     amount::Float64

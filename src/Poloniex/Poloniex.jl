@@ -84,12 +84,20 @@ function CryptoAPIs.request_sign!(client::PoloniexClient, query::Q, endpoint::St
     return query
 end
 
-function CryptoAPIs.request_body(::Q)::String where {Q<:PoloniexCommonQuery}
+function CryptoAPIs.request_body(::Q)::String where {Q<:PoloniexPublicQuery}
     return ""
 end
 
-function CryptoAPIs.request_query(query::Q)::String where {Q<:PoloniexCommonQuery}
+function CryptoAPIs.request_body(query::Q)::String where {Q<:PoloniexPrivateQuery}
     return Serde.to_query(query)
+end
+
+function CryptoAPIs.request_query(query::Q)::String where {Q<:PoloniexPublicQuery}
+    return Serde.to_query(query)
+end
+
+function CryptoAPIs.request_query(::Q)::String where {Q<:PoloniexPrivateQuery}
+    return ""
 end
 
 function CryptoAPIs.request_headers(client::PoloniexClient, ::PoloniexPublicQuery)::Vector{Pair{String,String}}

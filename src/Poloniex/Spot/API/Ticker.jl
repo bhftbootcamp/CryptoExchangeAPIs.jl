@@ -32,7 +32,7 @@ struct TickerData <: PoloniexData
     startTime::Maybe{NanoDate}
     symbol::String
     tradeCount::Maybe{Int64}
-    ts::Maybe{NanoDate}
+    ts::NanoDate
 end
 
 function Serde.isempty(::Type{TickerData}, x)

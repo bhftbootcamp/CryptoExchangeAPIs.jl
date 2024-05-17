@@ -18,7 +18,10 @@ CryptoAPIs.Poloniex.Spot.currency_v2()
 
 CryptoAPIs.Poloniex.Spot.market(; symbol = "BTC_USDT")
 
-CryptoAPIs.Poloniex.Spot.order_book(; symbol = "BTC_USDT", limit = CryptoAPIs.Poloniex.Spot.OrderBook.FIVE)
+CryptoAPIs.Poloniex.Spot.order_book(;
+    symbol = "BTC_USDT",
+    limit = CryptoAPIs.Poloniex.Spot.OrderBook.FIVE,
+)
 
 CryptoAPIs.Poloniex.Spot.ticker(; symbol = "BTC_USDT")
 
