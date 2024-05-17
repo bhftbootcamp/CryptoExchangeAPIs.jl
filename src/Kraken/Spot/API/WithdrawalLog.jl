@@ -106,18 +106,6 @@ function withdrawal_log(client::KrakenClient, query::WithdrawalLogQuery)
     return APIsRequest{Data{Vector{WithdrawalLogData}}}("POST", "0/private/WithdrawStatus", query)(client)
 end
 
-aclass::String
-amount::Float64
-asset::String
-fee::Float64
-info::String
-method::String
-refid::String
-status::Status
-status_prop::Maybe{Status}
-time::NanoDate
-txid::String
-
 function withdrawal_log(client::KrakenClient; kw...)
     return withdrawal_log(client, WithdrawalLogQuery(; kw...))
 end
