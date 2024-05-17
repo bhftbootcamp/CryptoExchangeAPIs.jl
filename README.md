@@ -97,6 +97,13 @@ Then, to install CryptoAPIs, simply use the Julia package manager:
                 <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Gateio/#Futures">Futures</a></td>
             </tr>
             <tr>
+                <td><img src="docs/src/assets/kraken.png" alt="Kraken Logo" width="20" height="20"></td>
+                <td><a href="https://www.kraken.com/">Kraken</a></td>
+                <td><a href="https://docs.kraken.com/rest/">Spot</a></td>
+                <td><a href="src/Kraken/Spot">CryptoAPIs.Kraken.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Kraken/#Spot">Spot</a></td>
+            </tr>
+            <tr>
                 <td><img src="docs/src/assets/kucoin.png" alt="Kucoin Logo" width="20" height="20"></td>
                 <td><a href="https://www.kucoin.com/">Kucoin</a></td>
                 <td><a href="https://www.kucoin.com/docs/beginners/introduction">Spot</a></td>
