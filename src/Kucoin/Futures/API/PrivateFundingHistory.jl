@@ -13,12 +13,12 @@ using CryptoAPIs: Maybe, APIsRequest
 
 Base.@kwdef mutable struct PrivateFundingHistoryQuery <: KucoinPrivateQuery
     symbol::String
-    startAt::Maybe{NanoDate}
-    endAt::Maybe{NanoDate}
-    reverse::Maybe{Bool}
-    offset::Maybe{Int64}
-    forward::Maybe{Bool}
-    maxCount::Maybe{Int64}
+    startAt::Maybe{NanoDate} = nothing
+    endAt::Maybe{NanoDate} = nothing
+    reverse::Maybe{Bool} = nothing
+    offset::Maybe{Int64} = nothing
+    forward::Maybe{Bool} = nothing
+    maxCount::Maybe{Int64} = nothing
 
     passphrase::Maybe{String} = nothing
     signature::Maybe{String} = nothing
