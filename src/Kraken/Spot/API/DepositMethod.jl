@@ -73,7 +73,18 @@ to_pretty_json(result.result)
 ## Result:
 
 ```json
-
+{
+  "error":[],
+  "result":[
+    {
+      "method":"Bitcoin",
+      "limit":false,
+      "fee":"0.0000000000",
+      "gen_address":true,
+    },
+    ...
+  ]
+}
 ```
 """
 function deposit_method(client::KrakenClient, query::DepositMethodQuery)

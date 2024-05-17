@@ -68,7 +68,18 @@ to_pretty_json(result.result)
 ## Result:
 
 ```json
-
+{
+  "error":[],
+  "result":[
+    {
+      "asset":"XXBT",
+      "method":"Bitcoin",
+      "network":"Bitcoin",
+      "minimum":0.0004
+    },
+    ...
+  ]
+}
 ```
 """
 function withdrawal_method(client::KrakenClient, query::WithdrawalMethodQuery)
