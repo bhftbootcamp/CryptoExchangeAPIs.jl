@@ -113,7 +113,7 @@ to_pretty_json(result.result)
 ```
 """
 function private_funding_history(client::KucoinClient, query::PrivateFundingHistoryQuery)
-    return APIsRequest{Vector{PrivateFundingHistoryData}}("GET", "api/v1/funding-history", query)(client)
+    return APIsRequest{Data{Vector{PrivateFundingHistoryData}}}("GET", "api/v1/funding-history", query)(client)
 end
 
 function private_funding_history(client::KucoinClient; kw...)
