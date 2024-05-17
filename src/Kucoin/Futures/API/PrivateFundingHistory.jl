@@ -92,6 +92,25 @@ to_pretty_json(result.result)
 
 ## Result:
 
+```json
+{
+  "dataList": [
+    {
+      "id": 36275152660006,
+      "symbol": "XBTUSDM",
+      "timePoint": "2019-05-15T11:00:00",
+      "fundingRate": 13e-5,
+      "markPrice": 8058.27,
+      "positionQty": 10,
+      "positionCost": -0.001241,
+      "funding": -464e-6,
+      "settleCurrency": "XBT"
+    },
+    ...
+  ],
+  "hasMore": true
+}
+```
 """
 function private_funding_history(client::KucoinClient, query::PrivateFundingHistoryQuery)
     return APIsRequest{Vector{PrivateFundingHistoryData}}("GET", "api/v1/funding-history", query)(client)

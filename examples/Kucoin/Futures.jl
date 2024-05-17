@@ -1,7 +1,7 @@
 # Kucoin/Futures
 # https://docs.kucoin.com/
 
-using Dates
+using NanoDates
 using CryptoAPIs
 using CryptoAPIs.Kucoin
 
