@@ -102,22 +102,15 @@ Exception thrown when an API method fails with code `T`.
 - `code::Int64`: Response code.
 """
 struct HuobiAPIError{T} <: AbstractAPIsError
-    ts::Maybe{NanoDate}
-    status::Maybe{String}
     err_code::String
     err_msg::String
+    ts::Maybe{NanoDate}
+    status::Maybe{String}
     data::Nothing
     code::Maybe{Int64}
 
-    function HuobiAPIError(
-        ts::Maybe{NanoDate},
-        status::Maybe{String},
-        err_code::String,
-        err_msg::String,
-        data::Nothing,
-        code::Maybe{Int64},
-    )
-        return new{Symbol(err_code)}(ts, status, err_code, err_msg, data, code)
+    function HuobiAPIError(err_code::String, err_msg::String, x...)
+        return new{Symbol(err_code)}(err_code, err_msg, x...)
     end
 end
 
@@ -145,16 +138,26 @@ function CryptoAPIs.request_sign!(client::HuobiClient, query::Q, endpoint::Strin
     return nothing
 end
 
-function CryptoAPIs.request_body(::Q)::String where {Q<:HuobiCommonQuery}
+function CryptoAPIs.request_body(::Q)::String where {Q<:HuobiPublicQuery}
     return ""
 end
 
-function CryptoAPIs.request_query(query::Q)::String where {Q<:HuobiCommonQuery}
+function CryptoAPIs.request_body(query::Q)::String where {Q<:HuobiPrivateQuery}
     return Serde.to_query(query)
 end
 
+function CryptoAPIs.request_query(query::Q)::String where {Q<:HuobiPublicQuery}
+    return Serde.to_query(query)
+end
+
+function CryptoAPIs.request_query(::Q)::String where {Q<:HuobiPrivateQuery}
+    return ""
+end
+
 function CryptoAPIs.request_headers(client::HuobiClient, ::HuobiCommonQuery)::Vector{Pair{String,String}}
-    return Pair{String,String}["Content-Type"=>"application/json"]
+    return Pair{String,String}[
+        "Content-Type"=>"application/json",
+    ]
 end
 
 include("Utils.jl")

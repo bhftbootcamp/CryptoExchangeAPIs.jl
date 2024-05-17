@@ -69,13 +69,7 @@ function Serde.deser(::Type{CommonSymbolData}, ::Type{<:Maybe{Time}}, x::Abstrac
     return Time(x)
 end
 
-function Serde.deser(::Type{CommonSymbolData}, ::Type{<:Maybe{SymbolPartition}}, x::String)::SymbolPartition
-    x == "main"       && return main
-    x == "innovation" && return innovation
-    x == "st"         && return st
-end
-
-function Serde.deser(::Type{CommonSymbolData}, ::Type{<:SymbolState}, x::String)::SymbolState
+function Serde.deser(::Type{CommonSymbolData}, ::Type{<:SymbolState}, x::AbstractString)::SymbolState
     x == "online"     && return online
     x == "pre-online" && return pre_online
     x == "offline"    && return offline

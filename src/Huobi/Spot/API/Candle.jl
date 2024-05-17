@@ -16,7 +16,7 @@ using CryptoAPIs: Maybe, APIsRequest
 Base.@kwdef struct CandleQuery <: HuobiPublicQuery
     period::TimeInterval
     symbol::String
-    size::Int64 = 150       # The number of data returns default 150 [1-2000]
+    size::Int64 = 150       # Default size 150 [1-2000]
 end
 
 function Serde.ser_type(::Type{<:CandleQuery}, x::TimeInterval)::String
@@ -36,7 +36,7 @@ struct CandleData <: HuobiData
     close::Maybe{Float64}
     count::Maybe{Int64}
     high::Maybe{Float64}
-    id::Maybe{NanoDate}
+    id::NanoDate
     low::Maybe{Float64}
     open::Maybe{Float64}
     vol::Maybe{Float64}

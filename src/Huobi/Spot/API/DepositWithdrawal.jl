@@ -35,11 +35,11 @@ struct DepositWithdrawalData <: HuobiData
     address_tag::Maybe{String}
     amount::Maybe{Int64}
     chain::Maybe{String}
-    created_at::Maybe{Int64}
+    created_at::NanoDate
     currency::Maybe{String}
     fee::Maybe{Int64}
     from_addr_tag::Maybe{String}
-    id::Maybe{Int64}
+    id::Int64
     state::Maybe{String}
     sub_type::Maybe{String}
     tx_hash::Maybe{String}
