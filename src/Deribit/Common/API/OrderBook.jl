@@ -94,8 +94,8 @@ Retrieves the order book, along with other market values for a given instrument.
 
 ## Parameters:
 
-| Parameter | Type         | Required | Description |
-|:----------|:-------------|:---------|:------------|
+| Parameter       | Type   | Required | Description |
+|:----------------|:-------|:---------|:------------|
 | instrument_name | String | true     |             |
 | depth           | Depth  | false    | `ONE` (1), `FIVE` (5), `TEN` (10), `TWENTY` (20), `FIFTY` (50), `ONE_HUNDRED` (100), `THOUSAND` (1000), `TEN_THOUSAND` (10000) |
 

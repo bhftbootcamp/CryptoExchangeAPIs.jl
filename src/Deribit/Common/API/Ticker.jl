@@ -56,7 +56,7 @@ struct TickerData <: DeribitData
     settlement_price::Maybe{Float64}
     state::Maybe{String}
     stats::Maybe{Stats}
-    timestamp::Maybe{NanoDate}
+    timestamp::NanoDate
     underlying_index::Maybe{String}
     underlying_price::Maybe{Float64}
 end

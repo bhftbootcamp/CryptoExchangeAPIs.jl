@@ -20,7 +20,6 @@ function Serde.deser(::Type{<:Data}, ::Type{<:Maybe{NanoDate}}, x::AbstractStrin
     return unixnanos2nanodate(x * 1e3)
 end
 
-
 function Serde.ser_ignore_field(::Type{<:DeribitCommonQuery}, ::Val{:authorization})::Bool
     return true
 end
