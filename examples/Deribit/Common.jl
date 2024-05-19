@@ -20,7 +20,20 @@ CryptoAPIs.Deribit.Common.funding_rate(;
     end_timestamp = Dates.DateTime("2022-11-08") + Day(2),
 )
 
-CryptoAPIs.Deribit.Common.instrument(; currency = CryptoAPIs.Deribit.Common.Instrument.BTC)
+CryptoAPIs.Deribit.Common.instrument(;
+    currency = CryptoAPIs.Deribit.Common.Instrument.BTC,
+    kind = CryptoAPIs.Deribit.Common.Instrument.spot,
+)
+
+CryptoAPIs.Deribit.Common.instrument(;
+    currency = CryptoAPIs.Deribit.Common.Instrument.BTC,
+    kind = CryptoAPIs.Deribit.Common.Instrument.future,
+)
+
+CryptoAPIs.Deribit.Common.instrument(;
+    currency = CryptoAPIs.Deribit.Common.Instrument.BTC,
+    kind = CryptoAPIs.Deribit.Common.Instrument.option,
+)
 
 CryptoAPIs.Deribit.Common.order_book(;
     instrument_name = "BTC-PERPETUAL",
