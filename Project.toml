@@ -1,6 +1,6 @@
 name = "CryptoAPIs"
 uuid = "5e3d4798-c815-4641-85e1-deed530626d3"
-version = "0.20.1"
+version = "0.24.0"
 
 [deps]
 Base64 = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"

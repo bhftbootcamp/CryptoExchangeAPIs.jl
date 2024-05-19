@@ -161,6 +161,7 @@ end
 
 include("Interface.jl")
 include("Binance/Binance.jl")
+include("Bitfinex/Bitfinex.jl")
 include("Bithumb/Bithumb.jl")
 include("Bybit/Bybit.jl")
 include("Coinbase/Coinbase.jl")
