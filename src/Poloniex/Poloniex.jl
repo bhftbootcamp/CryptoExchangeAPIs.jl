@@ -109,7 +109,7 @@ end
 function CryptoAPIs.request_headers(client::PoloniexClient, query::PoloniexPrivateQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "key" => client.public_key,
-        "signTimestamp" => string(timestamp(query.signTimestamp)),
+        "signTimestamp" => timestamp(NanoDate(query.signTimestamp)),
         "signature" => query.signature,
     ]
 end

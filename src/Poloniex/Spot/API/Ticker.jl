@@ -92,12 +92,11 @@ to_pretty_json(result.result)
 ```
 """
 function ticker(client::PoloniexClient, query::TickerQuery; kw...)
-    endpoint, T = if isnothing(query.symbol)
-        ("markets/ticker24h", Vector{TickerData})
+    return if isnothing(query.symbol)
+        APIsRequest{Vector{TickerData}}("GET", "markets/ticker24h", query)(client)
     else
-        ("markets/$(query.symbol)/ticker24h", TickerData)
+        APIsRequest{TickerData}("GET", "markets/$(query.symbol)/ticker24h", query)(client)
     end
-    APIsRequest{T}("GET", endpoint, query)(client)
 end
 
 function ticker(client::PoloniexClient = Poloniex.Spot.public_client; kw...)
