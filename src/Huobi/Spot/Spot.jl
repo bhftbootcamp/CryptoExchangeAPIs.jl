@@ -11,9 +11,6 @@ const public_client =
 include("API/Candle.jl")
 using .Candle
 
-include("API/CommonSymbol.jl")
-using .CommonSymbol
-
 include("API/Currency.jl")
 using .Currency
 
