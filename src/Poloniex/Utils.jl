@@ -25,5 +25,5 @@ function Serde.SerQuery.ser_type(::Type{<:PoloniexCommonQuery}, dt::D)::Int64 wh
 end
 
 function Serde.SerQuery.ser_type(::Type{<:PoloniexCommonQuery}, x::Vector{String})::String
-    return string(join(x, ","))
+    return join(x, ",")
 end
