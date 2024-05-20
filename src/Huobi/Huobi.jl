@@ -156,7 +156,7 @@ end
 
 function CryptoAPIs.request_headers(client::HuobiClient, ::HuobiCommonQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
-        "Content-Type"=>"application/json",
+        "Content-Type" => "application/json",
     ]
 end
 
