@@ -161,12 +161,15 @@ end
 
 include("Interface.jl")
 include("Binance/Binance.jl")
+include("Bithumb/Bithumb.jl")
 include("Bybit/Bybit.jl")
 include("Coinbase/Coinbase.jl")
 include("Cryptocom/Cryptocom.jl")
 include("Gateio/Gateio.jl")
+include("Huobi/Huobi.jl")
 include("Okex/Okex.jl")
 include("Poloniex/Poloniex.jl")
+include("Kraken/Kraken.jl")
 include("Kucoin/Kucoin.jl")
 include("Upbit/Upbit.jl")
 
