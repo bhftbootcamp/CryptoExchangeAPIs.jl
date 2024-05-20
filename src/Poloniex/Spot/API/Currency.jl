@@ -11,7 +11,7 @@ using CryptoAPIs.Poloniex
 using CryptoAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct CurrencyQuery <: PoloniexPublicQuery
-    # ... empty
+    #__ empty
 end
 
 struct Network <: PoloniexData
