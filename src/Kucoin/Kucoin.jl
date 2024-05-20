@@ -142,6 +142,9 @@ end
 include("Utils.jl")
 include("Errors.jl")
 
+include("Futures/Futures.jl")
+using .Futures
+
 include("Spot/Spot.jl")
 using .Spot
 

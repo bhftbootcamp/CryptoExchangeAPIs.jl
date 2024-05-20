@@ -23,3 +23,7 @@ end
 function Serde.SerQuery.ser_type(::Type{<:KucoinCommonQuery}, x::D)::Int64 where {D<:DateTime}
     return round(Int64, datetime2unix(x))
 end
+
+function Serde.SerQuery.ser_type(::Type{<:KucoinCommonQuery}, x::D)::Int64 where {D<:NanoDate}
+    return round(Int64, nanodate2unixmillis(x))
+end
