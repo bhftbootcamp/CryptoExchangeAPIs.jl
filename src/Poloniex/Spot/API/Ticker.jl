@@ -35,7 +35,7 @@ struct TickerData <: PoloniexData
     ts::NanoDate
 end
 
-function Serde.isempty(::Type{TickerData}, x)
+function Serde.isempty(::Type{TickerData}, x)::Bool
     return x === ""
 end
 
