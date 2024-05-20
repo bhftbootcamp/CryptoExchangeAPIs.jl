@@ -12,7 +12,7 @@ CryptoAPIs.Poloniex.Spot.candle(;
     endTime = now(UTC) - Hour(1),
 )
 
-CryptoAPIs.Poloniex.Spot.currency_v2()
+CryptoAPIs.Poloniex.Spot.currency()
 
 CryptoAPIs.Poloniex.Spot.market(; symbol = "BTC_USDT")
 

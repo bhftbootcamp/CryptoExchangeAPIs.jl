@@ -1,8 +1,8 @@
-module CurrencyV2
+module Currency
 
-export CurrencyV2Query,
-    CurrencyV2Data,
-    currency_v2
+export CurrencyQuery,
+    CurrencyData,
+    currency
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -10,7 +10,7 @@ using Dates, NanoDates, TimeZones
 using CryptoAPIs.Poloniex
 using CryptoAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct CurrencyV2Query <: PoloniexPublicQuery
+Base.@kwdef struct CurrencyQuery <: PoloniexPublicQuery
     # ... empty
 end
 
@@ -29,7 +29,7 @@ struct Network <: PoloniexData
     minConfirm::Int64
 end
 
-struct CurrencyV2Data <: PoloniexData
+struct CurrencyData <: PoloniexData
     id::Int64
     coin::String
     delisted::Bool
@@ -41,8 +41,8 @@ struct CurrencyV2Data <: PoloniexData
 end
 
 """
-    currency_v2(client::PoloniexClient, query::CurrencyV2Query)
-    currency_v2(client::PoloniexClient = Poloniex.Spot.public_client; kw...)
+    currency(client::PoloniexClient, query::CurrencyQuery)
+    currency(client::PoloniexClient = Poloniex.Spot.public_client; kw...)
 
 Get all supported currencies.
 
@@ -54,7 +54,7 @@ Get all supported currencies.
 using Serde
 using CryptoAPIs.Poloniex
 
-result = Poloniex.Spot.currency_v2()
+result = Poloniex.Spot.currency()
 
 to_pretty_json(result.result)
 ```
@@ -92,12 +92,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function currency_v2(client::PoloniexClient, query::CurrencyV2Query)
-    return APIsRequest{Vector{CurrencyV2Data}}("GET", "v2/currencies", query)(client)
+function currency(client::PoloniexClient, query::CurrencyQuery)
+    return APIsRequest{Vector{CurrencyData}}("GET", "v2/currencies", query)(client)
 end
 
-function currency_v2(client::PoloniexClient = Poloniex.Spot.public_client; kw...)
-    return currency_v2(client, CurrencyV2Query(; kw...))
+function currency(client::PoloniexClient = Poloniex.Spot.public_client; kw...)
+    return currency(client, CurrencyQuery(; kw...))
 end
 
 end
