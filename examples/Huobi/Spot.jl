@@ -7,8 +7,6 @@ using CryptoAPIs.Huobi
 
 CryptoAPIs.Huobi.Spot.candle(; symbol = "btcusdt", period = CryptoAPIs.Huobi.Spot.Candle.m1)
 
-CryptoAPIs.Huobi.Spot.common_symbol()
-
 CryptoAPIs.Huobi.Spot.order_book(; symbol = "btcusdt")
 
 CryptoAPIs.Huobi.Spot.ticker()

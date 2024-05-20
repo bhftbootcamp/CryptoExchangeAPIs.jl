@@ -126,6 +126,13 @@ Then, to install CryptoAPIs, simply use the Julia package manager:
                 <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Okex/#Spot">Spot</a></td>
             </tr>
             <tr>
+                <td><img src="assets/poloniex.png" alt="Poloniex Logo" width="20" height="20"></td>
+                <td><a href="https://poloniex.com/">Poloniex</a></td>
+                <td><a href="https://api-docs.poloniex.com/spot">Spot</a></td>
+                <td><a href="src/Poloniex/Spot">CryptoAPIs.Poloniex.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Poloniex/#Spot">Spot</a></td>
+            </tr>
+            <tr>
                 <td><img src="assets/upbit.png" alt="Upbit Logo" width="20" height="20"></td>
                 <td><a href="https://upbit.com/">Upbit</a></td>
                 <td><a href="https://global-docs.upbit.com/">Spot</a></td>
