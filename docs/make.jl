@@ -23,8 +23,11 @@ makedocs(;
         "pages/Cryptocom.md",
         "pages/Deribit.md",
         "pages/Gateio.md",
+        "pages/Huobi.md",
+        "pages/Kraken.md",
         "pages/Kucoin.md",
         "pages/Okex.md",
+        "pages/Poloniex.md",
         "pages/Upbit.md",
         "For Developers" => [
             "pages/docs_miniguide.md",

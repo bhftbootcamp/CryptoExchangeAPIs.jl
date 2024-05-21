@@ -98,6 +98,20 @@ Then, to install CryptoAPIs, simply use the Julia package manager:
                 <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Gateio/#Futures">Futures</a></td>
             </tr>
             <tr>
+                <td><img src="assets/huobi.png" alt="Huobi Logo" width="20" height="20"></td>
+                <td><a href="https://www.htx.com/">Huobi</a></td>
+                <td><a href="https://www.htx.com/en-us/opend/newApiPages">Spot</a></td>
+                <td><a href="src/Huobi/Futures">CryptoAPIs.Huobi.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Huobi/#Spot">Spot</a></td>
+            </tr>
+            <tr>
+                <td><img src="assets/kraken.png" alt="Kraken Logo" width="20" height="20"></td>
+                <td><a href="https://www.kraken.com/">Kraken</a></td>
+                <td><a href="https://docs.kraken.com/rest/">Spot</a></td>
+                <td><a href="src/Kraken/Spot">CryptoAPIs.Kraken.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Kraken/#Spot">Spot</a></td>
+            </tr>
+            <tr>
                 <td><img src="assets/kucoin.png" alt="Kucoin Logo" width="20" height="20"></td>
                 <td><a href="https://www.kucoin.com/">Kucoin</a></td>
                 <td><a href="https://www.kucoin.com/docs/beginners/introduction">Spot</a></td>
@@ -105,11 +119,25 @@ Then, to install CryptoAPIs, simply use the Julia package manager:
                 <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Kucoin/#Spot">Spot</a></td>
             </tr>
             <tr>
+                <td><img src="assets/kucoin.png" alt="Kucoin Logo" width="20" height="20"></td>
+                <td><a href="https://www.kucoin.com/">Kucoin</a></td>
+                <td><a href="https://www.kucoin.com/docs/beginners/introduction">Futures</a></td>
+                <td><a href="src/Kucoin/Futures">CryptoAPIs.Kucoin.Futures</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Kucoin/#Futures">Futures</a></td>
+            </tr>
+            <tr>
                 <td><img src="assets/okex.png" alt="Okex Logo" width="20" height="20"></td>
                 <td><a href="https://www.okx.com/">Okex</a></td>
                 <td><a href="https://www.okx.com/docs-v5/en/">Spot</a></td>
                 <td><a href="src/Okex/Spot">CryptoAPIs.Okex.Spot</a></td>
                 <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Okex/#Spot">Spot</a></td>
+            </tr>
+            <tr>
+                <td><img src="assets/poloniex.png" alt="Poloniex Logo" width="20" height="20"></td>
+                <td><a href="https://poloniex.com/">Poloniex</a></td>
+                <td><a href="https://api-docs.poloniex.com/spot">Spot</a></td>
+                <td><a href="src/Poloniex/Spot">CryptoAPIs.Poloniex.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Poloniex/#Spot">Spot</a></td>
             </tr>
             <tr>
                 <td><img src="assets/upbit.png" alt="Upbit Logo" width="20" height="20"></td>
