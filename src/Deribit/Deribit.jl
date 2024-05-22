@@ -91,7 +91,7 @@ Exception thrown when an API method fails with code `T`.
 
 ## Required fields
 - `jsonrpc::String`: The version of the JSON-RPC spec.
-- `reerror::DeribitAPIsErrorMsg`: Only present if there was an error invoking the method.
+- `error::DeribitAPIsErrorMsg`: Only present if there was an error invoking the method.
 
 ## Optional fields
 - `id::Maybe{Int64}`: This is the same id that was sent in the request.

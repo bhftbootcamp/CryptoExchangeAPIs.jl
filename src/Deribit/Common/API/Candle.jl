@@ -36,14 +36,14 @@ function Serde.ser_type(::Type{<:CandleQuery}, x::TimeInterval)::String
 end
 
 struct CandleData <: DeribitData
-    close::Maybe{Vector{Float64}}
-    cost::Maybe{Vector{Float64}}
-    high::Maybe{Vector{Float64}}
-    low::Maybe{Vector{Float64}}
-    open::Maybe{Vector{Float64}}
+    close::Vector{Float64}
+    cost::Vector{Float64}
+    high::Vector{Float64}
+    low::Vector{Float64}
+    open::Vector{Float64}
     status::String
-    ticks::Maybe{Vector{NanoDate}}
-    volume::Maybe{Vector{Float64}}
+    ticks::Vector{NanoDate}
+    volume::Vector{Float64}
 end
 
 """

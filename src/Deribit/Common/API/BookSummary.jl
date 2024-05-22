@@ -27,8 +27,8 @@ end
 end
 
 Base.@kwdef struct BookSummaryQuery <: DeribitPublicQuery
-    currency::Currency                       # BTC, ETH, USDC
-    kind::Maybe{InstrumentKind} = nothing    # option, spot, future_combo, option_combo
+    currency::Currency
+    kind::Maybe{InstrumentKind} = nothing
 end
 
 struct BookSummaryData <: DeribitData
@@ -66,10 +66,10 @@ Retrieves the summary information such as open interest, 24h volume, etc. for al
 
 ## Parameters:
 
-| Parameter | Type           | Required | Description                                   |
-|:----------|:---------------|:---------|:----------------------------------------------|
-| currency  | Currency       | true     | `BTC` `ETH` `USDC` `USDT`                     |
-| kind      | InstrumentKind | false    | `option` `spot` `future_combo` `option_combo` |
+| Parameter | Type           | Required | Description               |
+|:----------|:---------------|:---------|:--------------------------|
+| currency  | Currency       | true     | `BTC` `ETH` `USDC` `USDT` |
+| kind      | InstrumentKind | false    | `option` `spot` `future` `future_combo` `option_combo` |
 
 ## Code samples:
 

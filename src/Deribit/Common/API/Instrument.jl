@@ -71,11 +71,11 @@ Retrieves available trading instruments. This method can be used to see which in
 
 ## Parameters:
 
-| Parameter | Type           | Required | Description                                   |
-|:----------|:---------------|:---------|:----------------------------------------------|
-| currency  | Currency       | true     | `BTC` `ETH` `USDC` `USDT`                     |
-| expired   | Bool           | false    |                                               |
-| kind      | InstrumentKind | false    | `option` `spot` `future_combo` `option_combo` |
+| Parameter | Type           | Required | Description               |
+|:----------|:---------------|:---------|:--------------------------|
+| currency  | Currency       | true     | `BTC` `ETH` `USDC` `USDT` |
+| expired   | Bool           | false    |                           |
+| kind      | InstrumentKind | false    | `option` `spot` `future` `future_combo` `option_combo` |
 
 
 ## Code samples:

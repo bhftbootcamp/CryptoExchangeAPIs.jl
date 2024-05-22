@@ -16,7 +16,7 @@ function Serde.deser(::Type{<:Data}, ::Type{<:Maybe{NanoDate}}, x::Int64)::NanoD
     return unixnanos2nanodate(x * 1e3)
 end
 
-function Serde.deser(::Type{<:Data}, ::Type{<:Maybe{NanoDate}}, x::AbstractString)::NanoDate
+function Serde.deser(::Type{<:DeribitAPIError}, ::Type{<:Maybe{NanoDate}}, x::Int64)::NanoDate
     return unixnanos2nanodate(x * 1e3)
 end
 

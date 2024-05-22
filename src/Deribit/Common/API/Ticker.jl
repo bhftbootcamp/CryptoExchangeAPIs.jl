@@ -75,8 +75,8 @@ Get ticker for an instrument.
 
 ## Parameters:
 
-| Parameter | Type         | Required | Description |
-|:----------|:-------------|:---------|:------------|
+| Parameter       | Type   | Required | Description |
+|:----------------|:-------|:---------|:------------|
 | instrument_name | String | true     |             |
 
 ## Code samples:

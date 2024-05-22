@@ -64,7 +64,7 @@ struct OrderBookData <: DeribitData
     change_id::Int64
     current_funding::Maybe{Float64}
     delivery_price::Maybe{Float64}
-    estimated_delivery_price::Float64
+    estimated_delivery_price::Maybe{Float64}
     funding_8h::Maybe{Float64}
     greeks::Maybe{Greeks}
     index_price::Float64
@@ -75,7 +75,7 @@ struct OrderBookData <: DeribitData
     mark_price::Float64
     max_price::Float64
     min_price::Float64
-    open_interest::Float64
+    open_interest::Maybe{Float64}
     settlement_price::Maybe{Float64}
     state::String
     stats::Stats
