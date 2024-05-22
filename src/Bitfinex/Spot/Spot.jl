@@ -17,7 +17,7 @@ using .OrderBook
 include("API/Ticker.jl")
 using .Ticker
 
-include("API/TradesPair.jl")
-using .TradesPair
+include("API/TradePair.jl")
+using .TradePair
 
 end

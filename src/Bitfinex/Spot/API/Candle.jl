@@ -12,10 +12,12 @@ using CryptoAPIs: Maybe, APIsRequest
 
 @enum TimeInterval m1 m5 m15 m30 h1 h3 h6 h12 d1 w1 d14 M1
 
+@enum Section last hist
+
 Base.@kwdef struct CandleQuery <: BitfinexPublicQuery
     timeframe::TimeInterval
     symbol::String
-    section::String = "hist"
+    section::Section = hist
     limit::Int64 = 125
     start::Maybe{DateTime} = nothing
     _end::Maybe{DateTime} = nothing
@@ -64,7 +66,7 @@ The endpoint provides the last 100 candles by default, but a limit and a start a
 |:----------|:-------------|:---------|:----------------------------------------|
 | timeframe | TimeInterval | true     | m1 m5 m15 m30 h1 h3 h6 h12 d1 w1 d14 M1 |
 | symbol    | String       | true     |                                         |
-| section   | String       | false    | Default: `"hist"`                       |
+| section   | Section      | false    | Default: `hist`, Available: `last`      |
 | limit     | Int64        | false    | Default: `125`                          |
 | start     | DateTime     | false    |                                         |
 | _end      | DateTime     | false    |                                         |
@@ -103,10 +105,11 @@ to_pretty_json(result.result)
 """
 function candle(client::BitfinexClient, query::CandleQuery)
     timeframe = Serde.ser_type(CandleQuery, query.timeframe)
-    return if query.section == "hist"
-        APIsRequest{Vector{CandleData}}("GET", "v2/candles/trade:$(timeframe):$(query.symbol)/$(query.section)", query)(client)
+    section   = Serde.ser_type(CandleQuery, query.section)
+    return if section == hist
+        APIsRequest{Vector{CandleData}}("GET", "v2/candles/trade:$(timeframe):$(query.symbol)/$(section)", query)(client)
     else
-        APIsRequest{CandleData}("GET", "v2/candles/trade:$(timeframe):$(query.symbol)/$(query.section)", query)(client)
+        APIsRequest{CandleData}("GET", "v2/candles/trade:$(timeframe):$(query.symbol)/$(section)", query)(client)
     end
 end
 

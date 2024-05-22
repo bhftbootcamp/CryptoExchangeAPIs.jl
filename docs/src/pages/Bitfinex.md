@@ -15,5 +15,5 @@ CryptoAPIs.Bitfinex.Spot.public_client
 CryptoAPIs.Bitfinex.Spot.candle
 CryptoAPIs.Bitfinex.Spot.order_book
 CryptoAPIs.Bitfinex.Spot.ticker
-CryptoAPIs.Bitfinex.Spot.trades_pair
+CryptoAPIs.Bitfinex.Spot.trade_pair
 ```

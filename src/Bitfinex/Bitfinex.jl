@@ -51,7 +51,7 @@ end
 
 Exception thrown when an API method fails with code `T`.
 
-## Required fields
+## Optional fields
 - `type::String`: Error type.
 - `code::Int64`: Error code.
 - `msg::String`: Error message.
@@ -77,7 +77,7 @@ function CryptoAPIs.request_sign!(::BitfinexClient, query::Q, ::String)::Q where
 end
 
 function CryptoAPIs.request_sign!(client::BitfinexClient, query::Q, endpoint::String)::Nothing where {Q<:BitfinexPrivateQuery}
-    query.nonce = string(time2unix(now(UTC)))
+    query.nonce = string(round(Int64, 1000 * datetime2unix(now(UTC))))   
     signature_payload = string("/api/", endpoint, query.nonce)
     query.signature = hexdigest("sha384", client.secret_key, signature_payload)
     return nothing

@@ -1,8 +1,8 @@
-module TradesPair
+module TradePair
 
-export TradesPairQuery,
-    TradesPairData,
-    trades_pair
+export TradePairQuery,
+    TradePairData,
+    trade_pair
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -10,16 +10,16 @@ using Dates, NanoDates, TimeZones
 using CryptoAPIs.Bitfinex
 using CryptoAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct TradesPairQuery <: BitfinexPublicQuery
+Base.@kwdef struct TradePairQuery <: BitfinexPublicQuery
     symbol::String
     _end::Maybe{DateTime} = nothing
     limit::Int64 = 125
     start::Maybe{DateTime} = nothing
 end
 
-Serde.SerQuery.ser_ignore_field(::Type{TradesPairQuery}, ::Val{:symbol}) = true
+Serde.SerQuery.ser_ignore_field(::Type{TradePairQuery}, ::Val{:symbol}) = true
 
-struct TradesPairData <: BitfinexData
+struct TradePairData <: BitfinexData
     ID::Int64
     timestamp::NanoDate
     amount::Float64
@@ -27,8 +27,8 @@ struct TradesPairData <: BitfinexData
 end
 
 """
-    trades_pair(client::BitfinexClient, query::TradesPairQuery)
-    trades_pair(client::BitfinexClient = Bitfinex.Spot.public_client; kw...)
+    trade_pair(client::BitfinexClient, query::TradePairQuery)
+    trade_pair(client::BitfinexClient = Bitfinex.Spot.public_client; kw...)
 
 The trades endpoint allows the retrieval of past public trades and includes details such as price, size, and time.
 Optional parameters can be used to limit the number of results; you can specify a start and end timestamp, a limit, and a sorting method.
@@ -44,14 +44,13 @@ Optional parameters can be used to limit the number of results; you can specify 
 | _end      | DateTime | false    |                |
 | limit     | Int64    | false    | Default: `125` |
 
-
 ## Code samples:
 
 ```julia
 using Serde
 using CryptoAPIs.Bitfinex
 
-result = Bitfinex.Spot.trades_pair(;
+result = Bitfinex.Spot.trade_pair(;
     symbol = "tBTCUSD",
     start = DateTime("2024-03-17T12:00:00"),
 )
@@ -73,12 +72,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function trades_pair(client::BitfinexClient, query::TradesPairQuery)
-    return APIsRequest{Vector{TradesPairData}}("GET", "v2/trades/$(query.symbol)/hist", query)(client)
+function trade_pair(client::BitfinexClient, query::TradePairQuery)
+    return APIsRequest{Vector{TradePairData}}("GET", "v2/trades/$(query.symbol)/hist", query)(client)
 end
 
-function trades_pair(client::BitfinexClient = Bitfinex.Spot.public_client; kw...)
-    return trades_pair(client, TradesPairQuery(; kw...))
+function trade_pair(client::BitfinexClient = Bitfinex.Spot.public_client; kw...)
+    return trade_pair(client, TradePairQuery(; kw...))
 end
 
 end

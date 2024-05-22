@@ -5,7 +5,6 @@ using Dates
 using CryptoAPIs
 using CryptoAPIs.Bitfinex
 
-
 CryptoAPIs.Bitfinex.Spot.candle(;
     timeframe = CryptoAPIs.Bitfinex.Spot.Candle.m5,
     symbol = "tBTCUSD",
@@ -21,7 +20,7 @@ CryptoAPIs.Bitfinex.Spot.order_book(;
 
 CryptoAPIs.Bitfinex.Spot.ticker(; symbols = "tBTCUSD")
 
-CryptoAPIs.Bitfinex.Spot.trades_pair(;
+CryptoAPIs.Bitfinex.Spot.trade_pair(;
     symbol = "tBTCUSD",
     start = DateTime("2023-03-17T08:47:43.073"),
 )
