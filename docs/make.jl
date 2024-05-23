@@ -21,6 +21,7 @@ makedocs(;
         "pages/Bybit.md",
         "pages/Coinbase.md",
         "pages/Cryptocom.md",
+        "pages/Deribit.md",
         "pages/Gateio.md",
         "pages/Huobi.md",
         "pages/Kraken.md",

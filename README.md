@@ -83,6 +83,13 @@ Then, to install CryptoAPIs, simply use the Julia package manager:
                 <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Cryptocom/#Spot">Spot</a></td>
             </tr>
             <tr>
+                <td><img src="docs/src/assets/deribit.png" alt="Deribit Logo" width="20" height="20"></td>
+                <td><a href="https://www.deribit.com/">Deribit</a></td>
+                <td><a href="https://docs.deribit.com/">Common</a></td>
+                <td><a href="src/Deribit/Common">CryptoAPIs.Deribit.Common</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Deribit/#Common">Common</a></td>
+            </tr>
+            <tr>
                 <td><img src="docs/src/assets/gateio.png" alt="Gateio Logo" width="20" height="20"></td>
                 <td><a href="https://www.gate.io/">Gate.io</a></td>
                 <td><a href="https://www.gate.io/docs/developers/apiv4/">Spot</a></td>
