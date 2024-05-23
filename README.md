@@ -55,6 +55,13 @@ Then, to install CryptoAPIs, simply use the Julia package manager:
                 <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Binance/#CoinMFutures">Coin-M Futures</a></td>
             </tr>
             <tr>
+                <td><img src="docs/src/assets/bitfinex.png" alt="Bitfinex Logo" width="20" height="20"></td>
+                <td><a href="https://www.bitfinex.com/">Bitfinex</a></td>
+                <td><a href="https://docs.bitfinex.com/docs/introduction">Spot</a></td>
+                <td><a href="src/Bitfinex/Spot">CryptoAPIs.Bitfinex.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Bitfinex/#Spot">Spot</a></td>
+            </tr>
+            <tr>
                 <td><img src="docs/src/assets/bithumb.png" alt="Bithumb Logo" width="20" height="20"></td>
                 <td><a href="https://m.bithumb.com/">Bithumb</a></td>
                 <td><a href="https://apidocs.bithumb.com/">Spot</a></td>
