@@ -8,7 +8,7 @@ function Serde.deser(::Type{<:DeribitData}, ::Type{<:Maybe{NanoDate}}, x::Abstra
     return NanoDate(x)
 end
 
-function Serde.deser(::Type{<:DeribitData},::Type{<:Maybe{Vector{NanoDate}}}, x::Vector{Any})::Maybe{Vector{NanoDate}}
+function Serde.deser(::Type{<:DeribitData}, ::Type{<:Maybe{Vector{NanoDate}}}, x::Vector{Any})::Maybe{Vector{NanoDate}}
     return unixnanos2nanodate.(x * 1e6)
 end
 
