@@ -105,7 +105,7 @@ to_pretty_json(result.result)
 """
 function candle(client::BitfinexClient, query::CandleQuery)
     timeframe = Serde.ser_type(CandleQuery, query.timeframe)
-    section   = Serde.ser_type(CandleQuery, query.section)
+    section = Serde.ser_type(CandleQuery, query.section)
     return if section == hist
         APIsRequest{Vector{CandleData}}("GET", "v2/candles/trade:$(timeframe):$(query.symbol)/$(section)", query)(client)
     else
