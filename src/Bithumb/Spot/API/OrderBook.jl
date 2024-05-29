@@ -15,7 +15,7 @@ import CryptoAPIs: prepare_json!
 Base.@kwdef struct OrderBookQuery <: BithumbPublicQuery
     count::Maybe{Int64} = nothing
     order_currency::Maybe{String} = "ALL"
-    payment_currency::Maybe{String} = nothing
+    payment_currency::String
 end
 
 Serde.SerQuery.ser_ignore_field(::Type{OrderBookQuery}, ::Val{:order_currency}) = true
@@ -58,9 +58,9 @@ end
 
 | Parameter        | Type   | Required | Description    |
 |:-----------------|:-------|:---------|:---------------|
+| payment_currency | String | true     |                |
 | count            | Int64  | false    |                |
 | order_currency   | String | false    | Default: "ALL" |
-| payment_currency | String | false    |                |
 
 ## Code samples:
 
