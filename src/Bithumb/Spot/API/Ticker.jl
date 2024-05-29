@@ -13,8 +13,8 @@ using CryptoAPIs: Maybe, APIsRequest
 import CryptoAPIs: prepare_json!
 
 Base.@kwdef struct TickerQuery <: BithumbPublicQuery
+    payment_currency::String
     order_currency::Maybe{String} = "ALL"
-    payment_currency::Maybe{String} = nothing
 end
 
 Serde.SerQuery.ser_ignore_field(::Type{TickerQuery}, ::Val{:order_currency}) = true
@@ -57,8 +57,8 @@ Provides information on the current price of virtual assets at the time of reque
 
 | Parameter        | Type   | Required | Description    |
 |:-----------------|:-------|:---------|:---------------|
+| payment_currency | String | true     |                |
 | order_currency   | String | false    | Default: "ALL" |
-| payment_currency | String | false    |                |
 
 ## Code samples:
 
