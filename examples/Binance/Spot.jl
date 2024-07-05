@@ -39,3 +39,5 @@ Binance.Spot.coin_information(binance_client)
 Binance.Spot.deposit_log(binance_client)
 
 Binance.Spot.withdrawal_log(binance_client)
+
+Binance.Spot.server_time()
