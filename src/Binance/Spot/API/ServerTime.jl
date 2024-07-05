@@ -11,7 +11,7 @@ using CryptoAPIs: Maybe, APIsRequest
 struct ServerTimeQuery <: BinancePublicQuery end
 
 struct ServerTimeData <: BinanceData
-    serverTime::Maybe{Int64}
+    serverTime::Int64
 end
 
 """
