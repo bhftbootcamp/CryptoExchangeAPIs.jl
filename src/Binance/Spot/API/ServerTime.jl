@@ -50,7 +50,7 @@ to_pretty_json(result.result)
 
 ```json
 {
-  "serverTime": 1499827319559
+  "serverTime": "2024-07-06T11:39:06.032"
 }
 ```
 """
