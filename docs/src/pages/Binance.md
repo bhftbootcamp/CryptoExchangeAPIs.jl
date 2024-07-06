@@ -21,6 +21,7 @@ CryptoAPIs.Binance.Spot.exchange_info
 CryptoAPIs.Binance.Spot.order_book
 CryptoAPIs.Binance.Spot.ticker
 CryptoAPIs.Binance.Spot.withdrawal_log
+CryptoAPIs.Binance.Spot.server_time
 ```
 
 ## USDMFutures
