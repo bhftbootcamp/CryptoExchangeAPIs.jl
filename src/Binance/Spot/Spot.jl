@@ -29,13 +29,13 @@ using .ExchangeInfo
 include("API/OrderBook.jl")
 using .OrderBook
 
+include("API/ServerTime.jl")
+using .ServerTime
+
 include("API/Ticker.jl")
 using .Ticker
 
 include("API/WithdrawalLog.jl")
 using .WithdrawalLog
-
-include("API/ServerTime.jl")
-using .ServerTime
 
 end
