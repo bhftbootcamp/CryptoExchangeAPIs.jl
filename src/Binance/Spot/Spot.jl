@@ -29,6 +29,9 @@ using .ExchangeInfo
 include("API/OrderBook.jl")
 using .OrderBook
 
+include("API/ServerTime.jl")
+using .ServerTime
+
 include("API/Ticker.jl")
 using .Ticker
 

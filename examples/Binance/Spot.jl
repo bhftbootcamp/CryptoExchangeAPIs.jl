@@ -19,6 +19,8 @@ Binance.Spot.exchange_info()
 
 Binance.Spot.order_book(; symbol = "BTCUSDT", limit = 10)
 
+Binance.Spot.server_time()
+
 Binance.Spot.ticker()
 Binance.Spot.ticker(; symbol = "BTCUSDT")
 Binance.Spot.ticker(; symbols = ["BTCUSDT", "ADAUSDT"])
