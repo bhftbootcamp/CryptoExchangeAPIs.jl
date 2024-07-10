@@ -19,7 +19,6 @@ Base.@kwdef struct FundingRateQuery <: AevoPublicQuery
     limit::Maybe{Int64} = nothing
 end
 
-
 struct FundingHistory <: AevoData
     instrument_name::String
     timestamp::NanoDate
@@ -35,7 +34,7 @@ end
     product_stats(client::AevoClient, query::FundingRateQuery)
     product_stats(client::AevoClient = Aevo.Derivatives.public_client; kw...)
 
-Returns the market statistics for the given asset.
+Returns the funding rate history for the instrument.
 
 [`GET funding-history`](https://api-docs.aevo.xyz/reference/getfundinghistory)
 

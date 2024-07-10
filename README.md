@@ -34,6 +34,13 @@ Then, to install CryptoAPIs, simply use the Julia package manager:
                 <th>Documentation</th>
             </tr>
             <tr>
+                <td><img src="docs/src/assets/aevo.png" alt="Aevo Logo" width="20" height="20"></td>
+                <td><a href="https://www.aevo.xyz/">Aevo</a></td>
+                <td><a href="https://api-docs.aevo.xyz/reference/overview">Derivatives</a></td>
+                <td><a href="src/Aevo/Derivatives">CryptoAPIs.Aevo.Derivatives</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Aevo/#Derivatives">Derivatives</a></td>
+            </tr>
+            <tr>
                 <td><img src="docs/src/assets/binance.png" alt="Binance Logo" width="20" height="20"></td>
                 <td><a href="https://www.binance.com/en/trade">Binance</a></td>
                 <td><a href="https://binance-docs.github.io/apidocs/spot/en/">Spot</a></td>

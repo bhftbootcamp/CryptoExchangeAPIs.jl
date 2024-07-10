@@ -16,6 +16,7 @@ makedocs(;
     pages = [
         "Home" => "index.md",
         "API Reference" => "pages/api_reference.md",
+        "pages/Aevo.md"
         "pages/Binance.md",
         "pages/Bitfinex.md",
         "pages/Bithumb.md",

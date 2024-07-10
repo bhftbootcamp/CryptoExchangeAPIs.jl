@@ -18,9 +18,15 @@ Base.@kwdef struct ProductStatsQuery <: AevoPublicQuery
     end_time::Maybe{DateTime} = nothing
 end
 
+struct OpenInterest <: AevoData
+    calls::Maybe{Float64}
+    puts::Maybe{Float64}
+    total::Float64
+end
+
 struct ProductStatsData <: AevoData
     asset::String
-    open_interest::Dict{Symbol, Maybe{Float64}}
+    open_interest::OpenInterest
     daily_volume::Float64
     daily_buy_volume::Float64
     daily_sell_volume::Float64
