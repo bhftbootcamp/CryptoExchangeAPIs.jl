@@ -31,8 +31,8 @@ struct FundingRateData <: AevoData
 end
 
 """
-    product_stats(client::AevoClient, query::FundingRateQuery)
-    product_stats(client::AevoClient = Aevo.Derivatives.public_client; kw...)
+    funding_rate(client::AevoClient, query::FundingRateQuery)
+    funding_rate(client::AevoClient = Aevo.Derivatives.public_client; kw...)
 
 Returns the funding rate history for the instrument.
 

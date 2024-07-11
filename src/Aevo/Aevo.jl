@@ -57,26 +57,20 @@ Exception thrown when an API method fails with code `T`.
 - `msg::String`: Error message.
 """
 struct AevoAPIError{T} <: AbstractAPIsError
-    code::Int64
-    type::Maybe{String}
-    msg::Maybe{String}
+    error::String
 
-    function AevoAPIError(code::Int64, x...)
-        return new{code}(code, x...)
+    function AevoAPIError(error::String, x...)
+        return new{Symbol(error)}(error, x...)
     end
 end
 
 CryptoAPIs.error_type(::AevoClient) = AevoAPIError
 
 function Base.show(io::IO, e::AevoAPIError)
-    return print(io, "code = ", "\"", e.code, "\"", ", ", "msg = ", "\"", e.msg, "\"")
+    return print(io, "error = ", "\"", e.error)
 end
 
-function CryptoAPIs.request_sign!(::AevoClient, query::Q, ::String)::Q where {Q<:AevoPublicQuery}
-    return query
-end
-
-function CryptoAPIs.request_sign!(::AevoClient, query::Q, ::String)::Q where {Q<:AevoAccessQuery}
+function CryptoAPIs.request_sign!(::AevoClient, query::Q, ::String)::Q where {Q<:AevoCommonQuery}
     return query
 end
 
@@ -88,13 +82,7 @@ function CryptoAPIs.request_query(query::Q)::String where {Q<:AevoCommonQuery}
     return Serde.to_query(query)
 end
 
-function CryptoAPIs.request_headers(client::AevoClient, ::AevoPublicQuery)::Vector{Pair{String,String}}
-    return Pair{String,String}[
-        "accept" => "application/json",
-    ]
-end
-
-function CryptoAPIs.request_headers(client::AevoClient, ::AevoAccessQuery)::Vector{Pair{String,String}}
+function CryptoAPIs.request_headers(client::AevoClient, ::AevoCommonQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "accept" => "application/json",
     ]
