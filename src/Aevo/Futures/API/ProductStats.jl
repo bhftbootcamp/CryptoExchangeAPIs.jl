@@ -45,7 +45,7 @@ end
 
 """
     product_stats(client::AevoClient, query::ProductStatsQuery)
-    product_stats(client::AevoClient = Aevo.Derivatives.public_client; kw...)
+    product_stats(client::AevoClient = Aevo.Futures.public_client; kw...)
 
 Returns the market statistics for the given asset.
 
@@ -57,9 +57,9 @@ Returns the market statistics for the given asset.
 using Serde
 using CryptoAPIs.Aevo
 
-result = Aevo.Derivatives.product_stats(; 
+result = Aevo.Futures.product_stats(; 
     asset = "ETH",
-    instrument_type = Aevo.Derivatives.ProductStats.PERPETUAL,
+    instrument_type = Aevo.Futures.ProductStats.PERPETUAL,
 )
 
 to_pretty_json(result.result)
@@ -94,7 +94,7 @@ function product_stats(client::AevoClient, query::ProductStatsQuery)
     return APIsRequest{ProductStatsData}("GET", "statistics", query)(client)
 end
 
-function product_stats(client::AevoClient = Aevo.Derivatives.public_client; kw...)
+function product_stats(client::AevoClient = Aevo.Futures.public_client; kw...)
     return product_stats(client, ProductStatsQuery(; kw...))
 end
 

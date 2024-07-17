@@ -5,5 +5,5 @@ function Serde.deser(::Type{<:AevoData}, ::Type{<:Maybe{NanoDate}}, x::String)::
 end
 
 function Serde.SerQuery.ser_type(::Type{<:AevoCommonQuery}, x::D)::Int64 where {D<:DateTime}
-    return round(Int64, 1000 * datetime2unix(x))
+    return round(Int64, 1000000 * datetime2unix(x))
 end

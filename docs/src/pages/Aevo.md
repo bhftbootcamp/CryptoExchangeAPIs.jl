@@ -5,13 +5,13 @@ CryptoAPIs.Aevo.AevoClient
 CryptoAPIs.Aevo.AevoAPIError
 ```
 
-## Derivatives
+## Futures
 
 ```@docs
-CryptoAPIs.Aevo.Derivatives.public_client
+CryptoAPIs.Aevo.Futures.public_client
 ```
 
 ```@docs
-CryptoAPIs.Aevo.Derivatives.funding_rate
-CryptoAPIs.Aevo.Derivatives.product_stats
+CryptoAPIs.Aevo.Futures.funding_rate
+CryptoAPIs.Aevo.Futures.product_stats
 ```

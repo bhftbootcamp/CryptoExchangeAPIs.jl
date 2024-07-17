@@ -32,7 +32,7 @@ end
 
 """
     funding_rate(client::AevoClient, query::FundingRateQuery)
-    funding_rate(client::AevoClient = Aevo.Derivatives.public_client; kw...)
+    funding_rate(client::AevoClient = Aevo.Futures.public_client; kw...)
 
 Returns the funding rate history for the instrument.
 
@@ -44,7 +44,7 @@ Returns the funding rate history for the instrument.
 using Serde
 using CryptoAPIs.Aevo
 
-result = Aevo.Derivatives.funding_rate(; 
+result = Aevo.Futures.funding_rate(; 
     instrument_name = "ETH-PERP",
 )
 
@@ -124,7 +124,7 @@ function funding_rate(client::AevoClient, query::FundingRateQuery)
     return APIsRequest{FundingRateData}("GET", "funding-history", query)(client)
 end
 
-function funding_rate(client::AevoClient = Aevo.Derivatives.public_client; kw...)
+function funding_rate(client::AevoClient = Aevo.Futures.public_client; kw...)
     return funding_rate(client, FundingRateQuery(; kw...))
 end
 

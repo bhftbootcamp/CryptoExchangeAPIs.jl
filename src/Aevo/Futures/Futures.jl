@@ -1,4 +1,4 @@
-module Derivatives
+module Futures
 
 using CryptoAPIs.Aevo
 

@@ -50,11 +50,7 @@ end
 Exception thrown when an API method fails with code `T`.
 
 ## Required fields
-- `code::Int64`: Error code.
-
-## Optional fields
-- `type::String`: Type of error.
-- `msg::String`: Error message.
+- `error::String`: Error message.
 """
 struct AevoAPIError{T} <: AbstractAPIsError
     error::String
@@ -91,7 +87,7 @@ end
 include("Utils.jl")
 include("Errors.jl")
 
-include("Derivatives/Derivatives.jl")
-using .Derivatives
+include("Futures/Futures.jl")
+using .Futures
 
 end
