@@ -5,7 +5,6 @@ using Dates
 using CryptoAPIs
 using CryptoAPIs.Aevo
 
-
 CryptoAPIs.Aevo.Futures.funding_rate(; 
     instrument_name = "ETH-PERP",
 )
