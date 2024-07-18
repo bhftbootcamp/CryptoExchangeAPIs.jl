@@ -160,6 +160,7 @@ function Base.show(io::IO, x::APIsResult{E}) where {E<:Exception}
 end
 
 include("Interface.jl")
+include("Aevo/Aevo.jl")
 include("Binance/Binance.jl")
 include("Bitfinex/Bitfinex.jl")
 include("Bithumb/Bithumb.jl")
