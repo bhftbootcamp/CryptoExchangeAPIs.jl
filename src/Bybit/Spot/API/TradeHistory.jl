@@ -1,11 +1,12 @@
 module TradeHistory
 
-export TradeHistoryQuery, 
-    TradeHistoryData, 
+export TradeHistoryQuery,
+    TradeHistoryData,
     trade_history
 
 using Serde
-using Dates
+using Dates, NanoDates
+
 using CryptoAPIs.Bybit
 using CryptoAPIs.Bybit: Data, List
 using CryptoAPIs: Maybe, APIsRequest
@@ -42,29 +43,29 @@ struct TradeHistoryData <: BybitData
     orderId::String
     orderLinkId::Maybe{String}
     side::String
-    orderPrice::String
-    orderQty::String
-    leavesQty::Maybe{String}
+    orderPrice::Float64
+    orderQty::Float64
+    leavesQty::Maybe{Float64}
     createType::Maybe{String}
     orderType::String
     stopOrderType::Maybe{String}
-    execFee::String
+    execFee::Float64
     execId::String
-    execPrice::String
-    execQty::String
+    execPrice::Float64
+    execQty::Float64
     execType::Maybe{String}
-    execValue::Maybe{String}
-    execTime::String
+    execValue::Maybe{Float64}
+    execTime::NanoDate
     feeCurrency::Maybe{String}
     isMaker::Bool
-    feeRate::Maybe{String}
+    feeRate::Maybe{Float64}
     tradeIv::Maybe{String}
     markIv::Maybe{String}
-    markPrice::Maybe{String}
-    indexPrice::Maybe{String}
-    underlyingPrice::Maybe{String}
+    markPrice::Maybe{Float64}
+    indexPrice::Maybe{Float64}
+    underlyingPrice::Maybe{Float64}
     blockTradeId::Maybe{String}
-    closedSize::Maybe{String}
+    closedSize::Maybe{Float64}
     seq::Maybe{Int64}
 end
 
@@ -124,45 +125,45 @@ to_pretty_json(result.result)
 
 ```json
 {
-    "retCode": 0,
-    "retMsg": "OK",
-    "result": {
-        "nextPageCursor": "132766%3A2%2C132766%3A2",
-        "category": "linear",
-        "list": [
-            {
-                "symbol": "ETHPERP",
-                "orderType": "Market",
-                "underlyingPrice": "",
-                "orderLinkId": "",
-                "side": "Buy",
-                "indexPrice": "",
-                "orderId": "8c065341-7b52-4ca9-ac2c-37e31ac55c94",
-                "stopOrderType": "UNKNOWN",
-                "leavesQty": "0",
-                "execTime": "1672282722429",
-                "feeCurrency": "",
-                "isMaker": false,
-                "execFee": "0.071409",
-                "feeRate": "0.0006",
-                "execId": "e0cbe81d-0f18-5866-9415-cf319b5dab3b",
-                "tradeIv": "",
-                "blockTradeId": "",
-                "markPrice": "1183.54",
-                "execPrice": "1190.15",
-                "markIv": "",
-                "orderQty": "0.1",
-                "orderPrice": "1236.9",
-                "execValue": "119.015",
-                "execType": "Trade",
-                "execQty": "0.1",
-                "closedSize": "",
-                "seq": 4688002127
-            }
-        ]
-    },
-    "retExtInfo": {},
-    "time": 1672283754510
+  "retCode":0,
+  "retMsg":"OK",
+  "result":{
+    "list":[
+      {
+        "symbol":"ETHPERP",
+        "orderType":"Market",
+        "underlyingPrice":null,
+        "orderLinkId":null,
+        "side":"Buy",
+        "indexPrice":null,
+        "orderId":"8c065341-7b52-4ca9-ac2c-37e31ac55c94",
+        "stopOrderType":"UNKNOWN",
+        "leavesQty":0.0,
+        "execTime":"2022-12-29T02:58:42.428999936",
+        "feeCurrency":null,
+        "isMaker":false,
+        "execFee":0.071409,
+        "feeRate":0.0006,
+        "execId":"e0cbe81d-0f18-5866-9415-cf319b5dab3b",
+        "tradeIv":null,
+        "blockTradeId":null,
+        "markPrice":1183.54,
+        "execPrice":1190.15,
+        "markIv":null,
+        "orderQty":0.1,
+        "orderPrice":1236.9,
+        "execValue":119.015,
+        "execType":"Trade",
+        "execQty":0.1,
+        "closedSize":null,
+        "seq":4688002127
+      }
+    ],
+    "nextPageCursor":"132766%3A2%2C132766%3A2",
+    "category":"linear",
+  },
+  "retExtInfo":{},
+  "time":"2022-12-29T03:15:54.510"
 }
 ```
 """
