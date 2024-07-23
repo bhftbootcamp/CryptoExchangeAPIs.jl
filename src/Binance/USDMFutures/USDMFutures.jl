@@ -20,6 +20,9 @@ using .ExchangeInfo
 include("API/FundingRate.jl")
 using .FundingRate
 
+include("API/HistoricalTrades.jl")
+using .HistoricalTrades
+
 include("API/LongShortRatio.jl")
 using .LongShortRatio
 
