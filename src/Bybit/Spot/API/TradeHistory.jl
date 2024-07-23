@@ -32,7 +32,7 @@ end
 
 function Serde.ser_type(::Type{<:BybitPrivateQuery}, x::TradeCategory)::String
     x == OPTION  && return "option"
-    x == SPOT  && return "spot"
+    x == SPOT    && return "spot"
     x == LINEAR  && return "linear"
     x == INVERSE && return "inverse"
 end
