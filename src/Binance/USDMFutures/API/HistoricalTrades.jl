@@ -57,13 +57,14 @@ to_pretty_json(result.result)
 ```json
 [
   {
-    "id": 28457,
-    "price": "4.00000100",
-    "qty": "12.00000000",
-    "quoteQty": "8000.00",
-    "time": 1499865549590,
-    "isBuyerMaker": true,
-  }
+    "id":3697954552,
+    "price":66428.01,
+    "qty":0.0038,
+    "quoteQty":252.426438,
+    "time":"2024-07-23T12:50:24.951000064",
+    "isBuyerMaker":false
+  },
+  ...
 ]
 ```
 """
