@@ -28,3 +28,5 @@ bybit_client = BybitClient(;
 CryptoAPIs.Bybit.Spot.coin_info(bybit_client)
 
 CryptoAPIs.Bybit.Spot.deposit(bybit_client)
+
+CryptoAPIs.Bybit.Spot.trade_history(bybit_client; category = CryptoAPIs.Bybit.Spot.TradeHistory.SPOT, limit = 1)
