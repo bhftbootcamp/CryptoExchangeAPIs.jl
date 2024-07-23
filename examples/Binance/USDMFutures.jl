@@ -28,7 +28,7 @@ Binance.USDMFutures.exchange_info()
 
 Binance.USDMFutures.funding_rate(; symbol = "BTCUSDT")
 
-Binance.USDMFutures.historical_trades(;symbol = "BTCUSDT")
+Binance.USDMFutures.historical_trades(; symbol = "BTCUSDT")
 
 Binance.USDMFutures.long_short_ratio(;
     symbol = "BTCUSDT",
