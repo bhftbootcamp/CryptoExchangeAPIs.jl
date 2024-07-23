@@ -38,16 +38,20 @@ function Serde.ser_type(::Type{<:BybitPrivateQuery}, x::TradeCategory)::String
     x == INVERSE && return "inverse"
 end
 
+@enum TradeSide Buy Sell
+
+@enum TradeOrderType Market Limit
+
 struct TradeHistoryData <: BybitData
     symbol::String
     orderId::String
     orderLinkId::Maybe{String}
-    side::String
+    side::TradeSide
     orderPrice::Float64
     orderQty::Float64
     leavesQty::Maybe{Float64}
     createType::Maybe{String}
-    orderType::String
+    orderType::TradeOrderType
     stopOrderType::Maybe{String}
     execFee::Float64
     execId::String
@@ -132,30 +136,30 @@ to_pretty_json(result.result)
       {
         "symbol":"ETHPERP",
         "orderType":"Market",
-        "underlyingPrice":null,
-        "orderLinkId":null,
+        "underlyingPrice":nothing,
+        "orderLinkId":nothing,
         "side":"Buy",
-        "indexPrice":null,
+        "indexPrice":nothing,
         "orderId":"8c065341-7b52-4ca9-ac2c-37e31ac55c94",
         "stopOrderType":"UNKNOWN",
         "leavesQty":0.0,
         "execTime":"2022-12-29T02:58:42.428999936",
-        "feeCurrency":null,
+        "feeCurrency":nothing,
         "isMaker":false,
         "execFee":0.071409,
         "feeRate":0.0006,
         "execId":"e0cbe81d-0f18-5866-9415-cf319b5dab3b",
-        "tradeIv":null,
-        "blockTradeId":null,
+        "tradeIv":nothing,
+        "blockTradeId":nothing,
         "markPrice":1183.54,
         "execPrice":1190.15,
-        "markIv":null,
+        "markIv":nothing,
         "orderQty":0.1,
         "orderPrice":1236.9,
         "execValue":119.015,
         "execType":"Trade",
         "execQty":0.1,
-        "closedSize":null,
+        "closedSize":nothing,
         "seq":4688002127
       }
     ],
