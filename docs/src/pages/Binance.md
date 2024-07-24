@@ -35,6 +35,7 @@ CryptoAPIs.Binance.USDMFutures.candle
 CryptoAPIs.Binance.USDMFutures.continuous_candle
 CryptoAPIs.Binance.USDMFutures.exchange_info
 CryptoAPIs.Binance.USDMFutures.funding_rate
+CryptoAPIs.Binance.USDMFutures.historical_trades
 CryptoAPIs.Binance.USDMFutures.long_short_ratio
 CryptoAPIs.Binance.USDMFutures.open_interest_hist
 CryptoAPIs.Binance.USDMFutures.order_book
