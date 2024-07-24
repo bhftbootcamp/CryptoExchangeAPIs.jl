@@ -21,4 +21,5 @@ CryptoAPIs.Bybit.Spot.deposit
 CryptoAPIs.Bybit.Spot.order_book
 CryptoAPIs.Bybit.Spot.symbol_info
 CryptoAPIs.Bybit.Spot.ticker
+CryptoAPIs.Bybit.Spot.trade_history
 ```

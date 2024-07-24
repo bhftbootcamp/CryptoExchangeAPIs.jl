@@ -26,4 +26,7 @@ using .SymbolInfo
 include("API/Ticker.jl")
 using .Ticker
 
+include("API/TradeHistory.jl")
+using .TradeHistory
+
 end
