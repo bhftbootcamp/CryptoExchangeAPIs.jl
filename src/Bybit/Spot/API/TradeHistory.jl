@@ -7,9 +7,9 @@ export TradeHistoryQuery,
 using Serde
 using Dates, NanoDates
 
-using CryptoAPIs.Bybit
-using CryptoAPIs.Bybit: Data, List
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Bybit
+using CryptoExchangeAPIs.Bybit: Data, List
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum TradeCategory OPTION SPOT LINEAR INVERSE
 
@@ -108,7 +108,7 @@ Query users' execution records.
 
 ```julia
 using Serde
-using CryptoAPIs.Bybit
+using CryptoExchangeAPIs.Bybit
 
 bybit_client = BybitClient(;
     base_url = "https://api.bybit.com",

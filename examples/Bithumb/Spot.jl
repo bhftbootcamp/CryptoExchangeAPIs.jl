@@ -2,38 +2,38 @@
 # https://apidocs.bithumb.com/
 
 using Dates
-using CryptoAPIs
-using CryptoAPIs.Bithumb
+using CryptoExchangeAPIs
+using CryptoExchangeAPIs.Bithumb
 
-CryptoAPIs.Bithumb.Spot.asset_status()
-CryptoAPIs.Bithumb.Spot.asset_status(; currency = "ADA")
+CryptoExchangeAPIs.Bithumb.Spot.asset_status()
+CryptoExchangeAPIs.Bithumb.Spot.asset_status(; currency = "ADA")
 
-CryptoAPIs.Bithumb.Spot.candle(;
+CryptoExchangeAPIs.Bithumb.Spot.candle(;
     order_currency = "BTC",
     payment_currency = "KRW",
-    interval = CryptoAPIs.Bithumb.Spot.Candle.h24,
+    interval = CryptoExchangeAPIs.Bithumb.Spot.Candle.h24,
 )
 
-CryptoAPIs.Bithumb.Spot.order_book(;
+CryptoExchangeAPIs.Bithumb.Spot.order_book(;
     order_currency = "BTC",
     payment_currency = "KRW",
     count = 5,
 )
-CryptoAPIs.Bithumb.Spot.order_book(;
+CryptoExchangeAPIs.Bithumb.Spot.order_book(;
     payment_currency = "KRW",
     count = 5,
 )
 
-CryptoAPIs.Bithumb.Spot.ticker(;
+CryptoExchangeAPIs.Bithumb.Spot.ticker(;
     order_currency = "BTC",
     payment_currency = "KRW",
 )
 
-CryptoAPIs.Bithumb.Spot.ticker(;
+CryptoExchangeAPIs.Bithumb.Spot.ticker(;
     payment_currency = "KRW",
 )
 
-bithumb_client = CryptoAPIs.Bithumb.BithumbClient(;
+bithumb_client = CryptoExchangeAPIs.Bithumb.BithumbClient(;
     base_url = "https://api.bithumb.com",
     public_key = ENV["BITHUMB_PUBLIC_KEY"],
     secret_key = ENV["BITHUMB_SECRET_KEY"],

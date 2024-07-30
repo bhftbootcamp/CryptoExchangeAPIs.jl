@@ -1,6 +1,6 @@
 # Coinbase/Errors
 
-import ..CryptoAPIs: APIsResult, APIsUndefError, isretriable, retry_maxcount, retry_timeout
+import ..CryptoExchangeAPIs: APIsResult, APIsUndefError, isretriable, retry_maxcount, retry_timeout
 
 # UNHANDLED
 isretriable(::APIsResult{CoinbaseAPIError}) = true

@@ -7,8 +7,8 @@ export TickerQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Gateio
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Gateio
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum Settle btc usdt usd
 
@@ -55,7 +55,7 @@ List futures tickers.
 
 ```julia
 using Serde
-using CryptoAPIs.Gateio
+using CryptoExchangeAPIs.Gateio
 
 result = Gateio.Futures.ticker(; settle = Gateio.Futures.Ticker.btc)
 

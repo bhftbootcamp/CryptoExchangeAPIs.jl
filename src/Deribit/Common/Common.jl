@@ -1,6 +1,6 @@
 module Common
 
-using CryptoAPIs.Deribit
+using CryptoExchangeAPIs.Deribit
 
 """
     public_client = DeribitClient(; base_url = "https://www.deribit.com")

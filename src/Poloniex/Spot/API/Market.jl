@@ -7,8 +7,8 @@ export MarketQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Poloniex
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Poloniex
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct MarketQuery <: PoloniexPublicQuery
     symbol::Maybe{String} = nothing
@@ -64,7 +64,7 @@ Get all symbols and their tradeLimit info.
 
 ```julia
 using Serde
-using CryptoAPIs.Poloniex
+using CryptoExchangeAPIs.Poloniex
 
 result = Poloniex.Spot.market(;
     symbol = "BTC_USDT",

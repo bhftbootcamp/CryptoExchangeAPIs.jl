@@ -11,8 +11,8 @@ export DeribitCommonQuery,
 using Serde
 using Dates, NanoDates, TimeZones, Base64, Nettle
 
-using ..CryptoAPIs
-import ..CryptoAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
+using ..CryptoExchangeAPIs
+import ..CryptoExchangeAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
 
 abstract type DeribitData <: AbstractAPIsData end
 abstract type DeribitCommonQuery  <: AbstractAPIsQuery end
@@ -118,21 +118,21 @@ function Base.show(io::IO, e::DeribitAPIError)
     return print(io, "code = ", "\"", e.error.code, "\"", ", ", "msg = ", "\"", e.error.message, "\"")
 end
 
-CryptoAPIs.error_type(::DeribitClient) = DeribitAPIError
+CryptoExchangeAPIs.error_type(::DeribitClient) = DeribitAPIError
 
-function CryptoAPIs.request_sign!(::DeribitClient, query::Q, ::String)::Q where {Q<:DeribitPublicQuery}
+function CryptoExchangeAPIs.request_sign!(::DeribitClient, query::Q, ::String)::Q where {Q<:DeribitPublicQuery}
     return query
 end
 
-function CryptoAPIs.request_body(::Q)::String where {Q<:DeribitPublicQuery}
+function CryptoExchangeAPIs.request_body(::Q)::String where {Q<:DeribitPublicQuery}
     return ""
 end
 
-function CryptoAPIs.request_query(query::Q)::String where {Q<:DeribitPublicQuery}
+function CryptoExchangeAPIs.request_query(query::Q)::String where {Q<:DeribitPublicQuery}
     return Serde.to_query(query)
 end
 
-function CryptoAPIs.request_headers(client::DeribitClient, ::DeribitPublicQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::DeribitClient, ::DeribitPublicQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json"
     ]

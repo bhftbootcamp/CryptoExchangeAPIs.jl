@@ -1,4 +1,4 @@
-module CryptoAPIs
+module CryptoExchangeAPIs
 
 export crypto_apis_query,
     crypto_apis_client,

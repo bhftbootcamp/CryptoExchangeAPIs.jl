@@ -12,8 +12,8 @@ using Serde
 using Dates, NanoDates, Base64, Nettle
 using UUIDs, JSONWebTokens
 
-using ..CryptoAPIs
-using ..CryptoAPIs: Maybe,  AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
+using ..CryptoExchangeAPIs
+using ..CryptoExchangeAPIs: Maybe,  AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
 
 abstract type UpbitData <: AbstractAPIsData end
 abstract type UpbitCommonQuery <: AbstractAPIsQuery end
@@ -72,7 +72,7 @@ struct UpbitAPIError{T} <: AbstractAPIsError
     end
 end
 
-CryptoAPIs.error_type(::UpbitClient) = UpbitAPIError
+CryptoExchangeAPIs.error_type(::UpbitClient) = UpbitAPIError
 
 function Base.show(io::IO, e::UpbitAPIError)
     return print(io, "name = ", "\"", e.error.name, "\"", ", ", "msg = ", "\"", e.error.message, "\"")
@@ -83,11 +83,11 @@ struct UpbitUndefError <: AbstractAPIsError
     msg::String
 end
 
-function CryptoAPIs.request_sign!(::UpbitClient, query::Q, ::String)::Q where {Q<:UpbitPublicQuery}
+function CryptoExchangeAPIs.request_sign!(::UpbitClient, query::Q, ::String)::Q where {Q<:UpbitPublicQuery}
     return query
 end
 
-function CryptoAPIs.request_sign!(client::UpbitClient, query::Q, ::String)::Q where {Q<:UpbitPrivateQuery}
+function CryptoExchangeAPIs.request_sign!(client::UpbitClient, query::Q, ::String)::Q where {Q<:UpbitPrivateQuery}
     query.signature = nothing
     body = Dict{String,String}(
         "access_key" => client.public_key,
@@ -106,21 +106,21 @@ function CryptoAPIs.request_sign!(client::UpbitClient, query::Q, ::String)::Q wh
     return query
 end
 
-function CryptoAPIs.request_body(::Q)::String where {Q<:UpbitCommonQuery}
+function CryptoExchangeAPIs.request_body(::Q)::String where {Q<:UpbitCommonQuery}
     return ""
 end
 
-function CryptoAPIs.request_query(query::Q)::String where {Q<:UpbitCommonQuery}
+function CryptoExchangeAPIs.request_query(query::Q)::String where {Q<:UpbitCommonQuery}
     return Serde.to_query(query)
 end
 
-function CryptoAPIs.request_headers(client::UpbitClient, ::UpbitPublicQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::UpbitClient, ::UpbitPublicQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json"
     ]
 end
 
-function CryptoAPIs.request_headers(client::UpbitClient, query::UpbitPrivateQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::UpbitClient, query::UpbitPrivateQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Authorization" => query.signature,
     ]

@@ -7,8 +7,8 @@ export ExchangeInfoQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Binance
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Binance
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum Permission SPOT MARGIN LEVERAGED TRD_GRP_002 TRD_GRP_003 TRD_GRP_004 TRD_GRP_005 TRD_GRP_006 TRD_GRP_007
 
@@ -112,7 +112,7 @@ Current exchange trading rules and symbol information.
 
 ```julia
 using Serde
-using CryptoAPIs.Binance
+using CryptoExchangeAPIs.Binance
 
 result = Binance.Spot.exchange_info(;
     symbol = "ADAUSDT"

@@ -7,8 +7,8 @@ export CurrencyQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Gateio
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Gateio
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct CurrencyQuery <: GateioPublicQuery
     #__ empty
@@ -37,7 +37,7 @@ List all currencies' details.
 
 ```julia
 using Serde
-using CryptoAPIs.Gateio
+using CryptoExchangeAPIs.Gateio
 
 result = Gateio.Spot.currency()
 

@@ -11,8 +11,8 @@ export BithumbCommonQuery,
 using Serde
 using Dates, NanoDates, TimeZones, Base64, Nettle
 
-using ..CryptoAPIs
-import ..CryptoAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
+using ..CryptoExchangeAPIs
+import ..CryptoExchangeAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
 
 abstract type BithumbData <: AbstractAPIsData end
 abstract type BithumbCommonQuery  <: AbstractAPIsQuery end
@@ -86,13 +86,13 @@ function Base.show(io::IO, e::BithumbAPIError)
     return print(io, "status = ", "\"", e.status, "\"", ", ", "message = ", "\"", e.message, "\"")
 end
 
-CryptoAPIs.error_type(::BithumbClient) = BithumbAPIError
+CryptoExchangeAPIs.error_type(::BithumbClient) = BithumbAPIError
 
-function CryptoAPIs.request_sign!(::BithumbClient, query::Q, ::String)::Q where {Q<:BithumbPublicQuery}
+function CryptoExchangeAPIs.request_sign!(::BithumbClient, query::Q, ::String)::Q where {Q<:BithumbPublicQuery}
     return query
 end
 
-function CryptoAPIs.request_sign!(client::BithumbClient, query::Q, endpoint::String)::Q where {Q<:BithumbPrivateQuery}
+function CryptoExchangeAPIs.request_sign!(client::BithumbClient, query::Q, endpoint::String)::Q where {Q<:BithumbPrivateQuery}
     query.nonce = Dates.now(UTC)
     query.endpoint = Serde.SerQuery.escape_query("/" * endpoint)
     query.signature = nothing
@@ -102,25 +102,25 @@ function CryptoAPIs.request_sign!(client::BithumbClient, query::Q, endpoint::Str
     return query
 end
 
-function CryptoAPIs.request_sign!(::BithumbClient, query::Q, ::String)::Q where {Q<:BithumbAccessQuery}
+function CryptoExchangeAPIs.request_sign!(::BithumbClient, query::Q, ::String)::Q where {Q<:BithumbAccessQuery}
     return query
 end
 
-function CryptoAPIs.request_body(::Q)::String where {Q<:BithumbCommonQuery}
+function CryptoExchangeAPIs.request_body(::Q)::String where {Q<:BithumbCommonQuery}
     return ""
 end
 
-function CryptoAPIs.request_query(query::Q)::String where {Q<:BithumbCommonQuery}
+function CryptoExchangeAPIs.request_query(query::Q)::String where {Q<:BithumbCommonQuery}
     return Serde.to_query(query)
 end
 
-function CryptoAPIs.request_headers(client::BithumbClient, ::BithumbPublicQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::BithumbClient, ::BithumbPublicQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json"
     ]
 end
 
-function CryptoAPIs.request_headers(client::BithumbClient, query::BithumbPrivateQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::BithumbClient, query::BithumbPrivateQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Api-Key"   => client.public_key,
         "Api-Sign"  => query.signature,

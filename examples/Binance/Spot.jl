@@ -2,8 +2,8 @@
 # https://binance-docs.github.io/apidocs/spot/en
 
 using Dates
-using CryptoAPIs
-using CryptoAPIs.Binance
+using CryptoExchangeAPIs
+using CryptoExchangeAPIs.Binance
 
 Binance.Spot.avg_price(; symbol = "ADAUSDT")
 

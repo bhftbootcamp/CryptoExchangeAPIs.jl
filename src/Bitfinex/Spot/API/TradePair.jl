@@ -7,8 +7,8 @@ export TradePairQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Bitfinex
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Bitfinex
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct TradePairQuery <: BitfinexPublicQuery
     symbol::String
@@ -48,7 +48,7 @@ Optional parameters can be used to limit the number of results; you can specify 
 
 ```julia
 using Serde
-using CryptoAPIs.Bitfinex
+using CryptoExchangeAPIs.Bitfinex
 
 result = Bitfinex.Spot.trade_pair(;
     symbol = "tBTCUSD",

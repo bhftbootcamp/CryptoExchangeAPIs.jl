@@ -2,10 +2,10 @@
 # https://www.gate.io/docs/developers/apiv4
 
 using Dates
-using CryptoAPIs
-using CryptoAPIs.Gateio
+using CryptoExchangeAPIs
+using CryptoExchangeAPIs.Gateio
 
-CryptoAPIs.Gateio.Futures.candle(; 
+CryptoExchangeAPIs.Gateio.Futures.candle(; 
     type = Gateio.Futures.Candle.mark,
     name = "BTC_USDT",
     settle = Gateio.Futures.Candle.usdt,
@@ -14,22 +14,22 @@ CryptoAPIs.Gateio.Futures.candle(;
     interval = Gateio.Futures.Candle.m1,
 )
 
-CryptoAPIs.Gateio.Futures.contract(; 
+CryptoExchangeAPIs.Gateio.Futures.contract(; 
     settle = Gateio.Futures.Contract.btc,
     limit = 5,
 )
 
-CryptoAPIs.Gateio.Futures.funding_rate(; 
+CryptoExchangeAPIs.Gateio.Futures.funding_rate(; 
     settle = Gateio.Futures.FundingRate.usdt,
     contract = "BTC_USDT",
     limit = 5,
 )
 
-CryptoAPIs.Gateio.Futures.order_book(; 
+CryptoExchangeAPIs.Gateio.Futures.order_book(; 
     settle = Gateio.Futures.OrderBook.usdt,
     contract = "BTC_USDT",
     interval = "5",
     with_id = true
 )
 
-CryptoAPIs.Gateio.Futures.ticker(; settle = Gateio.Futures.Ticker.btc)
+CryptoExchangeAPIs.Gateio.Futures.ticker(; settle = Gateio.Futures.Ticker.btc)

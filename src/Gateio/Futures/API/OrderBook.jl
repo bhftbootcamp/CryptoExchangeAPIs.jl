@@ -7,8 +7,8 @@ export OrderBookQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Gateio
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Gateio
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum Settle btc usdt usd
 
@@ -57,7 +57,7 @@ Futures order book.
 
 ```julia
 using Serde
-using CryptoAPIs.Gateio
+using CryptoExchangeAPIs.Gateio
 
 result = Gateio.Futures.order_book(; 
     settle = Gateio.Futures.OrderBook.usdt,

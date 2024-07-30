@@ -7,9 +7,9 @@ export DepositMethodQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Kraken
-using CryptoAPIs.Kraken: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Kraken
+using CryptoExchangeAPIs.Kraken: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef mutable struct DepositMethodQuery <: KrakenPrivateQuery
     asset::String
@@ -54,7 +54,7 @@ Retrieve methods available for depositing a particular asset.
 
 ```julia
 using Serde
-using CryptoAPIs.Kraken
+using CryptoExchangeAPIs.Kraken
 
 kraken_client = KrakenClient(;
     base_url = "https://api.kraken.com",

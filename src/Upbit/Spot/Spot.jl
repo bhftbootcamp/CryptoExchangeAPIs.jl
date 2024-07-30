@@ -1,6 +1,6 @@
 module Spot
 
-using CryptoAPIs.Upbit
+using CryptoExchangeAPIs.Upbit
 
 """
     public_client = UpbitClient(; base_url = "https://api.upbit.com")

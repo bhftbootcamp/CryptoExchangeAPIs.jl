@@ -1,7 +1,7 @@
 # Bithumb/Errors
 # https://apidocs.bithumb.com/docs/api-%EC%A3%BC%EC%9A%94-%EC%97%90%EB%9F%AC-%EC%BD%94%EB%93%9C
 
-import ..CryptoAPIs: APIsResult, APIsUndefError, isretriable, retry_maxcount, retry_timeout
+import ..CryptoExchangeAPIs: APIsResult, APIsUndefError, isretriable, retry_maxcount, retry_timeout
 
 # UNDEF
 isretriable(e::APIsResult{BithumbAPIError}) = true

@@ -1,6 +1,6 @@
 module Spot
 
-using CryptoAPIs.Binance
+using CryptoExchangeAPIs.Binance
 
 """
     public_client = BinanceClient(; base_url = "https://api.binance.com")

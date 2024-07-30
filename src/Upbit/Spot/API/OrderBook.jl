@@ -7,8 +7,8 @@ export OrderBookQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Upbit
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Upbit
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct OrderBookQuery <: UpbitPublicQuery
     markets::String
@@ -47,7 +47,7 @@ Order book data
 
 ```julia
 using Serde
-using CryptoAPIs.Upbit
+using CryptoExchangeAPIs.Upbit
 
 result = Upbit.Spot.order_book(;
     markets = "KRW-BTC"

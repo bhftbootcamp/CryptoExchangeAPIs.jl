@@ -1,20 +1,20 @@
 # Poloniex
 
 ```@docs
-CryptoAPIs.Poloniex.PoloniexClient
-CryptoAPIs.Poloniex.PoloniexAPIError
+CryptoExchangeAPIs.Poloniex.PoloniexClient
+CryptoExchangeAPIs.Poloniex.PoloniexAPIError
 ```
 
 ## Spot
 
 ```@docs
-CryptoAPIs.Poloniex.Spot.public_client
+CryptoExchangeAPIs.Poloniex.Spot.public_client
 ```
 
 ```@docs
-CryptoAPIs.Poloniex.Spot.candle
-CryptoAPIs.Poloniex.Spot.currency
-CryptoAPIs.Poloniex.Spot.market
-CryptoAPIs.Poloniex.Spot.order_book
-CryptoAPIs.Poloniex.Spot.ticker
+CryptoExchangeAPIs.Poloniex.Spot.candle
+CryptoExchangeAPIs.Poloniex.Spot.currency
+CryptoExchangeAPIs.Poloniex.Spot.market
+CryptoExchangeAPIs.Poloniex.Spot.order_book
+CryptoExchangeAPIs.Poloniex.Spot.ticker
 ```

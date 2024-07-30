@@ -7,9 +7,9 @@ export GetInstrumentsQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Cryptocom
-using CryptoAPIs.Cryptocom: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Cryptocom
+using CryptoExchangeAPIs.Cryptocom: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct GetInstrumentsQuery <: CryptocomPublicQuery
     #__ empty
@@ -55,7 +55,7 @@ Provides information on all supported instruments.
 
 ```julia
 using Serde
-using CryptoAPIs.Cryptocom
+using CryptoExchangeAPIs.Cryptocom
 
 result = Cryptocom.Spot.get_instruments() 
 

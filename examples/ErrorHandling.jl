@@ -1,14 +1,14 @@
 # ErrorHandling
 
 using Dates
-using CryptoAPIs
-using CryptoAPIs.Binance
+using CryptoExchangeAPIs
+using CryptoExchangeAPIs.Binance
 
 # NB: error_code number
 
-CryptoAPIs.isretriable(::CryptoAPIs.APIsResult{BinanceAPIError{-1121}}) = true
-CryptoAPIs.retry_maxcount(::CryptoAPIs.APIsResult{BinanceAPIError{-1121}}) = 2
-CryptoAPIs.retry_timeout(::CryptoAPIs.APIsResult{BinanceAPIError{-1121}}) = 10
+CryptoExchangeAPIs.isretriable(::CryptoExchangeAPIs.APIsResult{BinanceAPIError{-1121}}) = true
+CryptoExchangeAPIs.retry_maxcount(::CryptoExchangeAPIs.APIsResult{BinanceAPIError{-1121}}) = 2
+CryptoExchangeAPIs.retry_timeout(::CryptoExchangeAPIs.APIsResult{BinanceAPIError{-1121}}) = 10
 
 Binance.Spot.candle(;
     symbol = "ADADADA",
@@ -18,15 +18,15 @@ Binance.Spot.candle(;
     limit = 4,
 )
 
-using CryptoAPIs.Coinbase
+using CryptoExchangeAPIs.Coinbase
 
 # NB: error_code symbol
 
-CryptoAPIs.isretriable(::CryptoAPIs.APIsResult{CoinbaseAPIError{Symbol("NotFound")}}) = true
-CryptoAPIs.retry_maxcount(::CryptoAPIs.APIsResult{CoinbaseAPIError{Symbol("NotFound")}}) = 2
-CryptoAPIs.retry_timeout(::CryptoAPIs.APIsResult{CoinbaseAPIError{Symbol("NotFound")}}) = 10
+CryptoExchangeAPIs.isretriable(::CryptoExchangeAPIs.APIsResult{CoinbaseAPIError{Symbol("NotFound")}}) = true
+CryptoExchangeAPIs.retry_maxcount(::CryptoExchangeAPIs.APIsResult{CoinbaseAPIError{Symbol("NotFound")}}) = 2
+CryptoExchangeAPIs.retry_timeout(::CryptoExchangeAPIs.APIsResult{CoinbaseAPIError{Symbol("NotFound")}}) = 10
 
-CryptoAPIs.Coinbase.Spot.candle(;
+CryptoExchangeAPIs.Coinbase.Spot.candle(;
     granularity = Coinbase.Spot.Candle.m1,
     product_id = "ADA-ADA",
     start = DateTime("2023-02-02T15:33:20"),

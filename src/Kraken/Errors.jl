@@ -1,7 +1,7 @@
 # Kraken/Errors
 # https://support.kraken.com/hc/en-us/articles/360001491786-API-error-messages
 
-import ..CryptoAPIs: APIsResult, APIsUndefError, isretriable, retry_maxcount, retry_timeout
+import ..CryptoExchangeAPIs: APIsResult, APIsUndefError, isretriable, retry_maxcount, retry_timeout
 
 # UNDEF
 isretriable(e::APIsResult{KrakenAPIError}) = true

@@ -7,8 +7,8 @@ export PremiumIndexQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Binance
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Binance
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct PremiumIndexQuery <: BinancePublicQuery
     symbol::Maybe{String} = nothing
@@ -41,7 +41,7 @@ end
 
 ```julia
 using Serde
-using CryptoAPIs.Binance
+using CryptoExchangeAPIs.Binance
 
 result = Binance.USDMFutures.premium_index(;
     symbol = "BTCUSDT",

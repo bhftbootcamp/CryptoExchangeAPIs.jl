@@ -7,9 +7,9 @@ export AssetStatusQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Bithumb
-using CryptoAPIs.Bithumb: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Bithumb
+using CryptoExchangeAPIs.Bithumb: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct AssetStatusQuery <: BithumbPublicQuery
     currency::Maybe{String} = "ALL"
@@ -42,7 +42,7 @@ Provides information on the deposit/withdrawal status of virtual assets.
 
 ```julia
 using Serde
-using CryptoAPIs.Bithumb
+using CryptoExchangeAPIs.Bithumb
 
 result = Bithumb.Spot.asset_status(; 
     currency = "ADA",

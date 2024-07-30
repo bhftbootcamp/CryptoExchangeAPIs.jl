@@ -11,8 +11,8 @@ export BitfinexCommonQuery,
 using Serde
 using Dates, NanoDates, TimeZones, Base64, Nettle
 
-using ..CryptoAPIs
-import ..CryptoAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
+using ..CryptoExchangeAPIs
+import ..CryptoExchangeAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
 
 abstract type BitfinexData <: AbstractAPIsData end
 abstract type BitfinexCommonQuery  <: AbstractAPIsQuery end
@@ -70,34 +70,34 @@ function Base.show(io::IO, e::BitfinexAPIError)
     return print(io, "code = ", "\"", e.code, "\"", ", ", "msg = ", "\"", e.msg, "\"")
 end
 
-CryptoAPIs.error_type(::BitfinexClient) = BitfinexAPIError
+CryptoExchangeAPIs.error_type(::BitfinexClient) = BitfinexAPIError
 
-function CryptoAPIs.request_sign!(::BitfinexClient, query::Q, ::String)::Q where {Q<:BitfinexPublicQuery}
+function CryptoExchangeAPIs.request_sign!(::BitfinexClient, query::Q, ::String)::Q where {Q<:BitfinexPublicQuery}
     return query
 end
 
-function CryptoAPIs.request_sign!(client::BitfinexClient, query::Q, endpoint::String)::Nothing where {Q<:BitfinexPrivateQuery}
+function CryptoExchangeAPIs.request_sign!(client::BitfinexClient, query::Q, endpoint::String)::Nothing where {Q<:BitfinexPrivateQuery}
     query.nonce = string(round(Int64, 1000 * datetime2unix(now(UTC))))   
     signature_payload = string("/api/", endpoint, query.nonce)
     query.signature = hexdigest("sha384", client.secret_key, signature_payload)
     return nothing
 end
 
-function CryptoAPIs.request_body(::Q)::String where {Q<:BitfinexCommonQuery}
+function CryptoExchangeAPIs.request_body(::Q)::String where {Q<:BitfinexCommonQuery}
     return ""
 end
 
-function CryptoAPIs.request_query(query::Q)::String where {Q<:BitfinexCommonQuery}
+function CryptoExchangeAPIs.request_query(query::Q)::String where {Q<:BitfinexCommonQuery}
     return Serde.to_query(query)
 end
 
-function CryptoAPIs.request_headers(client::BitfinexClient, ::BitfinexPublicQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::BitfinexClient, ::BitfinexPublicQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json",
     ]
 end
 
-function CryptoAPIs.request_headers(client::BitfinexClient, query::BitfinexPrivateQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::BitfinexClient, query::BitfinexPrivateQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "bfx-signature" => query.signature,
         "bfx-apikey" => client.public_key,

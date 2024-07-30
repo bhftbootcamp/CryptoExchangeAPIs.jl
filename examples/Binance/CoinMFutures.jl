@@ -2,8 +2,8 @@
 # https://binance-docs.github.io/apidocs/delivery/en
 
 using Dates
-using CryptoAPIs
-using CryptoAPIs.Binance
+using CryptoExchangeAPIs
+using CryptoExchangeAPIs.Binance
 
 Binance.CoinMFutures.candle(;
     symbol = "BTCUSD_PERP",

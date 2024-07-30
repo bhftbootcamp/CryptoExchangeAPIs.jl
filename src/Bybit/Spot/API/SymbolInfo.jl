@@ -7,9 +7,9 @@ export SymbolInfoQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Bybit
-using CryptoAPIs.Bybit: Data, List, Rows
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Bybit
+using CryptoExchangeAPIs.Bybit: Data, List, Rows
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct SymbolInfoQuery <: BybitPublicQuery
     #__ empty
@@ -44,7 +44,7 @@ Get the specification of symbol information.
 
 ```julia
 using Serde
-using CryptoAPIs.Bybit
+using CryptoExchangeAPIs.Bybit
 
 result = Bybit.Spot.symbol_info()
 

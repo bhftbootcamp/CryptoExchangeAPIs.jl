@@ -2,63 +2,63 @@
 # https://docs.deribit.com/
 
 using Dates
-using CryptoAPIs
-using CryptoAPIs.Deribit
+using CryptoExchangeAPIs
+using CryptoExchangeAPIs.Deribit
 
 # Common
 
-CryptoAPIs.Deribit.Common.candle(
+CryptoExchangeAPIs.Deribit.Common.candle(
     instrument_name = "BTC-PERPETUAL",
     start_timestamp = now(UTC) - Minute(100),
     end_timestamp = now(UTC) - Hour(1),
-    resolution = CryptoAPIs.Deribit.Common.Candle.m1,
+    resolution = CryptoExchangeAPIs.Deribit.Common.Candle.m1,
 )
 
-CryptoAPIs.Deribit.Common.funding_rate(;
+CryptoExchangeAPIs.Deribit.Common.funding_rate(;
     instrument_name = "BTC-PERPETUAL",
     start_timestamp = Dates.DateTime("2022-11-08"),
     end_timestamp = Dates.DateTime("2022-11-08") + Day(2),
 )
 
-CryptoAPIs.Deribit.Common.order_book(;
+CryptoExchangeAPIs.Deribit.Common.order_book(;
     instrument_name = "BTC-PERPETUAL",
-    depth = CryptoAPIs.Deribit.Common.OrderBook.TEN_THOUSAND,
+    depth = CryptoExchangeAPIs.Deribit.Common.OrderBook.TEN_THOUSAND,
 )
 
-CryptoAPIs.Deribit.Common.ticker(; instrument_name = "BTC-PERPETUAL")
+CryptoExchangeAPIs.Deribit.Common.ticker(; instrument_name = "BTC-PERPETUAL")
 
 # Spot
 
-CryptoAPIs.Deribit.Common.book_summary(;
-    currency = CryptoAPIs.Deribit.Common.BookSummary.BTC,
-    kind = CryptoAPIs.Deribit.Common.BookSummary.spot,
+CryptoExchangeAPIs.Deribit.Common.book_summary(;
+    currency = CryptoExchangeAPIs.Deribit.Common.BookSummary.BTC,
+    kind = CryptoExchangeAPIs.Deribit.Common.BookSummary.spot,
 )
 
-CryptoAPIs.Deribit.Common.instrument(;
-    currency = CryptoAPIs.Deribit.Common.Instrument.BTC,
-    kind = CryptoAPIs.Deribit.Common.Instrument.spot,
+CryptoExchangeAPIs.Deribit.Common.instrument(;
+    currency = CryptoExchangeAPIs.Deribit.Common.Instrument.BTC,
+    kind = CryptoExchangeAPIs.Deribit.Common.Instrument.spot,
 )
 
 # Future
 
-CryptoAPIs.Deribit.Common.book_summary(;
-    currency = CryptoAPIs.Deribit.Common.BookSummary.BTC,
-    kind = CryptoAPIs.Deribit.Common.BookSummary.future,
+CryptoExchangeAPIs.Deribit.Common.book_summary(;
+    currency = CryptoExchangeAPIs.Deribit.Common.BookSummary.BTC,
+    kind = CryptoExchangeAPIs.Deribit.Common.BookSummary.future,
 )
 
-CryptoAPIs.Deribit.Common.instrument(;
-    currency = CryptoAPIs.Deribit.Common.Instrument.BTC,
-    kind = CryptoAPIs.Deribit.Common.Instrument.future,
+CryptoExchangeAPIs.Deribit.Common.instrument(;
+    currency = CryptoExchangeAPIs.Deribit.Common.Instrument.BTC,
+    kind = CryptoExchangeAPIs.Deribit.Common.Instrument.future,
 )
 
 # Option
 
-CryptoAPIs.Deribit.Common.book_summary(;
-    currency = CryptoAPIs.Deribit.Common.BookSummary.BTC,
-    kind = CryptoAPIs.Deribit.Common.BookSummary.option,
+CryptoExchangeAPIs.Deribit.Common.book_summary(;
+    currency = CryptoExchangeAPIs.Deribit.Common.BookSummary.BTC,
+    kind = CryptoExchangeAPIs.Deribit.Common.BookSummary.option,
 )
 
-CryptoAPIs.Deribit.Common.instrument(;
-    currency = CryptoAPIs.Deribit.Common.Instrument.BTC,
-    kind = CryptoAPIs.Deribit.Common.Instrument.option,
+CryptoExchangeAPIs.Deribit.Common.instrument(;
+    currency = CryptoExchangeAPIs.Deribit.Common.Instrument.BTC,
+    kind = CryptoExchangeAPIs.Deribit.Common.Instrument.option,
 )

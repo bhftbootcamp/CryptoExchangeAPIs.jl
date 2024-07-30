@@ -1,6 +1,6 @@
 module Spot
 
-using CryptoAPIs.Coinbase
+using CryptoExchangeAPIs.Coinbase
 
 """
     public_client = CoinbaseClient(; base_url = "https://api.exchange.coinbase.com")

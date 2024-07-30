@@ -1,14 +1,14 @@
-using CryptoAPIs
+using CryptoExchangeAPIs
 using Documenter
 
-DocMeta.setdocmeta!(CryptoAPIs, :DocTestSetup, :(using CryptoAPIs); recursive = true)
+DocMeta.setdocmeta!(CryptoExchangeAPIs, :DocTestSetup, :(using CryptoExchangeAPIs); recursive = true)
 
 makedocs(;
-    modules = [CryptoAPIs],
-    sitename = "CryptoAPIs.jl",
+    modules = [CryptoExchangeAPIs],
+    sitename = "CryptoExchangeAPIs.jl",
     format = Documenter.HTML(;
-        repolink = "https://github.com/bhftbootcamp/CryptoAPIs.jl",
-        canonical = "https://bhftbootcamp.github.io/CryptoAPIs.jl",
+        repolink = "https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl",
+        canonical = "https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl",
         edit_link = "master",
         assets = String["assets/favicon.ico"],
         sidebar_sitename = true,
@@ -39,7 +39,7 @@ makedocs(;
 )
 
 deploydocs(;
-    repo = "github.com/bhftbootcamp/CryptoAPIs.jl",
+    repo = "github.com/bhftbootcamp/CryptoExchangeAPIs.jl",
     devbranch = "master",
     push_preview = true,
 )

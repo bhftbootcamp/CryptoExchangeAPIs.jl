@@ -7,9 +7,9 @@ export TickerQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Bybit
-using CryptoAPIs.Bybit: Data, List, Rows
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Bybit
+using CryptoExchangeAPIs.Bybit: Data, List, Rows
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct TickerQuery <: BybitPublicQuery
     symbol::Maybe{String} = nothing
@@ -44,7 +44,7 @@ end
 
 ```julia
 using Serde
-using CryptoAPIs.Bybit
+using CryptoExchangeAPIs.Bybit
 
 result = Bybit.Spot.ticker(;
     symbol = "ADAUSDT"

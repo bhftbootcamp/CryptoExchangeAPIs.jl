@@ -2,23 +2,23 @@
 # https://docs.cloud.coinbase.com
 
 using Dates
-using CryptoAPIs
-using CryptoAPIs.Coinbase
+using CryptoExchangeAPIs
+using CryptoExchangeAPIs.Coinbase
 
-CryptoAPIs.Coinbase.Spot.candle(;
+CryptoExchangeAPIs.Coinbase.Spot.candle(;
     granularity = Coinbase.Spot.Candle.m1,
     product_id = "BTC-USD",
     start = DateTime("2023-02-02T15:33:20"),
     _end = DateTime("2023-02-02T15:33:20") + Hour(1),
 )
 
-CryptoAPIs.Coinbase.Spot.currency()
+CryptoExchangeAPIs.Coinbase.Spot.currency()
 
-CryptoAPIs.Coinbase.Spot.product(; type = "BTC-USD")
+CryptoExchangeAPIs.Coinbase.Spot.product(; type = "BTC-USD")
 
-CryptoAPIs.Coinbase.Spot.product_stats(; product_id = "BTC-USD")
+CryptoExchangeAPIs.Coinbase.Spot.product_stats(; product_id = "BTC-USD")
 
-CryptoAPIs.Coinbase.Spot.ticker(; product_id = "BTC-USDT")
+CryptoExchangeAPIs.Coinbase.Spot.ticker(; product_id = "BTC-USDT")
 
 coinbase_client = CoinbaseClient(;
     base_url = "https://api.exchange.coinbase.com",
@@ -27,4 +27,4 @@ coinbase_client = CoinbaseClient(;
     passphrase = ENV["COINBASE_PASSPHRASE"],
 )
 
-CryptoAPIs.Coinbase.Spot.fee_estimate(coinbase_client)
+CryptoExchangeAPIs.Coinbase.Spot.fee_estimate(coinbase_client)

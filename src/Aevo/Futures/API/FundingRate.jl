@@ -7,8 +7,8 @@ export FundingRateQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Aevo
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Aevo
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum InstrumentType OPTION SPOT PERPETUAL
 
@@ -42,7 +42,7 @@ Returns the funding rate history for the instrument.
 
 ```julia
 using Serde
-using CryptoAPIs.Aevo
+using CryptoExchangeAPIs.Aevo
 
 result = Aevo.Futures.funding_rate(; 
     instrument_name = "ETH-PERP",

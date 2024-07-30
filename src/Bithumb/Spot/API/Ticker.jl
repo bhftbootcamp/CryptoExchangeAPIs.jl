@@ -7,10 +7,10 @@ export TikerQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Bithumb
-using CryptoAPIs.Bithumb: Data
-using CryptoAPIs: Maybe, APIsRequest
-import CryptoAPIs: prepare_json!
+using CryptoExchangeAPIs.Bithumb
+using CryptoExchangeAPIs.Bithumb: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
+import CryptoExchangeAPIs: prepare_json!
 
 Base.@kwdef struct TickerQuery <: BithumbPublicQuery
     payment_currency::String
@@ -64,7 +64,7 @@ Provides information on the current price of virtual assets at the time of reque
 
 ```julia
 using Serde
-using CryptoAPIs.Bithumb
+using CryptoExchangeAPIs.Bithumb
 
 result = Bithumb.Spot.ticker(;
     order_currency = "BTC",

@@ -7,8 +7,8 @@ export MarketListQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Upbit
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Upbit
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct MarketListQuery <: UpbitPublicQuery
     isDetails::Bool = true
@@ -39,7 +39,7 @@ Listing Market List
 
 ```julia
 using Serde
-using CryptoAPIs.Upbit
+using CryptoExchangeAPIs.Upbit
 
 result = Upbit.Spot.market_list()
 

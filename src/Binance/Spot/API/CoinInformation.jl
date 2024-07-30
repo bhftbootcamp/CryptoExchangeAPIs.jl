@@ -7,8 +7,8 @@ export CoinInformationQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Binance
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Binance
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef mutable struct CoinInformationQuery <: BinancePrivateQuery
     recvWindow::Maybe{Int64} = nothing
@@ -81,7 +81,7 @@ Get information of coins (available for deposit and withdraw) for user.
 
 ```julia
 using Serde
-using CryptoAPIs.Binance
+using CryptoExchangeAPIs.Binance
 
 binance_client = BinanceClient(;
     base_url = "https://api.binance.com",

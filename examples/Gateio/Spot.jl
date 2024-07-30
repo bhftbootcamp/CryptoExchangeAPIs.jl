@@ -2,17 +2,17 @@
 # https://www.gate.io/docs/developers/apiv4
 
 using Dates
-using CryptoAPIs
-using CryptoAPIs.Gateio
+using CryptoExchangeAPIs
+using CryptoExchangeAPIs.Gateio
 
-CryptoAPIs.Gateio.Spot.candle(;
+CryptoExchangeAPIs.Gateio.Spot.candle(;
     currency_pair = "BTC_USDT",
     interval = Gateio.Spot.Candle.d1,
 )
 
-CryptoAPIs.Gateio.Spot.currency()
+CryptoExchangeAPIs.Gateio.Spot.currency()
 
-CryptoAPIs.Gateio.Spot.ticker(; currency_pair = "BTC_USDT")
+CryptoExchangeAPIs.Gateio.Spot.ticker(; currency_pair = "BTC_USDT")
 
 gateio_client = GateioClient(;
     base_url = "https://api.gateio.ws",
@@ -20,4 +20,4 @@ gateio_client = GateioClient(;
     secret_key = ENV["GATEIO_SECRET_KEY"],
 )
 
-CryptoAPIs.Gateio.Spot.deposit(gateio_client)
+CryptoExchangeAPIs.Gateio.Spot.deposit(gateio_client)

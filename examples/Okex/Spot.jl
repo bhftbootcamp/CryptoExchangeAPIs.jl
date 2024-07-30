@@ -2,10 +2,10 @@
 # https://www.okx.com/docs-v5/en/
 
 using Dates
-using CryptoAPIs
-using CryptoAPIs.Okex
+using CryptoExchangeAPIs
+using CryptoExchangeAPIs.Okex
 
-CryptoAPIs.Okex.Spot.candle(;
+CryptoExchangeAPIs.Okex.Spot.candle(;
     instId = "BTC-USDT",
     bar = Okex.Spot.Candle.d1,
 )
@@ -17,4 +17,4 @@ okex_client = OkexClient(;
     passphrase = ENV["OKEX_PASSPHRASE"],
 )
 
-CryptoAPIs.Okex.Spot.currency(okex_client; ccy = "BTC")
+CryptoExchangeAPIs.Okex.Spot.currency(okex_client; ccy = "BTC")

@@ -1,6 +1,6 @@
 module Spot
 
-using CryptoAPIs.Huobi
+using CryptoExchangeAPIs.Huobi
 
 """
     public_client = HuobiClient(; base_url = "https://api.huobi.pro")

@@ -7,8 +7,8 @@ export AvgPriceQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Binance
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Binance
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct AvgPriceQuery <: BinancePublicQuery
     symbol::String
@@ -37,7 +37,7 @@ Current average price for a symbol.
 
 ```julia
 using Serde
-using CryptoAPIs.Binance
+using CryptoExchangeAPIs.Binance
 
 result = Binance.Spot.avg_price(;
     symbol = "ADAUSDT",

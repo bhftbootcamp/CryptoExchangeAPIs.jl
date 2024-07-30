@@ -1,6 +1,6 @@
 module Futures
 
-using CryptoAPIs.Aevo
+using CryptoExchangeAPIs.Aevo
 
 """
     public_client = AevoClient(; base_url = "https://api.aevo.xyz")

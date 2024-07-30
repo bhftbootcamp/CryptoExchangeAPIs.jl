@@ -7,8 +7,8 @@ export OrderBookQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Poloniex
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Poloniex
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum OrderBookLimit begin
     FIVE = 5
@@ -57,11 +57,11 @@ Get the order book for a given symbol.
 
 ```julia
 using Serde
-using CryptoAPIs.Poloniex
+using CryptoExchangeAPIs.Poloniex
 
 result = Poloniex.Spot.order_book(;
     symbol = "BTC_USDT",
-    limit = CryptoAPIs.Poloniex.Spot.OrderBook.FIVE,
+    limit = CryptoExchangeAPIs.Poloniex.Spot.OrderBook.FIVE,
 )
 
 to_pretty_json(result.result)

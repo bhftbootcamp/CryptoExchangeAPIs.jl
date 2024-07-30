@@ -7,8 +7,8 @@ export TickerQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Binance
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Binance
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct TickerQuery <: BinancePublicQuery
     symbol::Maybe{String} = nothing
@@ -52,7 +52,7 @@ end
 
 ```julia
 using Serde
-using CryptoAPIs.Binance
+using CryptoExchangeAPIs.Binance
 
 result = Binance.CoinMFutures.ticker(;
     pair = "BTCUSD",

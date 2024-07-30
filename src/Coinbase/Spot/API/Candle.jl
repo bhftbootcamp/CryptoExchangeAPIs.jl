@@ -7,8 +7,8 @@ export CandleQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Coinbase
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Coinbase
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum TimeInterval m1 m5 m15 h1 h6 d1
 
@@ -56,7 +56,7 @@ Get rates for a single product by product ID, grouped in buckets.
 
 ```julia
 using Serde
-using CryptoAPIs.Coinbase
+using CryptoExchangeAPIs.Coinbase
 
 result = Coinbase.Spot.candle(;
     granularity = Coinbase.Spot.Candle.d1

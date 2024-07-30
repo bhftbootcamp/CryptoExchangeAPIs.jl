@@ -1,6 +1,6 @@
 module Spot
 
-using CryptoAPIs.Bitfinex
+using CryptoExchangeAPIs.Bitfinex
 
 """
     public_client = BitfinexClient(; base_url = "https://api-pub.bitfinex.com")

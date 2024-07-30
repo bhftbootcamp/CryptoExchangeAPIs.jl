@@ -7,8 +7,8 @@ export FundingRateQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Binance
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Binance
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct FundingRateQuery <: BinancePublicQuery
     symbol::String
@@ -49,7 +49,7 @@ Get funding rate history.
 
 ```julia
 using Serde
-using CryptoAPIs.Binance
+using CryptoExchangeAPIs.Binance
 
 result = Binance.USDMFutures.funding_rate(;
     symbol = "BTCUSDT",
