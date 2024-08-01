@@ -11,7 +11,7 @@ Okex.Spot.candle(;
 )
 
 okex_client = OkexClient(;
-    base_url = "https://www.okex.com",
+    base_url = "https://www.okx.com",
     public_key = ENV["OKEX_PUBLIC_KEY"],
     secret_key = ENV["OKEX_SECRET_KEY"],
     passphrase = ENV["OKEX_PASSPHRASE"],
