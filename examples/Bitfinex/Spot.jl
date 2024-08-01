@@ -2,25 +2,25 @@
 # https://docs.bitfinex.com/docs/rest-public
 
 using Dates
-using CryptoAPIs
-using CryptoAPIs.Bitfinex
+using CryptoExchangeAPIs
+using CryptoExchangeAPIs.Bitfinex
 
-CryptoAPIs.Bitfinex.Spot.candle(;
-    timeframe = CryptoAPIs.Bitfinex.Spot.Candle.m5,
+Bitfinex.Spot.candle(;
+    timeframe = CryptoExchangeAPIs.Bitfinex.Spot.Candle.m5,
     symbol = "tBTCUSD",
     start = now(UTC) - Minute(100),
     _end = now(UTC) - Minute(10),
 )
 
-CryptoAPIs.Bitfinex.Spot.order_book(;
+Bitfinex.Spot.order_book(;
     symbol = "tBTCUSD",
-    precision = CryptoAPIs.Bitfinex.Spot.OrderBook.P1,
-    len = CryptoAPIs.Bitfinex.Spot.OrderBook.TWENTY_FIVE,
+    precision = CryptoExchangeAPIs.Bitfinex.Spot.OrderBook.P1,
+    len = CryptoExchangeAPIs.Bitfinex.Spot.OrderBook.TWENTY_FIVE,
 )
 
-CryptoAPIs.Bitfinex.Spot.ticker(; symbols = "tBTCUSD")
+Bitfinex.Spot.ticker(; symbols = "tBTCUSD")
 
-CryptoAPIs.Bitfinex.Spot.trade_pair(;
+Bitfinex.Spot.trade_pair(;
     symbol = "tBTCUSD",
     start = DateTime("2023-03-17T08:47:43.073"),
 )

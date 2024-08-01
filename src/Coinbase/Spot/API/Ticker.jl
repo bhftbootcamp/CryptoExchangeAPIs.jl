@@ -7,8 +7,8 @@ export TickerQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Coinbase
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Coinbase
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct TickerQuery <: CoinbasePublicQuery
     #__ empty
@@ -36,7 +36,7 @@ Gets snapshot information about the last trade (tick), best bid/ask and 24h volu
 
 ```julia
 using Serde
-using CryptoAPIs.Coinbase
+using CryptoExchangeAPIs.Coinbase
 
 result = Coinbase.Spot.ticker(
     product_id = "ADA-USDT",

@@ -1,25 +1,25 @@
 # Bybit
 
 ```@docs
-CryptoAPIs.Bybit.BybitClient
-CryptoAPIs.Bybit.BybitAPIError
-CryptoAPIs.Bybit.List
-CryptoAPIs.Bybit.Rows
-CryptoAPIs.Bybit.Data
+CryptoExchangeAPIs.Bybit.BybitClient
+CryptoExchangeAPIs.Bybit.BybitAPIError
+CryptoExchangeAPIs.Bybit.List
+CryptoExchangeAPIs.Bybit.Rows
+CryptoExchangeAPIs.Bybit.Data
 ```
 
 ## Spot
 
 ```@docs
-CryptoAPIs.Bybit.Spot.public_client
+CryptoExchangeAPIs.Bybit.Spot.public_client
 ```
 
 ```@docs
-CryptoAPIs.Bybit.Spot.candle
-CryptoAPIs.Bybit.Spot.coin_info
-CryptoAPIs.Bybit.Spot.deposit
-CryptoAPIs.Bybit.Spot.order_book
-CryptoAPIs.Bybit.Spot.symbol_info
-CryptoAPIs.Bybit.Spot.ticker
-CryptoAPIs.Bybit.Spot.trade_history
+CryptoExchangeAPIs.Bybit.Spot.candle
+CryptoExchangeAPIs.Bybit.Spot.coin_info
+CryptoExchangeAPIs.Bybit.Spot.deposit
+CryptoExchangeAPIs.Bybit.Spot.order_book
+CryptoExchangeAPIs.Bybit.Spot.symbol_info
+CryptoExchangeAPIs.Bybit.Spot.ticker
+CryptoExchangeAPIs.Bybit.Spot.trade_history
 ```

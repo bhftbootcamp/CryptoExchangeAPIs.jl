@@ -7,9 +7,9 @@ export CandleQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Kucoin
-using CryptoAPIs.Kucoin: Data, Page
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Kucoin
+using CryptoExchangeAPIs.Kucoin: Data, Page
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum TimeInterval m1 m5 m15 m30 h1 h2 h4 h8 h12 d1 w1
 
@@ -64,7 +64,7 @@ Request via this endpoint to get the kline of the specified symbol.
 
 ```julia
 using Serde
-using CryptoAPIs.Kucoin
+using CryptoExchangeAPIs.Kucoin
 
 result = Kucoin.Futures.candle(;
     symbol = ".KXBT",

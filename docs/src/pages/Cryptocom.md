@@ -1,19 +1,19 @@
 # Cryptocom
 
 ```@docs
-CryptoAPIs.Cryptocom.CryptocomClient
-CryptoAPIs.Cryptocom.CryptocomAPIError
-CryptoAPIs.Cryptocom.Data
+CryptoExchangeAPIs.Cryptocom.CryptocomClient
+CryptoExchangeAPIs.Cryptocom.CryptocomAPIError
+CryptoExchangeAPIs.Cryptocom.Data
 ```
 
 ## Spot
 
 ```@docs
-CryptoAPIs.Cryptocom.Spot.public_client
+CryptoExchangeAPIs.Cryptocom.Spot.public_client
 ```
 
 ```@docs
-CryptoAPIs.Cryptocom.Spot.candle
-CryptoAPIs.Cryptocom.Spot.get_instruments
-CryptoAPIs.Cryptocom.Spot.ticker
+CryptoExchangeAPIs.Cryptocom.Spot.candle
+CryptoExchangeAPIs.Cryptocom.Spot.get_instruments
+CryptoExchangeAPIs.Cryptocom.Spot.ticker
 ```

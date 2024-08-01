@@ -1,8 +1,8 @@
 # Huobi/Errors
 # https://huobiapi.github.io/docs/spot/v1/en/
 
-import ..CryptoAPIs: APIsResult, APIsUndefError
-import ..CryptoAPIs: isretriable, retry_maxcount, retry_timeout
+import ..CryptoExchangeAPIs: APIsResult, APIsUndefError
+import ..CryptoExchangeAPIs: isretriable, retry_maxcount, retry_timeout
 
 # UNDEF
 isretriable(e::APIsResult{HuobiAPIError}) = true

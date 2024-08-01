@@ -11,8 +11,8 @@ export OkexCommonQuery,
 using Serde
 using Dates, NanoDates, TimeZones, Base64, Nettle
 
-using ..CryptoAPIs
-import ..CryptoAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
+using ..CryptoExchangeAPIs
+import ..CryptoExchangeAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
 
 abstract type OkexData <: AbstractAPIsData end
 abstract type OkexCommonQuery  <: AbstractAPIsQuery end
@@ -88,17 +88,17 @@ struct OkexAPIError{T} <: AbstractAPIsError
     end
 end
 
-CryptoAPIs.error_type(::OkexClient) = OkexAPIError
+CryptoExchangeAPIs.error_type(::OkexClient) = OkexAPIError
 
 function Base.show(io::IO, e::OkexAPIError)
     return print(io, "code = ", "\"", e.code, "\"", ", ", "msg = ", "\"", e.msg, "\"")
 end
 
-function CryptoAPIs.request_sign!(::OkexClient, query::Q, ::String)::Q where {Q<:OkexPublicQuery}
+function CryptoExchangeAPIs.request_sign!(::OkexClient, query::Q, ::String)::Q where {Q<:OkexPublicQuery}
     return query
 end
 
-function CryptoAPIs.request_sign!(client::OkexClient, query::Q, endpoint::String)::Q where {Q<:OkexPrivateQuery}
+function CryptoExchangeAPIs.request_sign!(client::OkexClient, query::Q, endpoint::String)::Q where {Q<:OkexPrivateQuery}
     query.signature = nothing
     str_query = Serde.to_query(query)
     body::String = isempty(str_query) ? "" : "?" * str_query
@@ -108,21 +108,21 @@ function CryptoAPIs.request_sign!(client::OkexClient, query::Q, endpoint::String
     return query
 end
 
-function CryptoAPIs.request_body(::Q)::String where {Q<:OkexCommonQuery}
+function CryptoExchangeAPIs.request_body(::Q)::String where {Q<:OkexCommonQuery}
     return ""
 end
 
-function CryptoAPIs.request_query(query::Q)::String where {Q<:OkexCommonQuery}
+function CryptoExchangeAPIs.request_query(query::Q)::String where {Q<:OkexCommonQuery}
     return Serde.to_query(query)
 end
 
-function CryptoAPIs.request_headers(client::OkexClient, ::OkexPublicQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::OkexClient, ::OkexPublicQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json"
     ]
 end
 
-function CryptoAPIs.request_headers(client::OkexClient, query::OkexPrivateQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::OkexClient, query::OkexPrivateQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "OK-ACCESS-TIMESTAMP" => Dates.format(query.timestamp, "yyyy-mm-ddTHH:MM:SS.sss\\Z"),
         "Content-Type" => "application/json",

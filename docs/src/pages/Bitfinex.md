@@ -1,19 +1,19 @@
 # Bitfinex
 
 ```@docs
-CryptoAPIs.Bitfinex.BitfinexClient
-CryptoAPIs.Bitfinex.BitfinexAPIError
+CryptoExchangeAPIs.Bitfinex.BitfinexClient
+CryptoExchangeAPIs.Bitfinex.BitfinexAPIError
 ```
 
 ## Spot
 
 ```@docs
-CryptoAPIs.Bitfinex.Spot.public_client
+CryptoExchangeAPIs.Bitfinex.Spot.public_client
 ```
 
 ```@docs
-CryptoAPIs.Bitfinex.Spot.candle
-CryptoAPIs.Bitfinex.Spot.order_book
-CryptoAPIs.Bitfinex.Spot.ticker
-CryptoAPIs.Bitfinex.Spot.trade_pair
+CryptoExchangeAPIs.Bitfinex.Spot.candle
+CryptoExchangeAPIs.Bitfinex.Spot.order_book
+CryptoExchangeAPIs.Bitfinex.Spot.ticker
+CryptoExchangeAPIs.Bitfinex.Spot.trade_pair
 ```

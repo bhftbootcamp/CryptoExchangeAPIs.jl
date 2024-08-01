@@ -1,8 +1,8 @@
 # Errors
 # https://bybit-exchange.github.io/docs/v5/error
 
-import ..CryptoAPIs: APIsResult, APIsUndefError
-import ..CryptoAPIs:  isretriable, retry_maxcount, retry_timeout
+import ..CryptoExchangeAPIs: APIsResult, APIsUndefError
+import ..CryptoExchangeAPIs:  isretriable, retry_maxcount, retry_timeout
 
 # UNDEF
 isretriable(::APIsResult{BybitAPIError}) = true

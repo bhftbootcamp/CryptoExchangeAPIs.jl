@@ -7,9 +7,9 @@ export CandleQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Huobi
-using CryptoAPIs.Huobi: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Huobi
+using CryptoExchangeAPIs.Huobi: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum TimeInterval m1 m5 m15 m30 m60 h4 d1 M1 Y1
 
@@ -62,11 +62,11 @@ This endpoint retrieves all klines in a specific range.
 
 ```julia
 using Serde
-using CryptoAPIs.Huobi
+using CryptoExchangeAPIs.Huobi
 
 result = Huobi.Spot.candle(;
     symbol = "btcusdt",
-    period = CryptoAPIs.Huobi.Spot.Candle.m1,
+    period = CryptoExchangeAPIs.Huobi.Spot.Candle.m1,
 )
 
 to_pretty_json(result.result)

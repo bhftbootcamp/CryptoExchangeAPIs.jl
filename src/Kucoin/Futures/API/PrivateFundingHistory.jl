@@ -7,9 +7,9 @@ export PrivateFundingHistoryQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Kucoin
-using CryptoAPIs.Kucoin: Data, Page
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Kucoin
+using CryptoExchangeAPIs.Kucoin: Data, Page
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef mutable struct PrivateFundingHistoryQuery <: KucoinPrivateQuery
     symbol::String
@@ -73,7 +73,7 @@ Submit request to get the funding history.
 
 ```julia
 using Serde
-using CryptoAPIs.Kucoin
+using CryptoExchangeAPIs.Kucoin
 
 kucoin_client = KucoinClient(;
     base_url = "https://api-futures.kucoin.com",

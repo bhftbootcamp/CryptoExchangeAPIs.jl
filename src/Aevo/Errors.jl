@@ -1,7 +1,7 @@
 # Errors
 # https://api-docs.aevo.xyz/reference/errors
 
-import ..CryptoAPIs: APIsResult, APIsUndefError, isretriable, retry_maxcount, retry_timeout
+import ..CryptoExchangeAPIs: APIsResult, APIsUndefError, isretriable, retry_maxcount, retry_timeout
 
 # UNHANDLED
 isretriable(::APIsResult{AevoAPIError}) = true

@@ -9,9 +9,9 @@ export AssetPairQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Kraken
-using CryptoAPIs.Kraken: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Kraken
+using CryptoExchangeAPIs.Kraken: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum AssetPairInfo info leverage fees
 
@@ -84,7 +84,7 @@ Get tradable asset pairs.
 
 ```julia
 using Serde
-using CryptoAPIs.Kraken
+using CryptoExchangeAPIs.Kraken
 
 result = Kraken.Spot.asset_pair(;
     pair = "ACAUSD"

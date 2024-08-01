@@ -11,8 +11,8 @@ export GateioCommonQuery,
 using Serde
 using Dates, NanoDates, TimeZones, Base64, Nettle
 
-using ..CryptoAPIs
-import ..CryptoAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
+using ..CryptoExchangeAPIs
+import ..CryptoExchangeAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
 
 abstract type GateioData <: AbstractAPIsData end
 abstract type GateioCommonQuery  <: AbstractAPIsQuery end
@@ -64,13 +64,13 @@ struct GateioAPIError{T} <: AbstractAPIsError
     end
 end
 
-CryptoAPIs.error_type(::GateioClient) = GateioAPIError
+CryptoExchangeAPIs.error_type(::GateioClient) = GateioAPIError
 
 function Base.show(io::IO, e::GateioAPIError)
     return print(io, "label = ", "\"", e.label, "\"", ", ", "msg = ", "\"", e.message, "\"")
 end
 
-function CryptoAPIs.request_sign!(::GateioClient, query::Q, ::String)::Q where {Q<:GateioPublicQuery}
+function CryptoExchangeAPIs.request_sign!(::GateioClient, query::Q, ::String)::Q where {Q<:GateioPublicQuery}
     return query
 end
 
@@ -82,7 +82,7 @@ function gen_sign(method::String, query::Q, url::String)::String where {Q<:Gatei
     return sign
 end
 
-function CryptoAPIs.request_sign!(client::GateioClient, query::Q, endpoint::String)::Q where {Q<:GateioPrivateQuery}
+function CryptoExchangeAPIs.request_sign!(client::GateioClient, query::Q, endpoint::String)::Q where {Q<:GateioPrivateQuery}
     query.signTimestamp = Dates.now(UTC)
     query.signature = nothing
     endpoint = "/" * endpoint
@@ -90,21 +90,21 @@ function CryptoAPIs.request_sign!(client::GateioClient, query::Q, endpoint::Stri
     return query
 end
 
-function CryptoAPIs.request_body(::Q)::String where {Q<:GateioCommonQuery}
+function CryptoExchangeAPIs.request_body(::Q)::String where {Q<:GateioCommonQuery}
     return ""
 end
 
-function CryptoAPIs.request_query(query::Q)::String where {Q<:GateioCommonQuery}
+function CryptoExchangeAPIs.request_query(query::Q)::String where {Q<:GateioCommonQuery}
     return Serde.to_query(query)
 end
 
-function CryptoAPIs.request_headers(client::GateioClient, ::GateioPublicQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::GateioClient, ::GateioPublicQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json"
     ]
 end
 
-function CryptoAPIs.request_headers(client::GateioClient, query::GateioPrivateQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::GateioClient, query::GateioPrivateQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "KEY"          => client.public_key,
         "SIGN"         => query.signature,

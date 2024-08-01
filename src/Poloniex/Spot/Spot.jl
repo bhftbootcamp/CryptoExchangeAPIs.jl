@@ -1,6 +1,6 @@
 module Spot
 
-using CryptoAPIs.Poloniex
+using CryptoExchangeAPIs.Poloniex
 
 """
     public_client = PoloniexClient(; base_url = "https://api.poloniex.com")

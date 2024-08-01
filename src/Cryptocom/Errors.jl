@@ -1,7 +1,7 @@
 # Cryptocom/Errors
 # https://exchange-docs.crypto.com/exchange/v1/rest-ws/index.html#response-and-reason-codes
 
-import ..CryptoAPIs: APIsResult, APIsUndefError, isretriable, retry_maxcount, retry_timeout
+import ..CryptoExchangeAPIs: APIsResult, APIsUndefError, isretriable, retry_maxcount, retry_timeout
 
 # UNDEF
 isretriable(::APIsResult{CryptocomAPIError}) = true

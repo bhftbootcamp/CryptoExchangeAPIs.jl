@@ -11,8 +11,8 @@ export CryptocomCommonQuery,
 using Serde
 using Dates, NanoDates, Base64, Nettle
 
-using ..CryptoAPIs
-using ..CryptoAPIs: Maybe,  AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
+using ..CryptoExchangeAPIs
+using ..CryptoExchangeAPIs: Maybe,  AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
 
 abstract type CryptocomData <: AbstractAPIsData end
 abstract type CryptocomCommonQuery <: AbstractAPIsQuery end
@@ -84,7 +84,7 @@ struct CryptocomAPIError{T} <: AbstractAPIsError
     end
 end
 
-CryptoAPIs.error_type(::CryptocomClient) = CryptocomAPIError
+CryptoExchangeAPIs.error_type(::CryptocomClient) = CryptocomAPIError
 
 function Base.show(io::IO, e::CryptocomAPIError)
     return print(io, "code = ", "\"", e.code, "\"", ", ", "msg = ", "\"", e.message, "\"", ", ", "desc = ", "\"", e.description, "\"")
@@ -95,19 +95,19 @@ struct CryptocomUndefError <: AbstractAPIsError
     msg::String
 end
 
-function CryptoAPIs.request_sign!(::CryptocomClient, query::Q, ::String)::Q where {Q<:CryptocomPublicQuery}
+function CryptoExchangeAPIs.request_sign!(::CryptocomClient, query::Q, ::String)::Q where {Q<:CryptocomPublicQuery}
     return query
 end
 
-function CryptoAPIs.request_body(::Q)::String where {Q<:CryptocomCommonQuery}
+function CryptoExchangeAPIs.request_body(::Q)::String where {Q<:CryptocomCommonQuery}
     return ""
 end
 
-function CryptoAPIs.request_query(query::Q)::String where {Q<:CryptocomCommonQuery}
+function CryptoExchangeAPIs.request_query(query::Q)::String where {Q<:CryptocomCommonQuery}
     return Serde.to_query(query)
 end
 
-function CryptoAPIs.request_headers(client::CryptocomClient, ::CryptocomPublicQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::CryptocomClient, ::CryptocomPublicQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json"
     ]

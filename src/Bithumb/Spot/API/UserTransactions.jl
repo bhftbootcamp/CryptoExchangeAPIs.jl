@@ -7,9 +7,9 @@ export UserTransactionsQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Bithumb
-using CryptoAPIs.Bithumb: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Bithumb
+using CryptoExchangeAPIs.Bithumb: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum SearchStatus begin
     ALL            = 0
@@ -80,7 +80,7 @@ Provides information on member transaction completion details.
 
 ```julia
 using Serde
-using CryptoAPIs.Bithumb
+using CryptoExchangeAPIs.Bithumb
 
 bithumb_client = Bithumb.Client(;
     base_url = "https://api.bithumb.com",

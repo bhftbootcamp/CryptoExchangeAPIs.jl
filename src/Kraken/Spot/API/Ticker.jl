@@ -7,9 +7,9 @@ export TickerQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Kraken
-using CryptoAPIs.Kraken: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Kraken
+using CryptoExchangeAPIs.Kraken: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct TickerQuery <: KrakenPublicQuery
     pair::Maybe{String} = nothing
@@ -51,7 +51,7 @@ Get ticker information for all or requested markets.
 
 ```julia
 using Serde
-using CryptoAPIs.Kraken
+using CryptoExchangeAPIs.Kraken
 
 result = Kraken.Spot.ticker(;
     air = "XBTUSD",

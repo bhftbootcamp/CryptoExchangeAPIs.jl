@@ -7,9 +7,9 @@ export WithdrawalMethodQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Kraken
-using CryptoAPIs.Kraken: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Kraken
+using CryptoExchangeAPIs.Kraken: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef mutable struct WithdrawalMethodQuery <: KrakenPrivateQuery
     asset::Maybe{String} = nothing
@@ -49,7 +49,7 @@ Retrieve a list of withdrawal methods available for the user.
 
 ```julia
 using Serde
-using CryptoAPIs.Kraken
+using CryptoExchangeAPIs.Kraken
 
 kraken_client = KrakenClient(;
     base_url = "https://api.kraken.com",

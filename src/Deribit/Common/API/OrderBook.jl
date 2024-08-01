@@ -7,9 +7,9 @@ export OrderBookQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Deribit
-using CryptoAPIs.Deribit: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Deribit
+using CryptoExchangeAPIs.Deribit: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum Depth begin
     ONE          = 1
@@ -103,11 +103,11 @@ Retrieves the order book, along with other market values for a given instrument.
 
 ```julia
 using Serde
-using CryptoAPIs.Deribit
+using CryptoExchangeAPIs.Deribit
 
 result = Deribit.Common.order_book(;
     instrument_name = "BTC-PERPETUAL",
-    depth = CryptoAPIs.Deribit.Common.OrderBook.TEN,
+    depth = CryptoExchangeAPIs.Deribit.Common.OrderBook.TEN,
 )
 
 to_pretty_json(result.result)

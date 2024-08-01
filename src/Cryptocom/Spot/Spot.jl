@@ -1,6 +1,6 @@
 module Spot
 
-using CryptoAPIs.Cryptocom
+using CryptoExchangeAPIs.Cryptocom
 
 """
     public_client = CryptocomClient(; base_url = "https://api.crypto.com/exchange/v1")

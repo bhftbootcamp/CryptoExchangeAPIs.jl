@@ -1,8 +1,8 @@
 # Errors
 # https://docs.kucoin.com/#request
 
-import ..CryptoAPIs: APIsResult, APIsUndefError
-import ..CryptoAPIs: isretriable, retry_maxcount, retry_timeout
+import ..CryptoExchangeAPIs: APIsResult, APIsUndefError
+import ..CryptoExchangeAPIs: isretriable, retry_maxcount, retry_timeout
 
 # UNDEF
 isretriable(e::APIsResult{KucoinAPIError}) = true

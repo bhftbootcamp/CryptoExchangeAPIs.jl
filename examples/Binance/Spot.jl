@@ -2,8 +2,8 @@
 # https://binance-docs.github.io/apidocs/spot/en
 
 using Dates
-using CryptoAPIs
-using CryptoAPIs.Binance
+using CryptoExchangeAPIs
+using CryptoExchangeAPIs.Binance
 
 Binance.Spot.avg_price(; symbol = "ADAUSDT")
 
@@ -16,9 +16,7 @@ Binance.Spot.candle(;
 )
 
 Binance.Spot.exchange_info()
-
 Binance.Spot.order_book(; symbol = "BTCUSDT", limit = 10)
-
 Binance.Spot.server_time()
 
 Binance.Spot.ticker()
@@ -37,7 +35,5 @@ Binance.Spot.account_trade(
 )
 
 Binance.Spot.coin_information(binance_client)
-
 Binance.Spot.deposit_log(binance_client)
-
 Binance.Spot.withdrawal_log(binance_client)

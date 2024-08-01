@@ -7,8 +7,8 @@ export CurrencyQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Coinbase
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Coinbase
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct CurrencyQuery <: CoinbasePublicQuery
     #__ empty
@@ -71,7 +71,7 @@ Gets a list of all known currencies.
 
 ```julia
 using Serde
-using CryptoAPIs.Coinbase
+using CryptoExchangeAPIs.Coinbase
 
 result = Coinbase.Spot.currency()
 

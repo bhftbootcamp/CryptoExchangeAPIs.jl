@@ -7,9 +7,9 @@ export DepositQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Bybit
-using CryptoAPIs.Bybit: Data, List, Rows
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Bybit
+using CryptoExchangeAPIs.Bybit: Data, List, Rows
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef mutable struct DepositQuery <: BybitPrivateQuery
     coin::Maybe{String} = nothing
@@ -69,7 +69,7 @@ Query Deposit Records.
 
 ```julia
 using Serde
-using CryptoAPIs.Bybit
+using CryptoExchangeAPIs.Bybit
 
 bybit_client = BybitClient(;
     base_url = "https://api.bybit.com",

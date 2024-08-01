@@ -7,8 +7,8 @@ export WithdrawalLogQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Binance
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Binance
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum WithdrawStatus begin
     EMAIL_SENT = 0
@@ -83,7 +83,7 @@ Fetch withdraw history.
 
 ```julia
 using Serde
-using CryptoAPIs.Binance
+using CryptoExchangeAPIs.Binance
 
 binance_client = BinanceClient(;
     base_url = "https://api.binance.com",

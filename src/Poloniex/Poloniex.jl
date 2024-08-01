@@ -11,8 +11,8 @@ export PoloniexCommonQuery,
 using Serde
 using Dates, NanoDates, TimeZones, Base64, Nettle
 
-using ..CryptoAPIs
-import ..CryptoAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
+using ..CryptoExchangeAPIs
+import ..CryptoExchangeAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
 
 abstract type PoloniexData <: AbstractAPIsData end
 abstract type PoloniexCommonQuery  <: AbstractAPIsQuery end
@@ -68,13 +68,13 @@ function Base.show(io::IO, e::PoloniexAPIError)
     return print(io, "code = ", "\"", e.code, "\"", ", ", "msg = ", "\"", e.message, "\"")
 end
 
-CryptoAPIs.error_type(::PoloniexClient) = PoloniexAPIError
+CryptoExchangeAPIs.error_type(::PoloniexClient) = PoloniexAPIError
 
-function CryptoAPIs.request_sign!(::PoloniexClient, query::Q, ::String)::Q where {Q<:PoloniexPublicQuery}
+function CryptoExchangeAPIs.request_sign!(::PoloniexClient, query::Q, ::String)::Q where {Q<:PoloniexPublicQuery}
     return query
 end
 
-function CryptoAPIs.request_sign!(client::PoloniexClient, query::Q, endpoint::String)::Q where {Q<:PoloniexPrivateQuery}
+function CryptoExchangeAPIs.request_sign!(client::PoloniexClient, query::Q, endpoint::String)::Q where {Q<:PoloniexPrivateQuery}
     query.signTimestamp = Dates.now(UTC)
     query.signature = nothing
     body::String = Serde.to_query(query)
@@ -84,29 +84,29 @@ function CryptoAPIs.request_sign!(client::PoloniexClient, query::Q, endpoint::St
     return query
 end
 
-function CryptoAPIs.request_body(::Q)::String where {Q<:PoloniexPublicQuery}
+function CryptoExchangeAPIs.request_body(::Q)::String where {Q<:PoloniexPublicQuery}
     return ""
 end
 
-function CryptoAPIs.request_body(query::Q)::String where {Q<:PoloniexPrivateQuery}
+function CryptoExchangeAPIs.request_body(query::Q)::String where {Q<:PoloniexPrivateQuery}
     return Serde.to_query(query)
 end
 
-function CryptoAPIs.request_query(query::Q)::String where {Q<:PoloniexPublicQuery}
+function CryptoExchangeAPIs.request_query(query::Q)::String where {Q<:PoloniexPublicQuery}
     return Serde.to_query(query)
 end
 
-function CryptoAPIs.request_query(::Q)::String where {Q<:PoloniexPrivateQuery}
+function CryptoExchangeAPIs.request_query(::Q)::String where {Q<:PoloniexPrivateQuery}
     return ""
 end
 
-function CryptoAPIs.request_headers(client::PoloniexClient, ::PoloniexPublicQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::PoloniexClient, ::PoloniexPublicQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json"
     ]
 end
 
-function CryptoAPIs.request_headers(client::PoloniexClient, query::PoloniexPrivateQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::PoloniexClient, query::PoloniexPrivateQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "key" => client.public_key,
         "signTimestamp" => timestamp(NanoDate(query.signTimestamp)),

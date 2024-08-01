@@ -7,8 +7,8 @@ export OrderBookQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Bitfinex
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Bitfinex
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum Precision P0 P1 P2 P3 P4 R0
 
@@ -58,12 +58,12 @@ Raw books can be retrieved by using precision `R0`.
 
 ```julia
 using Serde
-using CryptoAPIs.Bitfinex
+using CryptoExchangeAPIs.Bitfinex
 
 result = Bitfinex.Spot.order_book(;
     symbol = "tBTCUSD",
-    precision = CryptoAPIs.Bitfinex.Spot.OrderBook.P1,
-    len = CryptoAPIs.Bitfinex.Spot.OrderBook.TWENTY_FIVE,
+    precision = CryptoExchangeAPIs.Bitfinex.Spot.OrderBook.P1,
+    len = CryptoExchangeAPIs.Bitfinex.Spot.OrderBook.TWENTY_FIVE,
 )
 
 to_pretty_json(result.result)

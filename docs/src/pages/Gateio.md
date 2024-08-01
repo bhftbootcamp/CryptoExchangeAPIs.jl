@@ -1,33 +1,33 @@
 # Gateio
 
 ```@docs
-CryptoAPIs.Gateio.GateioClient
-CryptoAPIs.Gateio.GateioAPIError
+CryptoExchangeAPIs.Gateio.GateioClient
+CryptoExchangeAPIs.Gateio.GateioAPIError
 ```
 
 ## Spot
 
 ```@docs
-CryptoAPIs.Gateio.Spot.public_client
+CryptoExchangeAPIs.Gateio.Spot.public_client
 ```
 
 ```@docs
-CryptoAPIs.Gateio.Spot.candle
-CryptoAPIs.Gateio.Spot.currency
-CryptoAPIs.Gateio.Spot.deposit
-CryptoAPIs.Gateio.Spot.ticker
+CryptoExchangeAPIs.Gateio.Spot.candle
+CryptoExchangeAPIs.Gateio.Spot.currency
+CryptoExchangeAPIs.Gateio.Spot.deposit
+CryptoExchangeAPIs.Gateio.Spot.ticker
 ```
 
 ## Futures
 
 ```@docs
-CryptoAPIs.Gateio.Futures.public_client
+CryptoExchangeAPIs.Gateio.Futures.public_client
 ```
 
 ```@docs
-CryptoAPIs.Gateio.Futures.candle
-CryptoAPIs.Gateio.Futures.contract
-CryptoAPIs.Gateio.Futures.funding_rate
-CryptoAPIs.Gateio.Futures.order_book
-CryptoAPIs.Gateio.Futures.ticker
+CryptoExchangeAPIs.Gateio.Futures.candle
+CryptoExchangeAPIs.Gateio.Futures.contract
+CryptoExchangeAPIs.Gateio.Futures.funding_rate
+CryptoExchangeAPIs.Gateio.Futures.order_book
+CryptoExchangeAPIs.Gateio.Futures.ticker
 ```

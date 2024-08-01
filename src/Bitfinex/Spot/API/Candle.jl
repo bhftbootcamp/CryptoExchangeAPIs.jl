@@ -7,8 +7,8 @@ export CandleQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Bitfinex
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Bitfinex
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum TimeInterval m1 m5 m15 m30 h1 h3 h6 h12 d1 w1 d14 M1
 
@@ -75,10 +75,10 @@ The endpoint provides the last 100 candles by default, but a limit and a start a
 
 ```julia
 using Serde
-using CryptoAPIs.Bitfinex
+using CryptoExchangeAPIs.Bitfinex
 
 result = Bitfinex.Spot.candle(;
-    timeframe = CryptoAPIs.Bitfinex.Spot.Candle.m5,
+    timeframe = CryptoExchangeAPIs.Bitfinex.Spot.Candle.m5,
     symbol = "tBTCUSD",
     start = now(UTC) - Minute(100),
     _end = now(UTC) - Minute(10),

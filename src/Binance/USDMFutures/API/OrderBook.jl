@@ -7,8 +7,8 @@ export OrderBookQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Binance
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Binance
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct OrderBookQuery <: BinancePublicQuery
     symbol::String
@@ -45,7 +45,7 @@ end
 
 ```julia
 using Serde
-using CryptoAPIs.Binance
+using CryptoExchangeAPIs.Binance
 
 result = Binance.USDMFutures.order_book(;
     symbol = "ADAUSDT"

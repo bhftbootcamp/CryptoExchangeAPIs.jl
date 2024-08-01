@@ -2,8 +2,8 @@
 # https://binance-docs.github.io/apidocs/futures/en
 
 using Dates
-using CryptoAPIs
-using CryptoAPIs.Binance
+using CryptoExchangeAPIs
+using CryptoExchangeAPIs.Binance
 
 Binance.USDMFutures.candle(;
     symbol = "BTCUSDT",

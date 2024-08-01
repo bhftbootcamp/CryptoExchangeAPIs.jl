@@ -1,8 +1,6 @@
-module CryptoAPIs
+module CryptoExchangeAPIs
 
-export crypto_apis_query,
-    crypto_apis_client,
-    crypto_apis_result
+export cex_query, cex_client, cex_result
 
 using EasyCurl, Serde
 using Dates, NanoDates, TimeZones
@@ -104,29 +102,29 @@ function iserror(x::APIsResult{T})::Bool where {T}
 end
 
 """
-    crypto_apis_client(x::APIsResult)
+    cex_client(x::APIsResult)
 
 Getter function for obtaining information about the request client.
 """
-function crypto_apis_client(x::APIsResult)
+function cex_client(x::APIsResult)
     return x.client
 end
 
 """
-    crypto_apis_result(x::APIsResult)
+    cex_result(x::APIsResult)
 
 Getter function for obtaining the response result.
 """
-function crypto_apis_result(x::APIsResult)
+function cex_result(x::APIsResult)
     return x.result
 end
 
 """
-    crypto_apis_query(x::APIsResult)
+    cex_query(x::APIsResult)
 
 Getter function for obtaining query of the API request.
 """
-function crypto_apis_query(x::APIsResult)
+function cex_query(x::APIsResult)
     return x.query
 end
 

@@ -2,24 +2,24 @@
 # https://docs.kraken.com/rest
 
 using Dates
-using CryptoAPIs
-using CryptoAPIs.Kraken
+using CryptoExchangeAPIs
+using CryptoExchangeAPIs.Kraken
 
-CryptoAPIs.Kraken.Spot.asset(; asset = ["ADA", "SUSHI"])
+Kraken.Spot.asset(; asset = ["ADA", "SUSHI"])
 
-CryptoAPIs.Kraken.Spot.asset_pair(; pair = "ACAUSD")
-CryptoAPIs.Kraken.Spot.asset_pair(; info = CryptoAPIs.Kraken.Spot.AssetPair.fees)
+Kraken.Spot.asset_pair(; pair = "ACAUSD")
+Kraken.Spot.asset_pair(; info = Kraken.Spot.AssetPair.fees)
 
-CryptoAPIs.Kraken.Spot.candle(;
+Kraken.Spot.candle(;
     pair = "ACAUSD",
-    interval = CryptoAPIs.Kraken.Spot.Candle.h1,
+    interval = Kraken.Spot.Candle.h1,
     since = now(UTC) - Hour(1),
 )
 
-CryptoAPIs.Kraken.Spot.order_book(; pair = "XBTUSD", count = 10)
+Kraken.Spot.order_book(; pair = "XBTUSD", count = 10)
 
-CryptoAPIs.Kraken.Spot.ticker()
-CryptoAPIs.Kraken.Spot.ticker(; pair = "XBTUSD")
+Kraken.Spot.ticker()
+Kraken.Spot.ticker(; pair = "XBTUSD")
 
 kraken_client = KrakenClient(;
     base_url = "https://api.kraken.com",
@@ -27,21 +27,21 @@ kraken_client = KrakenClient(;
     secret_key = ENV["KRAKEN_SECRET_KEY"],
 )
 
-CryptoAPIs.Kraken.Spot.deposit_log(kraken_client; asset = "XBT")
+Kraken.Spot.deposit_log(kraken_client; asset = "XBT")
 
-CryptoAPIs.Kraken.Spot.deposit_method(
+Kraken.Spot.deposit_method(
     kraken_client;
     asset = "XBT",
 )
 
-CryptoAPIs.Kraken.Spot.ledger_info_log(
+Kraken.Spot.ledger_info_log(
     kraken_client;
-    type = CryptoAPIs.Kraken.Spot.LedgerInfoLog.margin,
+    type = Kraken.Spot.LedgerInfoLog.margin,
     asset = "XBT",
     start = Dates.DateTime("2021-04-03T15:33:20"),
     _end = Dates.DateTime("2022-04-03T15:33:20"),
 )
 
-CryptoAPIs.Kraken.Spot.withdrawal_log(kraken_client; asset = "XBT")
+Kraken.Spot.withdrawal_log(kraken_client; asset = "XBT")
 
-CryptoAPIs.Kraken.Spot.withdrawal_method(kraken_client; asset = "XBT")
+Kraken.Spot.withdrawal_method(kraken_client; asset = "XBT")

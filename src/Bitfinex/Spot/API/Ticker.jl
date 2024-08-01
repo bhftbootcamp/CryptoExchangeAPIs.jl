@@ -7,8 +7,8 @@ export TickerQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Bitfinex
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Bitfinex
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct TickerQuery <: BitfinexPublicQuery
     symbols::String = "ALL"
@@ -48,7 +48,7 @@ The endpoint can retrieve multiple tickers with a single query.
 
 ```julia
 using Serde
-using CryptoAPIs.Bitfinex
+using CryptoExchangeAPIs.Bitfinex
 
 result = Bitfinex.Spot.ticker(;
     symbols = "tBTCUSD"

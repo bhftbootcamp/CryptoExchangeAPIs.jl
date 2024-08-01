@@ -7,9 +7,9 @@ export CandleQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Deribit
-using CryptoAPIs.Deribit: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Deribit
+using CryptoExchangeAPIs.Deribit: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum TimeInterval m1 m3 m5 m10 m15 m30 h1 h2 h3 h6 h12 d1
 
@@ -67,13 +67,13 @@ Publicly available market data used to generate a TradingView candle chart.
 
 ```julia
 using Serde
-using CryptoAPIs.Deribit
+using CryptoExchangeAPIs.Deribit
 
 result = Deribit.Common.candle(;
     instrument_name = "BTC-PERPETUAL",
     start_timestamp = now(UTC) - Minute(100),
     end_timestamp = now(UTC) - Hour(1),
-    resolution = CryptoAPIs.Deribit.Common.Candle.m1,
+    resolution = CryptoExchangeAPIs.Deribit.Common.Candle.m1,
 )
 
 to_pretty_json(result.result)

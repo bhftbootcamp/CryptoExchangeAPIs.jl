@@ -7,8 +7,8 @@ export ProductStatsQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Coinbase
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Coinbase
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct ProductStatsQuery <: CoinbasePublicQuery
     #__ empty
@@ -39,7 +39,7 @@ Get rates for a single product by product ID, grouped in buckets.
 
 ```julia
 using Serde
-using CryptoAPIs.Coinbase
+using CryptoExchangeAPIs.Coinbase
 
 result = Coinbase.Spot.product_stats()
 

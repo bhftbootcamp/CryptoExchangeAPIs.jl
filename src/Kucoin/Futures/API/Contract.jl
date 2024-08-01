@@ -7,9 +7,9 @@ export ContractQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Kucoin
-using CryptoAPIs.Kucoin: Data, Page
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Kucoin
+using CryptoExchangeAPIs.Kucoin: Data, Page
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct ContractQuery <: KucoinPublicQuery
     #__ empty
@@ -85,7 +85,7 @@ Submit request to get the info of all open contracts.
 
 ```julia
 using Serde
-using CryptoAPIs.Kucoin
+using CryptoExchangeAPIs.Kucoin
 
 result = Kucoin.Futures.contract()
 

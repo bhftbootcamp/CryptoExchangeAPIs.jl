@@ -7,9 +7,9 @@ export LedgerInfoLogQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Kraken
-using CryptoAPIs.Kraken: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Kraken
+using CryptoExchangeAPIs.Kraken: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum LedgerType begin
     all
@@ -79,7 +79,7 @@ Retrieve information about ledger entries. 50 results are returned at a time, th
 
 ```julia
 using Serde
-using CryptoAPIs.Kraken
+using CryptoExchangeAPIs.Kraken
 
 kraken_client = KrakenClient(;
     base_url = "https://api.kraken.com",
@@ -89,7 +89,7 @@ kraken_client = KrakenClient(;
 
 result = Kraken.Spot.ledger_info_log(
     kraken_client;
-    type = CryptoAPIs.Kraken.Spot.LedgerInfoLog.margin,
+    type = CryptoExchangeAPIs.Kraken.Spot.LedgerInfoLog.margin,
     asset = "XBT",
     start = Dates.DateTime("2021-04-03T15:33:20"),
     _end = Dates.DateTime("2022-04-03T15:33:20"),

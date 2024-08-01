@@ -2,17 +2,17 @@
 # https://docs.kucoin.com/
 
 using NanoDates
-using CryptoAPIs
-using CryptoAPIs.Kucoin
+using CryptoExchangeAPIs
+using CryptoExchangeAPIs.Kucoin
 
-CryptoAPIs.Kucoin.Futures.candle(;
+Kucoin.Futures.candle(;
     symbol = ".KXBT",
     granularity = Kucoin.Futures.Candle.m1,
 )
 
-CryptoAPIs.Kucoin.Futures.contract()
+Kucoin.Futures.contract()
 
-CryptoAPIs.Kucoin.Futures.public_funding_history(; 
+Kucoin.Futures.public_funding_history(;
     symbol = "IDUSDTM",
     from = NanoDate("2023-11-18T12:31:40"),
     to = NanoDate("2023-12-11T16:05:00"),
@@ -25,7 +25,7 @@ kucoin_client = KucoinClient(;
     passphrase = ENV["KUCOIN_PASSPHRASE"],
 )
 
-CryptoAPIs.Kucoin.Futures.private_funding_history(
+Kucoin.Futures.private_funding_history(
     kucoin_client;
     symbol = "XBTUSDM",
 )

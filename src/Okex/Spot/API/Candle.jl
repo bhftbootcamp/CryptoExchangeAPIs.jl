@@ -7,9 +7,9 @@ export CandleQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Okex
-using CryptoAPIs.Okex: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Okex
+using CryptoExchangeAPIs.Okex: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum TimeInterval m1 m3 m5 m15 m30 h1 h2 h4 h6 h12 d1 d2 d3 w1 M1 M3
 
@@ -74,7 +74,7 @@ Retrieve the candlestick charts.
 
 ```julia
 using Serde
-using CryptoAPIs.Okex
+using CryptoExchangeAPIs.Okex
 
 result = Okex.Spot.candle(;
     instId = "BTC-USDT",

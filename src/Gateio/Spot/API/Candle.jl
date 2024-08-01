@@ -7,8 +7,8 @@ export CandleQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Gateio
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Gateio
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum TimeInterval s10 m1 m5 m15 m30 h1 h4 h8 d1 d7 d30
 
@@ -66,7 +66,7 @@ Market candlesticks.
 
 ```julia
 using Serde
-using CryptoAPIs.Gateio
+using CryptoExchangeAPIs.Gateio
 
 result = Gateio.Spot.candle(;
     currency_pair = "BTC_USDT",

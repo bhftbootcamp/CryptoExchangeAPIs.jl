@@ -1,6 +1,6 @@
 module Spot
 
-using CryptoAPIs.Kucoin
+using CryptoExchangeAPIs.Kucoin
 
 """
     public_client = KucoinClient(; base_url = "https://api.kucoin.com")

@@ -2,12 +2,12 @@
 # https://docs.kucoin.com/
 
 using Dates
-using CryptoAPIs
-using CryptoAPIs.Kucoin
+using CryptoExchangeAPIs
+using CryptoExchangeAPIs.Kucoin
 
-CryptoAPIs.Kucoin.Spot.candle(;
+Kucoin.Spot.candle(;
     symbol = "BTC-USDT",
-    type = CryptoAPIs.Kucoin.Spot.Candle.m1,
+    type = Kucoin.Spot.Candle.m1,
 )
 
 kucoin_client = KucoinClient(;
@@ -17,7 +17,7 @@ kucoin_client = KucoinClient(;
     passphrase = ENV["KUCOIN_PASSPHRASE"],
 )
 
-CryptoAPIs.Kucoin.Spot.deposit(
+Kucoin.Spot.deposit(
     kucoin_client;
     currency = "BTC",
 )

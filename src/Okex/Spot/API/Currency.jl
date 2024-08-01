@@ -7,9 +7,9 @@ export CurrencyQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Okex
-using CryptoAPIs.Okex: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Okex
+using CryptoExchangeAPIs.Okex: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef mutable struct CurrencyQuery <: OkexPrivateQuery
     ccy::String = ""
@@ -67,10 +67,10 @@ Get information of coins (available for deposit and withdraw) for user.
 
 ```julia
 using Serde
-using CryptoAPIs.Okex
+using CryptoExchangeAPIs.Okex
 
 okex_client = OkexClient(;
-    base_url = "https://www.okex.com",
+    base_url = "https://www.okx.com",
     public_key = ENV["OKEX_PUBLIC_KEY"],
     secret_key = ENV["OKEX_SECRET_KEY"],
     passphrase = ENV["OKEX_PASSPHRASE"],

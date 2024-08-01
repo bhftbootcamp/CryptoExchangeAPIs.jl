@@ -1,21 +1,21 @@
 # Bithumb
 
 ```@docs
-CryptoAPIs.Bithumb.BithumbClient
-CryptoAPIs.Bithumb.BithumbAPIError
-CryptoAPIs.Bithumb.Data
+CryptoExchangeAPIs.Bithumb.BithumbClient
+CryptoExchangeAPIs.Bithumb.BithumbAPIError
+CryptoExchangeAPIs.Bithumb.Data
 ```
 
 ## Spot
 
 ```@docs
-CryptoAPIs.Bithumb.Spot.public_client
+CryptoExchangeAPIs.Bithumb.Spot.public_client
 ```
 
 ```@docs
-CryptoAPIs.Bithumb.Spot.asset_status
-CryptoAPIs.Bithumb.Spot.candle
-CryptoAPIs.Bithumb.Spot.order_book
-CryptoAPIs.Bithumb.Spot.ticker
-CryptoAPIs.Bithumb.Spot.user_transactions
+CryptoExchangeAPIs.Bithumb.Spot.asset_status
+CryptoExchangeAPIs.Bithumb.Spot.candle
+CryptoExchangeAPIs.Bithumb.Spot.order_book
+CryptoExchangeAPIs.Bithumb.Spot.ticker
+CryptoExchangeAPIs.Bithumb.Spot.user_transactions
 ```

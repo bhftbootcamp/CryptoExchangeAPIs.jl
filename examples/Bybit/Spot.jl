@@ -2,22 +2,22 @@
 # https://bybit-exchange.github.io/docs/
 
 using Dates
-using CryptoAPIs
-using CryptoAPIs.Bybit
+using CryptoExchangeAPIs
+using CryptoExchangeAPIs.Bybit
 
-CryptoAPIs.Bybit.Spot.candle(;
+Bybit.Spot.candle(;
     symbol = "ADAUSDT",
-    interval = CryptoAPIs.Bybit.Spot.Candle.m1,
+    interval = Bybit.Spot.Candle.m1,
     startTime = DateTime("2022-10-27T08:00:00"),
     endTime = DateTime("2022-10-27T08:00:00") + Hour(1),
     limit = 4,
 )
 
-CryptoAPIs.Bybit.Spot.order_book(; symbol = "ADAUSDT")
+Bybit.Spot.order_book(; symbol = "ADAUSDT")
 
-CryptoAPIs.Bybit.Spot.symbol_info()
+Bybit.Spot.symbol_info()
 
-CryptoAPIs.Bybit.Spot.ticker(; symbol = "ADAUSDT")
+Bybit.Spot.ticker(; symbol = "ADAUSDT")
 
 bybit_client = BybitClient(;
     base_url = "https://api.bybit.com",
@@ -25,8 +25,8 @@ bybit_client = BybitClient(;
     secret_key = ENV["BYBIT_SECRET_KEY"],
 )
 
-CryptoAPIs.Bybit.Spot.coin_info(bybit_client)
+Bybit.Spot.coin_info(bybit_client)
 
-CryptoAPIs.Bybit.Spot.deposit(bybit_client)
+Bybit.Spot.deposit(bybit_client)
 
-CryptoAPIs.Bybit.Spot.trade_history(bybit_client; category = CryptoAPIs.Bybit.Spot.TradeHistory.SPOT, limit = 1)
+Bybit.Spot.trade_history(bybit_client; category = Bybit.Spot.TradeHistory.SPOT, limit = 1)
