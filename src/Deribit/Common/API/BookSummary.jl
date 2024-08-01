@@ -7,9 +7,9 @@ export BookSummaryQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Deribit
-using CryptoAPIs.Deribit: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Deribit
+using CryptoExchangeAPIs.Deribit: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum Currency begin
     BTC
@@ -75,10 +75,10 @@ Retrieves the summary information such as open interest, 24h volume, etc. for al
 
 ```julia
 using Serde
-using CryptoAPIs.Deribit
+using CryptoExchangeAPIs.Deribit
 
 result = Deribit.Common.book_summary(;
-    currency = CryptoAPIs.Deribit.Common.BookSummary.BTC
+    currency = CryptoExchangeAPIs.Deribit.Common.BookSummary.BTC
 )
 
 to_pretty_json(result.result)

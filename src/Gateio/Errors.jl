@@ -1,7 +1,7 @@
 # Gateio/Errors
 # https://www.gate.io/docs/developers/apiv4/en/#error-handling
 
-import ..CryptoAPIs: APIsResult, APIsUndefError, isretriable, retry_maxcount, retry_timeout
+import ..CryptoExchangeAPIs: APIsResult, APIsUndefError, isretriable, retry_maxcount, retry_timeout
 
 # UNDEF
 isretriable(::APIsResult{GateioAPIError}) = true

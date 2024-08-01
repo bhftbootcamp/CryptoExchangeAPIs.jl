@@ -7,9 +7,9 @@ export CandleQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Bybit
-using CryptoAPIs.Bybit: Data, List, Rows
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Bybit
+using CryptoExchangeAPIs.Bybit: Data, List, Rows
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum TimeInterval m1 m3 m5 m15 m30 h1 h2 h4 h6 h8 h12 d1 d3 w1 M1
 
@@ -70,7 +70,7 @@ end
 
 ```julia
 using Serde
-using CryptoAPIs.Bybit
+using CryptoExchangeAPIs.Bybit
 
 result = Bybit.Spot.candle(;
     symbol = "ADAUSDT",

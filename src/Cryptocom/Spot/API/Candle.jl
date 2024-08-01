@@ -7,9 +7,9 @@ export CandleQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Cryptocom
-using CryptoAPIs.Cryptocom: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Cryptocom
+using CryptoExchangeAPIs.Cryptocom: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum TimeInterval m1 m5 m15 m30 h1 h2 h4 h12 d1 d7 d14 M1
 
@@ -81,7 +81,7 @@ Retrieves candlesticks (k-line data history) over a given period for an instrume
 
 ```julia
 using Serde
-using CryptoAPIs.Cryptocom
+using CryptoExchangeAPIs.Cryptocom
 
 result = Cryptocom.Spot.candle(;
     instrument_name = "BTC_USDT",

@@ -7,8 +7,8 @@ export FeeEstimateQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Coinbase
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Coinbase
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef mutable struct FeeEstimateQuery <: CoinbasePrivateQuery
     currency::Maybe{String} = nothing
@@ -46,7 +46,7 @@ Gets the fee estimate for the crypto withdrawal to crypto address.
 
 ```julia
 using Serde
-using CryptoAPIs.Coinbase
+using CryptoExchangeAPIs.Coinbase
 
 coinbase_client = CoinbaseClient(;
     base_url = "https://api.exchange.coinbase.com",

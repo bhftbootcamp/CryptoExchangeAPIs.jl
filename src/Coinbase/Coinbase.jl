@@ -11,8 +11,8 @@ export CoinbaseCommonQuery,
 using Serde
 using Dates, NanoDates, TimeZones, Base64, Nettle
 
-using ..CryptoAPIs
-import ..CryptoAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
+using ..CryptoExchangeAPIs
+import ..CryptoExchangeAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
 
 abstract type CoinbaseData <: AbstractAPIsData end
 abstract type CoinbaseCommonQuery  <: AbstractAPIsQuery end
@@ -63,17 +63,17 @@ struct CoinbaseAPIError{T} <: AbstractAPIsError
     end
 end
 
-CryptoAPIs.error_type(::CoinbaseClient) = CoinbaseAPIError
+CryptoExchangeAPIs.error_type(::CoinbaseClient) = CoinbaseAPIError
 
 function Base.show(io::IO, e::CoinbaseAPIError)
     return print(io, "message = ", "\"", e.message)
 end
 
-function CryptoAPIs.request_sign!(::CoinbaseClient, query::Q, ::String)::Q where {Q<:CoinbasePublicQuery}
+function CryptoExchangeAPIs.request_sign!(::CoinbaseClient, query::Q, ::String)::Q where {Q<:CoinbasePublicQuery}
     return query
 end
 
-function CryptoAPIs.request_sign!(client::CoinbaseClient, query::Q, endpoint::String)::Q where {Q<:CoinbasePrivateQuery}
+function CryptoExchangeAPIs.request_sign!(client::CoinbaseClient, query::Q, endpoint::String)::Q where {Q<:CoinbasePrivateQuery}
     query.timestamp = string(round(Int64, datetime2unix(Dates.now(UTC))))
     query.signature = nothing
     str_query = isempty(Serde.to_query(query)) ? "" : "?" * Serde.to_query(query)
@@ -83,22 +83,22 @@ function CryptoAPIs.request_sign!(client::CoinbaseClient, query::Q, endpoint::St
     return query
 end
 
-function CryptoAPIs.request_body(::Q)::String where {Q<:CoinbaseCommonQuery}
+function CryptoExchangeAPIs.request_body(::Q)::String where {Q<:CoinbaseCommonQuery}
     return ""
 end
 
-function CryptoAPIs.request_query(query::Q)::String where {Q<:CoinbaseCommonQuery}
+function CryptoExchangeAPIs.request_query(query::Q)::String where {Q<:CoinbaseCommonQuery}
     return Serde.to_query(query)
 end
 
-function CryptoAPIs.request_headers(client::CoinbaseClient, ::CoinbasePublicQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::CoinbaseClient, ::CoinbasePublicQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json",
-        "User-Agent" => "CryptoAPIs.Coinbase",
+        "User-Agent" => "CryptoExchangeAPIs.Coinbase",
     ]
 end
 
-function CryptoAPIs.request_headers(client::CoinbaseClient, query::CoinbasePrivateQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::CoinbaseClient, query::CoinbasePrivateQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json",
         "CB-ACCESS-KEY" => client.public_key,

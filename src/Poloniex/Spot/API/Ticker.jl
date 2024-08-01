@@ -7,8 +7,8 @@ export TickerQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Poloniex
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Poloniex
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct TickerQuery <: PoloniexPublicQuery
     symbol::Maybe{String} = nothing
@@ -57,7 +57,7 @@ Retrieve ticker in last 24 hours for all symbols.
 
 ```julia
 using Serde
-using CryptoAPIs.Poloniex
+using CryptoExchangeAPIs.Poloniex
 
 result = Poloniex.Spot.ticker(;
     symbol = "BTC_USDT",

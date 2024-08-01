@@ -7,8 +7,8 @@ export DepositQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Gateio
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Gateio
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum RecordStatus begin
     DONE
@@ -79,7 +79,7 @@ Retrieve deposit records.
 
 ```julia
 using Serde
-using CryptoAPIs.Gateio
+using CryptoExchangeAPIs.Gateio
 
 gateio_client = GateioClient(;
     base_url = "https://api.Gateio.ws",

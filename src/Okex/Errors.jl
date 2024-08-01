@@ -1,8 +1,8 @@
 # Errors
 # https://www.okx.com/docs-v5/en/#error-code-rest-api-public
 
-import ..CryptoAPIs: APIsResult, APIsUndefError
-import ..CryptoAPIs: isretriable, retry_maxcount, retry_timeout
+import ..CryptoExchangeAPIs: APIsResult, APIsUndefError
+import ..CryptoExchangeAPIs: isretriable, retry_maxcount, retry_timeout
 
 # UNDEF
 isretriable(::APIsResult{OkexAPIError}) = true

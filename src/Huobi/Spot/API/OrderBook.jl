@@ -7,9 +7,9 @@ export OrderBookQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Huobi
-using CryptoAPIs.Huobi: DataTick
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Huobi
+using CryptoExchangeAPIs.Huobi: DataTick
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum StepType begin
     step0 # step0 No market depth aggregation
@@ -58,7 +58,7 @@ This endpoint retrieves the current order book of a specific pair.
 
 ```julia
 using Serde
-using CryptoAPIs.Huobi
+using CryptoExchangeAPIs.Huobi
 
 result = Huobi.Spot.order_book(;
     symbol = "btcusdt",

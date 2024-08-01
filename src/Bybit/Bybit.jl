@@ -11,8 +11,8 @@ export BybitCommonQuery,
 using Serde
 using Dates, NanoDates, TimeZones, Base64, Nettle
 
-using ..CryptoAPIs
-import ..CryptoAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
+using ..CryptoExchangeAPIs
+import ..CryptoExchangeAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
 
 abstract type BybitData <: AbstractAPIsData end
 abstract type BybitCommonQuery  <: AbstractAPIsQuery end
@@ -119,17 +119,17 @@ struct BybitAPIError{T} <: AbstractAPIsError
     end
 end
 
-CryptoAPIs.error_type(::BybitClient) = BybitAPIError
+CryptoExchangeAPIs.error_type(::BybitClient) = BybitAPIError
 
 function Base.show(io::IO, e::BybitAPIError)
     return print(io, "code = ", "\"", e.retCode, "\"", ", ", "msg = ", "\"", e.retMsg, "\"")
 end
 
-function CryptoAPIs.request_sign!(::BybitClient, query::Q, ::String)::Q where {Q<:BybitPublicQuery}
+function CryptoExchangeAPIs.request_sign!(::BybitClient, query::Q, ::String)::Q where {Q<:BybitPublicQuery}
     return query
 end
 
-function CryptoAPIs.request_sign!(client::BybitClient, query::Q, ::String)::Q where {Q<:BybitPrivateQuery}
+function CryptoExchangeAPIs.request_sign!(client::BybitClient, query::Q, ::String)::Q where {Q<:BybitPrivateQuery}
     query.timestamp = Dates.now(UTC)
     query.api_key = client.public_key
     query.signature = nothing
@@ -139,21 +139,21 @@ function CryptoAPIs.request_sign!(client::BybitClient, query::Q, ::String)::Q wh
     return query
 end
 
-function CryptoAPIs.request_body(::Q)::String where {Q<:BybitCommonQuery}
+function CryptoExchangeAPIs.request_body(::Q)::String where {Q<:BybitCommonQuery}
     return ""
 end
 
-function CryptoAPIs.request_query(query::Q)::String where {Q<:BybitCommonQuery}
+function CryptoExchangeAPIs.request_query(query::Q)::String where {Q<:BybitCommonQuery}
     return Serde.to_query(query)
 end
 
-function CryptoAPIs.request_headers(client::BybitClient, ::BybitPublicQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::BybitClient, ::BybitPublicQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json"
     ]
 end
 
-function CryptoAPIs.request_headers(client::BybitClient, query::BybitPrivateQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::BybitClient, query::BybitPrivateQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "X-BAPI-SIGN-TYPE" => "2",
         "X-BAPI-SIGN" => query.signature,

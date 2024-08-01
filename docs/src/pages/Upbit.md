@@ -1,20 +1,20 @@
 # Upbit
 
 ```@docs
-CryptoAPIs.Upbit.UpbitClient
-CryptoAPIs.Upbit.UpbitAPIError
+CryptoExchangeAPIs.Upbit.UpbitClient
+CryptoExchangeAPIs.Upbit.UpbitAPIError
 ```
 
 ## Spot
 
 ```@docs
-CryptoAPIs.Upbit.Spot.public_client
+CryptoExchangeAPIs.Upbit.Spot.public_client
 ```
 
 ```@docs
-CryptoAPIs.Upbit.Spot.day_candle
-CryptoAPIs.Upbit.Spot.market_list
-CryptoAPIs.Upbit.Spot.order_book
-CryptoAPIs.Upbit.Spot.status_wallet
-CryptoAPIs.Upbit.Spot.ticker
+CryptoExchangeAPIs.Upbit.Spot.day_candle
+CryptoExchangeAPIs.Upbit.Spot.market_list
+CryptoExchangeAPIs.Upbit.Spot.order_book
+CryptoExchangeAPIs.Upbit.Spot.status_wallet
+CryptoExchangeAPIs.Upbit.Spot.ticker
 ```

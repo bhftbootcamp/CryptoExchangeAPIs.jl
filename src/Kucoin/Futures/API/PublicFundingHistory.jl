@@ -7,9 +7,9 @@ export PublicFundingHistoryQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Kucoin
-using CryptoAPIs.Kucoin: Data, Page
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Kucoin
+using CryptoExchangeAPIs.Kucoin: Data, Page
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct PublicFundingHistoryQuery <: KucoinPublicQuery
     symbol::String
@@ -44,7 +44,7 @@ Query the funding rate at each settlement time point within a certain time range
 ```julia
 using Serde
 using NanoDates
-using CryptoAPIs.Kucoin
+using CryptoExchangeAPIs.Kucoin
 
 result = Kucoin.Futures.public_funding_history(; 
     symbol = "IDUSDTM",

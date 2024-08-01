@@ -7,8 +7,8 @@ export ProductQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Coinbase
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Coinbase
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct ProductQuery <: CoinbasePublicQuery
     type::Maybe{String} = nothing
@@ -56,7 +56,7 @@ Gets a list of available currency pairs for trading.
 
 ```julia
 using Serde
-using CryptoAPIs.Coinbase
+using CryptoExchangeAPIs.Coinbase
 
 result = Coinbase.Spot.product(;
     type = "ADA-USDT",

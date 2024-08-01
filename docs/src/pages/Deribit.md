@@ -1,23 +1,23 @@
 # Deribit
 
 ```@docs
-CryptoAPIs.Deribit.DeribitClient
-CryptoAPIs.Deribit.DeribitAPIsErrorMsg
-CryptoAPIs.Deribit.DeribitAPIError
-CryptoAPIs.Deribit.Data
+CryptoExchangeAPIs.Deribit.DeribitClient
+CryptoExchangeAPIs.Deribit.DeribitAPIsErrorMsg
+CryptoExchangeAPIs.Deribit.DeribitAPIError
+CryptoExchangeAPIs.Deribit.Data
 ```
 
 ## Common
 
 ```@docs
-CryptoAPIs.Deribit.Common.public_client
+CryptoExchangeAPIs.Deribit.Common.public_client
 ```
 
 ```@docs
-CryptoAPIs.Deribit.Common.book_summary
-CryptoAPIs.Deribit.Common.candle
-CryptoAPIs.Deribit.Common.funding_rate
-CryptoAPIs.Deribit.Common.instrument
-CryptoAPIs.Deribit.Common.order_book
-CryptoAPIs.Deribit.Common.ticker
+CryptoExchangeAPIs.Deribit.Common.book_summary
+CryptoExchangeAPIs.Deribit.Common.candle
+CryptoExchangeAPIs.Deribit.Common.funding_rate
+CryptoExchangeAPIs.Deribit.Common.instrument
+CryptoExchangeAPIs.Deribit.Common.order_book
+CryptoExchangeAPIs.Deribit.Common.ticker
 ```

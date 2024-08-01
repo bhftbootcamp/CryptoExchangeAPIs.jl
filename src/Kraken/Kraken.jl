@@ -11,8 +11,8 @@ export KrakenCommonQuery,
 using Serde
 using Dates, NanoDates, TimeZones, Base64, Nettle
 
-using ..CryptoAPIs
-import ..CryptoAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
+using ..CryptoExchangeAPIs
+import ..CryptoExchangeAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
 
 abstract type KrakenData <: AbstractAPIsData end
 abstract type KrakenCommonQuery  <: AbstractAPIsQuery end
@@ -78,13 +78,13 @@ function Base.show(io::IO, e::KrakenAPIError)
     return print(io, "error = ", "\"", e.error, "\"")
 end
 
-CryptoAPIs.error_type(::KrakenClient) = KrakenAPIError
+CryptoExchangeAPIs.error_type(::KrakenClient) = KrakenAPIError
 
-function CryptoAPIs.request_sign!(::KrakenClient, query::Q, ::String)::Q where {Q<:KrakenPublicQuery}
+function CryptoExchangeAPIs.request_sign!(::KrakenClient, query::Q, ::String)::Q where {Q<:KrakenPublicQuery}
     return query
 end
 
-function CryptoAPIs.request_sign!(client::KrakenClient, query::Q, endpoint::String)::Q where {Q<:KrakenPrivateQuery}
+function CryptoExchangeAPIs.request_sign!(client::KrakenClient, query::Q, endpoint::String)::Q where {Q<:KrakenPrivateQuery}
     query.nonce = Dates.now(UTC)
     body::String = Serde.to_query(query)
     encoded = Vector{UInt8}(string(round(Int64, 1000 * datetime2unix(query.nonce)), body))
@@ -94,33 +94,33 @@ function CryptoAPIs.request_sign!(client::KrakenClient, query::Q, endpoint::Stri
     return query
 end
 
-function CryptoAPIs.request_sign!(::KrakenClient, query::Q, ::String)::Q where {Q<:KrakenAccessQuery}
+function CryptoExchangeAPIs.request_sign!(::KrakenClient, query::Q, ::String)::Q where {Q<:KrakenAccessQuery}
     return query
 end
 
-function CryptoAPIs.request_body(::Q)::String where {Q<:KrakenPublicQuery}
+function CryptoExchangeAPIs.request_body(::Q)::String where {Q<:KrakenPublicQuery}
     return ""
 end
 
-function CryptoAPIs.request_body(query::Q)::String where {Q<:KrakenPrivateQuery}
+function CryptoExchangeAPIs.request_body(query::Q)::String where {Q<:KrakenPrivateQuery}
     return Serde.to_query(query)
 end
 
-function CryptoAPIs.request_query(query::Q)::String where {Q<:KrakenPublicQuery}
+function CryptoExchangeAPIs.request_query(query::Q)::String where {Q<:KrakenPublicQuery}
     return Serde.to_query(query)
 end
 
-function CryptoAPIs.request_query(::Q)::String where {Q<:KrakenPrivateQuery}
+function CryptoExchangeAPIs.request_query(::Q)::String where {Q<:KrakenPrivateQuery}
     return ""
 end
 
-function CryptoAPIs.request_headers(::KrakenClient, ::KrakenPublicQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(::KrakenClient, ::KrakenPublicQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json",
     ]
 end
 
-function CryptoAPIs.request_headers(client::KrakenClient, query::KrakenPrivateQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::KrakenClient, query::KrakenPrivateQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/x-www-form-urlencoded",
         "API-Key"  => client.public_key,

@@ -7,9 +7,9 @@ export CandleQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Bithumb
-using CryptoAPIs.Bithumb: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Bithumb
+using CryptoExchangeAPIs.Bithumb: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum TimeInterval m1 m3 m5 m10 m30 h1 h6 h12 h24
 
@@ -64,7 +64,7 @@ Provides virtual asset price and trading volume information by time and section.
 
 ```julia
 using Serde
-using CryptoAPIs.Bithumb
+using CryptoExchangeAPIs.Bithumb
 
 result = Bithumb.Spot.candle(;
     order_currency = "BTC",

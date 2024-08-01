@@ -7,10 +7,10 @@ export OrderBookQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Bithumb
-using CryptoAPIs.Bithumb: Data
-using CryptoAPIs: Maybe, APIsRequest
-import CryptoAPIs: prepare_json!
+using CryptoExchangeAPIs.Bithumb
+using CryptoExchangeAPIs.Bithumb: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
+import CryptoExchangeAPIs: prepare_json!
 
 Base.@kwdef struct OrderBookQuery <: BithumbPublicQuery
     count::Maybe{Int64} = nothing
@@ -66,7 +66,7 @@ end
 
 ```julia
 using Serde
-using CryptoAPIs.Bithumb
+using CryptoExchangeAPIs.Bithumb
 
 result = Bithumb.Spot.order_book(;
     order_currency = "BTC",

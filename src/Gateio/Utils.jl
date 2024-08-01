@@ -4,6 +4,10 @@ function Serde.deser(::Type{<:GateioData}, ::Type{<:Maybe{NanoDate}}, x::Int64):
     return unixnanos2nanodate(x * 1e9)
 end
 
+# function Serde.deser(::Type{<:GateioData}, ::Type{<:Maybe{NanoDate}}, x::AbstractString)::NanoDate
+#     return unixnanos2nanodate(parse(Int64, x) * 1e9)
+# end
+
 function Serde.deser(::Type{<:GateioData}, ::Type{<:Maybe{NanoDate}}, x::Type{<:AbstractString})::NanoDate
     return unixnanos2nanodate(parse(Int64, x) * 1e9)
 end

@@ -1,13 +1,13 @@
 # API Reference
 
 ```@docs
-CryptoAPIs.APIsHeaders
-CryptoAPIs.APIsResponse
-CryptoAPIs.APIsResult
+CryptoExchangeAPIs.APIsHeaders
+CryptoExchangeAPIs.APIsResponse
+CryptoExchangeAPIs.APIsResult
 ```
 
 ```@docs
-CryptoAPIs.crypto_apis_client
-CryptoAPIs.crypto_apis_result
-CryptoAPIs.crypto_apis_query
+CryptoExchangeAPIs.cex_client
+CryptoExchangeAPIs.cex_result
+CryptoExchangeAPIs.cex_query
 ```

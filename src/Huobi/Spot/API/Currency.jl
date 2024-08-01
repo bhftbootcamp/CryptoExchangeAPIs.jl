@@ -7,9 +7,9 @@ export CurrencyQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Huobi
-using CryptoAPIs.Huobi: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Huobi
+using CryptoExchangeAPIs.Huobi: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef mutable struct CurrencyQuery <: HuobiPrivateQuery
     AccessKeyId::Maybe{String} = nothing        # The 'Public Key' in your API Key
@@ -87,9 +87,9 @@ API user could query static reference information for each currency, as well as 
 
 ```julia
 using Serde
-using CryptoAPIs.Huobi
+using CryptoExchangeAPIs.Huobi
 
-huobi_client = CryptoAPIs.Huobi.HuobiClient(;
+huobi_client = CryptoExchangeAPIs.Huobi.HuobiClient(;
     base_url = "https://api.huobi.pro",
     public_key = ENV["HUOBI_PUBLIC_KEY"],
     secret_key = ENV["HUOBI_SECRET_KEY"],

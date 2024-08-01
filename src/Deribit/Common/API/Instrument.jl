@@ -7,9 +7,9 @@ export InstrumentQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Deribit
-using CryptoAPIs.Deribit: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Deribit
+using CryptoExchangeAPIs.Deribit: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum Currency BTC ETH USDC USDT
 
@@ -82,10 +82,10 @@ Retrieves available trading instruments. This method can be used to see which in
 
 ```julia
 using Serde
-using CryptoAPIs.Deribit
+using CryptoExchangeAPIs.Deribit
 
 result = Deribit.Common.instrument(;
-    currency = CryptoAPIs.Deribit.Common.Instrument.BTC
+    currency = CryptoExchangeAPIs.Deribit.Common.Instrument.BTC
 )
 
 to_pretty_json(result.result)

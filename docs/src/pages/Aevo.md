@@ -1,17 +1,17 @@
 # Aevo
 
 ```@docs
-CryptoAPIs.Aevo.AevoClient
-CryptoAPIs.Aevo.AevoAPIError
+CryptoExchangeAPIs.Aevo.AevoClient
+CryptoExchangeAPIs.Aevo.AevoAPIError
 ```
 
 ## Futures
 
 ```@docs
-CryptoAPIs.Aevo.Futures.public_client
+CryptoExchangeAPIs.Aevo.Futures.public_client
 ```
 
 ```@docs
-CryptoAPIs.Aevo.Futures.funding_rate
-CryptoAPIs.Aevo.Futures.product_stats
+CryptoExchangeAPIs.Aevo.Futures.funding_rate
+CryptoExchangeAPIs.Aevo.Futures.product_stats
 ```

@@ -7,8 +7,8 @@ export CurrencyQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Poloniex
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Poloniex
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct CurrencyQuery <: PoloniexPublicQuery
     #__ empty
@@ -52,7 +52,7 @@ Get all supported currencies.
 
 ```julia
 using Serde
-using CryptoAPIs.Poloniex
+using CryptoExchangeAPIs.Poloniex
 
 result = Poloniex.Spot.currency()
 

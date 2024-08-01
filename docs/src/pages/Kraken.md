@@ -1,26 +1,26 @@
 # Kraken
 
 ```@docs
-CryptoAPIs.Kraken.KrakenClient
-CryptoAPIs.Kraken.KrakenAPIError
-CryptoAPIs.Kraken.Data
+CryptoExchangeAPIs.Kraken.KrakenClient
+CryptoExchangeAPIs.Kraken.KrakenAPIError
+CryptoExchangeAPIs.Kraken.Data
 ```
 
 ## Spot
 
 ```@docs
-CryptoAPIs.Kraken.Spot.public_client
+CryptoExchangeAPIs.Kraken.Spot.public_client
 ```
 
 ```@docs
-CryptoAPIs.Kraken.Spot.asset
-CryptoAPIs.Kraken.Spot.asset_pair
-CryptoAPIs.Kraken.Spot.candle
-CryptoAPIs.Kraken.Spot.deposit_log
-CryptoAPIs.Kraken.Spot.deposit_method
-CryptoAPIs.Kraken.Spot.ledger_info_log
-CryptoAPIs.Kraken.Spot.order_book
-CryptoAPIs.Kraken.Spot.ticker
-CryptoAPIs.Kraken.Spot.withdrawal_log
-CryptoAPIs.Kraken.Spot.withdrawal_method
+CryptoExchangeAPIs.Kraken.Spot.asset
+CryptoExchangeAPIs.Kraken.Spot.asset_pair
+CryptoExchangeAPIs.Kraken.Spot.candle
+CryptoExchangeAPIs.Kraken.Spot.deposit_log
+CryptoExchangeAPIs.Kraken.Spot.deposit_method
+CryptoExchangeAPIs.Kraken.Spot.ledger_info_log
+CryptoExchangeAPIs.Kraken.Spot.order_book
+CryptoExchangeAPIs.Kraken.Spot.ticker
+CryptoExchangeAPIs.Kraken.Spot.withdrawal_log
+CryptoExchangeAPIs.Kraken.Spot.withdrawal_method
 ```

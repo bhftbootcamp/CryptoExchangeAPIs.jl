@@ -7,8 +7,8 @@ export FundingRateQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Gateio
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Gateio
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum Settle btc usdt usd
 
@@ -41,7 +41,7 @@ Funding rate history.
 
 ```julia
 using Serde
-using CryptoAPIs.Gateio
+using CryptoExchangeAPIs.Gateio
 
 result = Gateio.Futures.funding_rate(; 
     settle = Gateio.Futures.FundingRate.usdt,

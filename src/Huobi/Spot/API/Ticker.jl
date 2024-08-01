@@ -7,9 +7,9 @@ export TickerQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Huobi
-using CryptoAPIs.Huobi: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Huobi
+using CryptoExchangeAPIs.Huobi: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct TickerQuery <: HuobiPublicQuery
     #__ empty
@@ -42,7 +42,7 @@ This endpoint retrieves the latest tickers for all supported pairs.
 
 ```julia
 using Serde
-using CryptoAPIs.Huobi
+using CryptoExchangeAPIs.Huobi
 
 result = Huobi.Spot.ticker()
 

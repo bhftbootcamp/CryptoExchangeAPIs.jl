@@ -1,32 +1,32 @@
 # Kucoin
 
 ```@docs
-CryptoAPIs.Kucoin.KucoinClient
-CryptoAPIs.Kucoin.KucoinAPIError
-CryptoAPIs.Kucoin.Data
-CryptoAPIs.Kucoin.Page
+CryptoExchangeAPIs.Kucoin.KucoinClient
+CryptoExchangeAPIs.Kucoin.KucoinAPIError
+CryptoExchangeAPIs.Kucoin.Data
+CryptoExchangeAPIs.Kucoin.Page
 ```
 
 ## Spot
 
 ```@docs
-CryptoAPIs.Kucoin.Spot.public_client
+CryptoExchangeAPIs.Kucoin.Spot.public_client
 ```
 
 ```@docs
-CryptoAPIs.Kucoin.Spot.candle
-CryptoAPIs.Kucoin.Spot.deposit
+CryptoExchangeAPIs.Kucoin.Spot.candle
+CryptoExchangeAPIs.Kucoin.Spot.deposit
 ```
 
 ## Futures
 
 ```@docs
-CryptoAPIs.Kucoin.Futures.public_client
+CryptoExchangeAPIs.Kucoin.Futures.public_client
 ```
 
 ```@docs
-CryptoAPIs.Kucoin.Futures.candle
-CryptoAPIs.Kucoin.Futures.contract
-CryptoAPIs.Kucoin.Futures.private_funding_history
-CryptoAPIs.Kucoin.Futures.public_funding_history
+CryptoExchangeAPIs.Kucoin.Futures.candle
+CryptoExchangeAPIs.Kucoin.Futures.contract
+CryptoExchangeAPIs.Kucoin.Futures.private_funding_history
+CryptoExchangeAPIs.Kucoin.Futures.public_funding_history
 ```

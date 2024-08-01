@@ -7,8 +7,8 @@ export ProductStatsQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Aevo
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Aevo
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum InstrumentType OPTION SPOT PERPETUAL
 
@@ -55,7 +55,7 @@ Returns the market statistics for the given asset.
 
 ```julia
 using Serde
-using CryptoAPIs.Aevo
+using CryptoExchangeAPIs.Aevo
 
 result = Aevo.Futures.product_stats(; 
     asset = "ETH",

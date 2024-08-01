@@ -7,8 +7,8 @@ export DayCandleQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Upbit
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Upbit
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct DayCandleQuery <: UpbitPublicQuery
     market::String
@@ -54,7 +54,7 @@ Daily candle data.
 
 ```julia
 using Serde
-using CryptoAPIs.Upbit
+using CryptoExchangeAPIs.Upbit
 
 result = Upbit.Spot.day_candle(;
     market = "KRW-BTC"

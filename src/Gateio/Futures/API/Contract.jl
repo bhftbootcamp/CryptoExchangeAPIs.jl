@@ -7,8 +7,8 @@ export ContractQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Gateio
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Gateio
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum Settle btc usdt usd
 
@@ -81,7 +81,7 @@ List all futures contracts.
 
 ```julia
 using Serde
-using CryptoAPIs.Gateio
+using CryptoExchangeAPIs.Gateio
 
 result = Gateio.Futures.contract(; settle = Gateio.Futures.Contract.btc)
 

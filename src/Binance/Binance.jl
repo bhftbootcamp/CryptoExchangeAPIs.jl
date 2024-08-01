@@ -11,8 +11,8 @@ export BinanceCommonQuery,
 using Serde
 using Dates, NanoDates, TimeZones, Base64, Nettle
 
-using ..CryptoAPIs
-import ..CryptoAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
+using ..CryptoExchangeAPIs
+import ..CryptoExchangeAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
 
 abstract type BinanceData <: AbstractAPIsData end
 abstract type BinanceCommonQuery  <: AbstractAPIsQuery end
@@ -68,17 +68,17 @@ struct BinanceAPIError{T} <: AbstractAPIsError
     end
 end
 
-CryptoAPIs.error_type(::BinanceClient) = BinanceAPIError
+CryptoExchangeAPIs.error_type(::BinanceClient) = BinanceAPIError
 
 function Base.show(io::IO, e::BinanceAPIError)
     return print(io, "code = ", "\"", e.code, "\"", ", ", "msg = ", "\"", e.msg, "\"")
 end
 
-function CryptoAPIs.request_sign!(::BinanceClient, query::Q, ::String)::Q where {Q<:BinancePublicQuery}
+function CryptoExchangeAPIs.request_sign!(::BinanceClient, query::Q, ::String)::Q where {Q<:BinancePublicQuery}
     return query
 end
 
-function CryptoAPIs.request_sign!(client::BinanceClient, query::Q, ::String)::Q where {Q<:BinancePrivateQuery}
+function CryptoExchangeAPIs.request_sign!(client::BinanceClient, query::Q, ::String)::Q where {Q<:BinancePrivateQuery}
     query.timestamp = Dates.now(UTC)
     query.signature = nothing
     str_query = Serde.to_query(query)
@@ -86,32 +86,32 @@ function CryptoAPIs.request_sign!(client::BinanceClient, query::Q, ::String)::Q 
     return query
 end
 
-function CryptoAPIs.request_sign!(::BinanceClient, query::Q, ::String)::Q where {Q<:BinanceAccessQuery}
+function CryptoExchangeAPIs.request_sign!(::BinanceClient, query::Q, ::String)::Q where {Q<:BinanceAccessQuery}
     return query
 end
 
-function CryptoAPIs.request_body(::Q)::String where {Q<:BinanceCommonQuery}
+function CryptoExchangeAPIs.request_body(::Q)::String where {Q<:BinanceCommonQuery}
     return ""
 end
 
-function CryptoAPIs.request_query(query::Q)::String where {Q<:BinanceCommonQuery}
+function CryptoExchangeAPIs.request_query(query::Q)::String where {Q<:BinanceCommonQuery}
     return Serde.to_query(query)
 end
 
-function CryptoAPIs.request_headers(client::BinanceClient, ::BinancePublicQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::BinanceClient, ::BinancePublicQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json",
     ]
 end
 
-function CryptoAPIs.request_headers(client::BinanceClient, ::BinancePrivateQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::BinanceClient, ::BinancePrivateQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json",
         "X-MBX-APIKEY" => client.public_key,
     ]
 end
 
-function CryptoAPIs.request_headers(client::BinanceClient, ::BinanceAccessQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::BinanceClient, ::BinanceAccessQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json",
         "X-MBX-APIKEY" => client.public_key,

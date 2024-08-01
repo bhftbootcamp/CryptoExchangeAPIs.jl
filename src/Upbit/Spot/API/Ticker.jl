@@ -7,8 +7,8 @@ export TickerQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Upbit
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Upbit
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct TickerQuery <: UpbitPublicQuery
     markets::Union{Vector{String},String}
@@ -61,7 +61,7 @@ Returns a snapshot of the stock at the time of the request
 
 ```julia
 using Serde
-using CryptoAPIs.Upbit
+using CryptoExchangeAPIs.Upbit
 
 result = Upbit.Spot.ticker(;
     markets = "KRW-BTC"

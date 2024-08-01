@@ -7,9 +7,9 @@ export FundingRateQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Deribit
-using CryptoAPIs.Deribit: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Deribit
+using CryptoExchangeAPIs.Deribit: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct FundingRateQuery <: DeribitPublicQuery
     end_timestamp::DateTime
@@ -45,7 +45,7 @@ Retrieves hourly historical interest rate for requested PERPETUAL instrument.
 
 ```julia
 using Serde
-using CryptoAPIs.Deribit
+using CryptoExchangeAPIs.Deribit
 
 result = Deribit.Common.funding_rate(;
     instrument_name = "BTC-PERPETUAL",

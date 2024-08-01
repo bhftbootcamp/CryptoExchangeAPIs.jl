@@ -7,8 +7,8 @@ export StatusWalletQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Upbit
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Upbit
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum WalletState working withdraw_only deposit_only paused unsupported
 
@@ -52,7 +52,7 @@ Balance information.
 
 ```julia
 using Serde
-using CryptoAPIs.Upbit
+using CryptoExchangeAPIs.Upbit
 
 result = Upbit.Spot.status_wallet() 
 

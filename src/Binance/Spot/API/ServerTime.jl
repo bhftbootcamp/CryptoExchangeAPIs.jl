@@ -7,8 +7,8 @@ export ServerTimeQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Binance
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Binance
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct ServerTimeQuery <: BinancePublicQuery
     #__ empty
@@ -30,7 +30,7 @@ Check current server time.
 
 ```julia
 using Serde
-using CryptoAPIs.Binance
+using CryptoExchangeAPIs.Binance
 
 result = Binance.Spot.server_time()
 

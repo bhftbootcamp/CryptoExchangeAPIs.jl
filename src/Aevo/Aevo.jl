@@ -10,8 +10,8 @@ export AevoCommonQuery,
 using Serde
 using Dates, NanoDates, TimeZones, Base64, Nettle
 
-using ..CryptoAPIs
-import ..CryptoAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
+using ..CryptoExchangeAPIs
+import ..CryptoExchangeAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
 
 abstract type AevoData <: AbstractAPIsData end
 abstract type AevoCommonQuery  <: AbstractAPIsQuery end
@@ -60,25 +60,25 @@ struct AevoAPIError{T} <: AbstractAPIsError
     end
 end
 
-CryptoAPIs.error_type(::AevoClient) = AevoAPIError
+CryptoExchangeAPIs.error_type(::AevoClient) = AevoAPIError
 
 function Base.show(io::IO, e::AevoAPIError)
     return print(io, "error = ", "\"", e.error)
 end
 
-function CryptoAPIs.request_sign!(::AevoClient, query::Q, ::String)::Q where {Q<:AevoCommonQuery}
+function CryptoExchangeAPIs.request_sign!(::AevoClient, query::Q, ::String)::Q where {Q<:AevoCommonQuery}
     return query
 end
 
-function CryptoAPIs.request_body(::Q)::String where {Q<:AevoCommonQuery}
+function CryptoExchangeAPIs.request_body(::Q)::String where {Q<:AevoCommonQuery}
     return ""
 end
 
-function CryptoAPIs.request_query(query::Q)::String where {Q<:AevoCommonQuery}
+function CryptoExchangeAPIs.request_query(query::Q)::String where {Q<:AevoCommonQuery}
     return Serde.to_query(query)
 end
 
-function CryptoAPIs.request_headers(client::AevoClient, ::AevoCommonQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::AevoClient, ::AevoCommonQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "accept" => "application/json",
     ]

@@ -7,8 +7,8 @@ export ExchangeInfoQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Binance
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Binance
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct ExchangeInfoQuery <: BinancePublicQuery
     #__ empty
@@ -93,7 +93,7 @@ Current exchange trading rules and symbol information.
 
 ```julia
 using Serde
-using CryptoAPIs.Binance
+using CryptoExchangeAPIs.Binance
 
 result = Binance.CoinMFutures.exchange_info() 
 

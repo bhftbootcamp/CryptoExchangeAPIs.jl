@@ -1,6 +1,6 @@
 module Spot
 
-using CryptoAPIs.Kraken
+using CryptoExchangeAPIs.Kraken
 
 """
     public_client = KrakenClient(; base_url = "https://api.kraken.com")

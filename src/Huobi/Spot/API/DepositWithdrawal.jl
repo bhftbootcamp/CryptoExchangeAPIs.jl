@@ -7,9 +7,9 @@ export DepositWithdrawalQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Huobi
-using CryptoAPIs.Huobi: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Huobi
+using CryptoExchangeAPIs.Huobi: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum DirectQuery begin
     prev
@@ -74,9 +74,9 @@ Parent user and sub user search for all existed withdraws and deposits and retur
 
 ```julia
 using Serde
-using CryptoAPIs.Huobi
+using CryptoExchangeAPIs.Huobi
 
-huobi_client = CryptoAPIs.Huobi.HuobiClient(;
+huobi_client = CryptoExchangeAPIs.Huobi.HuobiClient(;
     base_url = "https://api.huobi.pro",
     public_key = ENV["HUOBI_PUBLIC_KEY"],
     secret_key = ENV["HUOBI_SECRET_KEY"],

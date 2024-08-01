@@ -7,9 +7,9 @@ export TickerQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Cryptocom
-using CryptoAPIs.Cryptocom: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Cryptocom
+using CryptoExchangeAPIs.Cryptocom: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct TickerQuery <: CryptocomPublicQuery
     instrument_name::Maybe{String} = nothing
@@ -59,7 +59,7 @@ Fetches the public tickers for all or a particular instrument.
 
 ```julia
 using Serde
-using CryptoAPIs.Cryptocom
+using CryptoExchangeAPIs.Cryptocom
 
 result = Cryptocom.Spot.ticker(; instrument_name = "BTCUSD-PERP") 
 

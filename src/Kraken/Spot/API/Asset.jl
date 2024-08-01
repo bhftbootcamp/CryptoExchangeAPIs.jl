@@ -7,9 +7,9 @@ export AssetQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Kraken
-using CryptoAPIs.Kraken: Data
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Kraken
+using CryptoExchangeAPIs.Kraken: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct AssetQuery <: KrakenPublicQuery
     asset::Maybe{Vector{String}} = nothing
@@ -55,7 +55,7 @@ Get information about the assets that are available for deposit, withdrawal, tra
 
 ```julia
 using Serde
-using CryptoAPIs.Kraken
+using CryptoExchangeAPIs.Kraken
 
 result = Kraken.Spot.asset(;
     asset = ["ADA", "SUSHI"],

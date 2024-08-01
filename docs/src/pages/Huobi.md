@@ -1,23 +1,23 @@
 # Huobi
 
 ```@docs
-CryptoAPIs.Huobi.HuobiClient
-CryptoAPIs.Huobi.HuobiAPIError
-CryptoAPIs.Huobi.Data
-CryptoAPIs.Huobi.DataTick
+CryptoExchangeAPIs.Huobi.HuobiClient
+CryptoExchangeAPIs.Huobi.HuobiAPIError
+CryptoExchangeAPIs.Huobi.Data
+CryptoExchangeAPIs.Huobi.DataTick
 ```
 
 ## Spot
 
 ```@docs
-CryptoAPIs.Huobi.Spot.public_client
+CryptoExchangeAPIs.Huobi.Spot.public_client
 ```
 
 ```@docs
-CryptoAPIs.Huobi.Spot.candle
-CryptoAPIs.Huobi.Spot.currency
-CryptoAPIs.Huobi.Spot.deposit_withdrawal
-CryptoAPIs.Huobi.Spot.order_book
-CryptoAPIs.Huobi.Spot.order_log
-CryptoAPIs.Huobi.Spot.ticker
+CryptoExchangeAPIs.Huobi.Spot.candle
+CryptoExchangeAPIs.Huobi.Spot.currency
+CryptoExchangeAPIs.Huobi.Spot.deposit_withdrawal
+CryptoExchangeAPIs.Huobi.Spot.order_book
+CryptoExchangeAPIs.Huobi.Spot.order_log
+CryptoExchangeAPIs.Huobi.Spot.ticker
 ```

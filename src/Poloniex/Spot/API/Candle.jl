@@ -7,8 +7,8 @@ export CandleQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Poloniex
-using CryptoAPIs: Maybe, APIsRequest
+using CryptoExchangeAPIs.Poloniex
+using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enum TimeInterval m1 m5 m10 m15 m30 h1 h2 h4 h6 h12 d1 d3 w1 M1
 
@@ -80,11 +80,11 @@ Get latest trade price for all symbols.
 
 ```julia
 using Serde
-using CryptoAPIs.Poloniex
+using CryptoExchangeAPIs.Poloniex
 
 result = Poloniex.Spot.candle(;
     symbol = "BTC_USDT",
-    interval = CryptoAPIs.Poloniex.Spot.Candle.m5,
+    interval = CryptoExchangeAPIs.Poloniex.Spot.Candle.m5,
     startTime = now(UTC) - Minute(100),
     endTime = now(UTC) - Hour(1),
 )

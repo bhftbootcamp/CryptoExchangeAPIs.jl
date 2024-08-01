@@ -1,18 +1,18 @@
 # Okex
 
 ```@docs
-CryptoAPIs.Okex.OkexClient
-CryptoAPIs.Okex.OkexAPIError
-CryptoAPIs.Okex.Data
+CryptoExchangeAPIs.Okex.OkexClient
+CryptoExchangeAPIs.Okex.OkexAPIError
+CryptoExchangeAPIs.Okex.Data
 ```
 
 ## Spot
 
 ```@docs
-CryptoAPIs.Okex.Spot.public_client
+CryptoExchangeAPIs.Okex.Spot.public_client
 ```
 
 ```@docs
-CryptoAPIs.Okex.Spot.candle
-CryptoAPIs.Okex.Spot.currency
+CryptoExchangeAPIs.Okex.Spot.candle
+CryptoExchangeAPIs.Okex.Spot.currency
 ```

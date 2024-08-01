@@ -7,10 +7,10 @@ export CandleQuery,
 using Serde
 using Dates, NanoDates, TimeZones
 
-using CryptoAPIs.Kraken
-using CryptoAPIs.Kraken: Data
-using CryptoAPIs: Maybe, APIsRequest
-import CryptoAPIs: prepare_json!
+using CryptoExchangeAPIs.Kraken
+using CryptoExchangeAPIs.Kraken: Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
+import CryptoExchangeAPIs: prepare_json!
 
 @enum TimeInterval m1 m5 m15 m30 h1 h4 d1 w1 d15
 
@@ -80,11 +80,11 @@ Get OHLC data for a given market.
 
 ```julia
 using Serde
-using CryptoAPIs.Kraken
+using CryptoExchangeAPIs.Kraken
 
 result = Kraken.Spot.candle(;
     pair = "ACAUSD",
-    interval = CryptoAPIs.Kraken.Spot.Candle.h1,
+    interval = CryptoExchangeAPIs.Kraken.Spot.Candle.h1,
     since = now(UTC) - Hour(1),
 )
 

@@ -1,6 +1,6 @@
 module Futures
 
-using CryptoAPIs.Gateio
+using CryptoExchangeAPIs.Gateio
 
 """
     public_client = GateioClient(; base_url = "https://api.gateio.ws")

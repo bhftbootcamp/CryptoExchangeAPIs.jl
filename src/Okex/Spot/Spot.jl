@@ -1,6 +1,6 @@
 module Spot
 
-using CryptoAPIs.Okex
+using CryptoExchangeAPIs.Okex
 
 """
     public_client = OkexClient(; base_url = "https://www.okex.com")

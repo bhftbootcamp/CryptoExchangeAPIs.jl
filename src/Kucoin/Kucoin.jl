@@ -11,8 +11,8 @@ export KucoinCommonQuery,
 using Serde
 using Dates, NanoDates, TimeZones, Base64, Nettle
 
-using ..CryptoAPIs
-import ..CryptoAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
+using ..CryptoExchangeAPIs
+import ..CryptoExchangeAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
 
 abstract type KucoinData <: AbstractAPIsData end
 abstract type KucoinCommonQuery  <: AbstractAPIsQuery end
@@ -95,17 +95,17 @@ struct KucoinAPIError{T} <: AbstractAPIsError
     end
 end
 
-CryptoAPIs.error_type(::KucoinClient) = KucoinAPIError
+CryptoExchangeAPIs.error_type(::KucoinClient) = KucoinAPIError
 
 function Base.show(io::IO, e::KucoinAPIError)
     return print(io, "code = ", "\"", e.code, "\"", ", ", "msg = ", "\"", e.msg, "\"")
 end
 
-function CryptoAPIs.request_sign!(::KucoinClient, query::Q, ::String)::Q where {Q<:KucoinPublicQuery}
+function CryptoExchangeAPIs.request_sign!(::KucoinClient, query::Q, ::String)::Q where {Q<:KucoinPublicQuery}
     return query
 end
 
-function CryptoAPIs.request_sign!(client::KucoinClient, query::Q, endpoint::String)::Q where {Q <: KucoinPrivateQuery}
+function CryptoExchangeAPIs.request_sign!(client::KucoinClient, query::Q, endpoint::String)::Q where {Q <: KucoinPrivateQuery}
     query.timestamp = Dates.now(UTC)
     query.signature = nothing
     salt = join([string(round(Int64, 1000 * datetime2unix(query.timestamp))), "GET/$endpoint?", Serde.to_query(query)])
@@ -114,21 +114,21 @@ function CryptoAPIs.request_sign!(client::KucoinClient, query::Q, endpoint::Stri
     return query
 end
 
-function CryptoAPIs.request_body(::Q)::String where {Q<:KucoinCommonQuery}
+function CryptoExchangeAPIs.request_body(::Q)::String where {Q<:KucoinCommonQuery}
     return ""
 end
 
-function CryptoAPIs.request_query(query::Q)::String where {Q<:KucoinCommonQuery}
+function CryptoExchangeAPIs.request_query(query::Q)::String where {Q<:KucoinCommonQuery}
     return Serde.to_query(query)
 end
 
-function CryptoAPIs.request_headers(client::KucoinClient, ::KucoinPublicQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::KucoinClient, ::KucoinPublicQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json"
     ]
 end
 
-function CryptoAPIs.request_headers(client::KucoinClient, query::KucoinPrivateQuery)::Vector{Pair{String,String}}
+function CryptoExchangeAPIs.request_headers(client::KucoinClient, query::KucoinPrivateQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "KC-API-SIGN" => query.signature,
         "KC-API-TIMESTAMP" => string(round(Int64, 1000 * datetime2unix(query.timestamp))),

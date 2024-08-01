@@ -1,6 +1,6 @@
 module Spot
 
-using CryptoAPIs.Bybit
+using CryptoExchangeAPIs.Bybit
 
 """
     public_client = BybitClient(; base_url = "https://api.bybit.com")

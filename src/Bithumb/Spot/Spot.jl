@@ -1,6 +1,6 @@
 module Spot
 
-using CryptoAPIs.Bithumb
+using CryptoExchangeAPIs.Bithumb
 
 """
     public_client = BithumbClient(; base_url = "https://api.bithumb.com")
