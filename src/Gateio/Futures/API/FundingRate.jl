@@ -14,8 +14,11 @@ using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct FundingRateQuery <: GateioPublicQuery
     contract::String
+    settle::Settle
     limit::Maybe{Int64} = nothing
 end
+
+Serde.SerQuery.ser_ignore_field(::Type{FundingRateQuery}, ::Val{:settle}) = true
 
 struct FundingRateData <: GateioData
     t::NanoDate
@@ -32,10 +35,11 @@ Funding rate history.
 
 ## Parameters:
 
-| Parameter | Type     | Required | Description |
-|:----------|:---------|:---------|:------------|
-| contract  | String   | true     |             |
-| limit     | Int64    | false    |             |
+| Parameter | Type     | Required | Description  |
+|:----------|:---------|:---------|:-------------|
+| settle    | Settle   | true     | btc usdt usd |
+| contract  | String   | true     |              |
+| limit     | Int64    | false    |              |
 
 ## Code samples:
 
@@ -63,12 +67,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function funding_rate(client::GateioClient, settle::Settle, query::FundingRateQuery)
-    return APIsRequest{Vector{FundingRateData}}("GET", "api/v4/futures/$settle/funding_rate", query)(client)
+function funding_rate(client::GateioClient, query::FundingRateQuery)
+    return APIsRequest{Vector{FundingRateData}}("GET", "api/v4/futures/$(query.settle)/funding_rate", query)(client)
 end
 
-function funding_rate(client::GateioClient = Gateio.Futures.public_client; settle::Settle, kw...)
-    return funding_rate(client, settle, FundingRateQuery(; kw...))
+function funding_rate(client::GateioClient = Gateio.Futures.public_client; kw...)
+    return funding_rate(client, FundingRateQuery(; kw...))
 end
 
 end

@@ -11,8 +11,10 @@ using CryptoExchangeAPIs.Coinbase
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct TickerQuery <: CoinbasePublicQuery
-    #__ empty
+    product_id::String
 end
+
+Serde.SerQuery.ser_ignore_field(::Type{TickerQuery}, ::Val{:product_id}) = true
 
 struct TickerData <: CoinbaseData
     ask::Float64
@@ -31,6 +33,12 @@ end
 Gets snapshot information about the last trade (tick), best bid/ask and 24h volume.
 
 [`GET products/{product_id}/ticker`](https://docs.cloud.coinbase.com/exchange/reference/exchangerestapi_getproductticker)
+
+## Parameters:
+
+| Parameter  | Type     | Required | Description |
+|:-----------|:---------|:---------|:------------|
+| product_id | String   | true     |             |
 
 ## Code samples:
 
@@ -59,12 +67,12 @@ to_pretty_json(result.result)
 }
 ```
 """
-function ticker(client::CoinbaseClient, query::TickerQuery; product_id::String)
-    return APIsRequest{TickerData}("GET", "products/$product_id/ticker", query)(client)
+function ticker(client::CoinbaseClient, query::TickerQuery;)
+    return APIsRequest{TickerData}("GET", "products/$(query.product_id)/ticker", query)(client)
 end
 
-function ticker(client::CoinbaseClient = Coinbase.Spot.public_client; product_id::String, kw...)
-    return ticker(client, TickerQuery(; kw...); product_id = product_id)
+function ticker(client::CoinbaseClient = Coinbase.Spot.public_client; kw...)
+    return ticker(client, TickerQuery(; kw...))
 end
 
 end

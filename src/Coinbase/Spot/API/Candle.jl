@@ -14,9 +14,12 @@ using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct CandleQuery <: CoinbasePublicQuery
     granularity::TimeInterval
+    product_id::String
     start::Maybe{DateTime} = nothing
     _end::Maybe{DateTime} = nothing
 end
+
+Serde.SerQuery.ser_ignore_field(::Type{CandleQuery}, ::Val{:product_id}) = true
 
 function Serde.ser_type(::Type{<:CandleQuery}, x::TimeInterval)::String
     x == m1  && return "60"
@@ -49,6 +52,7 @@ Get rates for a single product by product ID, grouped in buckets.
 | Parameter   | Type         | Required | Description        |
 |:------------|:-------------|:---------|:-------------------|
 | granularity | TimeInterval | true     | m1 m5 m15 h1 h6 d1 |
+| product_id  | String       | true     |                    |
 | start       | DateTime     | false    |                    |
 | _end        | DateTime     | false    |                    |
 
@@ -59,7 +63,8 @@ using Serde
 using CryptoExchangeAPIs.Coinbase
 
 result = Coinbase.Spot.candle(;
-    granularity = Coinbase.Spot.Candle.d1
+    granularity = Coinbase.Spot.Candle.d1,
+    product_id = "BTC-USD",
 )
 
 to_pretty_json(result.result)
@@ -81,12 +86,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function candle(client::CoinbaseClient, query::CandleQuery; product_id::String)
-    return APIsRequest{Vector{CandleData}}("GET", "products/$product_id/candles", query)(client)
+function candle(client::CoinbaseClient, query::CandleQuery;)
+    return APIsRequest{Vector{CandleData}}("GET", "products/$(query.product_id)/candles", query)(client)
 end
 
-function candle(client::CoinbaseClient = Coinbase.Spot.public_client; product_id::String, kw...)
-    return candle(client, CandleQuery(; kw...); product_id = product_id)
+function candle(client::CoinbaseClient = Coinbase.Spot.public_client; kw...)
+    return candle(client, CandleQuery(; kw...))
 end
 
 end

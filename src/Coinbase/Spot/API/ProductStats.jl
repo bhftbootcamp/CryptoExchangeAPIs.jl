@@ -11,8 +11,10 @@ using CryptoExchangeAPIs.Coinbase
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct ProductStatsQuery <: CoinbasePublicQuery
-    #__ empty
+    product_id::String
 end
+
+Serde.SerQuery.ser_ignore_field(::Type{ProductStatsQuery}, ::Val{:product_id}) = true
 
 struct ProductStatsData <: CoinbaseData
     open::Float64
@@ -35,13 +37,21 @@ Get rates for a single product by product ID, grouped in buckets.
 
 [`GET products/{product_id}/stats`](https://docs.cloud.coinbase.com/exchange/reference/exchangerestapi_getproductstats)
 
+## Parameters:
+
+| Parameter  | Type     | Required | Description |
+|:-----------|:---------|:---------|:------------|
+| product_id | String   | true     |             |
+
 ## Code samples:
 
 ```julia
 using Serde
 using CryptoExchangeAPIs.Coinbase
 
-result = Coinbase.Spot.product_stats()
+result = Coinbase.Spot.product_stats(;
+    product_id = "BTC-USD",
+)
 
 to_pretty_json(result.result)
 ```
@@ -63,12 +73,12 @@ to_pretty_json(result.result)
 }
 ```
 """
-function product_stats(client::CoinbaseClient, query::ProductStatsQuery; product_id::String)
-    return APIsRequest{ProductStatsData}("GET", "products/$product_id/stats", query)(client)
+function product_stats(client::CoinbaseClient, query::ProductStatsQuery;)
+    return APIsRequest{ProductStatsData}("GET", "products/$(query.product_id)/stats", query)(client)
 end
 
-function product_stats(client::CoinbaseClient = Coinbase.Spot.public_client; product_id::String, kw...)
-    return product_stats(client, ProductStatsQuery(; kw...); product_id = product_id)
+function product_stats(client::CoinbaseClient = Coinbase.Spot.public_client; kw...)
+    return product_stats(client, ProductStatsQuery(; kw...))
 end
 
 end

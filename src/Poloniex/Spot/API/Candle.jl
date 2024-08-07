@@ -20,9 +20,7 @@ Base.@kwdef struct CandleQuery <: PoloniexPublicQuery
     startTime::Maybe{DateTime} = nothing
 end
 
-function Serde.ser_ignore_field(::Type{<:CandleQuery}, ::Val{:symbol})::Bool
-    return true
-end
+Serde.SerQuery.ser_ignore_field(::Type{CandleQuery}, ::Val{:symbol}) = true
 
 function Serde.ser_type(::Type{<:CandleQuery}, x::TimeInterval)::String
     x == m1  && return "MINUTE_1"
@@ -68,13 +66,13 @@ Get latest trade price for all symbols.
 
 ## Parameters:
 
-| Parameter | Type         | Required | Description |
-|:----------|:-------------|:---------|:------------|
+| Parameter | Type         | Required | Description                                                               |
+|:----------|:-------------|:---------|:--------------------------------------------------------------------------|
 | interval  | TimeInterval | true     | `m1` `m5` `m10` `m15` `m30` `h1` `h2` `h4` `h6` `h12` `d1` `d3` `w1` `M1` |
-| symbol    | String       | false    |             |
-| startTime | DateTime     | false    |             |
-| endTime   | DateTime     | false    |             |
-| limit     | Int64        | false    |             |
+| symbol    | String       | false    |                                                                           |
+| startTime | DateTime     | false    |                                                                           |
+| endTime   | DateTime     | false    |                                                                           |
+| limit     | Int64        | false    |                                                                           |
 
 ## Code samples:
 

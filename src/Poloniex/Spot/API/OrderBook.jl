@@ -25,6 +25,8 @@ Base.@kwdef struct OrderBookQuery <: PoloniexPublicQuery
     scale::Maybe{Int64} = nothing
 end
 
+Serde.SerQuery.ser_ignore_field(::Type{OrderBookQuery}, ::Val{:symbol}) = true
+
 function Serde.SerQuery.ser_type(::Type{OrderBookQuery}, x::OrderBookLimit)::Int64
     return Int64(x)
 end
@@ -47,11 +49,11 @@ Get the order book for a given symbol.
 
 ## Parameters:
 
-| Parameter | Type           | Required | Description |
-|:----------|:---------------|:---------|:------------|
-| symbol    | String         | false    |             |
+| Parameter | Type           | Required | Description                                                                                 |
+|:----------|:---------------|:---------|:--------------------------------------------------------------------------------------------|
+| symbol    | String         | false    |                                                                                             |
 | limit     | OrderBookLimit | false    | `FIVE` (5), `TEN` (10), `TWENTY` (20), `FIFTY` (50), `HUNDRED` (100), `HUNDRED_FIFTY` (150) |
-| scale     | Int64          | false    |             |
+| scale     | Int64          | false    |                                                                                             |
 
 ## Code samples:
 

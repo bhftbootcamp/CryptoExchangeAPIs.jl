@@ -14,10 +14,13 @@ using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct OrderBookQuery <: GateioPublicQuery
     contract::String
+    settle::Settle
     interval::Maybe{String} = nothing
     limit::Maybe{Int64} = nothing
     with_id::Maybe{Bool} = nothing
 end
+
+Serde.SerQuery.ser_ignore_field(::Type{OrderBookQuery}, ::Val{:settle}) = true
 
 struct Order <: GateioData
     p::String
@@ -46,12 +49,13 @@ Futures order book.
 
 ## Parameters:
 
-| Parameter | Type     | Required | Description |
-|:----------|:---------|:---------|:------------|
-| contract  | String   | true     |             |
-| interval  | String   | false    |             |
-| limit     | Int64    | false    |             |
-| with_id   | Bool     | false    |             |
+| Parameter | Type     | Required | Description  |
+|:----------|:---------|:---------|:-------------|
+| contract  | String   | true     |              |
+| settle    | Settle   | true     | btc usdt usd |
+| interval  | String   | false    |              |
+| limit     | Int64    | false    |              |
+| with_id   | Bool     | false    |              |
 
 ## Code samples:
 
@@ -91,12 +95,12 @@ to_pretty_json(result.result)
 }
 ```
 """
-function order_book(client::GateioClient, settle::Settle, query::OrderBookQuery)
-    return APIsRequest{OrderBookData}("GET", "api/v4/futures/$settle/order_book", query)(client)
+function order_book(client::GateioClient, query::OrderBookQuery)
+    return APIsRequest{OrderBookData}("GET", "api/v4/futures/$(query.settle)/order_book", query)(client)
 end
 
-function order_book(client::GateioClient = Gateio.Futures.public_client; settle::Settle, kw...)
-    return order_book(client, settle, OrderBookQuery(; kw...))
+function order_book(client::GateioClient = Gateio.Futures.public_client; kw...)
+    return order_book(client, OrderBookQuery(; kw...))
 end
 
 end
