@@ -13,9 +13,12 @@ using CryptoExchangeAPIs: Maybe, APIsRequest
 @enum Settle btc usdt usd
 
 Base.@kwdef struct ContractQuery <: GateioPublicQuery
+    settle::Settle
     limit::Maybe{Int64} = nothing
     offset::Maybe{Int64} = nothing
 end
+
+Serde.SerQuery.ser_ignore_field(::Type{ContractQuery}, ::Val{:settle}) = true
 
 struct ContractData <: GateioData
     name::String
@@ -72,10 +75,11 @@ List all futures contracts.
 
 ## Parameters:
 
-| Parameter | Type     | Required | Description |
-|:----------|:---------|:---------|:------------|
-| limit     | Int64    | false    |             |
-| offset    | Int64    | false    |             |
+| Parameter | Type     | Required | Description  |
+|:----------|:---------|:---------|:-------------|
+| settle    | Settle   | true     | btc usdt usd |
+| limit     | Int64    | false    |              |
+| offset    | Int64    | false    |              |
 
 ## Code samples:
 
@@ -139,12 +143,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function contract(client::GateioClient, settle::Settle, query::ContractQuery)
-    return APIsRequest{Vector{ContractData}}("GET", "api/v4/futures/$settle/contracts", query)(client)
+function contract(client::GateioClient, query::ContractQuery)
+    return APIsRequest{Vector{ContractData}}("GET", "api/v4/futures/$(query.settle)/contracts", query)(client)
 end
 
-function contract(client::GateioClient = Gateio.Futures.public_client; settle::Settle, kw...)
-    return contract(client, settle, ContractQuery(; kw...))
+function contract(client::GateioClient = Gateio.Futures.public_client; kw...)
+    return contract(client, ContractQuery(; kw...))
 end
 
 end

@@ -14,9 +14,7 @@ Base.@kwdef struct MarketQuery <: PoloniexPublicQuery
     symbol::Maybe{String} = nothing
 end
 
-function Serde.ser_ignore_field(::Type{<:MarketQuery}, ::Val{:symbol})::Bool
-    return true
-end
+Serde.SerQuery.ser_ignore_field(::Type{MarketQuery}, ::Val{:symbol}) = true
 
 struct SymbolTradeLimit <: PoloniexData
     amountScale::Int64

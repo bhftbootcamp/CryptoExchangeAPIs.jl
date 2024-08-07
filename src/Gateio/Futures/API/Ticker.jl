@@ -13,8 +13,11 @@ using CryptoExchangeAPIs: Maybe, APIsRequest
 @enum Settle btc usdt usd
 
 Base.@kwdef struct TickerQuery <: GateioPublicQuery
+    settle::Settle
     contract::Maybe{String} = nothing
 end
+
+Serde.SerQuery.ser_ignore_field(::Type{TickerQuery}, ::Val{:settle}) = true
 
 struct TickerData <: GateioData
     contract::String
@@ -47,9 +50,10 @@ List futures tickers.
 
 ## Parameters:
 
-| Parameter | Type     | Required | Description |
-|:----------|:---------|:---------|:------------|
-| contract  | String   | false    |             |
+| Parameter | Type     | Required | Description  |
+|:----------|:---------|:---------|:-------------|
+| settle    | Settle   | true     | btc usdt usd |
+| contract  | String   | false    |              |
 
 ## Code samples:
 
@@ -89,12 +93,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function ticker(client::GateioClient, settle::Settle, query::TickerQuery)
-    return APIsRequest{Vector{TickerData}}("GET", "api/v4/futures/$settle/tickers", query)(client)
+function ticker(client::GateioClient, query::TickerQuery)
+    return APIsRequest{Vector{TickerData}}("GET", "api/v4/futures/$(query.settle)/tickers", query)(client)
 end
 
-function ticker(client::GateioClient = Gateio.Futures.public_client; settle::Settle, kw...)
-    return ticker(client, settle, TickerQuery(; kw...))
+function ticker(client::GateioClient = Gateio.Futures.public_client; kw...)
+    return ticker(client, TickerQuery(; kw...))
 end
 
 end

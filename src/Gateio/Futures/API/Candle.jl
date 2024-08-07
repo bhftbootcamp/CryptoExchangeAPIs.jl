@@ -23,21 +23,25 @@ end
 
 struct CandleQuery <: GateioPublicQuery
     contract::Contract
+    settle::Settle
     from::Maybe{DateTime}
     to::Maybe{DateTime}
     limit::Maybe{Int64} 
     interval::Maybe{TimeInterval}
 end
 
+Serde.SerQuery.ser_ignore_field(::Type{CandleQuery}, ::Val{:settle}) = true
+
 function CandleQuery(;
     type::ContractType,
     name::String,
+    settle::Settle,
     from::Maybe{DateTime} = nothing,
     to::Maybe{DateTime} = nothing,
     limit::Maybe{Int64} = nothing,
     interval::Maybe{TimeInterval} = nothing,
 )
-    return CandleQuery(Contract(type, name), from, to, limit, interval)
+    return CandleQuery(Contract(type, name), settle, from, to, limit, interval)
 end
 
 function Serde.ser_type(::Type{<:CandleQuery}, x::Contract)::String
@@ -81,6 +85,7 @@ Get futures candlesticks.
 | Parameter | Type         | Required | Description                          |
 |:----------|:-------------|:---------|:-------------------------------------|
 | contract  | String       | true     |                                      |
+| settle    | Settle       | true     | btc usdt usd                         |
 | interval  | TimeInterval | false    | s10 m1 m5 m15 m30 h1 h4 h8 d1 d7 d30 |
 | from      | DateTime     | false    |                                      |
 | to        | DateTime     | false    |                                      |
@@ -119,12 +124,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function candle(client::GateioClient, settle::Settle, query::CandleQuery)
-    return APIsRequest{Vector{CandleData}}("GET", "api/v4/futures/$settle/candlesticks", query)(client)
+function candle(client::GateioClient, query::CandleQuery)
+    return APIsRequest{Vector{CandleData}}("GET", "api/v4/futures/$(query.settle)/candlesticks", query)(client)
 end
 
-function candle(client::GateioClient = Gateio.Futures.public_client; settle::Settle, kw...)
-    return candle(client, settle, CandleQuery(; kw...))
+function candle(client::GateioClient = Gateio.Futures.public_client; kw...)
+    return candle(client, CandleQuery(; kw...))
 end
 
 end
