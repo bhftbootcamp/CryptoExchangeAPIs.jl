@@ -15,7 +15,7 @@ EasyCurl = "5dc68c43-2cae-45c1-9c9f-30d6e2b9e002"
 
 [compat]
 JSONWebTokens = "1.1.1"
-NanoDates = "0.3.0"
+NanoDates = "1.0"
 Nettle = "1.0.0"
 TimeZones = "1.13.0"
 Serde = "3.0.0"
