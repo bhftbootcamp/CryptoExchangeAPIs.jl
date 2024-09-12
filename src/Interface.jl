@@ -10,12 +10,12 @@ function log_msg(client::AbstractAPIsClient, query::APIsRequest)
     )
 end
 
-function http_request(client::AbstractAPIsClient, query::APIsRequest)
+function perform_request(client::AbstractAPIsClient, query::APIsRequest)
     request_sign!(client, query.query, query.endpoint)
     @debug "sending request" log_msg(client, query)...
-    req = curl_request(
+    req = http_request(
         query.method,
-        curl_joinurl(client.base_url, query.endpoint),
+        curl_joinurl(client.base_url, query.endpoint);
         headers = request_headers(client, query.query),
         body = request_body(query.query),
         query = request_query(query.query),
@@ -50,7 +50,7 @@ retry_maxcount(e::APIsResult{<:Exception})::Int64 = retry_maxcount(e.result)
 function (query::APIsRequest{T})(client::AbstractAPIsClient)::APIsResult where {T}
     fetch_data = try
         query.num_calls[] += 1
-        response = http_request(client, query)
+        response = perform_request(client, query)
         payload_data = try
             payload_json = Serde.parse_json(response.body)
             Serde.deser(T, prepare_json!(T, payload_json))
