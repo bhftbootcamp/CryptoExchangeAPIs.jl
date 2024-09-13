@@ -10,14 +10,12 @@ function log_msg(client::AbstractAPIsClient, query::APIsRequest)
     )
 end
 
-function http_request(client::AbstractAPIsClient, query::APIsRequest)
+function perform_request(client::AbstractAPIsClient, query::APIsRequest)
     request_sign!(client, query.query, query.endpoint)
-
     @debug "sending request" log_msg(client, query)...
-
-    req = EasyCurl.request(
+    req = http_request(
         query.method,
-        EasyCurl.joinurl(client.base_url, query.endpoint),
+        curl_joinurl(client.base_url, query.endpoint);
         headers = request_headers(client, query.query),
         body = request_body(query.query),
         query = request_query(query.query),
@@ -27,10 +25,8 @@ function http_request(client::AbstractAPIsClient, query::APIsRequest)
         connect_timeout = 60,
         status_exception = false,
     )
-
     @debug "received response" log_msg(client, query)... status_code = req.status headers =
         Serde.to_json(req.headers) response = String(view(req.body, 1:length(req.body)))
-
     return req
 end
 
@@ -41,15 +37,12 @@ end
 isretriable(::APIsResult{APIsUndefError}) = true
 retry_timeout(e::APIsResult{APIsUndefError}) = e.response.headers.retry_after
 retry_maxcount(::APIsResult{APIsUndefError})::Int64 = 1
-
 isretriable(::Exception)::Bool = false
 retry_timeout(::Exception)::Float64 = 1
 retry_maxcount(::Exception)::Int64 = 10
-
-isretriable(::EasyCurl.EasyCurlError)::Bool = true
-retry_timeout(::EasyCurl.EasyCurlError)::Float64 = 10
-retry_maxcount(::EasyCurl.EasyCurlError)::Int64 = 2
-
+isretriable(::CurlError)::Bool = true
+retry_timeout(::CurlError)::Float64 = 10
+retry_maxcount(::CurlError)::Int64 = 2
 isretriable(e::APIsResult{<:Exception})::Bool = isretriable(e.result)
 retry_timeout(e::APIsResult{<:Exception})::Real = retry_timeout(e.result)
 retry_maxcount(e::APIsResult{<:Exception})::Int64 = retry_maxcount(e.result)
@@ -57,8 +50,7 @@ retry_maxcount(e::APIsResult{<:Exception})::Int64 = retry_maxcount(e.result)
 function (query::APIsRequest{T})(client::AbstractAPIsClient)::APIsResult where {T}
     fetch_data = try
         query.num_calls[] += 1
-        response = http_request(client, query)
-
+        response = perform_request(client, query)
         payload_data = try
             payload_json = Serde.parse_json(response.body)
             Serde.deser(T, prepare_json!(T, payload_json))
@@ -75,7 +67,6 @@ function (query::APIsRequest{T})(client::AbstractAPIsClient)::APIsResult where {
             end
             throw(APIsResult{typeof(err)}(client, query, APIsResponse(headers, response.status), err))
         end
-
         APIsResult{T}(client, query, nothing, payload_data)
     catch ex
         err = if ex isa APIsResult
@@ -91,6 +82,5 @@ function (query::APIsRequest{T})(client::AbstractAPIsClient)::APIsResult where {
             err
         end
     end
-
     return iserror(fetch_data) ? throw(fetch_data) : fetch_data
 end

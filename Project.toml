@@ -1,6 +1,6 @@
 name = "CryptoExchangeAPIs"
 uuid = "5e3d4798-c815-4641-85e1-deed530626d3"
-version = "0.29.1"
+version = "0.29.2"
 
 [deps]
 Base64 = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
@@ -19,5 +19,5 @@ NanoDates = "1.0"
 Nettle = "1.0.0"
 TimeZones = "1.13.0"
 Serde = "3.0.0"
-EasyCurl = "2.0.0"
+EasyCurl = "3.1.0"
 julia = "1.8"
