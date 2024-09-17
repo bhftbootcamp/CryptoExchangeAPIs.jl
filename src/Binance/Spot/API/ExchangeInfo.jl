@@ -74,7 +74,7 @@ struct Symbols <: BinanceData
     isSpotTradingAllowed::Bool
     ocoAllowed::Bool
     orderTypes::Vector{String}
-    permissions::Vector{Any}
+    permissions::Vector{String}
     quoteAsset::String
     quoteAssetPrecision::Int64
     quoteCommissionPrecision::Int64
