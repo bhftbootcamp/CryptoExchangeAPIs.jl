@@ -22,7 +22,7 @@ struct TickerInfo <: CryptocomData
     i::String
     v::Float64
     vv::Float64
-    oi::Float64
+    oi::Maybe{Float64}
     c::Maybe{Float64}
     b::Maybe{Float64}
     k::Maybe{Float64}
