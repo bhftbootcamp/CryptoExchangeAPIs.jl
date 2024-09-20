@@ -2,7 +2,8 @@ module Ticker
 
 export TickerQuery,
     TickerData,
-    ticker
+    ticker,
+    tickerall
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -12,6 +13,10 @@ using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct TickerQuery <: UpbitPublicQuery
     markets::Union{Vector{String},String}
+end
+
+Base.@kwdef struct TickerAllQuery <: UpbitPublicQuery
+    quoteCurrencies::String
 end
 
 struct TickerData <: UpbitData
@@ -111,6 +116,77 @@ end
 
 function ticker(client::UpbitClient = Upbit.Spot.public_client; kw...)
     return ticker(client, TickerQuery(; kw...))
+end
+
+"""
+    tickerall(client::UpbitClient, query::TickerAllQuery)
+    tickerall(client::UpbitClient = Upbit.Spot.public_client; kw...)
+
+Returns a snapshot of the all tickers at the time of the request
+
+[`GET v1/ticker/all`](https://docs.upbit.com/reference/tickers_by_quote)
+
+## Parameters:
+
+| Parameter        | Type    | Required | Description |
+|:-----------------|:--------|:---------|:------------|
+| quoteCurrencies  | String  | true     |             |
+
+## Code samples:
+
+```julia
+using Serde
+using CryptoExchangeAPIs.Upbit
+
+result = Upbit.Spot.tickerall(;
+    quoteCurrencies = "BTC"
+)
+
+to_pretty_json(result.result)
+```
+
+## Result:
+
+```json
+[
+  {
+    "acc_trade_price":32.21413915723261,
+    "acc_trade_price_24h":64.33381026,
+    "acc_trade_volume":1.834787177510889e7,
+    "acc_trade_volume_24h":3.697238710586164e7,
+    "change":"FALL",
+    "change_price":5.0e-8,
+    "change_rate":0.0285714286,
+    "high_price":1.85e-6,
+    "highest_52_week_date":"2024-02-27",
+    "highest_52_week_price":1.013e-5,
+    "low_price":1.63e-6,
+    "lowest_52_week_date":"2024-09-17",
+    "lowest_52_week_price":1.24e-6,
+    "market":"BTC-ALT",
+    "opening_price":1.76e-6,
+    "prev_closing_price":1.75e-6,
+    "signed_change_price":-5.0e-8,
+    "signed_change_rate":-0.0285714286,
+    "timestamp":"2024-09-20T12:02:30.590000128",
+    "trade_date":"2024-09-20",
+    "trade_date_kst":"2024-09-20",
+    "trade_price":1.7e-6,
+    "trade_time":"12:02:17",
+    "trade_time_kst":"21:02:17",
+    "trade_timestamp":"2024-09-20T12:02:17.777999872",
+    "trade_volume":2512.88823396
+  },
+  ...
+]
+```
+"""
+function tickerall(client::UpbitClient, query::TickerAllQuery)
+    return APIsRequest{Vector{TickerData}}("GET", "v1/ticker/all", query)(client)
+end
+
+function tickerall(client::UpbitClient = Upbit.Spot.public_client; kw...)
+    return tickerall(client, TickerAllQuery(; kw...))
 end
 
 end
