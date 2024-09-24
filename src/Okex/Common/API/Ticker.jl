@@ -80,7 +80,7 @@ to_pretty_json(result.result)
   "code":0,
   "data":[
     {
-        "instId":"MDT-USDT",
+      "instId":"MDT-USDT",
       "askPx":0.04625,
       "askSz":130.0,
       "bidPx":0.04615,
