@@ -16,6 +16,7 @@ Base.@kwdef struct TickerQuery <: BybitPublicQuery
 end
 
 struct TickerData <: BybitData
+    s::String
     ap::Float64
     bp::Float64
     h::Float64
@@ -23,7 +24,6 @@ struct TickerData <: BybitData
     lp::Float64
     o::Float64
     qv::Float64
-    s::String
     t::NanoDate
     v::Float64
 end
@@ -60,6 +60,7 @@ to_pretty_json(result.result)
   "retCode":0,
   "retMsg":"OK",
   "result":{
+    "s":"ADAUSDT",
     "ap":0.6636,
     "bp":0.6634,
     "h":0.6687,
@@ -67,7 +68,6 @@ to_pretty_json(result.result)
     "lp":0.6633,
     "o":0.6337,
     "qv":1.1594252877069e7,
-    "s":"ADAUSDT",
     "t":"2024-03-25T19:05:35.491000064",
     "v":1.780835204e7
   },

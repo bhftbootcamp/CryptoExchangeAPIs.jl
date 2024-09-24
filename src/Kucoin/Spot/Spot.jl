@@ -14,4 +14,7 @@ using .Candle
 include("API/Deposit.jl")
 using .Deposit
 
+include("API/Ticker.jl")
+using .Ticker
+
 end

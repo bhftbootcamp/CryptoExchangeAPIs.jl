@@ -132,10 +132,20 @@ function CryptoExchangeAPIs.request_headers(client::OkexClient, query::OkexPriva
     ]
 end
 
+@enum InstType begin
+    SPOT
+    SWAP
+    FUTURES
+    OPTION
+end
+
 include("Utils.jl")
 include("Errors.jl")
 
 include("Spot/Spot.jl")
 using .Spot
+
+include("Common/Common.jl")
+using .Common
 
 end

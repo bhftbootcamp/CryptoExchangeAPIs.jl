@@ -16,13 +16,13 @@ Base.@kwdef struct TickerQuery <: CryptocomPublicQuery
 end
 
 struct TickerInfo <: CryptocomData
+    i::String
     h::Float64
     l::Maybe{Float64}
     a::Maybe{Float64}
-    i::String
     v::Float64
     vv::Float64
-    oi::Float64
+    oi::Maybe{Float64}
     c::Maybe{Float64}
     b::Maybe{Float64}
     k::Maybe{Float64}
@@ -76,10 +76,10 @@ to_pretty_json(result.result)
   "result":{
     "data":[
       {
+        "i":"BTCUSD-PERP",
         "h":63090.7,
         "l":59671.8,
         "a":62296.2,
-        "i":"BTCUSD-PERP",
         "v":10797.3637,
         "vv":6.6340329849e8,
         "oi":1844.5729,

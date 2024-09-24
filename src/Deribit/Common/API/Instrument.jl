@@ -4,6 +4,9 @@ export InstrumentQuery,
     InstrumentData,
     instrument
 
+export Currency,
+    InstrumentKind
+
 using Serde
 using Dates, NanoDates, TimeZones
 
@@ -85,7 +88,7 @@ using Serde
 using CryptoExchangeAPIs.Deribit
 
 result = Deribit.Common.instrument(;
-    currency = CryptoExchangeAPIs.Deribit.Common.Instrument.BTC
+    currency = Deribit.Common.Instrument.BTC
 )
 
 to_pretty_json(result.result)

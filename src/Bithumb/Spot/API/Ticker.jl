@@ -1,7 +1,7 @@
 module Ticker
 
-export TikerQuery,
-    TikerData,
+export TickerQuery,
+    TickerData,
     ticker
 
 using Serde
