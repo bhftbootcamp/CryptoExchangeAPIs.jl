@@ -15,6 +15,8 @@ Base.@kwdef struct TickerQuery <: PoloniexPublicQuery
 end
 
 struct TickerData <: PoloniexData
+    symbol::String
+    displayName::Maybe{String}
     amount::Maybe{Float64}
     ask::Maybe{Float64}
     askQuantity::Maybe{Float64}
@@ -23,14 +25,12 @@ struct TickerData <: PoloniexData
     close::Maybe{Float64}
     closeTime::Maybe{NanoDate}
     dailyChange::Maybe{Float64}
-    displayName::Maybe{String}
     high::Maybe{Float64}
     low::Maybe{Float64}
     markPrice::Maybe{Float64}
     open::Maybe{Float64}
     quantity::Maybe{Float64}
     startTime::Maybe{NanoDate}
-    symbol::String
     tradeCount::Maybe{Int64}
     ts::NanoDate
 end
@@ -70,6 +70,8 @@ to_pretty_json(result.result)
 
 ```json
 {
+  "symbol":"BTC_USDT",
+  "displayName":"BTC/USDT",
   "amount":7.911171301524143e7,
   "ask":65322.3,
   "askQuantity":0.047754,
@@ -78,14 +80,12 @@ to_pretty_json(result.result)
   "close":65294.16,
   "closeTime":"2024-05-16T17:09:07.225999872",
   "dailyChange":0.0062,
-  "displayName":"BTC/USDT",
   "high":66664.38,
   "low":64757.87,
   "markPrice":65327.98,
   "open":64894.14,
   "quantity":1200.477812,
   "startTime":"2024-05-15T17:09:00",
-  "symbol":"BTC_USDT",
   "tradeCount":61923,
   "ts":"2024-05-16T17:09:14.984"
 }

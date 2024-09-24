@@ -16,6 +16,7 @@ Base.@kwdef struct TickerQuery <: HuobiPublicQuery
 end
 
 struct TickerData <: HuobiData
+    symbol::String
     amount::Maybe{Float64}
     ask::Maybe{Float64}
     askSize::Maybe{Float64}
@@ -26,7 +27,6 @@ struct TickerData <: HuobiData
     high::Maybe{Float64}
     low::Maybe{Float64}
     open::Maybe{Float64}
-    symbol::String
     vol::Maybe{Float64}
 end
 
@@ -59,6 +59,7 @@ to_pretty_json(result.result)
   "code":null,
   "data":[
     {
+      "symbol":"sylousdt",
       "amount":5.379805390589e8,
       "ask":0.001716,
       "askSize":90895.4464,
@@ -69,7 +70,6 @@ to_pretty_json(result.result)
       "high":0.001773,
       "low":0.001683,
       "open":0.001716,
-      "symbol":"sylousdt",
       "vol":924950.6866947605
     },
     ...

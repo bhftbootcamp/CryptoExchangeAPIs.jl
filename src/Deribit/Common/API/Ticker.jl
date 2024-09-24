@@ -32,6 +32,7 @@ struct Stats <: DeribitData
 end
 
 struct TickerData <: DeribitData
+    instrument_name::String
     ask_iv::Maybe{Float64}
     best_ask_amount::Maybe{Float64}
     best_ask_price::Maybe{Float64}
@@ -44,7 +45,6 @@ struct TickerData <: DeribitData
     funding_8h::Maybe{Float64}
     greeks::Maybe{Greeks}
     index_price::Maybe{Float64}
-    instrument_name::String
     interest_rate::Maybe{Float64}
     interest_value::Maybe{Float64}
     last_price::Maybe{Float64}
@@ -103,6 +103,7 @@ to_pretty_json(result.result)
   "usOut":"2024-05-17T12:10:28.639980032",
   "usIn":"2024-05-17T12:10:28.639770880",
   "result":{
+    "instrument_name":"BTC-PERPETUAL",
     "ask_iv":null,
     "best_ask_amount":227380.0,
     "best_ask_price":66265.0,
@@ -115,7 +116,6 @@ to_pretty_json(result.result)
     "funding_8h":2.703e-5,
     "greeks":null,
     "index_price":66245.52,
-    "instrument_name":"BTC-PERPETUAL",
     "interest_rate":null,
     "interest_value":0.011170326646787519,
     "last_price":66265.0,

@@ -16,11 +16,11 @@ Base.@kwdef struct TickerQuery <: GateioPublicQuery
 end
 
 struct TickerData <: GateioData
+    currency_pair::String
     base_volume::Maybe{Float64}
     change_percentage::Float64
     change_utc0::Maybe{Float64}
     change_utc8::Maybe{Float64}
-    currency_pair::String
     etf_leverage::Maybe{Float64}
     etf_net_value::Maybe{Float64}
     etf_pre_net_value::Maybe{Float64}
@@ -70,11 +70,11 @@ to_pretty_json(result.result)
 ```json
 [
   {
+    "currency_pair":"ADA_USDT",
     "base_volume":2.0167711540647e7,
     "change_percentage":-4.77,
     "change_utc0":null,
     "change_utc8":null,
-    "currency_pair":"ADA_USDT",
     "etf_leverage":null,
     "etf_net_value":null,
     "etf_pre_net_value":null,

@@ -23,6 +23,7 @@ Base.@kwdef struct TickerAllQuery <: KucoinPublicQuery
 end
 
 struct TickerData <: KucoinData
+    symbol::String
     averagePrice::Maybe{Float64}
     buy::Maybe{Float64}
     changePrice::Maybe{Float64}
@@ -33,7 +34,6 @@ struct TickerData <: KucoinData
     makerCoefficient::Maybe{Float64}
     makerFeeRate::Maybe{Float64}
     sell::Maybe{Float64}
-    symbol::String
     takerCoefficient::Maybe{Float64}
     takerFeeRate::Maybe{Float64}
     time::Maybe{NanoDate}
@@ -77,6 +77,7 @@ to_pretty_json(result.result)
 {
   "code":200000,
   "data":{
+    "symbol":"BTC",
     "averagePrice":null,
     "buy":null,
     "changePrice":null,
@@ -87,7 +88,6 @@ to_pretty_json(result.result)
     "makerCoefficient":null,
     "makerFeeRate":null,
     "sell":null,
-    "symbol":"BTC",
     "takerCoefficient":null,
     "takerFeeRate":null,
     "time":"2024-09-23T15:48:26.456999936",
@@ -133,6 +133,7 @@ to_pretty_json(result.result)
     "time":"2024-09-23T15:54:48.020999936",
     "ticker":[
       {
+        "symbol":"HLG-USDT",
         "averagePrice":0.0015635,
         "buy":0.00156,
         "changePrice":3.0e-5,
@@ -143,7 +144,6 @@ to_pretty_json(result.result)
         "makerCoefficient":2.0,
         "makerFeeRate":0.001,
         "sell":0.00158,
-        "symbol":"HLG-USDT",
         "takerCoefficient":2.0,
         "takerFeeRate":0.001,
         "time":null,

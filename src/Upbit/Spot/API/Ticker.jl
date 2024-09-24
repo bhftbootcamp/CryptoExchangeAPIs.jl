@@ -21,6 +21,7 @@ Base.@kwdef struct TickerAllQuery <: UpbitPublicQuery
 end
 
 struct TickerData <: UpbitData
+    market::String
     acc_trade_price::Maybe{Float64}
     acc_trade_price_24h::Maybe{Float64}
     acc_trade_volume::Maybe{Float64}
@@ -34,7 +35,6 @@ struct TickerData <: UpbitData
     low_price::Maybe{Float64}
     lowest_52_week_date::Maybe{Date}
     lowest_52_week_price::Maybe{Float64}
-    market::String
     opening_price::Maybe{Float64}
     prev_closing_price::Maybe{Float64}
     signed_change_price::Maybe{Float64}
@@ -81,6 +81,7 @@ to_pretty_json(result.result)
 ```json
 [
   {
+    "market":"KRW-BTC",
     "acc_trade_price":2.1238782327620905e11,
     "acc_trade_price_24h":4.622074226861333e11,
     "acc_trade_volume":2206.86731219,
@@ -94,7 +95,6 @@ to_pretty_json(result.result)
     "low_price":9.56e7,
     "lowest_52_week_date":"2023-06-15",
     "lowest_52_week_price":3.251e7,
-    "market":"KRW-BTC",
     "opening_price":9.6624e7,
     "prev_closing_price":9.6624e7,
     "signed_change_price":-544000.0,
@@ -151,6 +151,7 @@ to_pretty_json(result.result)
 ```json
 [
   {
+    "market":"BTC-ALT",
     "acc_trade_price":32.21413915723261,
     "acc_trade_price_24h":64.33381026,
     "acc_trade_volume":1.834787177510889e7,
@@ -164,7 +165,6 @@ to_pretty_json(result.result)
     "low_price":1.63e-6,
     "lowest_52_week_date":"2024-09-17",
     "lowest_52_week_price":1.24e-6,
-    "market":"BTC-ALT",
     "opening_price":1.76e-6,
     "prev_closing_price":1.75e-6,
     "signed_change_price":-5.0e-8,

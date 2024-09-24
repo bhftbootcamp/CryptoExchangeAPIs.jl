@@ -18,12 +18,12 @@ Base.@kwdef struct TickersQuery <: OkexPublicQuery
 end
 
 struct TickerData <: OkexData
+    instId::Maybe{String}
     askPx::Maybe{Float64}
     askSz::Maybe{Float64}
     bidPx::Maybe{Float64}
     bidSz::Maybe{Float64}
     high24h::Maybe{Float64}
-    instId::Maybe{String}
     instType::Maybe{InstType}
     last::Maybe{Float64}
     lastSz::Maybe{Float64}
@@ -80,12 +80,12 @@ to_pretty_json(result.result)
   "code":0,
   "data":[
     {
+        "instId":"MDT-USDT",
       "askPx":0.04625,
       "askSz":130.0,
       "bidPx":0.04615,
       "bidSz":130.0,
       "high24h":0.04779,
-      "instId":"MDT-USDT",
       "instType":"SPOT",
       "last":0.04621,
       "lastSz":189.496477,
