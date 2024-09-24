@@ -17,4 +17,5 @@ CryptoExchangeAPIs.Upbit.Spot.market_list
 CryptoExchangeAPIs.Upbit.Spot.order_book
 CryptoExchangeAPIs.Upbit.Spot.status_wallet
 CryptoExchangeAPIs.Upbit.Spot.ticker
+CryptoExchangeAPIs.Upbit.Spot.ticker_all
 ```

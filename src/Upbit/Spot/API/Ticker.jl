@@ -1,9 +1,10 @@
 module Ticker
 
 export TickerQuery,
+    TickerAllQuery,
     TickerData,
     ticker,
-    tickerall
+    ticker_all
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -119,8 +120,8 @@ function ticker(client::UpbitClient = Upbit.Spot.public_client; kw...)
 end
 
 """
-    tickerall(client::UpbitClient, query::TickerAllQuery)
-    tickerall(client::UpbitClient = Upbit.Spot.public_client; kw...)
+    ticker_all(client::UpbitClient, query::TickerAllQuery)
+    ticker_all(client::UpbitClient = Upbit.Spot.public_client; kw...)
 
 Returns a snapshot of the all tickers at the time of the request
 
@@ -138,7 +139,7 @@ Returns a snapshot of the all tickers at the time of the request
 using Serde
 using CryptoExchangeAPIs.Upbit
 
-result = Upbit.Spot.tickerall(;
+result = Upbit.Spot.ticker_all(;
     quoteCurrencies = "BTC"
 )
 
@@ -181,12 +182,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function tickerall(client::UpbitClient, query::TickerAllQuery)
+function ticker_all(client::UpbitClient, query::TickerAllQuery)
     return APIsRequest{Vector{TickerData}}("GET", "v1/ticker/all", query)(client)
 end
 
-function tickerall(client::UpbitClient = Upbit.Spot.public_client; kw...)
-    return tickerall(client, TickerAllQuery(; kw...))
+function ticker_all(client::UpbitClient = Upbit.Spot.public_client; kw...)
+    return ticker_all(client, TickerAllQuery(; kw...))
 end
 
 end

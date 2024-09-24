@@ -5,7 +5,7 @@ export TickerQuery,
     TickerData,
     TickerAllData,
     ticker,
-    tickerall
+    ticker_all
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -19,7 +19,7 @@ Base.@kwdef struct TickerQuery <: KucoinPublicQuery
 end
 
 Base.@kwdef struct TickerAllQuery <: KucoinPublicQuery
-
+    #__ empty
 end
 
 struct TickerData <: KucoinData
@@ -106,18 +106,12 @@ function ticker(client::KucoinClient = Kucoin.Spot.public_client; kw...)
 end
 
 """
-    tickerall(client::KucoinClient, query::TickerQuery)
-    tickerall(client::KucoinClient = Kucoin.Spot.public_client; kw...)
+    ticker_all(client::KucoinClient, query::TickerQuery)
+    ticker_all(client::KucoinClient = Kucoin.Spot.public_client; kw...)
 
 Request market tickers for all the trading pairs in the market (including 24h volume).
     
 [`GET api/v1/market/allTickers`](https://www.kucoin.com/docs/rest/spot-trading/market-data/get-all-tickers)
-
-## Parameters:
-
-| Parameter  | Type   | Required | Description |
-|:-----------|:-------|:---------|:------------|
-|            |        |          |             |
 
 ## Code samples:
 
@@ -125,7 +119,7 @@ Request market tickers for all the trading pairs in the market (including 24h vo
 using Serde
 using CryptoExchangeAPIs.Kucoin
 
-result = Kucoin.Spot.tickerall()
+result = Kucoin.Spot.ticker_all()
 
 to_pretty_json(result.result)
 ```
@@ -162,12 +156,12 @@ to_pretty_json(result.result)
 }
 ```
 """
-function tickerall(client::KucoinClient, query::TickerAllQuery)
+function ticker_all(client::KucoinClient, query::TickerAllQuery)
     return APIsRequest{Data{TickerAllData}}("GET", "api/v1/market/allTickers", query)(client)
 end
 
-function tickerall(client::KucoinClient = Kucoin.Spot.public_client; kw...)
-    return tickerall(client, TickerAllQuery(; kw...))
+function ticker_all(client::KucoinClient = Kucoin.Spot.public_client; kw...)
+    return ticker_all(client, TickerAllQuery(; kw...))
 end
 
 end

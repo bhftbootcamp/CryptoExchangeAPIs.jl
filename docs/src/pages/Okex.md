@@ -6,6 +6,16 @@ CryptoExchangeAPIs.Okex.OkexAPIError
 CryptoExchangeAPIs.Okex.Data
 ```
 
+## Common
+
+```@docs
+CryptoExchangeAPIs.Okex.Common.public_client
+```
+
+```@docs
+CryptoExchangeAPIs.Okex.Common.ticker
+```
+
 ## Spot
 
 ```@docs

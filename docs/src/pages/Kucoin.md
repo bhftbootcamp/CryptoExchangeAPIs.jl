@@ -16,6 +16,8 @@ CryptoExchangeAPIs.Kucoin.Spot.public_client
 ```@docs
 CryptoExchangeAPIs.Kucoin.Spot.candle
 CryptoExchangeAPIs.Kucoin.Spot.deposit
+CryptoExchangeAPIs.Kucoin.Spot.ticker
+CryptoExchangeAPIs.Kucoin.Spot.ticker_all
 ```
 
 ## Futures

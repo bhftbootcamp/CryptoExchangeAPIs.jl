@@ -2,8 +2,9 @@ module Instrument
 
 export InstrumentQuery,
     InstrumentData,
-    instrument,
-    Currency,
+    instrument
+
+export Currency,
     InstrumentKind
 
 using Serde
