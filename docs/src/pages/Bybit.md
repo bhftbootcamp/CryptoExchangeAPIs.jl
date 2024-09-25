@@ -8,6 +8,16 @@ CryptoExchangeAPIs.Bybit.Rows
 CryptoExchangeAPIs.Bybit.Data
 ```
 
+## Common
+
+```@docs
+CryptoExchangeAPIs.Bybit.Common.public_client
+```
+
+```@docs
+CryptoExchangeAPIs.Bybit.Common.instrument
+```
+
 ## Spot
 
 ```@docs
