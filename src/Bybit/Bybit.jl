@@ -170,4 +170,7 @@ include("Errors.jl")
 include("Spot/Spot.jl")
 using .Spot
 
+include("Common/Common.jl")
+using .Common
+
 end
