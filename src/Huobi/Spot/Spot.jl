@@ -23,6 +23,9 @@ using .OrderBook
 include("API/OrderLog.jl")
 using .OrderLog
 
+include("API/Symbols.jl")
+using .Symbols
+
 include("API/Ticker.jl")
 using .Ticker
 
