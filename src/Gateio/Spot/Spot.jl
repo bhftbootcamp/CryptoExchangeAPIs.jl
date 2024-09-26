@@ -14,6 +14,9 @@ using .Candle
 include("API/Currency.jl")
 using .Currency
 
+include("API/CurrencyPairs.jl")
+using .CurrencyPairs
+
 include("API/Deposit.jl")
 using .Deposit
 
