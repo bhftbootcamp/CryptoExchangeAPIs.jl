@@ -17,10 +17,10 @@ end
 
 struct InstrumentInfo <: CryptocomData
     symbol::String
-    inst_type::String
-    display_name::String
     base_ccy::String
     quote_ccy::String
+    inst_type::String
+    display_name::String
     quote_decimals::Int64
     quantity_decimals::Int64
     price_tick_size::Float64
@@ -73,10 +73,10 @@ to_pretty_json(result.result)
     "data":[
       {
         "symbol":"ZRX_USDT",
-        "inst_type":"CCY_PAIR",
-        "display_name":"ZRX/USDT",
         "base_ccy":"ZRX",
         "quote_ccy":"USDT",
+        "inst_type":"CCY_PAIR",
+        "display_name":"ZRX/USDT",
         "quote_decimals":5.0,
         "quantity_decimals":0.0,
         "price_tick_size":"0.00001",

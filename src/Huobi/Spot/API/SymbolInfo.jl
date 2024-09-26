@@ -1,8 +1,8 @@
-module Symbols
+module SymbolInfo
 
-export SymbolsQuery,
-    SymbolsData,
-    symbols
+export SymbolInfoQuery,
+    SymbolInfoData,
+    symbols_info
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -11,11 +11,11 @@ using CryptoExchangeAPIs.Huobi
 using CryptoExchangeAPIs.Huobi: Data
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct SymbolsQuery <: HuobiPublicQuery
+Base.@kwdef struct SymbolInfoQuery <: HuobiPublicQuery
     ts::Maybe{Int64} = nothing
 end
 
-struct SymbolsData <: HuobiData
+struct SymbolInfoData <: HuobiData
     symbol::Maybe{String}
     bcdn::Maybe{String}
     qcdn::Maybe{String}
@@ -37,12 +37,16 @@ struct SymbolsData <: HuobiData
 end
 
 """
-    symbols(client::HuobiClient, query::SymbolsQuery)
-    symbols(client::HuobiClient = Huobi.Spot.public_client; kw...)
+    symbols_info(client::HuobiClient, query::SymbolInfoQuery)
+    symbols_info(client::HuobiClient = Huobi.Spot.public_client; kw...)
 
 Get all Supported Trading Symbol.
 
 [`GET v1/settings/common/symbols`](https://www.htx.com/en-in/opend/newApiPages/?id=7ec51cb5-7773-11ed-9966-0242ac110003)
+
+| Parameter     | Type       | Required | Description |
+|:--------------|:-----------|:---------|:------------|
+| ts            | Int64      | false    |             |
 
 ## Code samples:
 
@@ -50,7 +54,7 @@ Get all Supported Trading Symbol.
 using Serde
 using CryptoExchangeAPIs.Huobi
 
-result = Huobi.Spot.symbols()
+result = Huobi.Spot.symbols_info()
 
 to_pretty_json(result.result)
 ```
@@ -89,12 +93,12 @@ to_pretty_json(result.result)
 }
 ```
 """
-function symbols(client::HuobiClient, query::SymbolsQuery)
-    return APIsRequest{Data{Vector{SymbolsData}}}("GET", "v1/settings/common/symbols", query)(client)
+function symbols_info(client::HuobiClient, query::SymbolInfoQuery)
+    return APIsRequest{Data{Vector{SymbolInfoData}}}("GET", "v1/settings/common/symbols", query)(client)
 end
 
-function symbols(client::HuobiClient = Huobi.Spot.public_client; kw...)
-    return symbols(client, SymbolsQuery(; kw...))
+function symbols_info(client::HuobiClient = Huobi.Spot.public_client; kw...)
+    return symbols_info(client, SymbolInfoQuery(; kw...))
 end
 
 end

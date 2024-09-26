@@ -52,6 +52,12 @@ Get details of a specifc currency pair.
 
 [`GET /api/v4/spot/currency_pairs/{currency_pair}`](https://www.gate.io/docs/developers/apiv4/#get-details-of-a-specifc-currency-pair)
 
+## Parameters:
+
+| Parameter     | Type       | Required | Description |
+|:--------------|:-----------|:---------|:------------|
+| currency_pair | String     | true     |             |
+
 ## Code samples:
 
 ```julia
