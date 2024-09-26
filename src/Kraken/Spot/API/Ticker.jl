@@ -39,7 +39,7 @@ end
 
 Get ticker information for all or requested markets.
 
-[`GET 0/public/Ticke`](https://docs.kraken.com/rest/#tag/Spot-Market-Data/operation/getTickerInformation)
+[`GET 0/public/Ticker`](https://docs.kraken.com/rest/#tag/Spot-Market-Data/operation/getTickerInformation)
 
 ## Parameters:
 

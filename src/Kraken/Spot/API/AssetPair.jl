@@ -26,11 +26,11 @@ struct Fee <: KrakenData
 end
 
 struct AssetPairInfoData <: KrakenData
-    _quote::String
+    altname::String
+    base_currency::String
+    quote_currency::String
     aclass_base::String
     aclass_quote::String
-    altname::String
-    base::String
     cost_decimals::Int64
     costmin::Maybe{Float64}
     fee_volume_currency::String
@@ -50,8 +50,12 @@ struct AssetPairInfoData <: KrakenData
     wsname::String
 end
 
-function Serde.custom_name(::Type{AssetPairInfoData}, ::Val{:_quote})
-    return "quote"
+function Serde.custom_name(::Type{AssetPairInfoData}, ::Val{:base_currency})
+  return "base"
+end
+
+function Serde.custom_name(::Type{AssetPairInfoData}, ::Val{:quote_currency})
+  return "quote"
 end
 
 struct AssetPairFeeData <: KrakenData
