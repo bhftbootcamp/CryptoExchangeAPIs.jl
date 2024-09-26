@@ -14,6 +14,7 @@ CryptoExchangeAPIs.Okex.Common.public_client
 
 ```@docs
 CryptoExchangeAPIs.Okex.Common.ticker
+CryptoExchangeAPIs.Okex.Common.instrument
 ```
 
 ## Spot

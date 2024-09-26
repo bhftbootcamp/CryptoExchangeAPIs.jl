@@ -8,8 +8,15 @@ using Serde
 using Dates, NanoDates, TimeZones
 
 using CryptoExchangeAPIs.Okex
-using CryptoExchangeAPIs.Okex: Data, InstType
+using CryptoExchangeAPIs.Okex: Data
 using CryptoExchangeAPIs: Maybe, APIsRequest
+
+@enum InstType begin
+    SPOT
+    SWAP
+    FUTURES
+    OPTION
+end
 
 Base.@kwdef struct TickersQuery <: OkexPublicQuery
     instFamily::Maybe{String} = nothing
@@ -66,7 +73,7 @@ using Serde
 using CryptoExchangeAPIs.Okex
 
 result = Okex.Common.ticker(;
-     instType = Okex.SPOT,
+    instType = Okex.Common.Ticker.SPOT,
 )
 
 to_pretty_json(result.result)
