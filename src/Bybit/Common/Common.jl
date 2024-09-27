@@ -11,5 +11,4 @@ const public_client =
 include("API/Instrument.jl")
 using .Instrument
 
-
 end
