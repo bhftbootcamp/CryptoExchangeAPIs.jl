@@ -14,11 +14,24 @@ Base.@kwdef struct MarketListQuery <: UpbitPublicQuery
     isDetails::Bool = true
 end
 
+struct Caution <: UpbitData 
+    PRICE_FLUCTUATIONS::Maybe{Bool}
+    TRADING_VOLUME_SOARING::Maybe{Bool}
+    DEPOSIT_AMOUNT_SOARING::Maybe{Bool}
+    GLOBAL_PRICE_DIFFERENCES::Maybe{Bool}
+    CONCENTRATION_OF_SMALL_ACCOUNTS::Maybe{Bool}
+end
+
+struct MarketEvent <: UpbitData 
+    warning::Maybe{Bool}
+    caution::Maybe{Caution}
+end
+
 struct MarketListData <: UpbitData
+    market::String
     english_name::String
     korean_name::String
-    market::String
-    market_warning::Maybe{String}
+    market_event::Maybe{MarketEvent}
 end
 
 """
@@ -51,9 +64,9 @@ to_pretty_json(result.result)
 ```json
 [
   {
+    "market":"KRW-BTC",
     "english_name":"Bitcoin",
     "korean_name":"비트코인",
-    "market":"KRW-BTC",
     "market_warning":"NONE"
   },
   ...
