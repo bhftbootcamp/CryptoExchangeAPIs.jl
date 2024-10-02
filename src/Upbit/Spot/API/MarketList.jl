@@ -67,7 +67,16 @@ to_pretty_json(result.result)
     "market":"KRW-BTC",
     "english_name":"Bitcoin",
     "korean_name":"비트코인",
-    "market_warning":"NONE"
+    "market_event":{
+      "warning":false,
+      "caution":{
+        "PRICE_FLUCTUATIONS":false,
+        "TRADING_VOLUME_SOARING":false,
+        "DEPOSIT_AMOUNT_SOARING":false,
+        "GLOBAL_PRICE_DIFFERENCES":false,
+        "CONCENTRATION_OF_SMALL_ACCOUNTS":false
+      }
+    }
   },
   ...
 ]

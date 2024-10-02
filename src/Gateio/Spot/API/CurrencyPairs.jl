@@ -22,8 +22,8 @@ end
 
 struct CurrencyPairData <: GateioData
     id::String
-    base_currency::String
-    quote_currency::String
+    base::String
+    var"quote"::String
     fee::Maybe{Float64}
     min_base_amount::Maybe{Float64}
     min_quote_amount::Maybe{Float64}
@@ -34,14 +34,6 @@ struct CurrencyPairData <: GateioData
     trade_status::Maybe{String}
     sell_start::Maybe{NanoDate}
     buy_start::Maybe{NanoDate}
-end
-
-function Serde.custom_name(::Type{CurrencyPairData}, ::Val{:base_currency})
-    return "base"
-end
-
-function Serde.custom_name(::Type{CurrencyPairData}, ::Val{:quote_currency})
-    return "quote"
 end
 
 """
@@ -76,8 +68,8 @@ to_pretty_json(result.result)
 ```json
 {
   "id":"ETH_BTC",
-  "base_currency":"ETH",
-  "quote_currency":"BTC",
+  "base":"ETH",
+  "quote":"BTC",
   "fee":0.2,
   "min_base_amount":0.001,
   "min_quote_amount":1.0e-5,
@@ -125,8 +117,8 @@ to_pretty_json(result.result)
 [
   {
     "id":"0DOG_USDT",
-    "base_currency":"0DOG",
-    "quote_currency":"USDT",
+    "base":"0DOG",
+    "quote":"USDT",
     "fee":0.2,
     "min_base_amount":0.01,
     "min_quote_amount":3.0,

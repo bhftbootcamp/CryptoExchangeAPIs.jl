@@ -27,8 +27,8 @@ end
 
 struct AssetPairInfoData <: KrakenData
     altname::String
-    base_currency::String
-    quote_currency::String
+    base::String
+    var"quote"::String
     aclass_base::String
     aclass_quote::String
     cost_decimals::Int64
@@ -48,14 +48,6 @@ struct AssetPairInfoData <: KrakenData
     status::String
     tick_size::Maybe{Float64}
     wsname::String
-end
-
-function Serde.custom_name(::Type{AssetPairInfoData}, ::Val{:base_currency})
-  return "base"
-end
-
-function Serde.custom_name(::Type{AssetPairInfoData}, ::Val{:quote_currency})
-  return "quote"
 end
 
 struct AssetPairFeeData <: KrakenData
@@ -104,11 +96,11 @@ to_pretty_json(result.result)
   "error":[],
   "result":{
     "ACAUSD":{
-      "_quote":"ZUSD",
-      "aclass_base":"currency",
-      "aclass_quote":"currency",
       "altname":"ACAUSD",
       "base":"ACA",
+      "quote":"ZUSD",
+      "aclass_base":"currency",
+      "aclass_quote":"currency",
       "cost_decimals":5,
       "costmin":0.5,
       "fee_volume_currency":"ZUSD",

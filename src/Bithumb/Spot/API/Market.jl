@@ -49,7 +49,7 @@ to_pretty_json(result.result)
 
 ```json
 [
-{
+  {
     "market":"KRW-BTC",
     "korean_name":"비트코인",
     "english_name":"Bitcoin"
