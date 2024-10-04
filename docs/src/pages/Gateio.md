@@ -14,6 +14,8 @@ CryptoExchangeAPIs.Gateio.Spot.public_client
 ```@docs
 CryptoExchangeAPIs.Gateio.Spot.candle
 CryptoExchangeAPIs.Gateio.Spot.currency
+CryptoExchangeAPIs.Gateio.Spot.currency_pair
+CryptoExchangeAPIs.Gateio.Spot.currency_pairs
 CryptoExchangeAPIs.Gateio.Spot.deposit
 CryptoExchangeAPIs.Gateio.Spot.ticker
 ```

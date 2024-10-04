@@ -35,7 +35,9 @@ end
 @enum OptionType put call
 
 struct InstrumentData <: DeribitData
+    instrument_name::Maybe{String}
     base_currency::Maybe{String}
+    quote_currency::Maybe{String}
     block_trade_commission::Maybe{Float64}
     block_trade_min_trade_amount::Maybe{Float64}
     block_trade_tick_size::Maybe{Float64}
@@ -45,7 +47,6 @@ struct InstrumentData <: DeribitData
     expiration_timestamp::NanoDate
     future_type::Maybe{FutureType}
     instrument_id::Int64
-    instrument_name::Maybe{String}
     instrument_type::Maybe{String}
     is_active::Bool
     kind::Maybe{InstrumentKind}
@@ -55,7 +56,6 @@ struct InstrumentData <: DeribitData
     min_trade_amount::Maybe{Float64}
     option_type::Maybe{OptionType}
     price_index::Maybe{String}
-    quote_currency::Maybe{String}
     rfq::Bool
     settlement_currency::Maybe{String}
     settlement_period::Maybe{String}
@@ -107,7 +107,9 @@ to_pretty_json(result.result)
   "usIn":"2024-05-17T11:57:46.220526080",
   "result":[
     {
+      "instrument_name":"BTC-18MAY24-55000-C",
       "base_currency":"BTC",
+      "quote_currency":"BTC",
       "block_trade_commission":0.0003,
       "block_trade_min_trade_amount":25.0,
       "block_trade_tick_size":0.0001,
@@ -117,7 +119,6 @@ to_pretty_json(result.result)
       "expiration_timestamp":"2024-05-18T08:00:00",
       "future_type":null,
       "instrument_id":326799,
-      "instrument_name":"BTC-18MAY24-55000-C",
       "instrument_type":"reversed",
       "is_active":true,
       "kind":"option",
@@ -127,7 +128,6 @@ to_pretty_json(result.result)
       "min_trade_amount":0.1,
       "option_type":"call",
       "price_index":"btc_usd",
-      "quote_currency":"BTC",
       "rfq":false,
       "settlement_currency":"BTC",
       "settlement_period":"day",

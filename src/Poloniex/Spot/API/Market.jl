@@ -17,6 +17,7 @@ end
 Serde.SerQuery.ser_ignore_field(::Type{MarketQuery}, ::Val{:symbol}) = true
 
 struct SymbolTradeLimit <: PoloniexData
+    symbol::String
     amountScale::Int64
     highestBid::Float64
     lowestAsk::Float64
@@ -24,7 +25,6 @@ struct SymbolTradeLimit <: PoloniexData
     minQuantity::Float64
     priceScale::Int64
     quantityScale::Int64
-    symbol::String
 end
 
 struct CrossMargin <: PoloniexData
@@ -33,15 +33,15 @@ struct CrossMargin <: PoloniexData
 end
 
 struct MarketData <: PoloniexData
-    baseCurrencyName::String
-    crossMargin::CrossMargin
-    displayName::String
-    quoteCurrencyName::String
-    state::String
     symbol::String
-    symbolTradeLimit::SymbolTradeLimit
-    tradableStartTime::NanoDate
+    baseCurrencyName::String
+    quoteCurrencyName::String
+    displayName::String
+    state::String
     visibleStartTime::NanoDate
+    tradableStartTime::NanoDate
+    symbolTradeLimit::SymbolTradeLimit
+    crossMargin::CrossMargin
 end
 
 """
@@ -76,27 +76,27 @@ to_pretty_json(result.result)
 ```json
 [
   {
-    "baseCurrencyName":"BTC",
-    "crossMargin":{
-      "maxLeverage":3,
-      "supportCrossMargin":true
-    },
-    "displayName":"BTC/USDT",
-    "quoteCurrencyName":"USDT",
-    "state":"NORMAL",
     "symbol":"BTC_USDT",
+    "baseCurrencyName":"BTC",
+    "quoteCurrencyName":"USDT",
+    "displayName":"BTC/USDT",
+    "state":"NORMAL",
+    "visibleStartTime":"2022-07-28T14:33:39.512",
+    "tradableStartTime":"2022-07-28T14:33:39.512",
     "symbolTradeLimit":{
+      "symbol":"BTC_USDT",
       "amountScale":2,
       "highestBid":0.0,
       "lowestAsk":0.0,
       "minAmount":1.0,
       "minQuantity":1.0e-6,
       "priceScale":2,
-      "quantityScale":6,
-      "symbol":"BTC_USDT"
+      "quantityScale":6
     },
-    "tradableStartTime":"2022-07-28T14:33:39.512",
-    "visibleStartTime":"2022-07-28T14:33:39.512"
+        "crossMargin":{
+      "maxLeverage":3,
+      "supportCrossMargin":true
+    }
   }
 ]
 ```

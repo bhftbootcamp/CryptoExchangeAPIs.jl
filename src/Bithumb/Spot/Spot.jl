@@ -14,6 +14,9 @@ using .AssetStatus
 include("API/Candle.jl")
 using .Candle
 
+include("API/Market.jl")
+using .Market
+
 include("API/OrderBook.jl")
 using .OrderBook
 

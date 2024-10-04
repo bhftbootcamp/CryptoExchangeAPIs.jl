@@ -19,5 +19,6 @@ CryptoExchangeAPIs.Huobi.Spot.currency
 CryptoExchangeAPIs.Huobi.Spot.deposit_withdrawal
 CryptoExchangeAPIs.Huobi.Spot.order_book
 CryptoExchangeAPIs.Huobi.Spot.order_log
+CryptoExchangeAPIs.Huobi.Spot.symbols_info
 CryptoExchangeAPIs.Huobi.Spot.ticker
 ```
