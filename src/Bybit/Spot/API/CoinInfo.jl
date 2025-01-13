@@ -102,7 +102,8 @@ to_pretty_json(result.result)
             "depositMin":0.0,
             "minAccuracy":8,
             "withdrawFee":3.0,
-            "withdrawMin":3.0
+            "withdrawMin":3.0,
+            "withdrawPercentageFee":0.0 
           }
         ],
         "coin":"AGLD",

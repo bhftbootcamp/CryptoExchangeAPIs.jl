@@ -104,6 +104,7 @@ to_pretty_json(result.result)
                 "successAt": "2024-02-27T14:22:12.000",
                 "confirmations": "10000",
                 "txIndex": "",
+                "batchReleaseLimit":null,
                 "blockHash": "",
             },
             {
@@ -118,6 +119,7 @@ to_pretty_json(result.result)
                 "successAt": "2023-12-15T12:03:40.000",
                 "confirmations": "10000",
                 "txIndex": "",
+                "batchReleaseLimit":null,
                 "blockHash": "",
             }
         ],
