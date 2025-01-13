@@ -90,9 +90,7 @@ to_pretty_json(result.result)
     ],
     "ts":"2025-01-13T11:35:23.236999936"
   },
-  "retExtInfo":{
-    
-  },
+  "retExtInfo":{},
   "time":"2025-01-13T11:35:23.382000128"
 }
 ```
