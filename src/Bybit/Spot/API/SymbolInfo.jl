@@ -1,7 +1,7 @@
 module SymbolInfo
 
 export SymbolInfoQuery,
-    SymbolsInfo,
+    SymbolInfoData,
     symbol_info
 
 using Serde
@@ -47,7 +47,7 @@ struct RiskParameters <: BybitData
   marketParameter::Float64
 end
 
-struct SymbolsInfo <: BybitData
+struct SymbolInfoData <: BybitData
   symbol::String
   baseCoin::String
   quoteCoin::String
@@ -65,6 +65,17 @@ end
 Query for the instrument specification of online trading pairs.
 
 [`GET /v5/market/instruments-info`](https://bybit-exchange.github.io/docs/v5/market/instrument)
+
+## Parameters:
+
+| Parameter | Type     | Required | Description                |
+|:----------|:---------|:---------|:-------------------------- |
+| category  | Category | true     | SPOT LINEAR INVERSE OPTION |
+| symbol    | String   | true     |                            |
+| status    | String   | true     |                            |
+| baseCoin  | String   | true     |                            |
+| limit     | Int64    | false    |                            |
+| cursor    | String   | true     |                            |
 
 ## Code samples:
 
@@ -120,7 +131,7 @@ to_pretty_json(result.result)
 ```
 """
 function symbol_info(client::BybitClient, query::SymbolInfoQuery)
-    return APIsRequest{Data{List{SymbolsInfo}}}("GET", "/v5/market/instruments-info", query)(client)
+    return APIsRequest{Data{List{SymbolInfoData}}}("GET", "/v5/market/instruments-info", query)(client)
 end
 
 function symbol_info(client::BybitClient = Bybit.Spot.public_client; kw...)

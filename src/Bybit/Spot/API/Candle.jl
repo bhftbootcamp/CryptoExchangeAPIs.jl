@@ -63,14 +63,14 @@ end
 
 ## Parameters:
 
-| Parameter | Type         | Required | Description                                     |
-|:----------|:-------------|:---------|:------------------------------------------------|
-| category  | Category     | true     | SPOT LINEAR INVERSE                             |
-| symbol    | String       | true     |                                                 |
-| interval  | TimeInterval | true     | m1 m3 m5 m15 m30 h1 h2 h4 h6 h8 h12 d1 d3 w1 M1 |
-| endTime   | DateTime     | false    |                                                 |
-| limit     | Int64        | false    |                                                 |
-| startTime | DateTime     | false    |                                                 |
+| Parameter | Type         | Required | Description                               |
+|:----------|:-------------|:---------|:------------------------------------------|
+| category  | Category     | true     | SPOT LINEAR INVERSE                       |
+| symbol    | String       | true     |                                           |
+| interval  | TimeInterval | true     | m1 m3 m5 m15 m30 h1 h2 h4 h6 h12 d1 w1 M1 |
+| endTime   | DateTime     | false    |                                           |
+| limit     | Int64        | false    |                                           |
+| startTime | DateTime     | false    |                                           |
 
 ## Code samples:
 
