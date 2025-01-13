@@ -37,6 +37,8 @@ struct DepositData <: BybitData
     toAddress::Maybe{String}
     txID::Maybe{String}
     txIndex::Maybe{Int64}
+    batchReleaseLimit::Maybe{String}
+    depositType::Maybe{Int64}
 end
 
 function Serde.isempty(::Type{<:DepositData}, x)::Bool
@@ -49,7 +51,7 @@ end
 
 Query Deposit Records.
 
-[`GET asset/v3/private/deposit/record/query`](https://bybit-exchange.github.io/docs/account-asset/deposit-record)
+[`GET /v5/asset/deposit/query-record`](https://bybit-exchange.github.io/docs/v5/asset/deposit/deposit-record)
 
 ## Parameters:
 
@@ -102,6 +104,7 @@ to_pretty_json(result.result)
                 "successAt": "2024-02-27T14:22:12.000",
                 "confirmations": "10000",
                 "txIndex": "",
+                "batchReleaseLimit":null,
                 "blockHash": "",
             },
             {
@@ -116,6 +119,7 @@ to_pretty_json(result.result)
                 "successAt": "2023-12-15T12:03:40.000",
                 "confirmations": "10000",
                 "txIndex": "",
+                "batchReleaseLimit":null,
                 "blockHash": "",
             }
         ],
@@ -127,7 +131,7 @@ to_pretty_json(result.result)
 ```
 """
 function deposit(client::BybitClient, query::DepositQuery)
-    return APIsRequest{Data{Rows{DepositData}}}("GET", "asset/v3/private/deposit/record/query", query)(client)
+    return APIsRequest{Data{Rows{DepositData}}}("GET", "/v5/asset/deposit/query-record", query)(client)
 end
 
 function deposit(client::BybitClient; kw...)
