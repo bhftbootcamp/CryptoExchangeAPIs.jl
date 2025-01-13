@@ -1,7 +1,7 @@
 module SymbolInfo
 
 export SymbolInfoQuery,
-    SymbolInfoData,
+    SymbolsInfo,
     symbol_info
 
 using Serde
@@ -11,34 +11,60 @@ using CryptoExchangeAPIs.Bybit
 using CryptoExchangeAPIs.Bybit: Data, List, Rows
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
+@enum Category OPTION SPOT LINEAR INVERSE
+
 Base.@kwdef struct SymbolInfoQuery <: BybitPublicQuery
-    #__ empty
+    category::Category
+    symbol::Maybe{String} = nothing
+    status::Maybe{String} = nothing
+    baseCoin::Maybe{String} = nothing
+    limit::Maybe{Int64} = nothing
+    cursor::Maybe{String} = nothing
 end
 
-struct SymbolInfoData <: BybitData
-    alias::String
-    baseCoin::String
-    basePrecision::Float64
-    category::Int64
-    innovation::Int64
-    maxTradeAmt::Float64
-    maxTradeQty::Float64
-    minPricePrecision::Float64
-    minTradeAmt::Float64
-    minTradeQty::Float64
-    name::String
-    quoteCoin::String
-    quotePrecision::Float64
-    showStatus::Int64
+function Serde.ser_type(::Type{<:SymbolInfoQuery}, x::Category)::String
+  x == OPTION  && return "option"
+  x == SPOT    && return "spot"
+  x == LINEAR  && return "linear"
+  x == INVERSE && return "inverse"
+end
+
+struct LotSizeFilter <: BybitData
+  basePrecision::Float64
+  quotePrecision::Float64
+  minOrderQty::Float64
+  maxOrderQty::Float64
+  minOrderAmt::Float64
+  maxOrderAmt::Float64
+end
+
+struct PriceFilter <: BybitData
+  tickSize::Float64
+end
+
+struct RiskParameters <: BybitData
+  limitParameter::Float64
+  marketParameter::Float64
+end
+
+struct SymbolsInfo <: BybitData
+  symbol::String
+  baseCoin::String
+  quoteCoin::String
+  innovation::Int64
+  status::String
+  lotSizeFilter::LotSizeFilter
+  priceFilter::PriceFilter
+  riskParameters::RiskParameters
 end
 
 """
     symbol_info(client::BybitClient, query::SymbolInfoQuery)
     symbol_info(client::BybitClient = Bybit.Spot.public_client; kw...)
 
-Get the specification of symbol information.
+Query for the instrument specification of online trading pairs.
 
-[`GET /spot/v3/public/symbols`](https://bybit-exchange.github.io/docs/spot/public/instrument#http-request)
+[`GET /v5/market/instruments-info`](https://bybit-exchange.github.io/docs/v5/market/instrument)
 
 ## Code samples:
 
@@ -46,7 +72,10 @@ Get the specification of symbol information.
 using Serde
 using CryptoExchangeAPIs.Bybit
 
-result = Bybit.Spot.symbol_info()
+result = Bybit.Spot.symbol_info(;
+    category = Bybit.Spot.SymbolInfo.SPOT,
+    symbol = "BTCUSDT",
+)
 
 to_pretty_json(result.result)
 ```
@@ -59,34 +88,39 @@ to_pretty_json(result.result)
   "retMsg":"OK",
   "result":{
     "list":[
-        {
-          "alias":"BTCUSDT",
-          "baseCoin":"BTC",
+      {
+        "symbol":"BTCUSDT",
+        "baseCoin":"BTC",
+        "quoteCoin":"USDT",
+        "innovation":0,
+        "status":"Trading",
+        "lotSizeFilter":{
           "basePrecision":1.0e-6,
-          "category":1,
-          "innovation":0,
-          "maxTradeAmt":2.0e6,
-          "maxTradeQty":71.73956243,
-          "minPricePrecision":0.01,
-          "minTradeAmt":1.0,
-          "minTradeQty":4.8e-5,
-          "name":"BTCUSDT",
-          "quoteCoin":"USDT",
           "quotePrecision":1.0e-8,
-          "showStatus":1
+          "minOrderQty":4.8e-5,
+          "maxOrderQty":83.0,
+          "minOrderAmt":1.0,
+          "maxOrderAmt":8.0e6
         },
-      ...
+        "priceFilter":{
+          "tickSize":0.01
+        },
+        "riskParameters":{
+          "limitParameter":0.02,
+          "marketParameter":0.02
+        }
+      }
     ],
     "nextPageCursor":null,
-    "category":null
+    "category":"spot"
   },
   "retExtInfo":{},
-  "time":"2024-03-25T18:58:15.868999936"
+  "time":"2025-01-13T12:00:59.132"
 }
 ```
 """
 function symbol_info(client::BybitClient, query::SymbolInfoQuery)
-    return APIsRequest{Data{List{SymbolInfoData}}}("GET", "/spot/v3/public/symbols", query)(client)
+    return APIsRequest{Data{List{SymbolsInfo}}}("GET", "/v5/market/instruments-info", query)(client)
 end
 
 function symbol_info(client::BybitClient = Bybit.Spot.public_client; kw...)

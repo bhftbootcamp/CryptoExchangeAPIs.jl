@@ -11,34 +11,52 @@ using CryptoExchangeAPIs.Bybit
 using CryptoExchangeAPIs.Bybit: Data, List, Rows
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
+@enum Category OPTION SPOT LINEAR INVERSE
+
 Base.@kwdef struct TickerQuery <: BybitPublicQuery
+    category::Category
     symbol::Maybe{String} = nothing
+    baseCoin::Maybe{String} = nothing
+    expDate::Maybe{String} = nothing
 end
 
+function Serde.ser_type(::Type{<:TickerQuery}, x::Category)::String
+    x == OPTION  && return "option"
+    x == SPOT    && return "spot"
+    x == LINEAR  && return "linear"
+    x == INVERSE && return "inverse"
+  end
+
 struct TickerData <: BybitData
-    s::String
-    ap::Float64
-    bp::Float64
-    h::Float64
-    l::Float64
-    lp::Float64
-    o::Float64
-    qv::Float64
-    t::NanoDate
-    v::Float64
+    symbol::String
+    bid1Price::Maybe{Float64}
+    bid1Size::Maybe{Float64}
+    ask1Price::Maybe{Float64}
+    ask1Size::Maybe{Float64}
+    lastPrice::Float64
+    prevPrice24h::Float64
+    pice24hPcnt::Maybe{Float64}
+    highPrice24h::Float64
+    lowPrice24h::Float64
+    turnover24h::Float64
+    volume24h::Float64
+    usdIndexPrice::Maybe{Float64}
 end
 
 """
     ticker(client::BybitClient, query::TickerQuery)
     ticker(client::BybitClient = Bybit.Spot.public_client; kw...)
 
-[`GET /spot/v3/public/quote/ticker/24hr`](https://bybit-exchange.github.io/docs/spot/public/tickers#http-request)
+[`GET /v5/market/tickers`](https://bybit-exchange.github.io/docs/v5/market/tickers)
 
 ## Parameters:
 
-| Parameter | Type     | Required | Description |
-|:----------|:---------|:---------|:------------|
-| symbol    | String   | false    |             |
+| Parameter | Type     | Required | Description                |
+|:----------|:---------|:---------|:-------------------------- |
+| category  | Category | true     | SPOT LINEAR INVERSE OPTION |
+| symbol    | String   | false    |                            |
+| baseCoin  | String   | false    |                            |
+| expDate   | String   | false    |                            |
 
 ## Code samples:
 
@@ -47,7 +65,8 @@ using Serde
 using CryptoExchangeAPIs.Bybit
 
 result = Bybit.Spot.ticker(;
-    symbol = "ADAUSDT"
+    category = Bybit.Spot.Ticker.SPOT,
+    symbol = "BTCUSDT",
 )
 
 to_pretty_json(result.result)
@@ -60,28 +79,33 @@ to_pretty_json(result.result)
   "retCode":0,
   "retMsg":"OK",
   "result":{
-    "s":"ADAUSDT",
-    "ap":0.6636,
-    "bp":0.6634,
-    "h":0.6687,
-    "l":0.6315,
-    "lp":0.6633,
-    "o":0.6337,
-    "qv":1.1594252877069e7,
-    "t":"2024-03-25T19:05:35.491000064",
-    "v":1.780835204e7
+    "list":[
+      {
+        "symbol":"BTCUSDT",
+        "bid1Price":90977.73,
+        "bid1Size":0.033508,
+        "ask1Price":90977.74,
+        "ask1Size":0.124391,
+        "lastPrice":90976.95,
+        "prevPrice24h":94379.41,
+        "pice24hPcnt":null,
+        "highPrice24h":95950.05,
+        "lowPrice24h":90547.11,
+        "turnover24h":2.838946290225581e9,
+        "volume24h":30219.056193,
+        "usdIndexPrice":90893.782055
+      }
+    ],
+    "nextPageCursor":null,
+    "category":"spot"
   },
   "retExtInfo":{},
-  "time":"2024-03-25T19:05:38.912999936"
+  "time":"2025-01-13T12:14:58.473999872"
 }
 ```
 """
 function ticker(client::BybitClient, query::TickerQuery)
-    return if isnothing(query.symbol)
-        APIsRequest{Data{List{TickerData}}}("GET", "spot/v3/public/quote/ticker/24hr", query)(client)
-    else
-        APIsRequest{Data{TickerData}}("GET", "spot/v3/public/quote/ticker/24hr", query)(client)
-    end
+    return APIsRequest{Data{List{TickerData}}}("GET", "/v5/market/tickers", query)(client)
 end
 
 function ticker(client::BybitClient = Bybit.Spot.public_client; kw...)

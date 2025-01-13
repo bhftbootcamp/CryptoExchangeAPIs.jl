@@ -30,12 +30,13 @@ struct Chain <: BybitData
     minAccuracy::Int64
     withdrawFee::Maybe{Float64}
     withdrawMin::Maybe{Float64}
+    withdrawPercentageFee::Maybe{Float64}
 end
 
 struct CoinInfoData <: BybitData
     chains::Vector{Chain}
     coin::String
-    name::String
+    name::Maybe{String}
     remainAmount::Maybe{Int64}
 end
 
@@ -53,7 +54,7 @@ end
 
 Query Coin Information.
 
-[`GET asset/v3/private/coin-info/query`](https://bybit-exchange.github.io/docs/account-asset/coin-info#http-request)
+[`GET /v5/asset/coin/query-info`](https://bybit-exchange.github.io/docs/v5/asset/coin-info#http-request)
 
 ## Parameters:
 
@@ -118,7 +119,7 @@ to_pretty_json(result.result)
 ```
 """
 function coin_info(client::BybitClient, query::CoinInfoQuery)
-    return APIsRequest{Data{Rows{CoinInfoData}}}("GET", "asset/v3/private/coin-info/query", query)(client)
+    return APIsRequest{Data{Rows{CoinInfoData}}}("GET", "/v5/asset/coin/query-info", query)(client)
 end
 
 function coin_info(client::BybitClient; kw...)
