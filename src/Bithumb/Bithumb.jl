@@ -10,6 +10,7 @@ export BithumbCommonQuery,
 
 using Serde
 using Dates, NanoDates, TimeZones, Base64, Nettle
+using UUIDs, JSONWebTokens
 
 using ..CryptoExchangeAPIs
 import ..CryptoExchangeAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
@@ -93,13 +94,25 @@ function CryptoExchangeAPIs.request_sign!(::BithumbClient, query::Q, ::String)::
 end
 
 function CryptoExchangeAPIs.request_sign!(client::BithumbClient, query::Q, endpoint::String)::Q where {Q<:BithumbPrivateQuery}
-    query.nonce = Dates.now(UTC)
-    query.endpoint = Serde.SerQuery.escape_query("/" * endpoint)
+    
     query.signature = nothing
-    body = Serde.to_query(query)
-    salt = string("/", endpoint, Char(0), body, Char(0), round(Int64, 1000 * datetime2unix(query.nonce)))
-    query.signature = Base64.base64encode(hexdigest("sha512", client.secret_key, salt))
-    return query
+    body = Dict{String,Any}(
+        "access_key" => client.public_key,
+        "nonce" => string(UUIDs.uuid4()),
+        "timestamp" => string(time2unix(now(UTC))),
+    )
+    if !isempty(Serde.to_query(query))
+        qstr = Serde.to_query(query)
+        merge!(body, Dict{String,Any}(
+            "query_hash" => hexdigest("sha512", qstr),
+            "query_hash_alg" => "SHA512",
+        ))
+    end
+    hs512 = JSONWebTokens.HS512(client.secret_key)
+    token = JSONWebTokens.encode(hs512, body)
+    query.signature = "Bearer $token"
+    return nothing
+
 end
 
 function CryptoExchangeAPIs.request_sign!(::BithumbClient, query::Q, ::String)::Q where {Q<:BithumbAccessQuery}
@@ -122,9 +135,7 @@ end
 
 function CryptoExchangeAPIs.request_headers(client::BithumbClient, query::BithumbPrivateQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
-        "Api-Key"   => client.public_key,
-        "Api-Sign"  => query.signature,
-        "Api-Nonce" => string(round(Int64, 1000 * datetime2unix(query.nonce))),
+       "Authorization" => query.signature,
     ]
 end
 

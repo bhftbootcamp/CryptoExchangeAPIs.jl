@@ -26,4 +26,7 @@ using .Ticker
 include("API/UserTransactions.jl")
 using .UserTransactions
 
+include("API/WithdrawInfo.jl")
+using .UserTransactions
+
 end
