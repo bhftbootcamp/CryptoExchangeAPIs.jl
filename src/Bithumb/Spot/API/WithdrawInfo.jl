@@ -1,16 +1,12 @@
 module WithdrawInfo
 
-export WithdrawInfoQuery, 
-MemberLevel,
-    Currency,
-    Account,
-    WithdrawLimit,
-    WithdrawInfo,
-     withdraw_info
-
-using CryptoExchangeAPIs.Bithumb: BithumbPrivateQuery, BithumbData, Data
+using CryptoExchangeAPIs.Bithumb
+using CryptoExchangeAPIs.Bithumb: Data
 using CryptoExchangeAPIs: Maybe, APIsRequest
-using Dates, NanoDates, TimeZones
+
+export WithdrawInfoQuery,
+ WithdrawInfoData,
+ withdraw_info
 
 Base.@kwdef mutable struct WithdrawInfoQuery <: BithumbPrivateQuery
     currency::String
@@ -18,7 +14,7 @@ Base.@kwdef mutable struct WithdrawInfoQuery <: BithumbPrivateQuery
     signature::Maybe{String} = nothing
 end
 
-struct MemberLevel
+struct MemberLevel <: BithumbData
     security_level::Maybe{Int64}
     fee_level::Maybe{Int64}
     email_verified::Maybe{Bool}
@@ -29,7 +25,7 @@ struct MemberLevel
     wallet_locked::Maybe{Bool}
 end
 
-struct Currency
+struct Currency <: BithumbData
     code::String
     withdraw_fee::Float64
     is_coin::Bool
@@ -37,7 +33,7 @@ struct Currency
     wallet_support::Vector{String}
 end
 
-struct Account
+struct Account <: BithumbData
     currency::String
     balance::Float64
     locked::Float64
@@ -46,7 +42,7 @@ struct Account
     unit_currency::String
 end
 
-struct WithdrawLimit
+struct WithdrawLimit <: BithumbData
     currency::String
     minimum::Float64
     onetime::Float64
@@ -57,15 +53,12 @@ struct WithdrawLimit
     remaining_daily_krw::Maybe{Float64}
 end
 
-struct WithdrawInfo <: BithumbData
+struct WithdrawInfoData <: BithumbData
     member_level::MemberLevel
     currency::Currency
     account::Account
     withdraw_limit::WithdrawLimit
 end
-
-end
-
 """
     withdraw_info(client::BithumbClient, query::WithdrawInfoQuery)
     withdraw_info(client::BithumbClient; kw...)
@@ -146,3 +139,14 @@ to_pretty_json(result.result)
 }
 ```
 """
+function withdraw_info(client::BithumbClient, query::WithdrawInfoQuery)
+  CryptoExchangeAPIs.request_sign!(client, query, "v1/withdraws/chance")
+  
+  return APIsRequest{Data{WithdrawInfoData}}("GET", "v1/withdraws/chance", query)(client)
+  end
+  
+  function withdraw_info(client::BithumbClient; kw...)
+  return withdraw_info(client, WithdrawInfoQuery(; kw...))
+  end
+  
+  end
