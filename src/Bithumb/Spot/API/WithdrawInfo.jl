@@ -64,6 +64,8 @@ struct WithdrawInfo <: BithumbData
     withdraw_limit::WithdrawLimit
 end
 
+end
+
 """
     withdraw_info(client::BithumbClient, query::WithdrawInfoQuery)
     withdraw_info(client::BithumbClient; kw...)
