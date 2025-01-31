@@ -1,4 +1,7 @@
 module WithdrawInfo
+using CryptoExchangeAPIs.Bithumb: BithumbPrivateQuery, BithumbData, Data
+using CryptoExchangeAPIs: Maybe, APIsRequest
+using Dates, NanoDates, TimeZones
 
 Base.@kwdef mutable struct WithdrawInfoQuery <: BithumbPrivateQuery
     currency::String
@@ -58,6 +61,7 @@ Check the possible withdrawal information of the currency.
 https://apidocs.bithumb.com/reference/%EC%B6%9C%EA%B8%88-%EA%B0%80%EB%8A%A5-%EC%A0%95%EB%B3%B4
 """
 function withdraw_info(client::BithumbClient, query::WithdrawInfoQuery)
+    # Подписание запроса
     CryptoExchangeAPIs.request_sign!(client, query, "v1/withdraws/chance")
     
     return APIsRequest{Data{WithdrawInfo}}("GET", "v1/withdraws/chance", query)(client)
@@ -67,4 +71,4 @@ function withdraw_info(client::BithumbClient; kw...)
     return withdraw_info(client, WithdrawInfoQuery(; kw...))
 end
 
-end 
+end  # module WithdrawInfo
