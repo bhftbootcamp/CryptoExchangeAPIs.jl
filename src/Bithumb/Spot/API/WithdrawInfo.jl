@@ -1,20 +1,16 @@
 module WithdrawInfo
 
+export WithdrawInfoQuery, 
+MemberLevel,
+    Currency,
+    Account,
+    WithdrawLimit,
+    WithdrawInfo,
+     withdraw_info
+
 using CryptoExchangeAPIs.Bithumb: BithumbPrivateQuery, BithumbData, Data
 using CryptoExchangeAPIs: Maybe, APIsRequest
 using Dates, NanoDates, TimeZones
-
-export WithdrawInfoQuery,
-MemberLevel,
-Currency,
-Account,
-WithdrawLimit,
-WithdrawInfo,
-withdraw_info
-
-function Serde.SerQuery.ser_type(::Type{<:BithumbPrivateQuery}, x::SearchStatus)::Int64
-    return Int64(x)
-end
 
 Base.@kwdef mutable struct WithdrawInfoQuery <: BithumbPrivateQuery
     currency::String
@@ -68,14 +64,83 @@ struct WithdrawInfo <: BithumbData
     withdraw_limit::WithdrawLimit
 end
 
-function withdraw_info(client::BithumbClient, query::WithdrawInfoQuery)
-    CryptoExchangeAPIs.request_sign!(client, query, "v1/withdraws/chance")
-    
-    return APIsRequest{Data{WithdrawInfo}}("GET", "v1/withdraws/chance", query)(client)
-end
+"""
+    withdraw_info(client::BithumbClient, query::WithdrawInfoQuery)
+    withdraw_info(client::BithumbClient; kw...)
+Retrieves detailed information about the withdrawal capabilities for a specific currency on the Bithumb exchange.
+[`GET /v1/withdraws/chance`](https://apidocs.bithumb.com/reference/%EC%B6%9C%EA%B8%88-%EA%B0%80%EB%8A%A5-%EC%A0%95%EB%B3%B4)
 
-function withdraw_info(client::BithumbClient; kw...)
-    return withdraw_info(client, WithdrawInfoQuery(; kw...))
-end
+## Description:
+The `withdraw_info` function provides comprehensive details about the user's ability to withdraw a specific currency. 
+This includes information about the user's verification status, currency-specific details, account balances, and withdrawal limits.
 
-end 
+## Parameters:
+| Parameter   | Type      | Required | Description                          |
+|-------------|-----------|----------|--------------------------------------|
+| currency    | String    | Yes      | The currency code (e.g., "BTC").     |
+| net_type    | String    | Yes      | The network type (e.g., "BTC").      |
+
+## Code samples:
+```julia
+using Serde
+using CryptoExchangeAPIs.Bithumb
+
+# Ensure that the environment variables BITHUMB_PUBLIC_KEY and BITHUMB_SECRET_KEY are set.
+bithumb_client = Bithumb.Client(;
+    base_url = "https://api.bithumb.com",
+    public_key = ENV["BITHUMB_PUBLIC_KEY"],
+    secret_key = ENV["BITHUMB_SECRET_KEY"],
+)
+result = WithdrawInfo.withdraw_info(
+    bithumb_client;
+    currency = "BTC",
+    net_type = "BTC",
+)
+to_pretty_json(result.result)
+```
+## Result:
+
+```json
+{
+  "status": "0000",
+  "date": null,
+  "data": {
+    "member_level": {
+      "security_level": 3,
+      "fee_level": 1,
+      "email_verified": true,
+      "identity_auth_verified": true,
+      "bank_account_verified": true,
+      "two_factor_auth_verified": true,
+      "locked": false,
+      "wallet_locked": false
+    },
+    "currency": {
+      "code": "BTC",
+      "withdraw_fee": 0.0005,
+      "is_coin": true,
+      "wallet_state": "working",
+      "wallet_support": ["KRW", "BTC"]
+    },
+    "account": {
+      "currency": "BTC",
+      "balance": 1.0,
+      "locked": 0.0,
+      "avg_buy_price": 10000.0,
+      "avg_buy_price_modified": false,
+      "unit_currency": "KRW"
+    },
+    "withdraw_limit": {
+      "currency": "BTC",
+      "minimum": 0.001,
+      "onetime": 2.0,
+      "daily": 5.0,
+      "remaining_daily": 5.0,
+      "fixed": 0,
+      "can_withdraw": true,
+      "remaining_daily_krw": null
+    }
+  }
+}
+```
+"""
