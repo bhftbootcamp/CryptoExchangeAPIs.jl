@@ -1,4 +1,5 @@
 module WithdrawInfo
+
 using CryptoExchangeAPIs.Bithumb: BithumbPrivateQuery, BithumbData, Data
 using CryptoExchangeAPIs: Maybe, APIsRequest
 using Dates, NanoDates, TimeZones
