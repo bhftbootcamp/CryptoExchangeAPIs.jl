@@ -4,6 +4,18 @@ using CryptoExchangeAPIs.Bithumb: BithumbPrivateQuery, BithumbData, Data
 using CryptoExchangeAPIs: Maybe, APIsRequest
 using Dates, NanoDates, TimeZones
 
+export WithdrawInfoQuery,
+MemberLevel,
+Currency,
+Account,
+WithdrawLimit,
+WithdrawInfo,
+withdraw_info
+
+function Serde.SerQuery.ser_type(::Type{<:BithumbPrivateQuery}, x::SearchStatus)::Int64
+    return Int64(x)
+end
+
 Base.@kwdef mutable struct WithdrawInfoQuery <: BithumbPrivateQuery
     currency::String
     net_type::String
@@ -56,11 +68,6 @@ struct WithdrawInfo <: BithumbData
     withdraw_limit::WithdrawLimit
 end
 
-"""
-    withdraw_info(client::BithumbClient, query::WithdrawInfoQuery)
-Check the possible withdrawal information of the currency.
-https://apidocs.bithumb.com/reference/%EC%B6%9C%EA%B8%88-%EA%B0%80%EB%8A%A5-%EC%A0%95%EB%B3%B4
-"""
 function withdraw_info(client::BithumbClient, query::WithdrawInfoQuery)
     CryptoExchangeAPIs.request_sign!(client, query, "v1/withdraws/chance")
     
