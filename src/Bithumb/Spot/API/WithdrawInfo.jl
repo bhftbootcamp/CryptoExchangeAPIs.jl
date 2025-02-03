@@ -95,6 +95,7 @@ result = WithdrawInfo.withdraw_info(
 )
 to_pretty_json(result.result)
 ```
+
 ## Result:
 
 ```json
