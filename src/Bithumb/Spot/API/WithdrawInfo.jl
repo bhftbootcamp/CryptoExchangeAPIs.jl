@@ -67,6 +67,7 @@ end
 """
     withdraw_info(client::BithumbClient, query::WithdrawInfoQuery)
     withdraw_info(client::BithumbClient; kw...)
+
 Retrieves detailed information about the withdrawal capabilities for a specific currency on the Bithumb exchange.
 
 [`GET /v1/withdraws/chance`](https://apidocs.bithumb.com/reference/%EC%B6%9C%EA%B8%88-%EA%B0%80%EB%8A%A5-%EC%A0%95%EB%B3%B4)
