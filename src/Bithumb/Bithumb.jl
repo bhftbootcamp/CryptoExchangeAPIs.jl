@@ -94,7 +94,6 @@ function CryptoExchangeAPIs.request_sign!(::BithumbClient, query::Q, ::String)::
 end
 
 function CryptoExchangeAPIs.request_sign!(client::BithumbClient, query::Q, endpoint::String)::Q where {Q<:BithumbPrivateQuery}
-    
     query.signature = nothing
     body = Dict{String,Any}(
         "access_key" => client.public_key,
@@ -111,8 +110,7 @@ function CryptoExchangeAPIs.request_sign!(client::BithumbClient, query::Q, endpo
     hs512 = JSONWebTokens.HS512(client.secret_key)
     token = JSONWebTokens.encode(hs512, body)
     query.signature = "Bearer $token"
-    return nothing
-
+    return query
 end
 
 function CryptoExchangeAPIs.request_sign!(::BithumbClient, query::Q, ::String)::Q where {Q<:BithumbAccessQuery}

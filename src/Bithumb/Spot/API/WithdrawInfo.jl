@@ -11,11 +11,10 @@ using CryptoExchangeAPIs.Bithumb
 using CryptoExchangeAPIs.Bithumb: Data
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-
-
 Base.@kwdef mutable struct WithdrawInfoQuery <: BithumbPrivateQuery
     currency::String
     net_type::String
+
     signature::Maybe{String} = nothing
 end
 
@@ -64,6 +63,7 @@ struct WithdrawInfoData <: BithumbData
     account::Account
     withdraw_limit::WithdrawLimit
 end
+
 """
     withdraw_info(client::BithumbClient, query::WithdrawInfoQuery)
     withdraw_info(client::BithumbClient; kw...)
@@ -71,22 +71,18 @@ Retrieves detailed information about the withdrawal capabilities for a specific 
 
 [`GET /v1/withdraws/chance`](https://apidocs.bithumb.com/reference/%EC%B6%9C%EA%B8%88-%EA%B0%80%EB%8A%A5-%EC%A0%95%EB%B3%B4)
 
-## Description:
-The `withdraw_info` function provides comprehensive details about the user's ability to withdraw a specific currency. 
-This includes information about the user's verification status, currency-specific details, account balances, and withdrawal limits.
 
 ## Parameters:
 | Parameter   | Type      | Required | Description                          |
 |-------------|-----------|----------|--------------------------------------|
-| currency    | String    | Yes      | The currency code (e.g., "BTC").     |
-| net_type    | String    | Yes      | The network type (e.g., "BTC").      |
+| currency    | String    | true     | The currency code (e.g., "BTC").     |
+| net_type    | String    | true     | The network type (e.g., "BTC").      |
 
 ## Code samples:
 ```julia
 using Serde
 using CryptoExchangeAPIs.Bithumb
 
-# Ensure that the environment variables BITHUMB_PUBLIC_KEY and BITHUMB_SECRET_KEY are set.
 bithumb_client = Bithumb.Client(;
     base_url = "https://api.bithumb.com",
     public_key = ENV["BITHUMB_PUBLIC_KEY"],
@@ -103,53 +99,52 @@ to_pretty_json(result.result)
 
 ```json
 {
-  "status": "0000",
-  "date": null,
-  "data": 
-    {
-      "member_level": {
-      "security_level": 3,
-      "fee_level": 1,
-      "email_verified": true,
-      "identity_auth_verified": true,
-      "bank_account_verified": true,
-      "two_factor_auth_verified": true,
-      "locked": false,
-      "wallet_locked": false
+  "status":"0000",
+  "date":null,
+  "data":{
+    "member_level":{
+      "security_level":3,
+      "fee_level":1,
+      "email_verified":true,
+      "identity_auth_verified":true,
+      "bank_account_verified":true,
+      "two_factor_auth_verified":true,
+      "locked":false,
+      "wallet_locked":false
     },
-    "currency": 
-    {
-      "code": "BTC",
-      "withdraw_fee": 0.0005,
-      "is_coin": true,
-      "wallet_state": "working",
-      "wallet_support": ["KRW", "BTC"]
+    "currency":{
+      "code":"BTC",
+      "withdraw_fee":0.0005,
+      "is_coin":true,
+      "wallet_state":"working",
+      "wallet_support":[
+        "KRW",
+        "BTC"
+      ]
     },
-    "account": 
-    {
-      "currency": "BTC",
-      "balance": 1.0,
-      "locked": 0.0,
-      "avg_buy_price": 10000.0,
-      "avg_buy_price_modified": false,
-      "unit_currency": "KRW"
+    "account":{
+      "currency":"BTC",
+      "balance":1.0,
+      "locked":0.0,
+      "avg_buy_price":10000.0,
+      "avg_buy_price_modified":false,
+      "unit_currency":"KRW"
     },
-      "withdraw_limit": {
-      "currency": "BTC",
-      "minimum": 0.001,
-      "onetime": 2.0,
-      "daily": 5.0,
-      "remaining_daily": 5.0,
-      "fixed": 0,
-      "can_withdraw": true,
-      "remaining_daily_krw": null
+    "withdraw_limit":{
+      "currency":"BTC",
+      "minimum":0.001,
+      "onetime":2.0,
+      "daily":5.0,
+      "remaining_daily":5.0,
+      "fixed":0,
+      "can_withdraw":true,
+      "remaining_daily_krw":null
     }
   }
 }
 ```
 """
 function withdraw_info(client::BithumbClient, query::WithdrawInfoQuery)
-    CryptoExchangeAPIs.request_sign!(client, query, "v1/withdraws/chance")
     return APIsRequest{Data{WithdrawInfoData}}("GET", "v1/withdraws/chance", query)(client)
 end
   
