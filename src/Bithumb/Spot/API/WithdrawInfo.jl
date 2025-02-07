@@ -101,57 +101,56 @@ to_pretty_json(result.result)
 
 ```json
 {
-  "status":"0000",
-  "date":null,
-  "data":{
-    "member_level":{
-      "security_level":3,
-      "fee_level":1,
-      "email_verified":true,
-      "identity_auth_verified":true,
-      "bank_account_verified":true,
-      "two_factor_auth_verified":true,
-      "locked":false,
-      "wallet_locked":false
-    },
-    "currency":{
-      "code":"BTC",
-      "withdraw_fee":0.0005,
-      "is_coin":true,
-      "wallet_state":"working",
-      "wallet_support":[
-        "KRW",
-        "BTC"
-      ]
-    },
-    "account":{
-      "currency":"BTC",
-      "balance":1.0,
-      "locked":0.0,
-      "avg_buy_price":10000.0,
-      "avg_buy_price_modified":false,
-      "unit_currency":"KRW"
-    },
-    "withdraw_limit":{
-      "currency":"BTC",
-      "minimum":0.001,
-      "onetime":2.0,
-      "daily":5.0,
-      "remaining_daily":5.0,
-      "fixed":0,
-      "can_withdraw":true,
-      "remaining_daily_krw":null
-    }
+  "member_level": {
+    "security_level": null,
+    "fee_level": null,
+    "email_verified": null,
+    "identity_auth_verified": null,
+    "bank_account_verified": null,
+    "two_factor_auth_verified": null,
+    "locked": null,
+    "wallet_locked": null
+  },
+  "currency": {
+    "code": "BTC",
+    "withdraw_fee": "0.000108",
+    "is_coin": true,
+    "wallet_state": "working",
+    "wallet_support": [
+      "deposit",
+      "withdraw"
+    ]
+  },
+  "account": {
+    "currency": "BTC",
+    "balance": "124.45282908",
+    "locked": "0",
+    "avg_buy_price": "36341011",
+    "avg_buy_price_modified": false,
+    "unit_currency": "KRW"
+  },
+  "withdraw_limit": {
+    "currency": "BTC",
+    "onetime": "6.01",
+    "daily": "160",
+    "remaining_daily": "160.00000000",
+    "remaining_daily_fiat": null,
+    "fiat_currency": null,
+    "minimum": "0.0001",
+    "fixed": 8,
+    "withdraw_delayed_fiat": null,
+    "can_withdraw": true,
+    "remaining_daily_krw": null
   }
 }
 ```
 """
 function withdraw_info(client::BithumbClient, query::WithdrawInfoQuery)
-    return APIsRequest{Data{WithdrawInfoData}}("GET", "v1/withdraws/chance", query)(client)
+  return APIsRequest{WithdrawInfoData}("GET", "v1/withdraws/chance", query)(client)
 end
-  
+
 function withdraw_info(client::BithumbClient; kw...)
-    return withdraw_info(client, WithdrawInfoQuery(; kw...))
+  return withdraw_info(client, WithdrawInfoQuery(; kw...))
 end
- 
+
 end
