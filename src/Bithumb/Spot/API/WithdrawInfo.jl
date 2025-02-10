@@ -87,13 +87,15 @@ using CryptoExchangeAPIs.Bithumb
 bithumb_client = Bithumb.Client(;
     base_url = "https://api.bithumb.com",
     public_key = ENV["BITHUMB_PUBLIC_KEY"],
-secret_key = ENV["BITHUMB_SECRET_KEY"],
-    )
+    secret_key = ENV["BITHUMB_SECRET_KEY"],
+)
+
 result = WithdrawInfo.withdraw_info(
     bithumb_client;
     currency = "BTC",
     net_type = "BTC",
 )
+
 to_pretty_json(result.result)
 ```
 
