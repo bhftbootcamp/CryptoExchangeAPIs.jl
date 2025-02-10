@@ -98,7 +98,7 @@ function CryptoExchangeAPIs.request_sign!(client::BithumbClient, query::Q, endpo
     body = Dict{String,Any}(
         "access_key" => client.public_key,
         "nonce" => string(UUIDs.uuid4()),
-        "timestamp" => string(datetime2unix(now(UTC))),
+        "timestamp" => string(round(Int64, 1000 * datetime2unix(now(UTC)))),
     )
     if !isempty(Serde.to_query(query))
         qstr = Serde.to_query(query)
