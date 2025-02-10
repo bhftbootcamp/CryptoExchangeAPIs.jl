@@ -87,8 +87,8 @@ using CryptoExchangeAPIs.Bithumb
 bithumb_client = Bithumb.Client(;
     base_url = "https://api.bithumb.com",
     public_key = ENV["BITHUMB_PUBLIC_KEY"],
-    secret_key = ENV["BITHUMB_SECRET_KEY"],
-)
+secret_key = ENV["BITHUMB_SECRET_KEY"],
+    )
 result = WithdrawInfo.withdraw_info(
     bithumb_client;
     currency = "BTC",
@@ -146,11 +146,11 @@ to_pretty_json(result.result)
 ```
 """
 function withdraw_info(client::BithumbClient, query::WithdrawInfoQuery)
-  return APIsRequest{WithdrawInfoData}("GET", "v1/withdraws/chance", query)(client)
+    return APIsRequest{WithdrawInfoData}("GET", "v1/withdraws/chance", query)(client)
 end
 
 function withdraw_info(client::BithumbClient; kw...)
-  return withdraw_info(client, WithdrawInfoQuery(; kw...))
+     return withdraw_info(client, WithdrawInfoQuery(; kw...))
 end
 
 end

@@ -18,7 +18,7 @@ include("API/Market.jl")
 using .Market
 
 include("API/OrderBook.jl")
-using .OrderBooktime2unix
+using .OrderBook
 
 include("API/Ticker.jl")
 using .Ticker
