@@ -101,7 +101,7 @@ to_pretty_json(result.result)
 
 ```json
 {
-    "member_level": {
+  "member_level": {
     "security_level": null,
     "fee_level": null,
     "email_verified": null,
@@ -110,7 +110,7 @@ to_pretty_json(result.result)
     "two_factor_auth_verified": null,
     "locked": null,
     "wallet_locked": null
-},
+  },
   "currency": {
     "code": "BTC",
     "withdraw_fee": "0.000108",
