@@ -90,7 +90,7 @@ bithumb_client = Bithumb.Client(;
     secret_key = ENV["BITHUMB_SECRET_KEY"],
 )
 
-result = WithdrawInfo.withdraw_info(
+result = Bithumb.Spot.withdraw_info(
     bithumb_client;
     currency = "BTC",
     net_type = "BTC",
