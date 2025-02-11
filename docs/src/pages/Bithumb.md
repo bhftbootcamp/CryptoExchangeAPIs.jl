@@ -19,4 +19,5 @@ CryptoExchangeAPIs.Bithumb.Spot.market
 CryptoExchangeAPIs.Bithumb.Spot.order_book
 CryptoExchangeAPIs.Bithumb.Spot.ticker
 CryptoExchangeAPIs.Bithumb.Spot.user_transactions
+CryptoExchangeAPIs.Bithumb.Spot.withdraw_info
 ```
