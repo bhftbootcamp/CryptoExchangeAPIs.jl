@@ -63,7 +63,6 @@ Provides information on member transaction completion details.
 
 [`POST /info/user_transactions`](https://apidocs.bithumb.com/reference/거래-체결내역-조회)
 
-
 ## Parameters:
 
 | Parameter        | Type         | Required | Description |
