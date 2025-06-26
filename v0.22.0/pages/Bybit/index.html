@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Bybit · CryptoAPIs.jl</title><meta name="title" content="Bybit · CryptoAPIs.jl"/><meta property="og:title" content="Bybit · CryptoAPIs.jl"/><meta property="twitter:title" content="Bybit · CryptoAPIs.jl"/><meta name="description" content="Documentation for CryptoAPIs.jl."/><meta property="og:description" content="Documentation for CryptoAPIs.jl."/><meta property="twitter:description" content="Documentation for CryptoAPIs.jl."/><meta property="og:url" content="https://bhftbootcamp.github.io/CryptoAPIs.jl/pages/Bybit/"/><meta property="twitter:url" content="https://bhftbootcamp.github.io/CryptoAPIs.jl/pages/Bybit/"/><link rel="canonical" href="https://bhftbootcamp.github.io/CryptoAPIs.jl/pages/Bybit/"/><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../search_index.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script><link href="../../assets/favicon.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../../">CryptoAPIs.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><a class="tocitem" href="../api_reference/">API Reference</a></li><li><a class="tocitem" href="../Binance/">Binance</a></li><li><a class="tocitem" href="../Bithumb/">Bithumb</a></li><li class="is-active"><a class="tocitem" href>Bybit</a><ul class="internal"><li><a class="tocitem" href="#Spot"><span>Spot</span></a></li></ul></li><li><a class="tocitem" href="../Coinbase/">Coinbase</a></li><li><a class="tocitem" href="../Cryptocom/">Cryptocom</a></li><li><a class="tocitem" href="../Gateio/">Gateio</a></li><li><a class="tocitem" href="../Huobi/">Huobi</a></li><li><a class="tocitem" href="../Kraken/">Kraken</a></li><li><a class="tocitem" href="../Kucoin/">Kucoin</a></li><li><a class="tocitem" href="../Okex/">Okex</a></li><li><a class="tocitem" href="../Poloniex/">Poloniex</a></li><li><a class="tocitem" href="../Upbit/">Upbit</a></li><li><span class="tocitem">For Developers</span><ul><li><a class="tocitem" href="../docs_miniguide/">Docs mini-guide</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Bybit</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Bybit</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/bhftbootcamp/CryptoAPIs.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/master/docs/src/pages/Bybit.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Bybit"><a class="docs-heading-anchor" href="#Bybit">Bybit</a><a id="Bybit-1"></a><a class="docs-heading-anchor-permalink" href="#Bybit" title="Permalink"></a></h1><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Bybit.BybitClient" href="#CryptoAPIs.Bybit.BybitClient"><code>CryptoAPIs.Bybit.BybitClient</code></a> — <span class="docstring-category">Type</span></header><section><div><pre><code class="language-julia hljs">BybitClient &lt;: AbstractAPIsClient</code></pre><p>Client info.</p><p><strong>Required fields</strong></p><ul><li><code>base_url::String</code>: Base URL for the client.</li></ul><p><strong>Optional fields</strong></p><ul><li><code>public_key::String</code>: Public key for authentication.</li><li><code>secret_key::String</code>: Secret key for authentication.</li><li><code>interface::String</code>: Interface for the client.</li><li><code>proxy::String</code>: Proxy information for the client.</li><li><code>account_name::String</code>: Account name associated with the client.</li><li><code>description::String</code>: Description of the client.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/96003bdd38415136468ccbe638ee9b99c197620d/src/Bybit/Bybit.jl#L71-L86">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Bybit.BybitAPIError" href="#CryptoAPIs.Bybit.BybitAPIError"><code>CryptoAPIs.Bybit.BybitAPIError</code></a> — <span class="docstring-category">Type</span></header><section><div><pre><code class="language-julia hljs">BybitAPIError{T} &lt;: AbstractAPIsError</code></pre><p>Exception thrown when an API method fails with code <code>T</code>.</p><p><strong>Required fields</strong></p><ul><li><code>retCode::Int64</code>: Error code.</li><li><code>retMsg::String</code>: Error message.</li><li><code>result::Dict{String,Any}</code>: Error result data.</li><li><code>retExtInfo::Dict{String,Any}</code>: Extended error information.</li><li><code>time::NanoDate</code>: Error timestamp (ms).</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/96003bdd38415136468ccbe638ee9b99c197620d/src/Bybit/Bybit.jl#L97-L108">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Bybit.List" href="#CryptoAPIs.Bybit.List"><code>CryptoAPIs.Bybit.List</code></a> — <span class="docstring-category">Type</span></header><section><div><pre><code class="language-julia hljs">List{D} &lt;: AbstractAPIsData</code></pre><p><strong>Required fields</strong></p><ul><li><code>list::Vector{D}</code>: Result values.</li></ul><p><strong>Optional fields</strong></p><ul><li><code>nextPageCursor::String</code>: Pagination cursor.</li><li><code>category::String</code>: Product type</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/96003bdd38415136468ccbe638ee9b99c197620d/src/Bybit/Bybit.jl#L23-L32">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Bybit.Rows" href="#CryptoAPIs.Bybit.Rows"><code>CryptoAPIs.Bybit.Rows</code></a> — <span class="docstring-category">Type</span></header><section><div><pre><code class="language-julia hljs">Rows{D} &lt;: AbstractAPIsData</code></pre><p><strong>Required fields</strong></p><ul><li><code>rows::Vector{D}</code>: Result values.</li></ul><p><strong>Optional fields</strong></p><ul><li><code>nextPageCursor::String</code>: Pagination cursor.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/96003bdd38415136468ccbe638ee9b99c197620d/src/Bybit/Bybit.jl#L39-L47">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Bybit.Data" href="#CryptoAPIs.Bybit.Data"><code>CryptoAPIs.Bybit.Data</code></a> — <span class="docstring-category">Type</span></header><section><div><pre><code class="language-julia hljs">Data{D} &lt;: AbstractAPIsData</code></pre><p><strong>Required fields</strong></p><ul><li><code>retCode::Int64</code>: Return code.</li><li><code>retMsg::String</code>: Return msg.</li><li><code>result::D</code>: Request result data.</li><li><code>retExtInfo::Dict{String,Any}</code>: Request extended information.</li><li><code>time::NanoDate</code>: Current timestamp (ms).</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/96003bdd38415136468ccbe638ee9b99c197620d/src/Bybit/Bybit.jl#L53-L62">source</a></section></article><h2 id="Spot"><a class="docs-heading-anchor" href="#Spot">Spot</a><a id="Spot-1"></a><a class="docs-heading-anchor-permalink" href="#Spot" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Bybit.Spot.public_client" href="#CryptoAPIs.Bybit.Spot.public_client"><code>CryptoAPIs.Bybit.Spot.public_client</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia hljs">public_client = BybitClient(; base_url = &quot;https://api.bybit.com&quot;)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/96003bdd38415136468ccbe638ee9b99c197620d/src/Bybit/Spot/Spot.jl#L5-L7">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Bybit.Spot.Candle.candle" href="#CryptoAPIs.Bybit.Spot.Candle.candle"><code>CryptoAPIs.Bybit.Spot.Candle.candle</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">candle(client::BybitClient, query::CandleQuery)
+candle(client::BybitClient = Bybit.Spot.public_client; kw...)</code></pre><p><a href="https://bybit-exchange.github.io/docs/spot/public/kline#http-request"><code>GET /spot/v3/public/quote/kline</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">interval</td><td style="text-align: left">TimeInterval</td><td style="text-align: left">true</td><td style="text-align: left">m1 m3 m5 m15 m30 h1 h2 h4 h6 h8 h12 d1 d3 w1 M1</td></tr><tr><td style="text-align: left">endTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">startTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoAPIs.Bybit
+
+result = Bybit.Spot.candle(;
+    symbol = &quot;ADAUSDT&quot;,
+    interval = Bybit.Spot.Candle.M1,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;retCode&quot;:0,
+  &quot;retMsg&quot;:&quot;OK&quot;,
+  &quot;result&quot;:{
+    &quot;list&quot;:[
+      {
+        &quot;c&quot;:1.97,
+        &quot;h&quot;:2.303,
+        &quot;l&quot;:1.822,
+        &quot;o&quot;:2.105,
+        &quot;s&quot;:&quot;ADAUSDT&quot;,
+        &quot;sn&quot;:&quot;ADAUSDT&quot;,
+        &quot;t&quot;:&quot;2021-10-01T00:00:00&quot;,
+        &quot;v&quot;:2.7565224e6
+      },
+      ...
+    ],
+    &quot;nextPageCursor&quot;:null,
+    &quot;category&quot;:null
+  },
+  &quot;retExtInfo&quot;:{},
+  &quot;time&quot;:&quot;2024-03-25T18:36:39.372&quot;
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/96003bdd38415136468ccbe638ee9b99c197620d/src/Bybit/Spot/API/Candle.jl#L53-L110">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Bybit.Spot.CoinInfo.coin_info" href="#CryptoAPIs.Bybit.Spot.CoinInfo.coin_info"><code>CryptoAPIs.Bybit.Spot.CoinInfo.coin_info</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">coin_info(client::BybitClient, query::CoinInfoQuery)
+coin_info(client::BybitClient; kw...)</code></pre><p>Query Coin Information.</p><p><a href="https://bybit-exchange.github.io/docs/account-asset/coin-info#http-request"><code>GET asset/v3/private/coin-info/query</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">coin</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">api_key</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">recv_window</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left">Default: 5000</td></tr><tr><td style="text-align: left">signature</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">timestamp</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoAPIs.Bybit
+
+bybit_client = BybitClient(;
+    base_url = &quot;https://api.bybit.com&quot;,
+    public_key = ENV[&quot;BYBIT_PUBLIC_KEY&quot;],
+    secret_key = ENV[&quot;BYBIT_SECRET_KEY&quot;],
+)
+
+result = Bybit.Spot.coin_info(bybit_client)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;retCode&quot;:0,
+  &quot;retMsg&quot;:&quot;&quot;,
+  &quot;result&quot;:{
+    &quot;rows&quot;:[
+      {
+        &quot;chains&quot;:[
+          {
+            &quot;chain&quot;:&quot;ETH&quot;,
+            &quot;chainDeposit&quot;:1,
+            &quot;chainType&quot;:&quot;ERC20&quot;,
+            &quot;chainWithdraw&quot;:1,
+            &quot;confirmation&quot;:6,
+            &quot;depositMin&quot;:0.0,
+            &quot;minAccuracy&quot;:8,
+            &quot;withdrawFee&quot;:3.0,
+            &quot;withdrawMin&quot;:3.0
+          }
+        ],
+        &quot;coin&quot;:&quot;AGLD&quot;,
+        &quot;name&quot;:&quot;AGLD&quot;,
+        &quot;remainAmount&quot;:256400
+      },
+      ...
+    ],
+    &quot;nextPageCursor&quot;:null
+  },
+  &quot;retExtInfo&quot;:{},
+  &quot;time&quot;:&quot;2024-03-27T14:22:12.088&quot;
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/96003bdd38415136468ccbe638ee9b99c197620d/src/Bybit/Spot/API/CoinInfo.jl#L50-L119">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Bybit.Spot.Deposit.deposit" href="#CryptoAPIs.Bybit.Spot.Deposit.deposit"><code>CryptoAPIs.Bybit.Spot.Deposit.deposit</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">deposit(client::BybitClient, query::DepositQuery)
+deposit(client::BybitClient; kw...)</code></pre><p>Query Deposit Records.</p><p><a href="https://bybit-exchange.github.io/docs/account-asset/deposit-record"><code>GET asset/v3/private/deposit/record/query</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">coin</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">cursor</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">endTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left">Default: 50, Max: 50</td></tr><tr><td style="text-align: left">startTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">api_key</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">recv_window</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left">Default: 5000</td></tr><tr><td style="text-align: left">signature</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">timestamp</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoAPIs.Bybit
+
+bybit_client = BybitClient(;
+    base_url = &quot;https://api.bybit.com&quot;,
+    public_key = ENV[&quot;BYBIT_PUBLIC_KEY&quot;],
+    secret_key = ENV[&quot;BYBIT_SECRET_KEY&quot;],
+)
+
+result = Bybit.Spot.deposit(bybit_client)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+    &quot;retCode&quot;: 0,
+    &quot;retMsg&quot;: &quot;success&quot;,
+    &quot;result&quot;: {
+        &quot;rows&quot;: [
+            {
+                &quot;coin&quot;: &quot;USDT&quot;,
+                &quot;chain&quot;: &quot;ETH&quot;,
+                &quot;amount&quot;: &quot;10000&quot;,
+                &quot;txID&quot;: &quot;1234567890&quot;,
+                &quot;status&quot;: 3,
+                &quot;toAddress&quot;: &quot;xxxxxxxxxxx&quot;,
+                &quot;tag&quot;: &quot;&quot;,
+                &quot;depositFee&quot;: &quot;&quot;,
+                &quot;successAt&quot;: &quot;2024-02-27T14:22:12.000&quot;,
+                &quot;confirmations&quot;: &quot;10000&quot;,
+                &quot;txIndex&quot;: &quot;&quot;,
+                &quot;blockHash&quot;: &quot;&quot;,
+            },
+            {
+                &quot;coin&quot;: &quot;USDT&quot;,
+                &quot;chain&quot;: &quot;ETH&quot;,
+                &quot;amount&quot;: &quot;10000&quot;,
+                &quot;txID&quot;: &quot;01234567890&quot;,
+                &quot;status&quot;: 3,
+                &quot;toAddress&quot;: &quot;xxxxxxxxxxx&quot;,
+                &quot;tag&quot;: &quot;&quot;,
+                &quot;depositFee&quot;: &quot;&quot;,
+                &quot;successAt&quot;: &quot;2023-12-15T12:03:40.000&quot;,
+                &quot;confirmations&quot;: &quot;10000&quot;,
+                &quot;txIndex&quot;: &quot;&quot;,
+                &quot;blockHash&quot;: &quot;&quot;,
+            }
+        ],
+        &quot;nextPageCursor&quot;: &quot;X78...x89&quot;
+    },
+    &quot;retExtInfo&quot;: {},
+    &quot;time&quot;: &quot;2024-03-27T14:22:12.088&quot;
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/96003bdd38415136468ccbe638ee9b99c197620d/src/Bybit/Spot/API/Deposit.jl#L46-L128">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Bybit.Spot.OrderBook.order_book" href="#CryptoAPIs.Bybit.Spot.OrderBook.order_book"><code>CryptoAPIs.Bybit.Spot.OrderBook.order_book</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">order_book(client::BybitClient, query::OrderBookQuery)
+order_book(client::BybitClient = Bybit.Spot.public_client; kw...)</code></pre><p><a href="https://bybit-exchange.github.io/docs/spot/public/depth"><code>GET /spot/v3/public/quote/depth</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoAPIs.Bybit
+
+result = Bybit.Spot.order_book(;
+    symbol = &quot;ADAUSDT&quot;,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;retCode&quot;:0,
+  &quot;retMsg&quot;:&quot;OK&quot;,
+  &quot;result&quot;:{
+    &quot;asks&quot;:[
+      {
+        &quot;price&quot;:0.6627,
+        &quot;size&quot;:2144.17
+      },
+      ...
+    ],
+    &quot;bids&quot;:[
+      {
+        &quot;price&quot;:0.6625,
+        &quot;size&quot;:447.02
+      },
+      ...
+    ],
+    &quot;time&quot;:&quot;2024-03-25T18:48:45.454000128&quot;
+  },
+  &quot;retExtInfo&quot;:{},
+  &quot;time&quot;:&quot;2024-03-25T18:48:45.454000128&quot;
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/96003bdd38415136468ccbe638ee9b99c197620d/src/Bybit/Spot/API/OrderBook.jl#L30-L83">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Bybit.Spot.SymbolInfo.symbol_info" href="#CryptoAPIs.Bybit.Spot.SymbolInfo.symbol_info"><code>CryptoAPIs.Bybit.Spot.SymbolInfo.symbol_info</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">symbol_info(client::BybitClient, query::SymbolInfoQuery)
+symbol_info(client::BybitClient = Bybit.Spot.public_client; kw...)</code></pre><p>Get the specification of symbol information.</p><p><a href="https://bybit-exchange.github.io/docs/spot/public/instrument#http-request"><code>GET /spot/v3/public/symbols</code></a></p><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoAPIs.Bybit
+
+result = Bybit.Spot.symbol_info()
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;retCode&quot;:0,
+  &quot;retMsg&quot;:&quot;OK&quot;,
+  &quot;result&quot;:{
+    &quot;list&quot;:[
+        {
+          &quot;alias&quot;:&quot;BTCUSDT&quot;,
+          &quot;baseCoin&quot;:&quot;BTC&quot;,
+          &quot;basePrecision&quot;:1.0e-6,
+          &quot;category&quot;:1,
+          &quot;innovation&quot;:0,
+          &quot;maxTradeAmt&quot;:2.0e6,
+          &quot;maxTradeQty&quot;:71.73956243,
+          &quot;minPricePrecision&quot;:0.01,
+          &quot;minTradeAmt&quot;:1.0,
+          &quot;minTradeQty&quot;:4.8e-5,
+          &quot;name&quot;:&quot;BTCUSDT&quot;,
+          &quot;quoteCoin&quot;:&quot;USDT&quot;,
+          &quot;quotePrecision&quot;:1.0e-8,
+          &quot;showStatus&quot;:1
+        },
+      ...
+    ],
+    &quot;nextPageCursor&quot;:null,
+    &quot;category&quot;:null
+  },
+  &quot;retExtInfo&quot;:{},
+  &quot;time&quot;:&quot;2024-03-25T18:58:15.868999936&quot;
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/96003bdd38415136468ccbe638ee9b99c197620d/src/Bybit/Spot/API/SymbolInfo.jl#L35-L87">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Bybit.Spot.Ticker.ticker" href="#CryptoAPIs.Bybit.Spot.Ticker.ticker"><code>CryptoAPIs.Bybit.Spot.Ticker.ticker</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">ticker(client::BybitClient, query::TickerQuery)
+ticker(client::BybitClient = Bybit.Spot.public_client; kw...)</code></pre><p><a href="https://bybit-exchange.github.io/docs/spot/public/tickers#http-request"><code>GET /spot/v3/public/quote/ticker/24hr</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoAPIs.Bybit
+
+result = Bybit.Spot.ticker(;
+    symbol = &quot;ADAUSDT&quot;
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;retCode&quot;:0,
+  &quot;retMsg&quot;:&quot;OK&quot;,
+  &quot;result&quot;:{
+    &quot;ap&quot;:0.6636,
+    &quot;bp&quot;:0.6634,
+    &quot;h&quot;:0.6687,
+    &quot;l&quot;:0.6315,
+    &quot;lp&quot;:0.6633,
+    &quot;o&quot;:0.6337,
+    &quot;qv&quot;:1.1594252877069e7,
+    &quot;s&quot;:&quot;ADAUSDT&quot;,
+    &quot;t&quot;:&quot;2024-03-25T19:05:35.491000064&quot;,
+    &quot;v&quot;:1.780835204e7
+  },
+  &quot;retExtInfo&quot;:{},
+  &quot;time&quot;:&quot;2024-03-25T19:05:38.912999936&quot;
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/96003bdd38415136468ccbe638ee9b99c197620d/src/Bybit/Spot/API/Ticker.jl#L31-L78">source</a></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../Bithumb/">« Bithumb</a><a class="docs-footer-nextpage" href="../Coinbase/">Coinbase »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.4.1 on <span class="colophon-date" title="Monday 20 May 2024 19:00">Monday 20 May 2024</span>. Using Julia version 1.10.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
