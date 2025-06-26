@@ -55,7 +55,7 @@ struct Symbols <: BinanceData
     quoteAsset::String
     quotePrecision::Int64
     requiredMarginPercent::Float64
-    settlePlan::Int64
+    settlePlan::Union{Nothing,Int64}
     status::String
     symbol::String
     timeInForce::Vector{String}
@@ -102,7 +102,7 @@ Current exchange trading rules and symbol information.
 using Serde
 using CryptoExchangeAPIs.Binance
 
-result = Binance.USDMFutures.exchange_info() 
+result = Binance.USDMFutures.exchange_info()
 
 to_pretty_json(result.result)
 ```
