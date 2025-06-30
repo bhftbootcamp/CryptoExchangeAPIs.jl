@@ -46,3 +46,9 @@ Bithumb.Spot.user_transactions_log(
     count = 50,
     searchGb = Bithumb.Spot.UserTransactionsLog.ALL,
 )
+
+Bithumb.Spot.withdraw_info(
+    bithumb_client;
+    currency = "ETH",
+    net_type = "ETH",
+)
