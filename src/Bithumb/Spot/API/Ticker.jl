@@ -8,57 +8,62 @@ using Serde
 using Dates, NanoDates, TimeZones
 
 using CryptoExchangeAPIs.Bithumb
-using CryptoExchangeAPIs.Bithumb: Data
 using CryptoExchangeAPIs: Maybe, APIsRequest
-import CryptoExchangeAPIs: prepare_json!
 
 Base.@kwdef struct TickerQuery <: BithumbPublicQuery
-    payment_currency::String
-    order_currency::Maybe{String} = "ALL"
+    markets::Union{String,Vector{String}} # Comma-separated market codes (ex. KRW-BTC,BTC-ETH)
 end
 
-Serde.SerQuery.ser_ignore_field(::Type{TickerQuery}, ::Val{:order_currency}) = true
-Serde.SerQuery.ser_ignore_field(::Type{TickerQuery}, ::Val{:payment_currency}) = true
+function Serde.SerQuery.ser_type(::Type{<:TickerQuery}, x::Vector{String})::String
+    return join(x, ",")
+end
 
 struct TickerData <: BithumbData
-    acc_trade_value::Maybe{Float64}
-    acc_trade_value_24H::Maybe{Float64}
-    closing_price::Maybe{Float64}
-    date::NanoDate
-    fluctate_24H::Maybe{Float64}
-    fluctate_rate_24H::Maybe{Float64}
-    max_price::Maybe{Float64}
-    min_price::Maybe{Float64}
+    market::String
+    trade_date::Maybe{Date}
+    trade_time::Maybe{String}
+    trade_date_kst::Maybe{String}
+    trade_time_kst::Maybe{String}
+    trade_timestamp::Maybe{NanoDate}
     opening_price::Maybe{Float64}
+    high_price::Maybe{Float64}
+    low_price::Maybe{Float64}
+    trade_price::Maybe{Float64}
     prev_closing_price::Maybe{Float64}
-    units_traded::Maybe{Float64}
-    units_traded_24H::Maybe{Float64}
+    change::Maybe{String}  # EVEN, RISE, FALL
+    change_price::Maybe{Float64}
+    change_rate::Maybe{Float64}
+    signed_change_price::Maybe{Float64}
+    signed_change_rate::Maybe{Float64}
+    trade_volume::Maybe{Float64}
+    acc_trade_price::Maybe{Float64}
+    acc_trade_price_24h::Maybe{Float64}
+    acc_trade_volume::Maybe{Float64}
+    acc_trade_volume_24h::Maybe{Float64}
+    highest_52_week_price::Maybe{Float64}
+    highest_52_week_date::Maybe{String}  # yyyy-MM-dd format
+    lowest_52_week_price::Maybe{Float64}
+    lowest_52_week_date::Maybe{String}  # yyyy-MM-dd format
+    timestamp::Maybe{NanoDate}
 end
 
-function prepare_json!(::Type{T}, json::Dict{String,Any}) where {T<:Data{Dict{String,TickerData}}}
-    for (_, item) in json["data"]
-        if item isa AbstractDict
-            item["date"] = json["data"]["date"]
-        end
-    end
-    delete!(json["data"], "date")
-    return json
+function Serde.deser(::Type{<:TickerData}, ::Type{<:Date}, x::AbstractString)::Date
+    return Date(x, dateformat"yyyymmdd")
 end
 
 """
-    ticker(client::BithumbClient, query::TikerQuery)
+    ticker(client::BithumbClient, query::TickerQuery)
     ticker(client::BithumbClient = Bithumb.Spot.public_client; kw...)
 
-Provides information on the current price of virtual assets at the time of request.
+Provides snapshot information of symbols at the time of request.
 
-[`GET /public/ticker/{order_currency}_{payment_currency}`](https://apidocs.bithumb.com/reference/현재가-정보-조회)
+[`GET /v1/ticker`](https://api.bithumb.com/v1/ticker)
 
 ## Parameters:
 
-| Parameter        | Type   | Required | Description    |
-|:-----------------|:-------|:---------|:---------------|
-| payment_currency | String | true     |                |
-| order_currency   | String | false    | Default: "ALL" |
+| Parameter | Type   | Required | Description                                    |
+|:----------|:-------|:---------|:-----------------------------------------------|
+| markets   | String | true     | Comma-separated market codes (ex. KRW-BTC,BTC-ETH) |
 
 ## Code samples:
 
@@ -67,8 +72,7 @@ using Serde
 using CryptoExchangeAPIs.Bithumb
 
 result = Bithumb.Spot.ticker(;
-    order_currency = "BTC",
-    payment_currency = "KRW",
+    markets = "KRW-BTC,KRW-ETH",
 )
 
 to_pretty_json(result.result)
@@ -77,29 +81,40 @@ to_pretty_json(result.result)
 ## Result:
 
 ```json
-{
-  "status":"0000",
-  "date":null,
-  "data":{
-    "acc_trade_value":1.873153488545703e10,
-    "acc_trade_value_24H":7.510337464461333e10,
-    "closing_price":8.6533e7,
-    "date":"2024-05-14T22:41:49.334000128",
-    "fluctate_24H":-1.097e6,
-    "fluctate_rate_24H":-1.25,
-    "max_price":8.6845e7,
-    "min_price":8.575e7,
-    "opening_price":8.6639e7,
-    "prev_closing_price":8.6659e7,
-    "units_traded":217.39853891,
-    "units_traded_24H":866.46583706
+[
+  {
+    "market": "KRW-BTC",
+    "trade_date": "20250630",
+    "trade_time": "123643",
+    "trade_date_kst": "20250630",
+    "trade_time_kst": "213643",
+    "trade_timestamp": 1751319403641,
+    "opening_price": 147950000,
+    "high_price": 148500000,
+    "low_price": 146580000,
+    "trade_price": 147054000,
+    "prev_closing_price": 147950000,
+    "change": "FALL",
+    "change_price": 896000,
+    "change_rate": 0.0061,
+    "signed_change_price": -896000,
+    "signed_change_rate": -0.0061,
+    "trade_volume": 0.000068,
+    "acc_trade_price": 41616026654.1438,
+    "acc_trade_price_24h": 46041602331.625,
+    "acc_trade_volume": 282.15301032,
+    "acc_trade_volume_24h": 312.0425921,
+    "highest_52_week_price": 163460000,
+    "highest_52_week_date": "2025-01-21",
+    "lowest_52_week_price": 71573000,
+    "lowest_52_week_date": "2024-08-06",
+    "timestamp": 1751287007250
   }
-}
+]
 ```
 """
 function ticker(client::BithumbClient, query::TickerQuery)
-    T = query.order_currency == "ALL" ? Dict{String,TickerData} : TickerData
-    return APIsRequest{Data{T}}("GET", "public/ticker/$(query.order_currency)_$(query.payment_currency)", query)(client)
+    return APIsRequest{Vector{TickerData}}("GET", "v1/ticker", query)(client)
 end
 
 function ticker(client::BithumbClient = Bithumb.Spot.public_client; kw...)
