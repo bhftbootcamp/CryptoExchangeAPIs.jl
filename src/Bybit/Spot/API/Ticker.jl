@@ -35,7 +35,7 @@ struct TickerData <: BybitData
     ask1Size::Maybe{Float64}
     lastPrice::Float64
     prevPrice24h::Float64
-    pice24hPcnt::Maybe{Float64}
+    price24hPcnt::Maybe{Float64}
     highPrice24h::Float64
     lowPrice24h::Float64
     turnover24h::Float64
@@ -88,7 +88,7 @@ to_pretty_json(result.result)
         "ask1Size":0.124391,
         "lastPrice":90976.95,
         "prevPrice24h":94379.41,
-        "pice24hPcnt":null,
+        "price24hPcnt":null,
         "highPrice24h":95950.05,
         "lowPrice24h":90547.11,
         "turnover24h":2.838946290225581e9,
