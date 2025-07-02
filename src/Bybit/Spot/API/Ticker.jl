@@ -43,6 +43,10 @@ struct TickerData <: BybitData
     usdIndexPrice::Maybe{Float64}
 end
 
+function Serde.isempty(::Type{<:TickerData}, x)::Bool
+  return x === ""
+end
+
 """
     ticker(client::BybitClient, query::TickerQuery)
     ticker(client::BybitClient = Bybit.Spot.public_client; kw...)
