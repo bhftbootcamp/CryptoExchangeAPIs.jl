@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Kraken · CryptoExchangeAPIs.jl</title><meta name="title" content="Kraken · CryptoExchangeAPIs.jl"/><meta property="og:title" content="Kraken · CryptoExchangeAPIs.jl"/><meta property="twitter:title" content="Kraken · CryptoExchangeAPIs.jl"/><meta name="description" content="Documentation for CryptoExchangeAPIs.jl."/><meta property="og:description" content="Documentation for CryptoExchangeAPIs.jl."/><meta property="twitter:description" content="Documentation for CryptoExchangeAPIs.jl."/><meta property="og:url" content="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/pages/Kraken/"/><meta property="twitter:url" content="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/pages/Kraken/"/><link rel="canonical" href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/pages/Kraken/"/><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../search_index.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script><link href="../../assets/favicon.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../../">CryptoExchangeAPIs.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><a class="tocitem" href="../api_reference/">API Reference</a></li><li><a class="tocitem" href="../Aevo/">Aevo</a></li><li><a class="tocitem" href="../Binance/">Binance</a></li><li><a class="tocitem" href="../Bitfinex/">Bitfinex</a></li><li><a class="tocitem" href="../Bithumb/">Bithumb</a></li><li><a class="tocitem" href="../Bybit/">Bybit</a></li><li><a class="tocitem" href="../Coinbase/">Coinbase</a></li><li><a class="tocitem" href="../Cryptocom/">Cryptocom</a></li><li><a class="tocitem" href="../Deribit/">Deribit</a></li><li><a class="tocitem" href="../Gateio/">Gateio</a></li><li><a class="tocitem" href="../Huobi/">Huobi</a></li><li class="is-active"><a class="tocitem" href>Kraken</a><ul class="internal"><li><a class="tocitem" href="#Spot"><span>Spot</span></a></li></ul></li><li><a class="tocitem" href="../Kucoin/">Kucoin</a></li><li><a class="tocitem" href="../Okex/">Okex</a></li><li><a class="tocitem" href="../Poloniex/">Poloniex</a></li><li><a class="tocitem" href="../Upbit/">Upbit</a></li><li><span class="tocitem">For Developers</span><ul><li><a class="tocitem" href="../docs_miniguide/">Docs mini-guide</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Kraken</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Kraken</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/master/docs/src/pages/Kraken.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Kraken"><a class="docs-heading-anchor" href="#Kraken">Kraken</a><a id="Kraken-1"></a><a class="docs-heading-anchor-permalink" href="#Kraken" title="Permalink"></a></h1><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Kraken.KrakenClient" href="#CryptoExchangeAPIs.Kraken.KrakenClient"><code>CryptoExchangeAPIs.Kraken.KrakenClient</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">KrakenClient &lt;: AbstractAPIsClient</code></pre><p>Client info.</p><p><strong>Required fields</strong></p><ul><li><code>base_url::String</code>: Base URL for the client.</li></ul><p><strong>Optional fields</strong></p><ul><li><code>public_key::String</code>: Public key for authentication.</li><li><code>secret_key::String</code>: Secret key for authentication.</li><li><code>interface::String</code>: Interface for the client.</li><li><code>proxy::String</code>: Proxy information for the client.</li><li><code>account_name::String</code>: Account name associated with the client.</li><li><code>description::String</code>: Description of the client.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/33b11d81b8a4887155c940127fb4de1120d09b6a/src/Kraken/Kraken.jl#L35-L50">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Kraken.KrakenAPIError" href="#CryptoExchangeAPIs.Kraken.KrakenAPIError"><code>CryptoExchangeAPIs.Kraken.KrakenAPIError</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">KrakenAPIError{T} &lt;: AbstractAPIsError</code></pre><p>Exception thrown when an API method fails with code <code>T</code>.</p><p><strong>Required fields</strong></p><ul><li><code>error::Vector{String}</code>: Error values.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/33b11d81b8a4887155c940127fb4de1120d09b6a/src/Kraken/Kraken.jl#L61-L68">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Kraken.Data" href="#CryptoExchangeAPIs.Kraken.Data"><code>CryptoExchangeAPIs.Kraken.Data</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">Data{D} &lt;: AbstractAPIsData</code></pre><p><strong>Required fields</strong></p><ul><li><code>error::Vector{Any}</code>: Error values.</li><li><code>result::D</code>: Request result data.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/33b11d81b8a4887155c940127fb4de1120d09b6a/src/Kraken/Kraken.jl#L23-L29">source</a></section></article><h2 id="Spot"><a class="docs-heading-anchor" href="#Spot">Spot</a><a id="Spot-1"></a><a class="docs-heading-anchor-permalink" href="#Spot" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Kraken.Spot.public_client" href="#CryptoExchangeAPIs.Kraken.Spot.public_client"><code>CryptoExchangeAPIs.Kraken.Spot.public_client</code></a> — <span class="docstring-category">Constant</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">public_client = KrakenClient(; base_url = &quot;https://api.kraken.com&quot;)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/33b11d81b8a4887155c940127fb4de1120d09b6a/src/Kraken/Spot/Spot.jl#L5-L7">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Kraken.Spot.Asset.asset" href="#CryptoExchangeAPIs.Kraken.Spot.Asset.asset"><code>CryptoExchangeAPIs.Kraken.Spot.Asset.asset</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">asset(client::KrakenClient, query::AssetQuery)
+asset(client::KrakenClient = Kraken.Spot.public_client; kw...)</code></pre><p>Get information about the assets that are available for deposit, withdrawal, trading and earn.</p><p><a href="https://docs.kraken.com/rest/#tag/Spot-Market-Data/operation/getAssetInfo"><code>GET 0/public/Assets</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">asset</td><td style="text-align: left">Vector{String}</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">aclass</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Kraken
+
+result = Kraken.Spot.asset(;
+    asset = [&quot;ADA&quot;, &quot;SUSHI&quot;],
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;error&quot;:[],
+  &quot;result&quot;:{
+    &quot;ADA&quot;:{
+      &quot;aclass&quot;:&quot;currency&quot;,
+      &quot;altname&quot;:&quot;ADA&quot;,
+      &quot;decimals&quot;:8,
+      &quot;display_decimals&quot;:6,
+      &quot;collateral_value&quot;:0.9,
+      &quot;status&quot;:&quot;enabled&quot;
+    },
+    &quot;SUSHI&quot;:{
+      &quot;aclass&quot;:&quot;currency&quot;,
+      &quot;altname&quot;:&quot;SUSHI&quot;,
+      &quot;decimals&quot;:10,
+      &quot;display_decimals&quot;:5,
+      &quot;collateral_value&quot;:null,
+      &quot;status&quot;:&quot;enabled&quot;
+    }
+  }
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/33b11d81b8a4887155c940127fb4de1120d09b6a/src/Kraken/Spot/API/Asset.jl#L39-L92">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Kraken.Spot.AssetPair.asset_pair" href="#CryptoExchangeAPIs.Kraken.Spot.AssetPair.asset_pair"><code>CryptoExchangeAPIs.Kraken.Spot.AssetPair.asset_pair</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">asset_pair(client::KrakenClient, query::AssetPairQuery)
+asset_pair(client::KrakenClient = Kraken.Spot.public_client; kw...)</code></pre><p>Get tradable asset pairs.</p><p><a href="https://docs.kraken.com/rest/#tag/Spot-Market-Data/operation/getTradableAssetPairs"><code>GET 0/public/AssetPairs</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">pair</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">info</td><td style="text-align: left">AssetPairInfo</td><td style="text-align: left">false</td><td style="text-align: left">Default: <code>info</code>, Available: <code>leverage</code>, <code>fees</code></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Kraken
+
+result = Kraken.Spot.asset_pair(;
+    pair = &quot;ACAUSD&quot;
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;error&quot;:[],
+  &quot;result&quot;:{
+    &quot;ACAUSD&quot;:{
+      &quot;altname&quot;:&quot;ACAUSD&quot;,
+      &quot;base&quot;:&quot;ACA&quot;,
+      &quot;quote&quot;:&quot;ZUSD&quot;,
+      &quot;aclass_base&quot;:&quot;currency&quot;,
+      &quot;aclass_quote&quot;:&quot;currency&quot;,
+      &quot;cost_decimals&quot;:5,
+      &quot;costmin&quot;:0.5,
+      &quot;fee_volume_currency&quot;:&quot;ZUSD&quot;,
+      &quot;fees&quot;:[
+        {
+          &quot;volume&quot;:0,
+          &quot;percent&quot;:0.4
+        },
+        ...
+      ],
+      &quot;fees_maker&quot;:[
+        {
+          &quot;volume&quot;:0,
+          &quot;percent&quot;:0.25
+        },
+        ...
+      ],
+      &quot;leverage_buy&quot;:[],
+      &quot;leverage_sell&quot;:[],
+      &quot;lot&quot;:&quot;unit&quot;,
+      &quot;lot_decimals&quot;:8,
+      &quot;lot_multiplier&quot;:1,
+      &quot;margin_call&quot;:80,
+      &quot;margin_stop&quot;:40,
+      &quot;ordermin&quot;:40.0,
+      &quot;pair_decimals&quot;:3,
+      &quot;status&quot;:&quot;online&quot;,
+      &quot;tick_size&quot;:0.001,
+      &quot;wsname&quot;:&quot;ACA/USD&quot;
+    }
+  }
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/33b11d81b8a4887155c940127fb4de1120d09b6a/src/Kraken/Spot/API/AssetPair.jl#L64-L137">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Kraken.Spot.Candle.candle" href="#CryptoExchangeAPIs.Kraken.Spot.Candle.candle"><code>CryptoExchangeAPIs.Kraken.Spot.Candle.candle</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">candle(client::KrakenClient, query::CandleQuery)
+candle(client::KrakenClient = Kraken.Spot.public_client; kw...)</code></pre><p>Get OHLC data for a given market.</p><p><a href="https://docs.kraken.com/rest/#tag/Spot-Market-Data/operation/getOHLCData"><code>GET 0/public/OHLC</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">pair</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">interval</td><td style="text-align: left">TimeInterval</td><td style="text-align: left">false</td><td style="text-align: left">m1 m5 m15 m30 h1 h4 d1 w1 d15</td></tr><tr><td style="text-align: left">since</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Kraken
+
+result = Kraken.Spot.candle(;
+    pair = &quot;ACAUSD&quot;,
+    interval = CryptoExchangeAPIs.Kraken.Spot.Candle.h1,
+    since = now(UTC) - Hour(1),
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;error&quot;:[],
+  &quot;result&quot;:{
+    &quot;ACAUSD&quot;:
+    [
+      {
+        &quot;time&quot;:&quot;2024-05-15T17:00:00&quot;,
+        &quot;open&quot;:0.106,
+        &quot;high&quot;:0.106,
+        &quot;low&quot;:0.106,
+        &quot;close&quot;:0.106,
+        &quot;vwap&quot;:0.0,
+        &quot;volume&quot;:0.0,
+        &quot;count&quot;:0,
+        &quot;last&quot;:&quot;2024-05-15T16:45:00&quot;
+      },
+      ...
+    ]
+  }
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/33b11d81b8a4887155c940127fb4de1120d09b6a/src/Kraken/Spot/API/Candle.jl#L63-L118">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Kraken.Spot.DepositLog.deposit_log" href="#CryptoExchangeAPIs.Kraken.Spot.DepositLog.deposit_log"><code>CryptoExchangeAPIs.Kraken.Spot.DepositLog.deposit_log</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">deposit_log(client::KrakenClient, query::DepositLogQuery)
+deposit_log(client::KrakenClient; kw...)</code></pre><p>Retrieve information about recent deposits. Any deposits initiated in the past 90 days will be included in the response.</p><p><a href="https://docs.kraken.com/rest/#tag/Funding/operation/getStatusRecentDeposits"><code>POST 0/private/DepositStatus</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">asset</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">method</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">nonce</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">signature</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Kraken
+
+kraken_client = KrakenClient(;
+    base_url = &quot;https://api.kraken.com&quot;,
+    public_key = ENV[&quot;KRAKEN_PUBLIC_KEY&quot;],
+    secret_key = ENV[&quot;KRAKEN_SECRET_KEY&quot;],
+)
+
+result = Kraken.Spot.deposit_log(
+    kraken_client;
+    asset = &quot;XBT&quot;,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;error&quot;:[],
+  &quot;result&quot;:[
+    {
+      &quot;method&quot;:&quot;Bitcoin&quot;,
+      &quot;aclass&quot;:&quot;currency&quot;,
+      &quot;asset&quot;:&quot;XXBT&quot;,
+      &quot;refid&quot;:&quot;FTQcuak-V6Za8qrWnhzTx67yYHz8Tg&quot;,
+      &quot;txid&quot;:&quot;6544b41b607d8b2512baf801755a3a87b6890eacdb451be8a94059fb11f0a8d9&quot;,
+      &quot;info&quot;:&quot;2Myd4eaAW96ojk38A2uDK4FbioCayvkEgVq&quot;,
+      &quot;amount&quot;:0.78125,
+      &quot;fee&quot;:0.0,
+      &quot;time&quot;:&quot;2023-07-10T12:38:42&quot;,
+      &quot;status&quot;:&quot;Success&quot;,
+      &quot;status_prop&quot;:&quot;return&quot;
+    },
+    ...
+  ]
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/33b11d81b8a4887155c940127fb4de1120d09b6a/src/Kraken/Spot/API/DepositLog.jl#L52-L112">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Kraken.Spot.DepositMethod.deposit_method" href="#CryptoExchangeAPIs.Kraken.Spot.DepositMethod.deposit_method"><code>CryptoExchangeAPIs.Kraken.Spot.DepositMethod.deposit_method</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">deposit_method(client::KrakenClient, query::DepositMethodQuery)
+deposit_method(client::KrakenClient; kw...)</code></pre><p>Retrieve methods available for depositing a particular asset.</p><p><a href="https://docs.kraken.com/rest/#tag/Funding/operation/getDepositMethods"><code>POST 0/private/DepositMethods</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">asset</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">nonce</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">signature</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Kraken
+
+kraken_client = KrakenClient(;
+    base_url = &quot;https://api.kraken.com&quot;,
+    public_key = ENV[&quot;KRAKEN_PUBLIC_KEY&quot;],
+    secret_key = ENV[&quot;KRAKEN_SECRET_KEY&quot;],
+)
+
+result = Kraken.Spot.deposit_method(
+    kraken_client;
+    asset = &quot;XBT&quot;,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;error&quot;:[],
+  &quot;result&quot;:[
+    {
+      &quot;method&quot;:&quot;Bitcoin&quot;,
+      &quot;limit&quot;:false,
+      &quot;fee&quot;:&quot;0.0000000000&quot;,
+      &quot;gen_address&quot;:true,
+    },
+    ...
+  ]
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/33b11d81b8a4887155c940127fb4de1120d09b6a/src/Kraken/Spot/API/DepositMethod.jl#L37-L89">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Kraken.Spot.LedgerInfoLog.ledger_info_log" href="#CryptoExchangeAPIs.Kraken.Spot.LedgerInfoLog.ledger_info_log"><code>CryptoExchangeAPIs.Kraken.Spot.LedgerInfoLog.ledger_info_log</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">ledger_info_log(client::KrakenClient, query::LedgerInfoLogQuery)
+ledger_info_log(client::KrakenClient; kw...)</code></pre><p>Retrieve information about ledger entries. 50 results are returned at a time, the most recent by default.</p><p><a href="https://docs.kraken.com/rest/#tag/Account-Data/operation/getLedgers"><code>POST 0/private/Ledgers</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">_end</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">aclass</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">asset</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">ofs</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">start</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">type</td><td style="text-align: left">LedgerType</td><td style="text-align: left">false</td><td style="text-align: left"><code>all</code> <code>deposit</code> <code>withdrawal</code> <code>trade</code> <code>margin</code> <code>rollover</code> <code>credit</code> <code>transfer</code> <code>settled</code> <code>staking</code> <code>sale</code></td></tr><tr><td style="text-align: left">nonce</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">signature</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Kraken
+
+kraken_client = KrakenClient(;
+    base_url = &quot;https://api.kraken.com&quot;,
+    public_key = ENV[&quot;KRAKEN_PUBLIC_KEY&quot;],
+    secret_key = ENV[&quot;KRAKEN_SECRET_KEY&quot;],
+)
+
+result = Kraken.Spot.ledger_info_log(
+    kraken_client;
+    type = CryptoExchangeAPIs.Kraken.Spot.LedgerInfoLog.margin,
+    asset = &quot;XBT&quot;,
+    start = Dates.DateTime(&quot;2021-04-03T15:33:20&quot;),
+    _end = Dates.DateTime(&quot;2022-04-03T15:33:20&quot;),
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;error&quot;:[],
+  &quot;result&quot;:{
+    &quot;ledger&quot;:{
+      &quot;L4UESK-KG3EQ-UFO4T5&quot;:{
+        &quot;refid&quot;:&quot;TJKLXF-PGMUI-4NTLXU&quot;,
+        &quot;time&quot;:&quot;2023-07-04T09:54:44.178700032&quot;,
+        &quot;type&quot;:&quot;trade&quot;,
+        &quot;subtype&quot;:&quot;&quot;,
+        &quot;aclass&quot;:&quot;currency&quot;,
+        &quot;asset&quot;:&quot;ZGBP&quot;,
+        &quot;amount&quot;:-24.5,
+        &quot;fee&quot;:0.049,
+        &quot;balance&quot;:459567.9171
+      },
+      ...
+    },
+    &quot;count&quot;:2
+  }
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/33b11d81b8a4887155c940127fb4de1120d09b6a/src/Kraken/Spot/API/LedgerInfoLog.jl#L57-L125">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Kraken.Spot.OrderBook.order_book" href="#CryptoExchangeAPIs.Kraken.Spot.OrderBook.order_book"><code>CryptoExchangeAPIs.Kraken.Spot.OrderBook.order_book</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">order_book(client::KrakenClient, query::OrderBookQuery)
+order_book(client::KrakenClient = Kraken.Spot.public_client; kw...)</code></pre><p>Get current order book details.</p><p><a href="https://docs.kraken.com/rest/#tag/Spot-Market-Data/operation/getOrderBook"><code>POST 0/public/Depth</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">pair</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">count</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Kraken
+
+result = Kraken.Spot.order_book(;
+    pair = &quot;XBTUSD&quot;,
+    count = 10,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;error&quot;:[],
+  &quot;result&quot;:{
+    &quot;XXBTZUSD&quot;:{
+      &quot;asks&quot;:[
+        {
+          &quot;price&quot;:64880.3,
+          &quot;volume&quot;:10.817,
+          &quot;timestamp&quot;:&quot;2024-05-15T17:22:08&quot;
+        },
+        ...
+      ],
+      &quot;bids&quot;:[
+        {
+          &quot;price&quot;:64880.2,
+          &quot;volume&quot;:0.917,
+          &quot;timestamp&quot;:&quot;2024-05-15T17:22:08&quot;
+        },
+        ...
+      ]
+    }
+  }
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/33b11d81b8a4887155c940127fb4de1120d09b6a/src/Kraken/Spot/API/OrderBook.jl#L30-L86">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Kraken.Spot.Ticker.ticker" href="#CryptoExchangeAPIs.Kraken.Spot.Ticker.ticker"><code>CryptoExchangeAPIs.Kraken.Spot.Ticker.ticker</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">ticker(client::KrakenClient, query::TickerQuery)
+ticker(client::KrakenClient = Kraken.Spot.public_client; kw...)</code></pre><p>Get ticker information for all or requested markets.</p><p><a href="https://docs.kraken.com/rest/#tag/Spot-Market-Data/operation/getTickerInformation"><code>GET 0/public/Ticker</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">pair</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Kraken
+
+result = Kraken.Spot.ticker(;
+    air = &quot;XBTUSD&quot;,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;error&quot;:[],
+  &quot;result&quot;:{
+    &quot;XXBTZUSD&quot;:{
+      &quot;a&quot;:{
+        &quot;price&quot;:64847.8,
+        &quot;whole_lot_volume&quot;:6.0,
+        &quot;lot_volume&quot;:6.0
+      },
+      &quot;b&quot;:{
+        &quot;price&quot;:64847.7,
+        &quot;whole_lot_volume&quot;:1.0,
+        &quot;lot_volume&quot;:1.0
+      },
+      &quot;c&quot;:[
+        64847.8,
+        0.00011635
+      ],
+      &quot;v&quot;:[
+        2575.41519714,
+        3075.93450804
+      ],
+      &quot;p&quot;:[
+        63743.49996,
+        63382.82681
+      ],
+      &quot;t&quot;:[
+        28103,
+        34075
+      ],
+      &quot;l&quot;:[
+        61325.4,
+        61150.0
+      ],
+      &quot;h&quot;:[
+        65108.9,
+        65108.9
+      ],
+      &quot;o&quot;:61568.6
+    }
+  }
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/33b11d81b8a4887155c940127fb4de1120d09b6a/src/Kraken/Spot/API/Ticker.jl#L36-L109">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Kraken.Spot.WithdrawalLog.withdrawal_log" href="#CryptoExchangeAPIs.Kraken.Spot.WithdrawalLog.withdrawal_log"><code>CryptoExchangeAPIs.Kraken.Spot.WithdrawalLog.withdrawal_log</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">withdrawal_log(client::KrakenClient, query::WithdrawalLogQuery)
+withdrawal_log(client::KrakenClient; kw...)</code></pre><p>Retrieve information about recent withdrawals.</p><p><a href="https://docs.kraken.com/rest/#tag/Funding/operation/getStatusRecentWithdrawals"><code>POST 0/private/WithdrawStatus</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">asset</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">method</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">nonce</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">signature</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Kraken
+
+kraken_client = KrakenClient(;
+    base_url = &quot;https://api.kraken.com&quot;,
+    public_key = ENV[&quot;KRAKEN_PUBLIC_KEY&quot;],
+    secret_key = ENV[&quot;KRAKEN_SECRET_KEY&quot;],
+)
+
+result = Kraken.Spot.withdrawal_log(
+    kraken_client;
+    asset = &quot;XBT&quot;
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;error&quot;:[],
+  &quot;result&quot;:[
+    {
+      &quot;method&quot;:&quot;Bitcoin&quot;,
+      &quot;aclass&quot;:&quot;currency&quot;,
+      &quot;asset&quot;:&quot;XXBT&quot;,
+      &quot;refid&quot;:&quot;FTQcuak-V6Za8qrPnhsTx47yYLz8Tg&quot;,
+      &quot;txid&quot;:&quot;29323ce212ceb2daf81255cbea8a5...ad7a626471e05e1f82929501e82934&quot;,
+      &quot;info&quot;:&quot;bc1qa35ls....3egf0872h3w&quot;,
+      &quot;amount&quot;:0.72485,
+      &quot;fee&quot;:0.0002,
+      &quot;time&quot;:&quot;2023-06-29T05:10:23&quot;,
+      &quot;status&quot;:Pending,
+      &quot;status_prop&quot;:null,
+    },
+    ...
+  ]
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/33b11d81b8a4887155c940127fb4de1120d09b6a/src/Kraken/Spot/API/WithdrawalLog.jl#L44-L104">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Kraken.Spot.WithdrawalMethod.withdrawal_method" href="#CryptoExchangeAPIs.Kraken.Spot.WithdrawalMethod.withdrawal_method"><code>CryptoExchangeAPIs.Kraken.Spot.WithdrawalMethod.withdrawal_method</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">withdrawal_method(client::KrakenClient, query::WithdrawalMethodQuery)
+withdrawal_method(client::KrakenClient; kw...)</code></pre><p>Retrieve a list of withdrawal methods available for the user.</p><p><a href="https://docs.kraken.com/rest/#tag/Funding/operation/getWithdrawalMethods"><code>POST 0/private/WithdrawMethods</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">asset</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">aclass</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">network</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">nonce</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">signature</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Kraken
+
+kraken_client = KrakenClient(;
+    base_url = &quot;https://api.kraken.com&quot;,
+    public_key = ENV[&quot;KRAKEN_PUBLIC_KEY&quot;],
+    secret_key = ENV[&quot;KRAKEN_SECRET_KEY&quot;],
+)
+
+result = Kraken.Spot.withdrawal_method(
+    kraken_client;
+    asset = &quot;XBT&quot;
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;error&quot;:[],
+  &quot;result&quot;:[
+    {
+      &quot;asset&quot;:&quot;XXBT&quot;,
+      &quot;method&quot;:&quot;Bitcoin&quot;,
+      &quot;network&quot;:&quot;Bitcoin&quot;,
+      &quot;minimum&quot;:0.0004
+    },
+    ...
+  ]
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/33b11d81b8a4887155c940127fb4de1120d09b6a/src/Kraken/Spot/API/WithdrawalMethod.jl#L30-L84">source</a></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../Huobi/">« Huobi</a><a class="docs-footer-nextpage" href="../Kucoin/">Kucoin »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.8.0 on <span class="colophon-date" title="Monday 13 January 2025 18:18">Monday 13 January 2025</span>. Using Julia version 1.11.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

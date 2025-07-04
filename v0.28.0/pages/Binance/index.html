@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Binance · CryptoExchangeAPIs.jl</title><meta name="title" content="Binance · CryptoExchangeAPIs.jl"/><meta property="og:title" content="Binance · CryptoExchangeAPIs.jl"/><meta property="twitter:title" content="Binance · CryptoExchangeAPIs.jl"/><meta name="description" content="Documentation for CryptoExchangeAPIs.jl."/><meta property="og:description" content="Documentation for CryptoExchangeAPIs.jl."/><meta property="twitter:description" content="Documentation for CryptoExchangeAPIs.jl."/><meta property="og:url" content="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/pages/Binance/"/><meta property="twitter:url" content="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/pages/Binance/"/><link rel="canonical" href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/pages/Binance/"/><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../search_index.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script><link href="../../assets/favicon.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../../">CryptoExchangeAPIs.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><a class="tocitem" href="../api_reference/">API Reference</a></li><li><a class="tocitem" href="../Aevo/">Aevo</a></li><li class="is-active"><a class="tocitem" href>Binance</a><ul class="internal"><li><a class="tocitem" href="#Spot"><span>Spot</span></a></li><li><a class="tocitem" href="#USDMFutures"><span>USDMFutures</span></a></li><li><a class="tocitem" href="#CoinMFutures"><span>CoinMFutures</span></a></li></ul></li><li><a class="tocitem" href="../Bitfinex/">Bitfinex</a></li><li><a class="tocitem" href="../Bithumb/">Bithumb</a></li><li><a class="tocitem" href="../Bybit/">Bybit</a></li><li><a class="tocitem" href="../Coinbase/">Coinbase</a></li><li><a class="tocitem" href="../Cryptocom/">Cryptocom</a></li><li><a class="tocitem" href="../Deribit/">Deribit</a></li><li><a class="tocitem" href="../Gateio/">Gateio</a></li><li><a class="tocitem" href="../Huobi/">Huobi</a></li><li><a class="tocitem" href="../Kraken/">Kraken</a></li><li><a class="tocitem" href="../Kucoin/">Kucoin</a></li><li><a class="tocitem" href="../Okex/">Okex</a></li><li><a class="tocitem" href="../Poloniex/">Poloniex</a></li><li><a class="tocitem" href="../Upbit/">Upbit</a></li><li><span class="tocitem">For Developers</span><ul><li><a class="tocitem" href="../docs_miniguide/">Docs mini-guide</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Binance</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Binance</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/master/docs/src/pages/Binance.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Binance"><a class="docs-heading-anchor" href="#Binance">Binance</a><a id="Binance-1"></a><a class="docs-heading-anchor-permalink" href="#Binance" title="Permalink"></a></h1><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.BinanceClient" href="#CryptoExchangeAPIs.Binance.BinanceClient"><code>CryptoExchangeAPIs.Binance.BinanceClient</code></a> — <span class="docstring-category">Type</span></header><section><div><pre><code class="language-julia hljs">BinanceClient &lt;: AbstractAPIsClient</code></pre><p>Client info.</p><p><strong>Required fields</strong></p><ul><li><code>base_url::String</code>: Base URL for the client. </li></ul><p><strong>Optional fields</strong></p><ul><li><code>public_key::String</code>: Public key for authentication.</li><li><code>secret_key::String</code>: Secret key for authentication.</li><li><code>interface::String</code>: Interface for the client.</li><li><code>proxy::String</code>: Proxy information for the client.</li><li><code>account_name::String</code>: Account name associated with the client.</li><li><code>description::String</code>: Description of the client.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/Binance.jl#L23-L38">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.BinanceAPIError" href="#CryptoExchangeAPIs.Binance.BinanceAPIError"><code>CryptoExchangeAPIs.Binance.BinanceAPIError</code></a> — <span class="docstring-category">Type</span></header><section><div><pre><code class="language-julia hljs">BinanceAPIError{T} &lt;: AbstractAPIsError</code></pre><p>Exception thrown when an API method fails with code <code>T</code>.</p><p><strong>Required fields</strong></p><ul><li><code>code::Int64</code>: Error code.</li></ul><p><strong>Optional fields</strong></p><ul><li><code>type::String</code>: Type of error.</li><li><code>msg::String</code>: Error message.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/Binance.jl#L49-L60">source</a></section></article><h2 id="Spot"><a class="docs-heading-anchor" href="#Spot">Spot</a><a id="Spot-1"></a><a class="docs-heading-anchor-permalink" href="#Spot" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.Spot.public_client" href="#CryptoExchangeAPIs.Binance.Spot.public_client"><code>CryptoExchangeAPIs.Binance.Spot.public_client</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia hljs">public_client = BinanceClient(; base_url = &quot;https://api.binance.com&quot;)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/Spot/Spot.jl#L5-L7">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.Spot.AccountTrade.account_trade" href="#CryptoExchangeAPIs.Binance.Spot.AccountTrade.account_trade"><code>CryptoExchangeAPIs.Binance.Spot.AccountTrade.account_trade</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">account_trade(client::BinanceClient, query::AccountTradeQuery)
+account_trade(client::BinanceClient; kw...)</code></pre><p>Get trades for a specific account and symbol.</p><p><a href="https://binance-docs.github.io/apidocs/spot/en/#account-trade-list-user_data"><code>GET api/v3/myTrades</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">orderId</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">startTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">endTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">fromId</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left">Default: 1000</td></tr><tr><td style="text-align: left">recvWindow</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">signature</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">timestamp</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+binance_client = BinanceClient(;
+    base_url = &quot;https://api.binance.com&quot;,
+    public_key = ENV[&quot;BINANCE_PUBLIC_KEY&quot;],
+    secret_key = ENV[&quot;BINANCE_SECRET_KEY&quot;],
+)
+
+result = Binance.Spot.account_trade(
+    binance_client;
+    symbol = &quot;BTCUSDT&quot;,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;symbol&quot;:&quot;BNBBTC&quot;,
+    &quot;id&quot;:28457,
+    &quot;orderId&quot;:100234,
+    &quot;orderListId&quot;:-1,
+    &quot;price&quot;:4.00000100,
+    &quot;qty&quot;:12.00000000,
+    &quot;quoteQty&quot;:48.000012,
+    &quot;commission&quot;:10.10000000,
+    &quot;commissionAsset&quot;:&quot;BNB&quot;,
+    &quot;time&quot;:&quot;2017-07-12T13:19:09&quot;,
+    &quot;isBuyer&quot;:true,
+    &quot;isMaker&quot;:false,
+    &quot;isBestMatch&quot;:true
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/Spot/API/AccountTrade.jl#L42-L106">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.Spot.AvgPrice.avg_price" href="#CryptoExchangeAPIs.Binance.Spot.AvgPrice.avg_price"><code>CryptoExchangeAPIs.Binance.Spot.AvgPrice.avg_price</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">avg_price(client::BinanceClient, query::AvgPriceQuery)
+avg_price(client::BinanceClient = Binance.Spot.public_client; kw...)</code></pre><p>Current average price for a symbol.</p><p><a href="https://binance-docs.github.io/apidocs/spot/en/#current-average-price"><code>GET api/v3/avgPrice</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.Spot.avg_price(;
+    symbol = &quot;ADAUSDT&quot;,
+) 
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;mins&quot;:5,
+  &quot;price&quot;:0.64545824
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/Spot/API/AvgPrice.jl#L22-L57">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.Spot.Candle.candle" href="#CryptoExchangeAPIs.Binance.Spot.Candle.candle"><code>CryptoExchangeAPIs.Binance.Spot.Candle.candle</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">candle(client::BinanceClient, query::CandleQuery)
+candle(client::BinanceClient = Binance.Spot.public_client; kw...)</code></pre><p>Kline/candlestick bars for a symbol.</p><p><a href="https://binance-docs.github.io/apidocs/spot/en/#kline-candlestick-data"><code>GET api/v3/klines</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">interval</td><td style="text-align: left">Period</td><td style="text-align: left">true</td><td style="text-align: left">m1 m3 m5 m15 m30 h1 h2 h4 h6 h8 h12 d1 d3 w1 M1</td></tr><tr><td style="text-align: left">endTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">startTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.Spot.candle(;
+    symbol = &quot;ADAUSDT&quot;,
+    interval = Binance.Spot.Candle.M1,
+) 
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;openTime&quot;:&quot;2018-04-01T00:00:00&quot;,
+    &quot;openPrice&quot;:0.25551,
+    &quot;highPrice&quot;:0.3866,
+    &quot;lowPrice&quot;:0.23983,
+    &quot;closePrice&quot;:0.34145,
+    &quot;volume&quot;:1.17451580874e9,
+    &quot;closeTime&quot;:&quot;2018-04-30T23:59:59.999000064&quot;,
+    &quot;quoteAssetVolume&quot;:3.597636214561159e8,
+    &quot;tradesNumber&quot;:759135,
+    &quot;takerBuyBaseAssetVolume&quot;:5.556192707e8,
+    &quot;takerBuyQuoteAssetVolume&quot;:1.706766832130686e8
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/Spot/API/Candle.jl#L55-L107">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.Spot.CoinInformation.coin_information" href="#CryptoExchangeAPIs.Binance.Spot.CoinInformation.coin_information"><code>CryptoExchangeAPIs.Binance.Spot.CoinInformation.coin_information</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">coin_information(client::BinanceClient, query::CoinInformationQuery)
+coin_information(client::BinanceClient; kw...)</code></pre><p>Get information of coins (available for deposit and withdraw) for user.</p><p><a href="https://binance-docs.github.io/apidocs/spot/en/#all-coins-39-information-user_data"><code>GET sapi/v1/capital/config/getall</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">recvWindow</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">signature</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">timestamp</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+binance_client = BinanceClient(;
+    base_url = &quot;https://api.binance.com&quot;,
+    public_key = ENV[&quot;BINANCE_PUBLIC_KEY&quot;],
+    secret_key = ENV[&quot;BINANCE_SECRET_KEY&quot;],
+)
+
+result = Binance.Spot.coin_information(binance_client)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;coin&quot;:&quot;ADA&quot;,
+    &quot;depositAllEnable&quot;:true,
+    &quot;free&quot;:0.0,
+    &quot;freeze&quot;:0.0,
+    &quot;ipoable&quot;:0.0,
+    &quot;ipoing&quot;:0.0,
+    &quot;isLegalMoney&quot;:false,
+    &quot;locked&quot;:0.0,
+    &quot;name&quot;:&quot;Cardano&quot;,
+    &quot;networkList&quot;:[
+      {
+        &quot;addressRegex&quot;:&quot;^(([0-9A-Za-z]{57,59})|([0-9A-Za-z]{100,104}))$&quot;,
+        &quot;addressRule&quot;:null,
+        &quot;busy&quot;:false,
+        &quot;coin&quot;:&quot;ADA&quot;,
+        &quot;country&quot;:null,
+        &quot;depositDesc&quot;:&quot;&quot;,
+        &quot;depositDust&quot;:1.0e-6,
+        &quot;depositEnable&quot;:true,
+        &quot;estimatedArrivalTime&quot;:&quot;1970-01-01T00:00:00&quot;,
+        &quot;isDefault&quot;:true,
+        &quot;memoRegex&quot;:&quot;&quot;,
+        &quot;minConfirm&quot;:30,
+        &quot;name&quot;:&quot;Cardano&quot;,
+        &quot;network&quot;:&quot;ADA&quot;,
+        &quot;resetAddressStatus&quot;:false,
+        &quot;sameAddress&quot;:false,
+        &quot;specialTips&quot;:&quot;&quot;,
+        &quot;specialWithdrawTips&quot;:null,
+        &quot;unLockConfirm&quot;:0,
+        &quot;withdrawDesc&quot;:&quot;&quot;,
+        &quot;withdrawEnable&quot;:true,
+        &quot;withdrawFee&quot;:0.8,
+        &quot;withdrawIntegerMultiple&quot;:1.0e-6,
+        &quot;withdrawMax&quot;:5.0e7,
+        &quot;withdrawMin&quot;:2.0
+      }
+    ],
+    &quot;storage&quot;:0.0,
+    &quot;trading&quot;:true,
+    &quot;withdrawAllEnable&quot;:true,
+    &quot;withdrawing&quot;:0.0
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/Spot/API/CoinInformation.jl#L64-L148">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.Spot.DepositLog.deposit_log" href="#CryptoExchangeAPIs.Binance.Spot.DepositLog.deposit_log"><code>CryptoExchangeAPIs.Binance.Spot.DepositLog.deposit_log</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">deposit_log(client::BinanceClient, query::DepositLogQuery)
+deposit_log(client::BinanceClient; kw...)</code></pre><p>Fetch deposit history.</p><p><a href="https://binance-docs.github.io/apidocs/spot/en/#deposit-history-supporting-network-user_data"><code>GET sapi/v1/capital/withdraw/history</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">coin</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">endTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left">Default: 1000</td></tr><tr><td style="text-align: left">offset</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">startTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">status</td><td style="text-align: left">DepositStatus</td><td style="text-align: left">false</td><td style="text-align: left">PENDING (0), SUCCESS (1), CREDITED_BUT_CANNOT_WITHDRAW (6), WRONG_DEPOSIT (7), WAITING_USER_CONFIRM (8)</td></tr><tr><td style="text-align: left">txId</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">recvWindow</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">timestamp</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">signature</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+binance_client = BinanceClient(;
+    base_url = &quot;https://api.binance.com&quot;,
+    public_key = ENV[&quot;BINANCE_PUBLIC_KEY&quot;],
+    secret_key = ENV[&quot;BINANCE_SECRET_KEY&quot;],
+)
+
+result = Binance.Spot.deposit_log(binance_client)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;id&quot;:769800519366885376,
+    &quot;amount&quot;:0.001,
+    &quot;coin&quot;:&quot;BNB&quot;,
+    &quot;network&quot;:&quot;BNB&quot;,
+    &quot;status&quot;:0,
+    &quot;address&quot;:&quot;bnb136ns6lfw4zs5hg4n85vdthaad7hq5m4gtkgf23&quot;,
+    &quot;addressTag&quot;:&quot;101764890&quot;,
+    &quot;txId&quot;:&quot;98A3EA560C6B3336D348B6C83F0F95ECE4F1F5919E94BD006E5BF3BF264FACFC&quot;,
+    &quot;insertTime&quot;:&quot;2022-08-26T05:52:26&quot;,
+    &quot;transferType&quot;:0,
+    &quot;confirmTimes&quot;:&quot;1/1&quot;,
+    &quot;unlockConfirm&quot;:0,
+    &quot;walletType&quot;:0
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/Spot/API/DepositLog.jl#L55-L117">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.Spot.ExchangeInfo.exchange_info" href="#CryptoExchangeAPIs.Binance.Spot.ExchangeInfo.exchange_info"><code>CryptoExchangeAPIs.Binance.Spot.ExchangeInfo.exchange_info</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">exchange_info(client::BinanceClient, query::ExchangeInfoQuery)
+exchange_info(client::BinanceClient = Binance.Spot.public_client; kw...)</code></pre><p>Current exchange trading rules and symbol information.</p><p><a href="https://binance-docs.github.io/apidocs/spot/en/#exchange-information"><code>GET api/v3/exchangeInfo</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">permissions</td><td style="text-align: left">Vector</td><td style="text-align: left">false</td><td style="text-align: left">SPOT MARGIN LEVERAGED TRD_GRP_002 TRD_GRP_003 TRD_GRP_004 TRD_GRP_005 TRD_GRP_006 TRD_GRP_007</td></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">symbols</td><td style="text-align: left">Vector</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.Spot.exchange_info(;
+    symbol = &quot;ADAUSDT&quot;
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;exchangeFilters&quot;:[],
+  &quot;rateLimits&quot;:[
+    {
+      &quot;limit&quot;:6000,
+      &quot;rateLimitType&quot;:&quot;REQUEST_WEIGHT&quot;,
+      &quot;interval&quot;:&quot;MINUTE&quot;,
+      &quot;intervalNum&quot;:1
+    },
+    ...
+  ],
+  &quot;serverTime&quot;:&quot;2024-04-01T09:35:01.003000064&quot;,
+  &quot;symbols&quot;:[
+    {
+      &quot;allowTrailingStop&quot;:true,
+      &quot;allowedSelfTradePreventionModes&quot;:[
+        &quot;EXPIRE_TAKER&quot;,
+        &quot;EXPIRE_MAKER&quot;,
+        &quot;EXPIRE_BOTH&quot;
+      ],
+      &quot;baseAsset&quot;:&quot;ADA&quot;,
+      &quot;baseAssetPrecision&quot;:8,
+      &quot;baseCommissionPrecision&quot;:8,
+      &quot;cancelReplaceAllowed&quot;:true,
+      &quot;defaultSelfTradePreventionMode&quot;:&quot;EXPIRE_MAKER&quot;,
+      &quot;filters&quot;:[
+        {
+          &quot;applyToMarket&quot;:null,
+          &quot;askMultiplierDown&quot;:null,
+          &quot;askMultiplierUp&quot;:null,
+          &quot;avgPriceMins&quot;:null,
+          &quot;bidMultiplierDown&quot;:null,
+          &quot;bidMultiplierUp&quot;:null,
+          &quot;filterType&quot;:&quot;PRICE_FILTER&quot;,
+          &quot;limit&quot;:null,
+          &quot;maxNumAlgoOrders&quot;:null,
+          &quot;maxNumOrders&quot;:null,
+          &quot;maxPosition&quot;:null,
+          &quot;maxPrice&quot;:1000.0,
+          &quot;maxQty&quot;:null,
+          &quot;maxTrailingAboveDelta&quot;:null,
+          &quot;maxTrailingBelowDelta&quot;:null,
+          &quot;minNotional&quot;:null,
+          &quot;minPrice&quot;:0.0001,
+          &quot;minQty&quot;:null,
+          &quot;minTrailingAboveDelta&quot;:null,
+          &quot;minTrailingBelowDelta&quot;:null,
+          &quot;multiplierDown&quot;:null,
+          &quot;multiplierUp&quot;:null,
+          &quot;stepSize&quot;:null,
+          &quot;tickSize&quot;:0.0001
+        },
+        ...
+      ],
+      &quot;icebergAllowed&quot;:true,
+      &quot;isMarginTradingAllowed&quot;:true,
+      &quot;isSpotTradingAllowed&quot;:true,
+      &quot;ocoAllowed&quot;:true,
+      &quot;orderTypes&quot;:[
+        &quot;LIMIT&quot;,
+        &quot;LIMIT_MAKER&quot;,
+        &quot;MARKET&quot;,
+        &quot;STOP_LOSS_LIMIT&quot;,
+        &quot;TAKE_PROFIT_LIMIT&quot;
+      ],
+      &quot;permissions&quot;:[
+        &quot;SPOT&quot;,
+        &quot;MARGIN&quot;,
+        &quot;TRD_GRP_004&quot;,
+        ...
+      ],
+      &quot;quoteAsset&quot;:&quot;USDT&quot;,
+      &quot;quoteAssetPrecision&quot;:8,
+      &quot;quoteCommissionPrecision&quot;:8,
+      &quot;quoteOrderQtyMarketAllowed&quot;:true,
+      &quot;quotePrecision&quot;:8,
+      &quot;status&quot;:&quot;TRADING&quot;,
+      &quot;symbol&quot;:&quot;ADAUSDT&quot;
+    }
+  ],
+  &quot;timezone&quot;:&quot;UTC&quot;
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/Spot/API/ExchangeInfo.jl#L95-L210">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.Spot.OrderBook.order_book" href="#CryptoExchangeAPIs.Binance.Spot.OrderBook.order_book"><code>CryptoExchangeAPIs.Binance.Spot.OrderBook.order_book</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">order_book(client::BinanceClient, query::OrderBookQuery)
+order_book(client::BinanceClient = Binance.Spot.public_client; kw...)</code></pre><p><a href="https://binance-docs.github.io/apidocs/spot/en/#order-book"><code>GET api/v3/depth</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.Spot.order_book(;
+    symbol = &quot;ADAUSDT&quot;
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;asks&quot;:[
+    {
+      &quot;price&quot;:0.634,
+      &quot;size&quot;:1478.6
+    },
+    ...
+  ],
+  &quot;bids&quot;:[
+    {
+      &quot;price&quot;:0.6339,
+      &quot;size&quot;:28448.6
+    },
+    ...
+  ],
+  &quot;lastUpdateId&quot;:8394873195
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/Spot/API/OrderBook.jl#L29-L76">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.Spot.ServerTime.server_time" href="#CryptoExchangeAPIs.Binance.Spot.ServerTime.server_time"><code>CryptoExchangeAPIs.Binance.Spot.ServerTime.server_time</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">server_time(client::BinanceClient, query::ServerTimeQuery)
+server_time(client::BinanceClient = Binance.Spot.public_client; kw...)</code></pre><p>Check current server time.</p><p><a href="https://binance-docs.github.io/apidocs/spot/en/#check-server-time"><code>GET api/v3/time</code></a></p><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.Spot.server_time()
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;serverTime&quot;: &quot;2024-07-06T11:39:06.032&quot;
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/Spot/API/ServerTime.jl#L21-L47">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.Spot.Ticker.ticker" href="#CryptoExchangeAPIs.Binance.Spot.Ticker.ticker"><code>CryptoExchangeAPIs.Binance.Spot.Ticker.ticker</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">ticker(client::BinanceClient, query::TickerQuery)
+ticker(client::BinanceClient = Binance.Spot.public_client; kw...)</code></pre><p>24 hour rolling window price change statistics.</p><p><a href="https://binance-docs.github.io/apidocs/spot/en/#24hr-ticker-price-change-statistics"><code>GET api/v3/ticker/24hr</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">symbols</td><td style="text-align: left">Vector{String}</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">type</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.Spot.ticker(;
+    symbol = &quot;ADAUSDT&quot;,
+) 
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;symbol&quot;:&quot;ADAUSDT&quot;,
+  &quot;askPrice&quot;:0.631,
+  &quot;askQty&quot;:53.4,
+  &quot;bidPrice&quot;:0.6309,
+  &quot;bidQty&quot;:23714.9,
+  &quot;closeTime&quot;:&quot;2024-03-21T14:04:37.151000064&quot;,
+  &quot;count&quot;:265067,
+  &quot;firstId&quot;:482014355,
+  &quot;highPrice&quot;:0.6459,
+  &quot;lastId&quot;:482279421,
+  &quot;lastPrice&quot;:0.631,
+  &quot;lastQty&quot;:1282.0,
+  &quot;lowPrice&quot;:0.5757,
+  &quot;openPrice&quot;:0.6048,
+  &quot;openTime&quot;:&quot;2024-03-20T14:04:37.151000064&quot;,
+  &quot;prevClosePrice&quot;:0.6048,
+  &quot;priceChange&quot;:0.0262,
+  &quot;priceChangePercent&quot;:4.332,
+  &quot;quoteVolume&quot;:1.363472992331e8,
+  &quot;volume&quot;:2.185537682e8,
+  &quot;weightedAvgPrice&quot;:0.62386158
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/Spot/API/Ticker.jl#L47-L103">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.Spot.WithdrawalLog.withdrawal_log" href="#CryptoExchangeAPIs.Binance.Spot.WithdrawalLog.withdrawal_log"><code>CryptoExchangeAPIs.Binance.Spot.WithdrawalLog.withdrawal_log</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">withdrawal_log(client::BinanceClient, query::WithdrawalLogQuery)
+withdrawal_log(client::BinanceClient; kw...)</code></pre><p>Fetch withdraw history.</p><p><a href="https://binance-docs.github.io/apidocs/spot/en/#withdraw-history-supporting-network-user_data"><code>GET sapi/v1/capital/withdraw/history</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">coin</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">endTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left">Default: 1000</td></tr><tr><td style="text-align: left">offset</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">startTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">status</td><td style="text-align: left">WithdrawStatus</td><td style="text-align: left">false</td><td style="text-align: left">EMAIL_SENT (0), CANCELLED (1), AWAITING_APPROVAL (2), REJECTED (3), PROCESSING (4), FAILURE (5), COMPLETED (6)</td></tr><tr><td style="text-align: left">withdrawOrderId</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">recvWindow</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">signature</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">timestamp</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+binance_client = BinanceClient(;
+    base_url = &quot;https://api.binance.com&quot;,
+    public_key = ENV[&quot;BINANCE_PUBLIC_KEY&quot;],
+    secret_key = ENV[&quot;BINANCE_SECRET_KEY&quot;],
+)
+
+result = Binance.Spot.withdrawal_log(binance_client)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;id&quot;:&quot;b6ae22b3aa844210a7041aee7589627c&quot;,
+    &quot;amount&quot;:8.91000000,
+    &quot;transactionFee&quot;:0.004,
+    &quot;coin&quot;:&quot;USDT&quot;,
+    &quot;status&quot;:6,
+    &quot;address&quot;:&quot;0x94df8b352de7f46f64b01d3666bf6e936e44ce60&quot;,
+    &quot;txId&quot;:&quot;0xb5ef8c13b968a406cc62a93a8bd80f9e9a906ef1b3fcf20a2e48573c17659268&quot;
+    &quot;applyTime&quot;:&quot;2019-10-12T11:12:02&quot;,
+    &quot;network&quot;:&quot;ETH&quot;,
+    &quot;transferType&quot;:0,
+    &quot;info&quot;:&quot;&quot;,
+    &quot;confirmNo&quot;:3,
+    &quot;walletType&quot;:1,
+    &quot;txKey&quot;:&quot;&quot;,
+    &quot;completeTime&quot;:&quot;2023-03-23T16:52:41&quot;
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/Spot/API/WithdrawalLog.jl#L59-L123">source</a></section></article><h2 id="USDMFutures"><a class="docs-heading-anchor" href="#USDMFutures">USDMFutures</a><a id="USDMFutures-1"></a><a class="docs-heading-anchor-permalink" href="#USDMFutures" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.USDMFutures.public_client" href="#CryptoExchangeAPIs.Binance.USDMFutures.public_client"><code>CryptoExchangeAPIs.Binance.USDMFutures.public_client</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia hljs">public_client = BinanceClient(; base_url = &quot;https://fapi.binance.com&quot;)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/USDMFutures/USDMFutures.jl#L5-L7">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.USDMFutures.Candle.candle" href="#CryptoExchangeAPIs.Binance.USDMFutures.Candle.candle"><code>CryptoExchangeAPIs.Binance.USDMFutures.Candle.candle</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">candle(client::BinanceClient, query::CandleQuery)
+candle(client::BinanceClient = Binance.USDMFutures.public_client; kw...)</code></pre><p>Kline/candlestick bars for a symbol.</p><p>Wrapper for method: <a href="https://binance-docs.github.io/apidocs/futures/en/#kline-candlestick-data"><code>GET fapi/v3/klines</code></a>.</p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">interval</td><td style="text-align: left">TimeInterval</td><td style="text-align: left">true</td><td style="text-align: left">m1 m3 m5 m15 m30 h1 h2 h4 h6 h8 h12 d1 d3 w1 M1</td></tr><tr><td style="text-align: left">endTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">startTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.USDMFutures.candle(;
+    symbol = &quot;ADAUSDT&quot;,
+    interval = Binance.USDMFutures.Candle.M1,
+) 
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;openTime&quot;:&quot;2020-01-01T00:00:00&quot;,
+    &quot;openPrice&quot;:0.0545,
+    &quot;highPrice&quot;:0.05559,
+    &quot;lowPrice&quot;:0.05209,
+    &quot;closePrice&quot;:0.05387,
+    &quot;volume&quot;:2.44632854e8,
+    &quot;closeTime&quot;:&quot;2020-01-31T23:59:59.999000064&quot;,
+    &quot;quoteAssetVolume&quot;:1.313060288191e7,
+    &quot;tradesNumber&quot;:40186,
+    &quot;takerBuyBaseAssetVolume&quot;:1.16954492e8,
+    &quot;takerBuyQuoteAssetVolume&quot;:6.28735588554e6
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/USDMFutures/API/Candle.jl#L55-L108">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.USDMFutures.ContinuousCandle.continuous_candle" href="#CryptoExchangeAPIs.Binance.USDMFutures.ContinuousCandle.continuous_candle"><code>CryptoExchangeAPIs.Binance.USDMFutures.ContinuousCandle.continuous_candle</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">continuous_candle(client::BinanceClient, query::ContinuousCandleQuery)
+continuous_candle(client::BinanceClient = Binance.USDMFutures.public_client; kw...)</code></pre><p>Kline/candlestick bars for a specific contract type.</p><p><a href="https://binance-docs.github.io/apidocs/futures/en/#continuous-contract-kline-candlestick-data"><code>GET fapi/v1/continuousKlines</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">pair</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">contractType</td><td style="text-align: left">ContractType</td><td style="text-align: left">true</td><td style="text-align: left">PERPETUAL CURRENT_QUARTER NEXT_QUARTER</td></tr><tr><td style="text-align: left">interval</td><td style="text-align: left">TimeInterval</td><td style="text-align: left">true</td><td style="text-align: left">m1 m3 m5 m15 m30 h1 h2 h4 h6 h8 h12 d1 d3 w1 M1</td></tr><tr><td style="text-align: left">endTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">startTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.USDMFutures.continuous_candle(;
+    pair = &quot;BTCUSDT&quot;,
+    contractType = Binance.USDMFutures.ContinuousCandle.PERPETUAL,
+    interval = Binance.USDMFutures.ContinuousCandle.M1,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;openTime&quot;:&quot;2019-09-01T00:00:00&quot;,
+    &quot;openPrice&quot;:8042.08,
+    &quot;highPrice&quot;:10475.54,
+    &quot;lowPrice&quot;:7700.67,
+    &quot;closePrice&quot;:8041.96,
+    &quot;volume&quot;:608742.1109999999,
+    &quot;closeTime&quot;:&quot;2019-09-30T23:59:59.999000064&quot;,
+    &quot;quoteAssetVolume&quot;:5.61187924896223e9,
+    &quot;tradesNumber&quot;:998055,
+    &quot;takerBuyVolume&quot;:298326.244,
+    &quot;takerBuyQuoteAssetVolume&quot;:2.7368038906708302e9
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/USDMFutures/API/ContinuousCandle.jl#L58-L112">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.USDMFutures.ExchangeInfo.exchange_info" href="#CryptoExchangeAPIs.Binance.USDMFutures.ExchangeInfo.exchange_info"><code>CryptoExchangeAPIs.Binance.USDMFutures.ExchangeInfo.exchange_info</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">exchange_info(client::BinanceClient, query::ExchangeInfoQuery)
+exchange_info(client::BinanceClient = Binance.USDMFutures.public_client; kw...)</code></pre><p>Current exchange trading rules and symbol information.</p><p><a href="https://binance-docs.github.io/apidocs/futures/en/#exchange-information"><code>GET fapi/v1/exchangeInfo</code></a></p><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.USDMFutures.exchange_info() 
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;futuresType&quot;:&quot;U_MARGINED&quot;,
+  &quot;symbols&quot;:
+  [
+    {
+    &quot;baseAsset&quot;:&quot;BTC&quot;,
+    &quot;baseAssetPrecision&quot;:8,
+    &quot;contractType&quot;:&quot;PERPETUAL&quot;,
+    &quot;deliveryDate&quot;:&quot;2100-12-25T08:00:00&quot;,
+    &quot;filters&quot;:[
+      {
+        &quot;filterType&quot;:&quot;PRICE_FILTER&quot;,
+        &quot;limit&quot;:null,
+        &quot;maxPrice&quot;:4.529764e6,
+        &quot;maxQty&quot;:null,
+        &quot;minPrice&quot;:556.8,
+        &quot;minQty&quot;:null,
+        &quot;multiplierDecimal&quot;:null,
+        &quot;multiplierDown&quot;:null,
+        &quot;multiplierUp&quot;:null,
+        &quot;notional&quot;:null,
+        &quot;stepSize&quot;:null,
+        &quot;tickSize&quot;:0.1
+      },
+      ...
+    ],
+    &quot;liquidationFee&quot;:0.0125,
+    &quot;maintMarginPercent&quot;:2.5,
+    &quot;marginAsset&quot;:&quot;USDT&quot;,
+    &quot;marketTakeBound&quot;:0.05,
+    &quot;maxMoveOrderLimit&quot;:10000,
+    &quot;onboardDate&quot;:&quot;2019-09-25T08:00:00&quot;,
+    &quot;orderTypes&quot;:[
+      &quot;LIMIT&quot;,
+      &quot;MARKET&quot;,
+      &quot;STOP&quot;,
+      &quot;STOP_MARKET&quot;,
+      &quot;TAKE_PROFIT&quot;,
+      &quot;TAKE_PROFIT_MARKET&quot;,
+      &quot;TRAILING_STOP_MARKET&quot;
+    ],
+    &quot;pair&quot;:&quot;BTCUSDT&quot;,
+    &quot;pricePrecision&quot;:2,
+    &quot;quantityPrecision&quot;:3,
+    &quot;quoteAsset&quot;:&quot;USDT&quot;,
+    &quot;quotePrecision&quot;:8,
+    &quot;requiredMarginPercent&quot;:5.0,
+    &quot;settlePlan&quot;:0,
+    &quot;status&quot;:&quot;TRADING&quot;,
+    &quot;symbol&quot;:&quot;BTCUSDT&quot;,
+    &quot;timeInForce&quot;:[
+      &quot;GTC&quot;,
+      &quot;IOC&quot;,
+      &quot;FOK&quot;,
+      &quot;GTX&quot;,
+      &quot;GTD&quot;
+    ],
+    &quot;triggerProtect&quot;:0.05,
+    &quot;underlyingSubType&quot;:[
+      &quot;PoW&quot;
+    ],
+    &quot;underlyingType&quot;:&quot;COIN&quot;
+    },
+    ...
+  ]
+  &quot;assets&quot;:
+  [
+    {
+    &quot;asset&quot;:&quot;USDT&quot;,
+    &quot;autoAssetExchange&quot;:-10000.0,
+    &quot;marginAvailable&quot;:true
+    },
+    ...
+  ]
+  &quot;serverTime&quot;:&quot;2024-03-21T20:00:09.139000064&quot;,
+  &quot;exchangeFilters&quot;:null,
+  &quot;timezone&quot;:&quot;UTC&quot;,
+  &quot;rateLimits&quot;:
+  [
+    {
+    &quot;interval&quot;:&quot;MINUTE&quot;,
+    &quot;intervalNum&quot;:1,
+    &quot;limit&quot;:2400,
+    &quot;rateLimitType&quot;:&quot;REQUEST_WEIGHT&quot;
+    },
+    ...
+  ]
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/USDMFutures/API/ExchangeInfo.jl#L91-L202">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.USDMFutures.FundingRate.funding_rate" href="#CryptoExchangeAPIs.Binance.USDMFutures.FundingRate.funding_rate"><code>CryptoExchangeAPIs.Binance.USDMFutures.FundingRate.funding_rate</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">funding_rate(client::BinanceClient, query::FundingRateQuery)
+funding_rate(client::BinanceClient = Binance.USDMFutures.public_client; kw...)</code></pre><p>Get funding rate history.</p><p><a href="https://binance-docs.github.io/apidocs/futures/en/#get-funding-rate-history"><code>GET fapi/v1/fundingRate</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">endTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">startTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.USDMFutures.funding_rate(;
+    symbol = &quot;BTCUSDT&quot;,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;symbol&quot;:&quot;BTCUSDT&quot;,
+    &quot;fundingRate&quot;:0.00011242,
+    &quot;fundingTime&quot;:&quot;2024-02-21T08:00:00&quot;,
+    &quot;markPrice&quot;:51595.13521986
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/USDMFutures/API/FundingRate.jl#L31-L74">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.USDMFutures.HistoricalTrades.historical_trades" href="#CryptoExchangeAPIs.Binance.USDMFutures.HistoricalTrades.historical_trades"><code>CryptoExchangeAPIs.Binance.USDMFutures.HistoricalTrades.historical_trades</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">historical_trades(client::BinanceClient, query::HistoricalTradesQuery)
+historical_trades(client::BinanceClient = Binance.USDMFutures.public_client; kw...)</code></pre><p><a href="https://binance-docs.github.io/apidocs/futures/en/#old-trades-lookup-market_data"><code>GET fapi/v1/historicalTrades</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left">Default: 500; Max: 1000</td></tr><tr><td style="text-align: left">fromId</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left">TradeId to fetch from. Default gets most recent trades</td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.USDMFutures.historical_trades(;
+    symbol = &quot;BTCUSDT&quot;
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;id&quot;:3697954552,
+    &quot;price&quot;:66428.01,
+    &quot;qty&quot;:0.0038,
+    &quot;quoteQty&quot;:252.426438,
+    &quot;time&quot;:&quot;2024-07-23T12:50:24.951000064&quot;,
+    &quot;isBuyerMaker&quot;:false
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/USDMFutures/API/HistoricalTrades.jl#L28-L70">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.USDMFutures.LongShortRatio.long_short_ratio" href="#CryptoExchangeAPIs.Binance.USDMFutures.LongShortRatio.long_short_ratio"><code>CryptoExchangeAPIs.Binance.USDMFutures.LongShortRatio.long_short_ratio</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">long_short_ratio(client::BinanceClient, query::LongShortRatioQuery)
+long_short_ratio(client::BinanceClient = Binance.USDMFutures.public_client; kw...)</code></pre><p><a href="https://binance-docs.github.io/apidocs/futures/en/#long-short-ratio"><code>GET futures/data/globalLongShortAccountRatio</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">period</td><td style="text-align: left">TimeInterval</td><td style="text-align: left">true</td><td style="text-align: left">m5 m15 m30 h1 h2 h4 h6 h12 d1</td></tr><tr><td style="text-align: left">endTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left">Default: 30, Max: 500</td></tr><tr><td style="text-align: left">startTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.USDMFutures.long_short_ratio(;
+    symbol = &quot;BTCUSDT&quot;,
+    period = Binance.USDMFutures.LongShortRatio.h1,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;symbol&quot;:&quot;BTCUSDT&quot;,
+    &quot;longShortRatio&quot;:1.3305,
+    &quot;longAccount&quot;:0.5709,
+    &quot;shortAccount&quot;:0.4291,
+    &quot;timestamp&quot;:&quot;2024-03-29T12:00:00&quot;
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/USDMFutures/API/LongShortRatio.jl#L43-L87">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.USDMFutures.OpenInterestHist.open_interest_hist" href="#CryptoExchangeAPIs.Binance.USDMFutures.OpenInterestHist.open_interest_hist"><code>CryptoExchangeAPIs.Binance.USDMFutures.OpenInterestHist.open_interest_hist</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">open_interest_hist(client::BinanceClient, query::OpenInterestHistQuery)
+open_interest_hist(client::BinanceClient = Binance.USDMFutures.public_client; kw...)</code></pre><p><a href="https://binance-docs.github.io/apidocs/futures/en/#open-interest-statistics"><code>GET futures/data/openInterestHist</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">period</td><td style="text-align: left">TimeInterval</td><td style="text-align: left">true</td><td style="text-align: left">m5 m15 m30 h1 h2 h4 h6 h12 d1</td></tr><tr><td style="text-align: left">endTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left">Default: 30, Max: 500</td></tr><tr><td style="text-align: left">startTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.USDMFutures.open_interest_hist(;
+    symbol = &quot;BTCUSDT&quot;,
+    period = Binance.USDMFutures.OpenInterestHist.h1,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;symbol&quot;:&quot;BTCUSDT&quot;,
+    &quot;sumOpenInterest&quot;:81737.468,
+    &quot;sumOpenInterestValue&quot;:5.730969977716018e9,
+    &quot;timestamp&quot;:&quot;2024-03-29T15:00:00&quot;
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/USDMFutures/API/OpenInterestHist.jl#L42-L85">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.USDMFutures.OrderBook.order_book" href="#CryptoExchangeAPIs.Binance.USDMFutures.OrderBook.order_book"><code>CryptoExchangeAPIs.Binance.USDMFutures.OrderBook.order_book</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">order_book(client::BinanceClient, query::OrderBookQuery)
+order_book(client::BinanceClient = Binance.USDMFutures.public_client; kw...)</code></pre><p><a href="https://binance-docs.github.io/apidocs/futures/en/#order-book"><code>GET fapi/v1/depth</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.USDMFutures.order_book(;
+    symbol = &quot;ADAUSDT&quot;
+) 
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;T&quot;:&quot;2024-03-21T21:25:53.671000064&quot;,
+  &quot;E&quot;:&quot;2024-03-21T21:25:53.680999936&quot;,
+  &quot;asks&quot;:[
+    {
+      &quot;price&quot;:0.6337,
+      &quot;size&quot;:20325.0
+    },
+    ...
+  ],
+  &quot;lastUpdateId&quot;:4248628084740,
+  &quot;bids&quot;:[
+    {
+      &quot;price&quot;:0.6336,
+      &quot;size&quot;:58607.0
+    },
+    ...
+  ]
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/USDMFutures/API/OrderBook.jl#L31-L80">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.USDMFutures.PremiumIndex.premium_index" href="#CryptoExchangeAPIs.Binance.USDMFutures.PremiumIndex.premium_index"><code>CryptoExchangeAPIs.Binance.USDMFutures.PremiumIndex.premium_index</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">premium_index(client::BinanceClient, query::PremiumIndexQuery)
+premium_index(client::BinanceClient = Binance.USDMFutures.public_client; kw...)</code></pre><p><a href="https://binance-docs.github.io/apidocs/futures/en/#mark-price"><code>GET fapi/v1/premiumIndex</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.USDMFutures.premium_index(;
+    symbol = &quot;BTCUSDT&quot;,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;symbol&quot;:&quot;BTCUSDT&quot;,
+  &quot;markPrice&quot;:70901.2,
+  &quot;indexPrice&quot;:70794.23404255,
+  &quot;estimatedSettlePrice&quot;:70699.56121556,
+  &quot;lastFundingRate&quot;:0.000442,
+  &quot;interestRate&quot;:0.0001,
+  &quot;nextFundingTime&quot;:&quot;2024-04-01T00:00:00&quot;,
+  &quot;time&quot;:&quot;2024-03-31T19:00:35&quot;
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/USDMFutures/API/PremiumIndex.jl#L28-L67">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.USDMFutures.TakerLongShortRatio.taker_long_short_ratio" href="#CryptoExchangeAPIs.Binance.USDMFutures.TakerLongShortRatio.taker_long_short_ratio"><code>CryptoExchangeAPIs.Binance.USDMFutures.TakerLongShortRatio.taker_long_short_ratio</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">taker_long_short_ratio(client::BinanceClient, query::TakerLongShortRatioQuery)
+taker_long_short_ratio(client::BinanceClient = Binance.USDMFutures.public_client; kw...)</code></pre><p><a href="https://binance-docs.github.io/apidocs/futures/en/#taker-buy-sell-volume"><code>GET futures/data/takerlongshortRatio</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">period</td><td style="text-align: left">TimeInterval</td><td style="text-align: left">true</td><td style="text-align: left">m5 m15 m30 h1 h2 h4 h6 h12 d1</td></tr><tr><td style="text-align: left">endTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left">Default: 30, Max: 500</td></tr><tr><td style="text-align: left">startTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.USDMFutures.taker_long_short_ratio(;
+    symbol = &quot;BTCUSDT&quot;,
+    period = Binance.USDMFutures.TakerLongShortRatio.h1,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;buySellRatio&quot;:0.6366,
+    &quot;buyVol&quot;:1277.042,
+    &quot;sellVol&quot;:2005.878,
+    &quot;timestamp&quot;:&quot;2024-03-30T14:00:00&quot;
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/USDMFutures/API/TakerLongShortRatio.jl#L42-L85">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.USDMFutures.Ticker.ticker" href="#CryptoExchangeAPIs.Binance.USDMFutures.Ticker.ticker"><code>CryptoExchangeAPIs.Binance.USDMFutures.Ticker.ticker</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">ticker(client::BinanceClient, query::TickerQuery)
+ticker(client::BinanceClient = Binance.USDMFutures.public_client; kw...)</code></pre><p>24 hour rolling window price change statistics.</p><p><a href="https://binance-docs.github.io/apidocs/futures/en/#24hr-ticker-price-change-statistics"><code>GET fapi/v1/ticker/24hr</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.USDMFutures.ticker(;
+    symbol = &quot;ADAUSDT&quot;,
+) 
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;closeTime&quot;:&quot;2024-03-21T21:40:44.384999936&quot;,
+  &quot;count&quot;:952934,
+  &quot;firstId&quot;:1090483662,
+  &quot;highPrice&quot;:0.649,
+  &quot;lastId&quot;:1091436596,
+  &quot;lastPrice&quot;:0.631,
+  &quot;lastQty&quot;:1000.0,
+  &quot;lowPrice&quot;:0.6182,
+  &quot;openPrice&quot;:0.6389,
+  &quot;openTime&quot;:&quot;2024-03-20T21:40:00&quot;,
+  &quot;priceChange&quot;:-0.0079,
+  &quot;priceChangePercent&quot;:-1.237,
+  &quot;quoteVolume&quot;:4.378010427731e8,
+  &quot;symbol&quot;:&quot;ADAUSDT&quot;,
+  &quot;volume&quot;:6.89939719e8,
+  &quot;weightedAvgPrice&quot;:0.63455
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/USDMFutures/API/Ticker.jl#L36-L85">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.USDMFutures.TopLongShortAccountRatio.top_long_short_account_ratio" href="#CryptoExchangeAPIs.Binance.USDMFutures.TopLongShortAccountRatio.top_long_short_account_ratio"><code>CryptoExchangeAPIs.Binance.USDMFutures.TopLongShortAccountRatio.top_long_short_account_ratio</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">top_long_short_account_ratio(client::BinanceClient, query::TopLongShortAccountRatioQuery)
+top_long_short_account_ratio(client::BinanceClient = Binance.USDMFutures.public_client; kw...)</code></pre><p><a href="https://binance-docs.github.io/apidocs/futures/en/#top-trader-long-short-ratio-accounts"><code>GET futures/data/topLongShortAccountRatio</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">period</td><td style="text-align: left">TimeInterval</td><td style="text-align: left">true</td><td style="text-align: left">m5 m15 m30 h1 h2 h4 h6 h12 d1</td></tr><tr><td style="text-align: left">endTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left">Default: 30, Max: 500</td></tr><tr><td style="text-align: left">startTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.USDMFutures.top_long_short_account_ratio(;
+    symbol = &quot;BTCUSDT&quot;,
+    period = Binance.USDMFutures.TopLongShortAccountRatio.h1,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;symbol&quot;:&quot;BTCUSDT&quot;,
+    &quot;longShortRatio&quot;:1.5189,
+    &quot;longAccount&quot;:0.603,
+    &quot;shortAccount&quot;:0.397,
+    &quot;timestamp&quot;:&quot;2024-03-30T15:00:00&quot;
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/USDMFutures/API/TopLongShortAccountRatio.jl#L43-L87">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.USDMFutures.TopLongShortPositionRatio.top_long_short_position_ratio" href="#CryptoExchangeAPIs.Binance.USDMFutures.TopLongShortPositionRatio.top_long_short_position_ratio"><code>CryptoExchangeAPIs.Binance.USDMFutures.TopLongShortPositionRatio.top_long_short_position_ratio</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">top_long_short_position_ratio(client::BinanceClient, query::TopLongShortPositionRatioQuery)
+top_long_short_position_ratio(client::BinanceClient = Binance.USDMFutures.public_client; kw...)</code></pre><p><a href="https://binance-docs.github.io/apidocs/futures/en/#top-trader-long-short-ratio-positions"><code>GET futures/data/topLongShortPositionRatio</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">period</td><td style="text-align: left">TimeInterval</td><td style="text-align: left">true</td><td style="text-align: left">m5 m15 m30 h1 h2 h4 h6 h12 d1</td></tr><tr><td style="text-align: left">endTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left">Default: 30, Max: 500</td></tr><tr><td style="text-align: left">startTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.USDMFutures.top_long_short_position_ratio(;
+    symbol = &quot;BTCUSDT&quot;,
+    period = Binance.USDMFutures.TopLongShortPositionRatio.h1,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;symbol&quot;:&quot;BTCUSDT&quot;,
+    &quot;longShortRatio&quot;:1.3855,
+    &quot;longAccount&quot;:0.5808,
+    &quot;shortAccount&quot;:0.4192,
+    &quot;timestamp&quot;:&quot;2024-03-30T15:00:00&quot;
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/USDMFutures/API/TopLongShortPositionRatio.jl#L43-L87">source</a></section></article><h2 id="CoinMFutures"><a class="docs-heading-anchor" href="#CoinMFutures">CoinMFutures</a><a id="CoinMFutures-1"></a><a class="docs-heading-anchor-permalink" href="#CoinMFutures" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.CoinMFutures.public_client" href="#CryptoExchangeAPIs.Binance.CoinMFutures.public_client"><code>CryptoExchangeAPIs.Binance.CoinMFutures.public_client</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia hljs">public_client = BinanceClient(; base_url = &quot;https://dapi.binance.com&quot;)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/CoinMFutures/CoinMFutures.jl#L5-L7">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.CoinMFutures.Candle.candle" href="#CryptoExchangeAPIs.Binance.CoinMFutures.Candle.candle"><code>CryptoExchangeAPIs.Binance.CoinMFutures.Candle.candle</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">candle(client::BinanceClient, query::CandleQuery)
+candle(client::BinanceClient = Binance.CoinMFutures.public_client; kw...)</code></pre><p>Kline/candlestick bars for a symbol.</p><p><a href="https://binance-docs.github.io/apidocs/delivery/en/#kline-candlestick-data"><code>GET dapi/v1/klines</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">interval</td><td style="text-align: left">Period</td><td style="text-align: left">true</td><td style="text-align: left">m1 m3 m5 m15 m30 h1 h2 h4 h6 h8 h12 d1 d3 w1 M1</td></tr><tr><td style="text-align: left">endTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">startTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.CoinMFutures.candle(;
+    symbol = &quot;ADAUSD_PERP&quot;,
+    interval = Binance.CoinMFutures.Candle.M1,
+) 
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;openTime&quot;:&quot;2023-10-01T00:00:00&quot;,
+    &quot;openPrice&quot;:0.2538,
+    &quot;highPrice&quot;:0.3049,
+    &quot;lowPrice&quot;:0.2387,
+    &quot;closePrice&quot;:0.2931,
+    &quot;volume&quot;:3.1780325e7,
+    &quot;closeTime&quot;:&quot;2023-10-31T23:59:59.999000064&quot;,
+    &quot;baseAssetVolume&quot;:1.189509044956558e9,
+    &quot;tradesNumber&quot;:795986,
+    &quot;takerBuyVolume&quot;:1.5506238e7,
+    &quot;takerBuyBaseAssetVolume&quot;:5.799281977142488e8
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/CoinMFutures/API/Candle.jl#L55-L107">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.CoinMFutures.ContinuousCandle.continuous_candle" href="#CryptoExchangeAPIs.Binance.CoinMFutures.ContinuousCandle.continuous_candle"><code>CryptoExchangeAPIs.Binance.CoinMFutures.ContinuousCandle.continuous_candle</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">continuous_candle(client::BinanceClient, query::ContinuousCandleQuery)
+continuous_candle(client::BinanceClient = Binance.CoinMFutures.public_client; kw...)</code></pre><p>Kline/candlestick bars for a specific contract type.</p><p><a href="https://binance-docs.github.io/apidocs/delivery/en/#continuous-contract-kline-candlestick-data"><code>GET dapi/v1/continuousKlines</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">pair</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">contractType</td><td style="text-align: left">ContractType</td><td style="text-align: left">true</td><td style="text-align: left">PERPETUAL CURRENT_QUARTER NEXT_QUARTER</td></tr><tr><td style="text-align: left">interval</td><td style="text-align: left">TimeInterval</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">endTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">startTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.CoinMFutures.continuous_candle(;
+    pair = &quot;BTCUSD&quot;,
+    contractType = Binance.CoinMFutures.ContinuousCandle.PERPETUAL,
+    interval = Binance.CoinMFutures.ContinuousCandle.M1,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[       
+ {
+    &quot;openTime&quot;:&quot;2023-10-01T00:00:00&quot;,
+    &quot;openPrice&quot;:26957.3,
+    &quot;highPrice&quot;:35811.9,
+    &quot;lowPrice&quot;:26516.7,
+    &quot;closePrice&quot;:34679.8,
+    &quot;volume&quot;:4.49110256e8,
+    &quot;closeTime&quot;:&quot;2023-10-31T23:59:59.999000064&quot;,
+    &quot;baseAssetVolume&quot;:1.50363571181441e6,
+    &quot;tradesNumber&quot;:11775107,
+    &quot;takerBuyVolume&quot;:2.24708613e8,
+    &quot;takerBuyBaseAssetVolume&quot;:752475.86725638
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/CoinMFutures/API/ContinuousCandle.jl#L58-L112">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.CoinMFutures.ExchangeInfo.exchange_info" href="#CryptoExchangeAPIs.Binance.CoinMFutures.ExchangeInfo.exchange_info"><code>CryptoExchangeAPIs.Binance.CoinMFutures.ExchangeInfo.exchange_info</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">exchange_info(client::BinanceClient, query::ExchangeInfoQuery)
+exchange_info(client::BinanceClient = Binance.CoinMFutures.public_client; kw...)</code></pre><p>Current exchange trading rules and symbol information.</p><p><a href="https://binance-docs.github.io/apidocs/delivery/en/#exchange-information"><code>GET dapi/v1/exchangeInfo</code></a></p><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.CoinMFutures.exchange_info() 
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;symbols&quot;:[
+    {
+      &quot;baseAsset&quot;:&quot;BTC&quot;,
+      &quot;baseAssetPrecision&quot;:8,
+      &quot;contractSize&quot;:100,
+      &quot;contractStatus&quot;:&quot;TRADING&quot;,
+      &quot;contractType&quot;:&quot;PERPETUAL&quot;,
+      &quot;deliveryDate&quot;:&quot;2100-12-25T08:00:00&quot;,
+      &quot;equalQtyPrecision&quot;:4,
+      &quot;filters&quot;:[
+        {
+          &quot;filterType&quot;:&quot;PRICE_FILTER&quot;,
+          &quot;limit&quot;:null,
+          &quot;maxPrice&quot;:4.520958e6,
+          &quot;maxQty&quot;:null,
+          &quot;minPrice&quot;:1000.0,
+          &quot;minQty&quot;:null,
+          &quot;multiplierDecimal&quot;:null,
+          &quot;multiplierDown&quot;:null,
+          &quot;multiplierUp&quot;:null,
+          &quot;notional&quot;:null,
+          &quot;stepSize&quot;:null,
+          &quot;tickSize&quot;:0.1
+        },
+        {
+          &quot;filterType&quot;:&quot;LOT_SIZE&quot;,
+          &quot;limit&quot;:null,
+          &quot;maxPrice&quot;:null,
+          &quot;maxQty&quot;:1.0e6,
+          &quot;minPrice&quot;:null,
+          &quot;minQty&quot;:1.0,
+          &quot;multiplierDecimal&quot;:null,
+          &quot;multiplierDown&quot;:null,
+          &quot;multiplierUp&quot;:null,
+          &quot;notional&quot;:null,
+          &quot;stepSize&quot;:1.0,
+          &quot;tickSize&quot;:null
+        },
+        {
+          &quot;filterType&quot;:&quot;MARKET_LOT_SIZE&quot;,
+          &quot;limit&quot;:null,
+          &quot;maxPrice&quot;:null,
+          &quot;maxQty&quot;:60000.0,
+          &quot;minPrice&quot;:null,
+          &quot;minQty&quot;:1.0,
+          &quot;multiplierDecimal&quot;:null,
+          &quot;multiplierDown&quot;:null,
+          &quot;multiplierUp&quot;:null,
+          &quot;notional&quot;:null,
+          &quot;stepSize&quot;:1.0,
+          &quot;tickSize&quot;:null
+        },
+        {
+          &quot;filterType&quot;:&quot;MAX_NUM_ORDERS&quot;,
+          &quot;limit&quot;:200,
+          &quot;maxPrice&quot;:null,
+          &quot;maxQty&quot;:null,
+          &quot;minPrice&quot;:null,
+          &quot;minQty&quot;:null,
+          &quot;multiplierDecimal&quot;:null,
+          &quot;multiplierDown&quot;:null,
+          &quot;multiplierUp&quot;:null,
+          &quot;notional&quot;:null,
+          &quot;stepSize&quot;:null,
+          &quot;tickSize&quot;:null
+        },
+        {
+          &quot;filterType&quot;:&quot;MAX_NUM_ALGO_ORDERS&quot;,
+          &quot;limit&quot;:20,
+          &quot;maxPrice&quot;:null,
+          &quot;maxQty&quot;:null,
+          &quot;minPrice&quot;:null,
+          &quot;minQty&quot;:null,
+          &quot;multiplierDecimal&quot;:null,
+          &quot;multiplierDown&quot;:null,
+          &quot;multiplierUp&quot;:null,
+          &quot;notional&quot;:null,
+          &quot;stepSize&quot;:null,
+          &quot;tickSize&quot;:null
+        },
+        {
+          &quot;filterType&quot;:&quot;PERCENT_PRICE&quot;,
+          &quot;limit&quot;:null,
+          &quot;maxPrice&quot;:null,
+          &quot;maxQty&quot;:null,
+          &quot;minPrice&quot;:null,
+          &quot;minQty&quot;:null,
+          &quot;multiplierDecimal&quot;:4.0,
+          &quot;multiplierDown&quot;:0.95,
+          &quot;multiplierUp&quot;:1.05,
+          &quot;notional&quot;:null,
+          &quot;stepSize&quot;:null,
+          &quot;tickSize&quot;:null
+        }
+      ],
+      &quot;liquidationFee&quot;:0.015,
+      &quot;maintMarginPercent&quot;:2.5,
+      &quot;marginAsset&quot;:&quot;BTC&quot;,
+      &quot;marketTakeBound&quot;:0.05,
+      &quot;maxMoveOrderLimit&quot;:10000,
+      &quot;onboardDate&quot;:&quot;2020-08-10T07:00:00&quot;,
+      &quot;orderTypes&quot;:[
+        &quot;LIMIT&quot;,
+        &quot;MARKET&quot;,
+        &quot;STOP&quot;,
+        &quot;STOP_MARKET&quot;,
+        &quot;TAKE_PROFIT&quot;,
+        &quot;TAKE_PROFIT_MARKET&quot;,
+        &quot;TRAILING_STOP_MARKET&quot;
+      ],
+      &quot;pair&quot;:&quot;BTCUSD&quot;,
+      &quot;pricePrecision&quot;:1,
+      &quot;quantityPrecision&quot;:0,
+      &quot;quoteAsset&quot;:&quot;USD&quot;,
+      &quot;quotePrecision&quot;:8,
+      &quot;requiredMarginPercent&quot;:5.0,
+      &quot;symbol&quot;:&quot;BTCUSD_PERP&quot;,
+      &quot;timeInForce&quot;:[
+        &quot;GTC&quot;,
+        &quot;IOC&quot;,
+        &quot;FOK&quot;,
+        &quot;GTX&quot;
+      ],
+      &quot;triggerProtect&quot;:0.05,
+      &quot;underlyingSubType&quot;:[
+        &quot;PoW&quot;
+      ],
+      &quot;underlyingType&quot;:&quot;COIN&quot;
+    },
+    ...
+  ],
+  &quot;serverTime&quot;:&quot;2024-03-21T22:00:07.956&quot;,
+  &quot;exchangeFilters&quot;:null,
+  &quot;timezone&quot;:&quot;UTC&quot;,
+  &quot;rateLimits&quot;:[
+    {
+      &quot;interval&quot;:&quot;MINUTE&quot;,
+      &quot;intervalNum&quot;:1,
+      &quot;limit&quot;:2400,
+      &quot;rateLimitType&quot;:&quot;REQUEST_WEIGHT&quot;
+    },
+    ...
+  ]
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/CoinMFutures/API/ExchangeInfo.jl#L84-L252">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.CoinMFutures.FundingRate.funding_rate" href="#CryptoExchangeAPIs.Binance.CoinMFutures.FundingRate.funding_rate"><code>CryptoExchangeAPIs.Binance.CoinMFutures.FundingRate.funding_rate</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">funding_rate(client::BinanceClient, query::FundingRateQuery)
+funding_rate(client::BinanceClient = Binance.CoinMFutures.public_client; kw...)</code></pre><p><a href="https://binance-docs.github.io/apidocs/delivery/en/#get-funding-rate-history-of-perpetual-futures"><code>GET /dapi/v1/fundingRate</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">endTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">startTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.CoinMFutures.funding_rate(;
+    symbol = &quot;BTCUSD_PERP&quot;,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+ {
+    &quot;symbol&quot;:&quot;BTCUSD_PERP&quot;,
+    &quot;fundingTime&quot;:&quot;2024-02-22T16:00:00&quot;,
+    &quot;fundingRate&quot;:0.00034808,
+    &quot;markPrice&quot;:51610.0
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/CoinMFutures/API/FundingRate.jl#L27-L68">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.CoinMFutures.IncomeLog.income_log" href="#CryptoExchangeAPIs.Binance.CoinMFutures.IncomeLog.income_log"><code>CryptoExchangeAPIs.Binance.CoinMFutures.IncomeLog.income_log</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">income_log(client::BinanceClient, query::IncomeLogQuery)
+income_log(client::BinanceClient; kw...)</code></pre><p><a href="https://binance-docs.github.io/apidocs/delivery/en/#get-income-history-user_data"><code>GET dapi/v1/income</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">incomeType</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">startTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">endTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">recvWindow</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">timestamp</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">signature</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+binance_client = BinanceClient(;
+    base_url = &quot;https://dapi.binance.com&quot;,
+    public_key = ENV[&quot;BINANCE_PUBLIC_KEY&quot;],
+    secret_key = ENV[&quot;BINANCE_SECRET_KEY&quot;],
+)
+
+result = Binance.CoinMFutures.income_log(
+    binance_client
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;symbol&quot;:&quot;ETHUSD_PERP&quot;,
+    &quot;incomeType&quot;:&quot;FUNDING_FEE&quot;,
+    &quot;info&quot;:null,
+    &quot;income&quot;:1.2e-7,
+    &quot;asset&quot;:&quot;ETH&quot;,
+    &quot;time&quot;:&quot;2023-09-04T08:00:00&quot;,
+    &quot;tranId&quot;:84092344523696865420,
+    &quot;tradeId&quot;:null
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/CoinMFutures/API/IncomeLog.jl#L40-L95">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.CoinMFutures.OrderBook.order_book" href="#CryptoExchangeAPIs.Binance.CoinMFutures.OrderBook.order_book"><code>CryptoExchangeAPIs.Binance.CoinMFutures.OrderBook.order_book</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">order_book(client::BinanceClient, query::OrderBookQuery)
+order_book(client::BinanceClient = Binance.CoinMFutures.public_client; kw...)</code></pre><p>Gets current exchange orders.   <a href="https://binance-docs.github.io/apidocs/delivery/en/#order-book"><code>GET dapi/v1/depth</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.CoinMFutures.order_book(;
+    symbol = &quot;ADAUSD_PERP&quot;,
+) 
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;E&quot;:&quot;2024-03-21T22:59:25.734000128&quot;,
+  &quot;T&quot;:&quot;2024-03-21T22:59:25.724999936&quot;,
+  &quot;asks&quot;:[
+    {
+      &quot;price&quot;:0.6312,
+      &quot;size&quot;:1140.0
+    },
+    ...
+  ],
+  &quot;symbol&quot;:&quot;ADAUSD_PERP&quot;,
+  &quot;lastUpdateId&quot;:895428654926,
+  &quot;bids&quot;:[
+    {
+      &quot;price&quot;:0.6311,
+      &quot;size&quot;:9.0
+    },
+    ...
+  ],
+  &quot;pair&quot;:&quot;ADAUSD&quot;
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/CoinMFutures/API/OrderBook.jl#L33-L84">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.CoinMFutures.PremiumIndex.premium_index" href="#CryptoExchangeAPIs.Binance.CoinMFutures.PremiumIndex.premium_index"><code>CryptoExchangeAPIs.Binance.CoinMFutures.PremiumIndex.premium_index</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">premium_index(client::BinanceClient, query::PremiumIndexQuery)
+premium_index(client::BinanceClient = Binance.CoinMFutures.public_client; kw...)</code></pre><p><a href="https://binance-docs.github.io/apidocs/delivery/en/#index-price-and-mark-price"><code>GET dapi/v1/premiumIndex</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">pair</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.CoinMFutures.premium_index(;
+    pair = &quot;BTCUSD&quot;,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+ {
+    &quot;symbol&quot;:&quot;BTCUSD_240329&quot;,
+    &quot;pair&quot;:&quot;BTCUSD&quot;,
+    &quot;markPrice&quot;:70397.85306869,
+    &quot;indexPrice&quot;:70195.20240214,
+    &quot;estimatedSettlePrice&quot;:70128.01636024,
+    &quot;lastFundingRate&quot;:&quot;&quot;,
+    &quot;interestRate&quot;:&quot;&quot;,
+    &quot;nextFundingTime&quot;:&quot;1970-01-01T00:00:00&quot;,
+    &quot;time&quot;:&quot;2024-03-26T18:22:48&quot;
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/CoinMFutures/API/PremiumIndex.jl#L30-L74">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Binance.CoinMFutures.Ticker.ticker" href="#CryptoExchangeAPIs.Binance.CoinMFutures.Ticker.ticker"><code>CryptoExchangeAPIs.Binance.CoinMFutures.Ticker.ticker</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">ticker(client::BinanceClient, query::TickerQuery)
+ticker(client::BinanceClient = Binance.CoinMFutures.public_client; kw...)</code></pre><p><a href="https://binance-docs.github.io/apidocs/delivery/en/#24hr-ticker-price-change-statistics"><code>GET dapi/v1/ticker/24hr</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">pair</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Binance
+
+result = Binance.CoinMFutures.ticker(;
+    pair = &quot;BTCUSD&quot;,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+ {
+    &quot;symbol&quot;:&quot;BTCUSD_240329&quot;,
+    &quot;pair&quot;:&quot;BTCUSD&quot;,
+    &quot;pricechange&quot;:null,
+    &quot;pricechangePercent&quot;:null,
+    &quot;weightedAvgPrice&quot;:70683.35523318,
+    &quot;lastPrice&quot;:70261.6,
+    &quot;lastQty&quot;:11,
+    &quot;openPrice&quot;:71004.7,
+    &quot;highPrice&quot;:71750.0,
+    &quot;lowPrice&quot;:69500.4,
+    &quot;volume&quot;:1027906,
+    &quot;baseVolume&quot;:1454.24053033,
+    &quot;openTime&quot;:&quot;2024-03-25T19:03:00&quot;,
+    &quot;closeTime&quot;:&quot;2024-03-26T19:03:03.286000128&quot;,
+    &quot;firstId&quot;:7968276,
+    &quot;lastId&quot;:8038563,
+    &quot;count&quot;:70288
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Binance/CoinMFutures/API/Ticker.jl#L38-L90">source</a></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../Aevo/">« Aevo</a><a class="docs-footer-nextpage" href="../Bitfinex/">Bitfinex »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.5.0 on <span class="colophon-date" title="Thursday 1 August 2024 13:48">Thursday 1 August 2024</span>. Using Julia version 1.10.4.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
