@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create release
+        continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref_name }}
@@ -23,4 +24,3 @@ jobs:
               --repo="$GITHUB_REPOSITORY" \
               --title="v${tag#v}" \
               --generate-notes
-              
