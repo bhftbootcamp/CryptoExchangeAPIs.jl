@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>For Developers · CryptoAPIs.jl</title><meta name="title" content="For Developers · CryptoAPIs.jl"/><meta property="og:title" content="For Developers · CryptoAPIs.jl"/><meta property="twitter:title" content="For Developers · CryptoAPIs.jl"/><meta name="description" content="Documentation for CryptoAPIs.jl."/><meta property="og:description" content="Documentation for CryptoAPIs.jl."/><meta property="twitter:description" content="Documentation for CryptoAPIs.jl."/><meta property="og:url" content="https://bhftbootcamp.github.io/CryptoAPIs.jl/pages/developers/"/><meta property="twitter:url" content="https://bhftbootcamp.github.io/CryptoAPIs.jl/pages/developers/"/><link rel="canonical" href="https://bhftbootcamp.github.io/CryptoAPIs.jl/pages/developers/"/><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../search_index.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script><link href="../../assets/favicon.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../../">CryptoAPIs.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><a class="tocitem" href="../api_reference/">API Reference</a></li><li><a class="tocitem" href="../Binance/">Binance</a></li><li><a class="tocitem" href="../Coinbase/">Coinbase</a></li><li><a class="tocitem" href="../Upbit/">Upbit</a></li><li class="is-active"><a class="tocitem" href>For Developers</a><ul class="internal"><li><a class="tocitem" href="#Template-for-API-method-docs"><span>Template for API method docs</span></a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>For Developers</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>For Developers</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/bhftbootcamp/CryptoAPIs.jl.git" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/master/docs/src/pages/developers.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="For-Developers"><a class="docs-heading-anchor" href="#For-Developers">For Developers</a><a id="For-Developers-1"></a><a class="docs-heading-anchor-permalink" href="#For-Developers" title="Permalink"></a></h1><h2 id="Template-for-API-method-docs"><a class="docs-heading-anchor" href="#Template-for-API-method-docs">Template for API method docs</a><a id="Template-for-API-method-docs-1"></a><a class="docs-heading-anchor-permalink" href="#Template-for-API-method-docs" title="Permalink"></a></h2><pre><code class="language-julia hljs">&quot;&quot;&quot;
+    METHOD_NAME(client::EXCHANGE_CLIENT, query::METHOD_QUERY)
+    METHOD_NAME(client::EXCHANGE_CLIENT = EXCHANGE_MODULE.SUB_MODULE.public_client; kw...)
+
+DESCRIPTION.
+
+[`GET HTTP_REQUEST`](METHOD_URL)
+
+## Parameters:
+
+| Parameter | Type     | Required | Description |
+|:----------|:---------|:---------|:------------|
+| name      | type     | bool     | description |
+
+## Code samples:
+
+```julia
+using Serde
+using CryptoAPIs.EXCHANGE_MODULE
+
+result = EXCHANGE_MODULE.SUB_MODULE.METHOD_NAME(;
+    ...
+)
+
+to_pretty_json(result.result)
+```
+
+## Result:
+
+```json
+{
+    JSON_RESULT
+}
+```
+&quot;&quot;&quot;</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../Upbit/">« Upbit</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.3.0 on <span class="colophon-date" title="Tuesday 26 March 2024 12:05">Tuesday 26 March 2024</span>. Using Julia version 1.10.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

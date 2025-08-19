@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Home · CryptoExchangeAPIs.jl</title><meta name="title" content="Home · CryptoExchangeAPIs.jl"/><meta property="og:title" content="Home · CryptoExchangeAPIs.jl"/><meta property="twitter:title" content="Home · CryptoExchangeAPIs.jl"/><meta name="description" content="Documentation for CryptoExchangeAPIs.jl."/><meta property="og:description" content="Documentation for CryptoExchangeAPIs.jl."/><meta property="twitter:description" content="Documentation for CryptoExchangeAPIs.jl."/><meta property="og:url" content="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/"/><meta property="twitter:url" content="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/"/><link rel="canonical" href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/"/><script data-outdated-warner src="assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="assets/documenter.js"></script><script src="search_index.js"></script><script src="siteinfo.js"></script><script src="../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="assets/themeswap.js"></script><link href="assets/favicon.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href>CryptoExchangeAPIs.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li class="is-active"><a class="tocitem" href>Home</a><ul class="internal"><li><a class="tocitem" href="#Installation"><span>Installation</span></a></li><li><a class="tocitem" href="#Supported-Exchange-APIs"><span>Supported Exchange APIs</span></a></li></ul></li><li><a class="tocitem" href="pages/api_reference/">API Reference</a></li><li><a class="tocitem" href="pages/Aevo/">Aevo</a></li><li><a class="tocitem" href="pages/Binance/">Binance</a></li><li><a class="tocitem" href="pages/Bitfinex/">Bitfinex</a></li><li><a class="tocitem" href="pages/Bithumb/">Bithumb</a></li><li><a class="tocitem" href="pages/Bybit/">Bybit</a></li><li><a class="tocitem" href="pages/Coinbase/">Coinbase</a></li><li><a class="tocitem" href="pages/Cryptocom/">Cryptocom</a></li><li><a class="tocitem" href="pages/Deribit/">Deribit</a></li><li><a class="tocitem" href="pages/Gateio/">Gateio</a></li><li><a class="tocitem" href="pages/Huobi/">Huobi</a></li><li><a class="tocitem" href="pages/Kraken/">Kraken</a></li><li><a class="tocitem" href="pages/Kucoin/">Kucoin</a></li><li><a class="tocitem" href="pages/Okex/">Okex</a></li><li><a class="tocitem" href="pages/Poloniex/">Poloniex</a></li><li><a class="tocitem" href="pages/Upbit/">Upbit</a></li><li><span class="tocitem">For Developers</span><ul><li><a class="tocitem" href="pages/docs_miniguide/">Docs mini-guide</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Home</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Home</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/master/docs/src/index.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><p><img src="assets/terminal.gif" alt="terminal"/></p><h1 id="CryptoExchangeAPIs.jl"><a class="docs-heading-anchor" href="#CryptoExchangeAPIs.jl">CryptoExchangeAPIs.jl</a><a id="CryptoExchangeAPIs.jl-1"></a><a class="docs-heading-anchor-permalink" href="#CryptoExchangeAPIs.jl" title="Permalink"></a></h1><p>CryptoExchangeAPIs is a library written in Julia that combines API wrappers from various exchanges, simplifying access to market 💹 data.</p><h2 id="Installation"><a class="docs-heading-anchor" href="#Installation">Installation</a><a id="Installation-1"></a><a class="docs-heading-anchor-permalink" href="#Installation" title="Permalink"></a></h2><p>If you haven&#39;t installed our <a href="https://github.com/bhftbootcamp/Green">local registry</a> yet, do that first:</p><pre><code class="nohighlight hljs">] registry add https://github.com/bhftbootcamp/Green.git</code></pre><p>Then, to install CryptoExchangeAPIs, simply use the Julia package manager:</p><pre><code class="nohighlight hljs">] add CryptoExchangeAPIs</code></pre><h2 id="Supported-Exchange-APIs"><a class="docs-heading-anchor" href="#Supported-Exchange-APIs">Supported Exchange APIs</a><a id="Supported-Exchange-APIs-1"></a><a class="docs-heading-anchor-permalink" href="#Supported-Exchange-APIs" title="Permalink"></a></h2><html>
+    <body>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Exchange</th>
+                <th>API Documentation</th>
+                <th>Module</th>
+                <th>Documentation</th>
+            </tr>
+            <tr>
+                <td><img src="assets/aevo.png" alt="Aevo Logo" width="20" height="20"></td>
+                <td><a href="https://www.aevo.xyz/">Aevo</a></td>
+                <td><a href="https://api-docs.aevo.xyz/reference/overview">Futures</a></td>
+                <td><a href="src/Aevo/Futures">CryptoExchangeAPIs.Aevo.Futures</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/stable/pages/Aevo/#Futures">Futures</a></td>
+            </tr>
+            <tr>
+                <td><img src="assets/binance.png" alt="Binance Logo" width="20" height="20"></td>
+                <td><a href="https://www.binance.com/en/trade">Binance</a></td>
+                <td><a href="https://binance-docs.github.io/apidocs/spot/en/">Spot</a></td>
+                <td><a href="src/Binance/Spot">CryptoExchangeAPIs.Binance.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/stable/pages/Binance/#Spot">Spot</a></td>
+            </tr>
+            <tr>
+                <td><img src="assets/binance.png" alt="Binance Logo" width="20" height="20"></td>
+                <td><a href="https://www.binance.com/futures">Binance</a></td>
+                <td><a href="https://binance-docs.github.io/apidocs/futures/en/#change-log">USD-M Futures</a></td>
+                <td><a href="src/Binance/USDMFutures">CryptoExchangeAPIs.Binance.USDMFutures</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/stable/pages/Binance/#USDMFutures">USD-M Futures</a></td>
+            </tr>
+            <tr>
+                <td><img src="assets/binance.png" alt="Binance Logo" width="20" height="20"></td>
+                <td><a href="https://www.binance.com/delivery">Binance</a></td>
+                <td><a href="https://binance-docs.github.io/apidocs/delivery/en/">Coin-M Futures</a></td>
+                <td><a href="src/Binance/CoinMFutures">CryptoExchangeAPIs.Binance.CoinMFutures</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/stable/pages/Binance/#CoinMFutures">Coin-M Futures</a></td>
+            </tr>
+            <tr>
+                <td><img src="assets/bitfinex.png" alt="Bitfinex Logo" width="20" height="20"></td>
+                <td><a href="https://www.bitfinex.com/">Bitfinex</a></td>
+                <td><a href="https://docs.bitfinex.com/docs/introduction">Spot</a></td>
+                <td><a href="src/Bitfinex/Spot">CryptoExchangeAPIs.Bitfinex.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/stable/pages/Bitfinex/#Spot">Spot</a></td>
+            </tr>
+            <tr>
+                <td><img src="assets/bithumb.png" alt="Bithumb Logo" width="20" height="20"></td>
+                <td><a href="https://m.bithumb.com/">Bithumb</a></td>
+                <td><a href="https://apidocs.bithumb.com/">Spot</a></td>
+                <td><a href="src/Bithumb/Spot">CryptoExchangeAPIs.Bithumb.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/stable/pages/Bithumb/#Spot">Spot</a></td>
+            </tr>
+            <tr>
+                <td><img src="assets/bybit.png" alt="Bybit Logo" width="20" height="20"></td>
+                <td><a href="https://www.bybit.com/en/trade/spot/BTC/USDT">Bybit</a></td>
+                <td><a href="https://bybit-exchange.github.io/docs/">Spot</a></td>
+                <td><a href="src/Bybit/Spot">CryptoExchangeAPIs.Bybit.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/stable/pages/Bybit/#Spot">Spot</a></td>
+            </tr>
+            <tr>
+                <td><img src="assets/coinbase.png" alt="Coinbase Logo" width="20" height="20"></td>
+                <td><a href="https://www.coinbase.com/">Coinbase Exchange</a></td>
+                <td><a href="https://docs.cloud.coinbase.com/exchange/reference/">Spot</a></td>
+                <td><a href="src/Coinbase/Spot">CryptoExchangeAPIs.Coinbase.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/stable/pages/Coinbase/#Spot">Spot</a></td>
+            </tr>
+            <tr>
+                <td><img src="assets/cryptocom.png" alt="Cryptocom Logo" width="20" height="20"></td>
+                <td><a href="https://crypto.com/">Cryptocom</a></td>
+                <td><a href="https://exchange-docs.crypto.com/exchange/v1/rest-ws/index.html#introduction">Spot</a></td>
+                <td><a href="src/Cryptocom/Spot">CryptoExchangeAPIs.Cryptocom.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/stable/pages/Cryptocom/#Spot">Spot</a></td>
+            </tr>
+            <tr>
+                <td><img src="assets/deribit.png" alt="Deribit Logo" width="20" height="20"></td>
+                <td><a href="https://www.deribit.com/">Deribit</a></td>
+                <td><a href="https://docs.deribit.com/">Common</a></td>
+                <td><a href="src/Deribit/Common">CryptoExchangeAPIs.Deribit.Common</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/stable/pages/Deribit/#Common">Common</a></td>
+            </tr>
+            <tr>
+                <td><img src="assets/gateio.png" alt="Gateio Logo" width="20" height="20"></td>
+                <td><a href="https://www.gate.io/">Gate.io</a></td>
+                <td><a href="https://www.gate.io/docs/developers/apiv4/">Spot</a></td>
+                <td><a href="src/Gateio/Spot">CryptoExchangeAPIs.Gateio.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/stable/pages/Gateio/#Spot">Spot</a></td>
+            </tr>
+            <tr>
+                <td><img src="assets/gateio.png" alt="Gateio Logo" width="20" height="20"></td>
+                <td><a href="https://www.gate.io/">Gate.io</a></td>
+                <td><a href="https://www.gate.io/docs/developers/apiv4/">Futures</a></td>
+                <td><a href="src/Gateio/Futures">CryptoExchangeAPIs.Gateio.Futures</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/stable/pages/Gateio/#Futures">Futures</a></td>
+            </tr>
+            <tr>
+                <td><img src="assets/huobi.png" alt="Huobi Logo" width="20" height="20"></td>
+                <td><a href="https://www.htx.com/">Huobi</a></td>
+                <td><a href="https://www.htx.com/en-us/opend/newApiPages">Spot</a></td>
+                <td><a href="src/Huobi/Futures">CryptoExchangeAPIs.Huobi.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/stable/pages/Huobi/#Spot">Spot</a></td>
+            </tr>
+            <tr>
+                <td><img src="assets/kraken.png" alt="Kraken Logo" width="20" height="20"></td>
+                <td><a href="https://www.kraken.com/">Kraken</a></td>
+                <td><a href="https://docs.kraken.com/rest/">Spot</a></td>
+                <td><a href="src/Kraken/Spot">CryptoExchangeAPIs.Kraken.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/stable/pages/Kraken/#Spot">Spot</a></td>
+            </tr>
+            <tr>
+                <td><img src="assets/kucoin.png" alt="Kucoin Logo" width="20" height="20"></td>
+                <td><a href="https://www.kucoin.com/">Kucoin</a></td>
+                <td><a href="https://www.kucoin.com/docs/beginners/introduction">Spot</a></td>
+                <td><a href="src/Kucoin/Spot">CryptoExchangeAPIs.Kucoin.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/stable/pages/Kucoin/#Spot">Spot</a></td>
+            </tr>
+            <tr>
+                <td><img src="assets/kucoin.png" alt="Kucoin Logo" width="20" height="20"></td>
+                <td><a href="https://www.kucoin.com/">Kucoin</a></td>
+                <td><a href="https://www.kucoin.com/docs/beginners/introduction">Futures</a></td>
+                <td><a href="src/Kucoin/Futures">CryptoExchangeAPIs.Kucoin.Futures</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/stable/pages/Kucoin/#Futures">Futures</a></td>
+            </tr>
+            <tr>
+                <td><img src="assets/okex.png" alt="Okex Logo" width="20" height="20"></td>
+                <td><a href="https://www.okx.com/">Okex</a></td>
+                <td><a href="https://www.okx.com/docs-v5/en/">Spot</a></td>
+                <td><a href="src/Okex/Spot">CryptoExchangeAPIs.Okex.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/stable/pages/Okex/#Spot">Spot</a></td>
+            </tr>
+            <tr>
+                <td><img src="assets/poloniex.png" alt="Poloniex Logo" width="20" height="20"></td>
+                <td><a href="https://poloniex.com/">Poloniex</a></td>
+                <td><a href="https://api-docs.poloniex.com/spot">Spot</a></td>
+                <td><a href="src/Poloniex/Spot">CryptoExchangeAPIs.Poloniex.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/stable/pages/Poloniex/#Spot">Spot</a></td>
+            </tr>
+            <tr>
+                <td><img src="assets/upbit.png" alt="Upbit Logo" width="20" height="20"></td>
+                <td><a href="https://upbit.com/">Upbit</a></td>
+                <td><a href="https://global-docs.upbit.com/">Spot</a></td>
+                <td><a href="src/Upbit/Spot">CryptoExchangeAPIs.Upbit.Spot</a></td>
+                <td><a href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/stable/pages/Upbit/#Spot">Spot</a></td>
+            </tr>
+        </table>
+    </body>
+</html></article><nav class="docs-footer"><a class="docs-footer-nextpage" href="pages/api_reference/">API Reference »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.5.0 on <span class="colophon-date" title="Thursday 1 August 2024 13:48">Thursday 1 August 2024</span>. Using Julia version 1.10.4.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

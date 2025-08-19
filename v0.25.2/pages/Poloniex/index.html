@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Poloniex · CryptoAPIs.jl</title><meta name="title" content="Poloniex · CryptoAPIs.jl"/><meta property="og:title" content="Poloniex · CryptoAPIs.jl"/><meta property="twitter:title" content="Poloniex · CryptoAPIs.jl"/><meta name="description" content="Documentation for CryptoAPIs.jl."/><meta property="og:description" content="Documentation for CryptoAPIs.jl."/><meta property="twitter:description" content="Documentation for CryptoAPIs.jl."/><meta property="og:url" content="https://bhftbootcamp.github.io/CryptoAPIs.jl/pages/Poloniex/"/><meta property="twitter:url" content="https://bhftbootcamp.github.io/CryptoAPIs.jl/pages/Poloniex/"/><link rel="canonical" href="https://bhftbootcamp.github.io/CryptoAPIs.jl/pages/Poloniex/"/><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../search_index.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script><link href="../../assets/favicon.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../../">CryptoAPIs.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><a class="tocitem" href="../api_reference/">API Reference</a></li><li><a class="tocitem" href="../Aevo/">Aevo</a></li><li><a class="tocitem" href="../Binance/">Binance</a></li><li><a class="tocitem" href="../Bitfinex/">Bitfinex</a></li><li><a class="tocitem" href="../Bithumb/">Bithumb</a></li><li><a class="tocitem" href="../Bybit/">Bybit</a></li><li><a class="tocitem" href="../Coinbase/">Coinbase</a></li><li><a class="tocitem" href="../Cryptocom/">Cryptocom</a></li><li><a class="tocitem" href="../Deribit/">Deribit</a></li><li><a class="tocitem" href="../Gateio/">Gateio</a></li><li><a class="tocitem" href="../Huobi/">Huobi</a></li><li><a class="tocitem" href="../Kraken/">Kraken</a></li><li><a class="tocitem" href="../Kucoin/">Kucoin</a></li><li><a class="tocitem" href="../Okex/">Okex</a></li><li class="is-active"><a class="tocitem" href>Poloniex</a><ul class="internal"><li><a class="tocitem" href="#Spot"><span>Spot</span></a></li></ul></li><li><a class="tocitem" href="../Upbit/">Upbit</a></li><li><span class="tocitem">For Developers</span><ul><li><a class="tocitem" href="../docs_miniguide/">Docs mini-guide</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Poloniex</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Poloniex</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/bhftbootcamp/CryptoAPIs.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/master/docs/src/pages/Poloniex.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Poloniex"><a class="docs-heading-anchor" href="#Poloniex">Poloniex</a><a id="Poloniex-1"></a><a class="docs-heading-anchor-permalink" href="#Poloniex" title="Permalink"></a></h1><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Poloniex.PoloniexClient" href="#CryptoAPIs.Poloniex.PoloniexClient"><code>CryptoAPIs.Poloniex.PoloniexClient</code></a> — <span class="docstring-category">Type</span></header><section><div><pre><code class="language-julia hljs">PoloniexClient &lt;: AbstractAPIsClient</code></pre><p>Client info.</p><p><strong>Required fields</strong></p><ul><li><code>base_url::String</code>: Base URL for the client.</li></ul><p><strong>Optional fields</strong></p><ul><li><code>public_key::String</code>: Public key for authentication.</li><li><code>secret_key::String</code>: Secret key for authentication.</li><li><code>interface::String</code>: Interface for the client.</li><li><code>proxy::String</code>: Proxy information for the client.</li><li><code>account_name::String</code>: Account name associated with the client.</li><li><code>description::String</code>: Description of the client.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/287d8f8aa8ea1a579dcf03ea068cf6cce6f4f36d/src/Poloniex/Poloniex.jl#L23-L38">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Poloniex.PoloniexAPIError" href="#CryptoAPIs.Poloniex.PoloniexAPIError"><code>CryptoAPIs.Poloniex.PoloniexAPIError</code></a> — <span class="docstring-category">Type</span></header><section><div><pre><code class="language-julia hljs">PoloniexAPIError{T} &lt;: AbstractAPIsError</code></pre><p>Exception thrown when an API method fails with code <code>T</code>.</p><p><strong>Required fields</strong></p><ul><li><code>code::Int64</code>: Error code.</li><li><code>message::String</code>: Error message.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/287d8f8aa8ea1a579dcf03ea068cf6cce6f4f36d/src/Poloniex/Poloniex.jl#L49-L57">source</a></section></article><h2 id="Spot"><a class="docs-heading-anchor" href="#Spot">Spot</a><a id="Spot-1"></a><a class="docs-heading-anchor-permalink" href="#Spot" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Poloniex.Spot.public_client" href="#CryptoAPIs.Poloniex.Spot.public_client"><code>CryptoAPIs.Poloniex.Spot.public_client</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia hljs">public_client = PoloniexClient(; base_url = &quot;https://api.poloniex.com&quot;)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/287d8f8aa8ea1a579dcf03ea068cf6cce6f4f36d/src/Poloniex/Spot/Spot.jl#L5-L7">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Poloniex.Spot.Candle.candle" href="#CryptoAPIs.Poloniex.Spot.Candle.candle"><code>CryptoAPIs.Poloniex.Spot.Candle.candle</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">candle(client::PoloniexClient, query::CandleQuery)
+candle(client::PoloniexClient = Poloniex.Spot.public_client; kw...)</code></pre><p>Get latest trade price for all symbols.</p><p><a href="https://api-docs.poloniex.com/spot/api/public/market-data"><code>GET markets/{symbol}/price</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">interval</td><td style="text-align: left">TimeInterval</td><td style="text-align: left">true</td><td style="text-align: left"><code>m1</code> <code>m5</code> <code>m10</code> <code>m15</code> <code>m30</code> <code>h1</code> <code>h2</code> <code>h4</code> <code>h6</code> <code>h12</code> <code>d1</code> <code>d3</code> <code>w1</code> <code>M1</code></td></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">startTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">endTime</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoAPIs.Poloniex
+
+result = Poloniex.Spot.candle(;
+    symbol = &quot;BTC_USDT&quot;,
+    interval = CryptoAPIs.Poloniex.Spot.Candle.m5,
+    startTime = now(UTC) - Minute(100),
+    endTime = now(UTC) - Hour(1),
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;low&quot;:65575.65,
+    &quot;high&quot;:65691.47,
+    &quot;open&quot;:65691.47,
+    &quot;close&quot;:65646.11,
+    &quot;amount&quot;:136992.38,
+    &quot;quantity&quot;:2.086813,
+    &quot;buyTakerAmount&quot;:70208.28,
+    &quot;buyTakerQuantity&quot;:1.069507,
+    &quot;tradeCount&quot;:117,
+    &quot;ts&quot;:1715873094983,
+    &quot;weightedAverage&quot;:65646.71,
+    &quot;interval&quot;:&quot;MINUTE_5&quot;,
+    &quot;startTime&quot;:&quot;2024-05-16T15:20:00&quot;,
+    &quot;closeTime&quot;:&quot;2024-05-16T15:24:59.999000064&quot;
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/287d8f8aa8ea1a579dcf03ea068cf6cce6f4f36d/src/Poloniex/Spot/API/Candle.jl#L61-L118">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Poloniex.Spot.Currency.currency" href="#CryptoAPIs.Poloniex.Spot.Currency.currency"><code>CryptoAPIs.Poloniex.Spot.Currency.currency</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">currency(client::PoloniexClient, query::CurrencyQuery)
+currency(client::PoloniexClient = Poloniex.Spot.public_client; kw...)</code></pre><p>Get all supported currencies.</p><p><a href="https://api-docs.poloniex.com/spot/api/public/reference-data#currencyv2-information"><code>GET v2/currencies</code></a></p><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoAPIs.Poloniex
+
+result = Poloniex.Spot.currency()
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;id&quot;:446,
+    &quot;coin&quot;:&quot;AAVE&quot;,
+    &quot;delisted&quot;:false,
+    &quot;tradeEnable&quot;:true,
+    &quot;name&quot;:&quot;Aave&quot;,
+    &quot;networkList&quot;:[
+      {
+        &quot;id&quot;:446,
+        &quot;coin&quot;:&quot;AAVE&quot;,
+        &quot;name&quot;:&quot;Ethereum&quot;,
+        &quot;currencyType&quot;:&quot;address&quot;,
+        &quot;blockchain&quot;:&quot;ETH&quot;,
+        &quot;withdrawalEnable&quot;:true,
+        &quot;depositEnable&quot;:true,
+        &quot;depositAddress&quot;:null,
+        &quot;withdrawMin&quot;:-1.0,
+        &quot;decimals&quot;:8.0,
+        &quot;withdrawFee&quot;:0.0946982,
+        &quot;minConfirm&quot;:64
+      }
+    ],
+    &quot;supportCollateral&quot;:false,
+    &quot;supportBorrow&quot;:false
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/287d8f8aa8ea1a579dcf03ea068cf6cce6f4f36d/src/Poloniex/Spot/API/Currency.jl#L43-L94">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Poloniex.Spot.Market.market" href="#CryptoAPIs.Poloniex.Spot.Market.market"><code>CryptoAPIs.Poloniex.Spot.Market.market</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">market(client::PoloniexClient, query::MarketQuery)
+market(client::PoloniexClient = Poloniex.Spot.public_client; kw...)</code></pre><p>Get all symbols and their tradeLimit info.</p><p><a href="https://api-docs.poloniex.com/spot/api/public/reference-data#symbol-information"><code>GET markets/{symbol}</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoAPIs.Poloniex
+
+result = Poloniex.Spot.market(;
+    symbol = &quot;BTC_USDT&quot;,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;baseCurrencyName&quot;:&quot;BTC&quot;,
+    &quot;crossMargin&quot;:{
+      &quot;maxLeverage&quot;:3,
+      &quot;supportCrossMargin&quot;:true
+    },
+    &quot;displayName&quot;:&quot;BTC/USDT&quot;,
+    &quot;quoteCurrencyName&quot;:&quot;USDT&quot;,
+    &quot;state&quot;:&quot;NORMAL&quot;,
+    &quot;symbol&quot;:&quot;BTC_USDT&quot;,
+    &quot;symbolTradeLimit&quot;:{
+      &quot;amountScale&quot;:2,
+      &quot;highestBid&quot;:0.0,
+      &quot;lowestAsk&quot;:0.0,
+      &quot;minAmount&quot;:1.0,
+      &quot;minQuantity&quot;:1.0e-6,
+      &quot;priceScale&quot;:2,
+      &quot;quantityScale&quot;:6,
+      &quot;symbol&quot;:&quot;BTC_USDT&quot;
+    },
+    &quot;tradableStartTime&quot;:&quot;2022-07-28T14:33:39.512&quot;,
+    &quot;visibleStartTime&quot;:&quot;2022-07-28T14:33:39.512&quot;
+  }
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/287d8f8aa8ea1a579dcf03ea068cf6cce6f4f36d/src/Poloniex/Spot/API/Market.jl#L49-L105">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Poloniex.Spot.OrderBook.order_book" href="#CryptoAPIs.Poloniex.Spot.OrderBook.order_book"><code>CryptoAPIs.Poloniex.Spot.OrderBook.order_book</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">order_book(client::PoloniexClient, query::OrderBookQuery)
+order_book(client::PoloniexClient = Poloniex.Spot.public_client; kw...)</code></pre><p>Get the order book for a given symbol.</p><p><a href="https://api-docs.poloniex.com/spot/api/public/market-data#order-book"><code>GET markets/{symbol}/orderBook</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">OrderBookLimit</td><td style="text-align: left">false</td><td style="text-align: left"><code>FIVE</code> (5), <code>TEN</code> (10), <code>TWENTY</code> (20), <code>FIFTY</code> (50), <code>HUNDRED</code> (100), <code>HUNDRED_FIFTY</code> (150)</td></tr><tr><td style="text-align: left">scale</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoAPIs.Poloniex
+
+result = Poloniex.Spot.order_book(;
+    symbol = &quot;BTC_USDT&quot;,
+    limit = CryptoAPIs.Poloniex.Spot.OrderBook.FIVE,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;asks&quot;:[
+    65281.6,
+    0.047754,
+    65289.99,
+    0.034131,
+    ...
+  ],
+  &quot;bids&quot;:[
+    65220.41,
+    0.140174,
+    65220.4,
+    0.004296,
+    ...
+  ],
+  &quot;scale&quot;:0.01,
+  &quot;time&quot;:&quot;2024-05-16T17:07:48.972999936&quot;,
+  &quot;ts&quot;:&quot;2024-05-16T17:07:48.987000064&quot;
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/287d8f8aa8ea1a579dcf03ea068cf6cce6f4f36d/src/Poloniex/Spot/API/OrderBook.jl#L40-L93">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Poloniex.Spot.Ticker.ticker" href="#CryptoAPIs.Poloniex.Spot.Ticker.ticker"><code>CryptoAPIs.Poloniex.Spot.Ticker.ticker</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">ticker(client::PoloniexClient, query::TickerQuery)
+ticker(client::PoloniexClient = Poloniex.Spot.public_client; kw...)</code></pre><p>Retrieve ticker in last 24 hours for all symbols.</p><p><a href="https://api-docs.poloniex.com/spot/api/public/market-data#ticker"><code>GET markets/{symbol}/ticker24h</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoAPIs.Poloniex
+
+result = Poloniex.Spot.ticker(;
+    symbol = &quot;BTC_USDT&quot;,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;amount&quot;:7.911171301524143e7,
+  &quot;ask&quot;:65322.3,
+  &quot;askQuantity&quot;:0.047754,
+  &quot;bid&quot;:65265.21,
+  &quot;bidQuantity&quot;:0.000457,
+  &quot;close&quot;:65294.16,
+  &quot;closeTime&quot;:&quot;2024-05-16T17:09:07.225999872&quot;,
+  &quot;dailyChange&quot;:0.0062,
+  &quot;displayName&quot;:&quot;BTC/USDT&quot;,
+  &quot;high&quot;:66664.38,
+  &quot;low&quot;:64757.87,
+  &quot;markPrice&quot;:65327.98,
+  &quot;open&quot;:64894.14,
+  &quot;quantity&quot;:1200.477812,
+  &quot;startTime&quot;:&quot;2024-05-15T17:09:00&quot;,
+  &quot;symbol&quot;:&quot;BTC_USDT&quot;,
+  &quot;tradeCount&quot;:61923,
+  &quot;ts&quot;:&quot;2024-05-16T17:09:14.984&quot;
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/287d8f8aa8ea1a579dcf03ea068cf6cce6f4f36d/src/Poloniex/Spot/API/Ticker.jl#L42-L93">source</a></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../Okex/">« Okex</a><a class="docs-footer-nextpage" href="../Upbit/">Upbit »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.5.0 on <span class="colophon-date" title="Tuesday 23 July 2024 15:09">Tuesday 23 July 2024</span>. Using Julia version 1.10.4.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

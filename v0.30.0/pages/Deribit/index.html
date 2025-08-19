@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Deribit · CryptoExchangeAPIs.jl</title><meta name="title" content="Deribit · CryptoExchangeAPIs.jl"/><meta property="og:title" content="Deribit · CryptoExchangeAPIs.jl"/><meta property="twitter:title" content="Deribit · CryptoExchangeAPIs.jl"/><meta name="description" content="Documentation for CryptoExchangeAPIs.jl."/><meta property="og:description" content="Documentation for CryptoExchangeAPIs.jl."/><meta property="twitter:description" content="Documentation for CryptoExchangeAPIs.jl."/><meta property="og:url" content="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/pages/Deribit/"/><meta property="twitter:url" content="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/pages/Deribit/"/><link rel="canonical" href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/pages/Deribit/"/><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../search_index.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script><link href="../../assets/favicon.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../../">CryptoExchangeAPIs.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><a class="tocitem" href="../api_reference/">API Reference</a></li><li><a class="tocitem" href="../Aevo/">Aevo</a></li><li><a class="tocitem" href="../Binance/">Binance</a></li><li><a class="tocitem" href="../Bitfinex/">Bitfinex</a></li><li><a class="tocitem" href="../Bithumb/">Bithumb</a></li><li><a class="tocitem" href="../Bybit/">Bybit</a></li><li><a class="tocitem" href="../Coinbase/">Coinbase</a></li><li><a class="tocitem" href="../Cryptocom/">Cryptocom</a></li><li class="is-active"><a class="tocitem" href>Deribit</a><ul class="internal"><li><a class="tocitem" href="#Common"><span>Common</span></a></li></ul></li><li><a class="tocitem" href="../Gateio/">Gateio</a></li><li><a class="tocitem" href="../Huobi/">Huobi</a></li><li><a class="tocitem" href="../Kraken/">Kraken</a></li><li><a class="tocitem" href="../Kucoin/">Kucoin</a></li><li><a class="tocitem" href="../Okex/">Okex</a></li><li><a class="tocitem" href="../Poloniex/">Poloniex</a></li><li><a class="tocitem" href="../Upbit/">Upbit</a></li><li><span class="tocitem">For Developers</span><ul><li><a class="tocitem" href="../docs_miniguide/">Docs mini-guide</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Deribit</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Deribit</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/master/docs/src/pages/Deribit.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Deribit"><a class="docs-heading-anchor" href="#Deribit">Deribit</a><a id="Deribit-1"></a><a class="docs-heading-anchor-permalink" href="#Deribit" title="Permalink"></a></h1><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Deribit.DeribitClient" href="#CryptoExchangeAPIs.Deribit.DeribitClient"><code>CryptoExchangeAPIs.Deribit.DeribitClient</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">DeribitClient &lt;: AbstractAPIsClient</code></pre><p>Client info.</p><p><strong>Required fields</strong></p><ul><li><code>base_url::String</code>: Base URL for the client.</li></ul><p><strong>Optional fields</strong></p><ul><li><code>public_key::String</code>: Public key for authentication.</li><li><code>secret_key::String</code>: Secret key for authentication.</li><li><code>interface::String</code>: Interface for the client.</li><li><code>proxy::String</code>: Proxy information for the client.</li><li><code>account_name::String</code>: Account name associated with the client.</li><li><code>description::String</code>: Description of the client.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/f785baa4b7ec0aa4518e1362d6c301fb903b1373/src/Deribit/Deribit.jl#L47-L62">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Deribit.DeribitAPIsErrorMsg" href="#CryptoExchangeAPIs.Deribit.DeribitAPIsErrorMsg"><code>CryptoExchangeAPIs.Deribit.DeribitAPIsErrorMsg</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">DeribitAPIsErrorMsg &lt;: AbstractAPIsError</code></pre><p><strong>Required fields</strong></p><ul><li><code>data::Dict{String,String}</code>: Additional data about the error.</li><li><code>message::String</code>: A short description that indicates the kind of error.</li><li><code>code::Int64</code>: A number that indicates the kind of error.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/f785baa4b7ec0aa4518e1362d6c301fb903b1373/src/Deribit/Deribit.jl#L73-L80">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Deribit.DeribitAPIError" href="#CryptoExchangeAPIs.Deribit.DeribitAPIError"><code>CryptoExchangeAPIs.Deribit.DeribitAPIError</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">DeribitAPIError{T} &lt;: AbstractAPIsError</code></pre><p>Exception thrown when an API method fails with code <code>T</code>.</p><p><strong>Required fields</strong></p><ul><li><code>jsonrpc::String</code>: The version of the JSON-RPC spec.</li><li><code>error::DeribitAPIsErrorMsg</code>: Only present if there was an error invoking the method.</li></ul><p><strong>Optional fields</strong></p><ul><li><code>id::Maybe{Int64}</code>: This is the same id that was sent in the request.</li><li><code>testnet::Maybe{Bool}</code>: Indicates whether the API in use is actually the test API.</li><li><code>usDiff::Maybe{Int64}</code>: The number of microseconds that was spent handling the request.</li><li><code>usOut::Maybe{NanoDate}</code>: The timestamp when the response was sent (microseconds since the Unix epoch).</li><li><code>usIn::Maybe{NanoDate}</code>: The timestamp when the requests was received (microseconds since the Unix epoch).</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/f785baa4b7ec0aa4518e1362d6c301fb903b1373/src/Deribit/Deribit.jl#L87-L102">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Deribit.Data" href="#CryptoExchangeAPIs.Deribit.Data"><code>CryptoExchangeAPIs.Deribit.Data</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">Data{D&lt;:Union{Vector{A},A} where {A&lt;:AbstractAPIsData}} &lt;: AbstractAPIsData</code></pre><p><strong>Required fields</strong></p><ul><li><code>jsonrpc::String</code>: The version of the JSON-RPC spec.</li><li><code>result::D</code>: If successful, the result of the API call.</li></ul><p><strong>Optional fields</strong></p><ul><li><code>id::Maybe{Int64}</code>: This is the same id that was sent in the request.</li><li><code>testnet::Maybe{Bool}</code>: Indicates whether the API in use is actually the test API.</li><li><code>usDiff::Maybe{Int64}</code>: The number of microseconds that was spent handling the request.</li><li><code>usOut::Maybe{NanoDate}</code>: The timestamp when the response was sent (microseconds since the Unix epoch).</li><li><code>usIn::Maybe{NanoDate}</code>: The timestamp when the requests was received (microseconds since the Unix epoch).</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/f785baa4b7ec0aa4518e1362d6c301fb903b1373/src/Deribit/Deribit.jl#L23-L36">source</a></section></article><h2 id="Common"><a class="docs-heading-anchor" href="#Common">Common</a><a id="Common-1"></a><a class="docs-heading-anchor-permalink" href="#Common" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Deribit.Common.public_client" href="#CryptoExchangeAPIs.Deribit.Common.public_client"><code>CryptoExchangeAPIs.Deribit.Common.public_client</code></a> — <span class="docstring-category">Constant</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">public_client = DeribitClient(; base_url = &quot;https://www.deribit.com&quot;)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/f785baa4b7ec0aa4518e1362d6c301fb903b1373/src/Deribit/Common/Common.jl#L5-L7">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Deribit.Common.BookSummary.book_summary" href="#CryptoExchangeAPIs.Deribit.Common.BookSummary.book_summary"><code>CryptoExchangeAPIs.Deribit.Common.BookSummary.book_summary</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">book_summary(client::DeribitClient, query::BookSummaryQuery)
+book_summary(client::DeribitClient = Deribit.Common.public_client; kw...)</code></pre><p>Retrieves the summary information such as open interest, 24h volume, etc. for all instruments for the currency (optionally filtered by kind).</p><p><a href="https://docs.deribit.com/#public-get_book_summary_by_currency"><code>GET api/v2/public/get_book_summary_by_currency</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">currency</td><td style="text-align: left">Currency</td><td style="text-align: left">true</td><td style="text-align: left"><code>BTC</code> <code>ETH</code> <code>USDC</code> <code>USDT</code></td></tr><tr><td style="text-align: left">kind</td><td style="text-align: left">InstrumentKind</td><td style="text-align: left">false</td><td style="text-align: left"><code>option</code> <code>spot</code> <code>future</code> <code>future_combo</code> <code>option_combo</code></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Deribit
+
+result = Deribit.Common.book_summary(;
+    currency = CryptoExchangeAPIs.Deribit.Common.BookSummary.BTC
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;id&quot;:null,
+  &quot;jsonrpc&quot;:&quot;2.0&quot;,
+  &quot;testnet&quot;:false,
+  &quot;usDiff&quot;:1746,
+  &quot;usOut&quot;:&quot;2024-05-17T11:57:46.222272&quot;,
+  &quot;usIn&quot;:&quot;2024-05-17T11:57:46.220526080&quot;,
+  &quot;result&quot;:[
+    {
+      &quot;instrument_name&quot;:&quot;BTC-31MAY24-59000-P&quot;,
+      &quot;base_currency&quot;:&quot;BTC&quot;,
+      &quot;quote_currency&quot;:&quot;BTC&quot;,
+      &quot;ask_price&quot;:0.0065,
+      &quot;bid_price&quot;:0.006,
+      &quot;mid_price&quot;:0.00625,
+      &quot;mark_price&quot;:0.00616094,
+      &quot;estimated_delivery_price&quot;:66227.07,
+      &quot;price_change&quot;:-23.5294,
+      &quot;volume&quot;:196.0,
+      &quot;volume_notional&quot;:null,
+      &quot;volume_usd&quot;:98503.18,
+      &quot;high&quot;:0.0105,
+      &quot;low&quot;:0.006,
+      &quot;last&quot;:0.0065,
+      &quot;current_funding&quot;:null,
+      &quot;funding_8h&quot;:null,
+      &quot;interest_rate&quot;:0.0,
+      &quot;open_interest&quot;:569.7,
+      &quot;underlying_index&quot;:&quot;BTC-31MAY24&quot;,
+      &quot;underlying_price&quot;:66481.53,
+      &quot;creation_timestamp&quot;:&quot;2024-05-17T12:00:15.647000064&quot;
+    },
+    ...
+  ]
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/f785baa4b7ec0aa4518e1362d6c301fb903b1373/src/Deribit/Common/API/BookSummary.jl#L59-L126">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Deribit.Common.Candle.candle" href="#CryptoExchangeAPIs.Deribit.Common.Candle.candle"><code>CryptoExchangeAPIs.Deribit.Common.Candle.candle</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">candle(client::DeribitClient, query::CandleQuery)
+candle(client::DeribitClient = Deribit.Common.public_client; kw...)</code></pre><p>Publicly available market data used to generate a TradingView candle chart.</p><p><a href="https://docs.deribit.com/#public-get_tradingview_chart_data"><code>GET api/v2/public/get_tradingview_chart_data</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">end_timestamp</td><td style="text-align: left">DateTime</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">instrument_name</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">resolution</td><td style="text-align: left">TimeInterval</td><td style="text-align: left">true</td><td style="text-align: left">m1 m3 m5 m10 m15 m30 h1 h2 h3 h6 h12 d1</td></tr><tr><td style="text-align: left">start_timestamp</td><td style="text-align: left">DateTime</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Deribit
+
+result = Deribit.Common.candle(;
+    instrument_name = &quot;BTC-PERPETUAL&quot;,
+    start_timestamp = now(UTC) - Minute(100),
+    end_timestamp = now(UTC) - Hour(1),
+    resolution = CryptoExchangeAPIs.Deribit.Common.Candle.m1,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;id&quot;:null,
+  &quot;jsonrpc&quot;:&quot;2.0&quot;,
+  &quot;testnet&quot;:false,
+  &quot;usDiff&quot;:1746,
+  &quot;usOut&quot;:&quot;2024-05-17T11:57:46.222272&quot;,
+  &quot;usIn&quot;:&quot;2024-05-17T11:57:46.220526080&quot;,
+  &quot;result&quot;:{
+    &quot;close&quot;:[
+      66324.5,
+      ...
+    ],
+    &quot;cost&quot;:[
+      101810.0,
+      ...
+    ],
+    &quot;high&quot;:[
+      66324.5,
+      ...
+    ],
+    &quot;low&quot;:[
+      66323.0,
+      ...
+    ],
+    &quot;open&quot;:[
+      66323.0,
+      ...
+    ],
+    &quot;status&quot;:&quot;ok&quot;,
+    &quot;ticks&quot;:[
+      &quot;2024-05-17T10:17:00&quot;,
+      ...
+    ],
+    &quot;volume&quot;:[
+      1.53504587,
+      ...
+    ]
+  }
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/f785baa4b7ec0aa4518e1362d6c301fb903b1373/src/Deribit/Common/API/Candle.jl#L49-L125">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Deribit.Common.FundingRate.funding_rate" href="#CryptoExchangeAPIs.Deribit.Common.FundingRate.funding_rate"><code>CryptoExchangeAPIs.Deribit.Common.FundingRate.funding_rate</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">funding_rate(client::DeribitClient, query::FundingRateQuery)
+funding_rate(client::DeribitClient = Deribit.Common.public_client; kw...)</code></pre><p>Retrieves hourly historical interest rate for requested PERPETUAL instrument.</p><p><a href="https://docs.deribit.com/#public-get_funding_rate_history"><code>GET api/v2/public/get_funding_rate_history</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">end_timestamp</td><td style="text-align: left">DateTime</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">instrument_name</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">start_timestamp</td><td style="text-align: left">DateTime</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Deribit
+
+result = Deribit.Common.funding_rate(;
+    instrument_name = &quot;BTC-PERPETUAL&quot;,
+    start_timestamp = Dates.DateTime(&quot;2022-11-08&quot;),
+    end_timestamp = Dates.DateTime(&quot;2022-11-08&quot;) + Day(2),
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;id&quot;:null,
+  &quot;jsonrpc&quot;:&quot;2.0&quot;,
+  &quot;testnet&quot;:false,
+  &quot;usDiff&quot;:43615,
+  &quot;usOut&quot;:&quot;2024-05-17T12:01:49.482341888&quot;,
+  &quot;usIn&quot;:&quot;2024-05-17T12:01:49.438726912&quot;,
+  &quot;result&quot;:[
+    {
+      &quot;index_price&quot;:20516.0,
+      &quot;interest_1h&quot;:9.873575714940002e-7,
+      &quot;interest_8h&quot;:4.479902336495525e-5,
+      &quot;prev_index_price&quot;:20592.45,
+      &quot;timestamp&quot;:&quot;2022-11-08T01:00:00&quot;
+    },
+    ...
+  ]
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/f785baa4b7ec0aa4518e1362d6c301fb903b1373/src/Deribit/Common/API/FundingRate.jl#L28-L81">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Deribit.Common.Instrument.instrument" href="#CryptoExchangeAPIs.Deribit.Common.Instrument.instrument"><code>CryptoExchangeAPIs.Deribit.Common.Instrument.instrument</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">instrument(client::DeribitClient, query::InstrumentQuery)
+instrument(client::DeribitClient = Deribit.Common.public_client; kw...)</code></pre><p>Retrieves available trading instruments. This method can be used to see which instruments are available for trading, or which instruments have recently expired.</p><p><a href="https://docs.deribit.com/#public-get_instruments"><code>GET api/v2/public/get_instruments</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">currency</td><td style="text-align: left">Currency</td><td style="text-align: left">true</td><td style="text-align: left"><code>BTC</code> <code>ETH</code> <code>USDC</code> <code>USDT</code></td></tr><tr><td style="text-align: left">expired</td><td style="text-align: left">Bool</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">kind</td><td style="text-align: left">InstrumentKind</td><td style="text-align: left">false</td><td style="text-align: left"><code>option</code> <code>spot</code> <code>future</code> <code>future_combo</code> <code>option_combo</code></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Deribit
+
+result = Deribit.Common.instrument(;
+    currency = CryptoExchangeAPIs.Deribit.Common.Instrument.BTC
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">
+{
+  &quot;id&quot;:null,
+  &quot;jsonrpc&quot;:&quot;2.0&quot;,
+  &quot;testnet&quot;:false,
+  &quot;usDiff&quot;:1746,
+  &quot;usOut&quot;:&quot;2024-05-17T11:57:46.222272&quot;,
+  &quot;usIn&quot;:&quot;2024-05-17T11:57:46.220526080&quot;,
+  &quot;result&quot;:[
+    {
+      &quot;base_currency&quot;:&quot;BTC&quot;,
+      &quot;block_trade_commission&quot;:0.0003,
+      &quot;block_trade_min_trade_amount&quot;:25.0,
+      &quot;block_trade_tick_size&quot;:0.0001,
+      &quot;contract_size&quot;:1.0,
+      &quot;counter_currency&quot;:&quot;USD&quot;,
+      &quot;creation_timestamp&quot;:&quot;2024-05-15T08:00:13&quot;,
+      &quot;expiration_timestamp&quot;:&quot;2024-05-18T08:00:00&quot;,
+      &quot;future_type&quot;:null,
+      &quot;instrument_id&quot;:326799,
+      &quot;instrument_name&quot;:&quot;BTC-18MAY24-55000-C&quot;,
+      &quot;instrument_type&quot;:&quot;reversed&quot;,
+      &quot;is_active&quot;:true,
+      &quot;kind&quot;:&quot;option&quot;,
+      &quot;maker_commission&quot;:0.0003,
+      &quot;max_leverage&quot;:null,
+      &quot;max_liquidation_commission&quot;:null,
+      &quot;min_trade_amount&quot;:0.1,
+      &quot;option_type&quot;:&quot;call&quot;,
+      &quot;price_index&quot;:&quot;btc_usd&quot;,
+      &quot;quote_currency&quot;:&quot;BTC&quot;,
+      &quot;rfq&quot;:false,
+      &quot;settlement_currency&quot;:&quot;BTC&quot;,
+      &quot;settlement_period&quot;:&quot;day&quot;,
+      &quot;strike&quot;:55000.0,
+      &quot;taker_commission&quot;:0.0003,
+      &quot;tick_size&quot;:0.0001
+    },
+    ...
+  ]
+}
+</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/f785baa4b7ec0aa4518e1362d6c301fb903b1373/src/Deribit/Common/API/Instrument.jl#L64-L140">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Deribit.Common.OrderBook.order_book" href="#CryptoExchangeAPIs.Deribit.Common.OrderBook.order_book"><code>CryptoExchangeAPIs.Deribit.Common.OrderBook.order_book</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">order_book(client::DeribitClient, query::OrderBookQuery)
+order_book(client::DeribitClient = Deribit.Common.public_client; kw...)</code></pre><p>Retrieves the order book, along with other market values for a given instrument.</p><p><a href="https://docs.deribit.com/#public-get_order_book"><code>GET api/v2/public/get_order_book</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">instrument_name</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">depth</td><td style="text-align: left">Depth</td><td style="text-align: left">false</td><td style="text-align: left"><code>ONE</code> (1), <code>FIVE</code> (5), <code>TEN</code> (10), <code>TWENTY</code> (20), <code>FIFTY</code> (50), <code>ONE_HUNDRED</code> (100), <code>THOUSAND</code> (1000), <code>TEN_THOUSAND</code> (10000)</td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Deribit
+
+result = Deribit.Common.order_book(;
+    instrument_name = &quot;BTC-PERPETUAL&quot;,
+    depth = CryptoExchangeAPIs.Deribit.Common.OrderBook.TEN,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;id&quot;:null,
+  &quot;jsonrpc&quot;:&quot;2.0&quot;,
+  &quot;testnet&quot;:false,
+  &quot;usDiff&quot;:808,
+  &quot;usOut&quot;:&quot;2024-05-17T12:09:18.775115008&quot;,
+  &quot;usIn&quot;:&quot;2024-05-17T12:09:18.774307072&quot;,
+  &quot;result&quot;:{
+    &quot;ask_iv&quot;:null,
+    &quot;asks&quot;:[
+      {
+        &quot;amount&quot;:66265.0,
+        &quot;price&quot;:164430.0
+      },
+      ...
+    ],
+    &quot;best_ask_amount&quot;:164430.0,
+    &quot;best_ask_price&quot;:66265.0,
+    &quot;best_bid_amount&quot;:116100.0,
+    &quot;best_bid_price&quot;:66264.5,
+    &quot;bid_iv&quot;:null,
+    &quot;bids&quot;:[
+      {
+        &quot;amount&quot;:66264.5,
+        &quot;price&quot;:116100.0
+      },
+      ...
+    ],
+    &quot;change_id&quot;:70662452234,
+    &quot;current_funding&quot;:1.733e-5,
+    &quot;delivery_price&quot;:null,
+    &quot;estimated_delivery_price&quot;:66247.85,
+    &quot;funding_8h&quot;:2.696e-5,
+    &quot;greeks&quot;:null,
+    &quot;index_price&quot;:66247.85,
+    &quot;instrument_name&quot;:&quot;BTC-PERPETUAL&quot;,
+    &quot;interest_rate&quot;:null,
+    &quot;last_price&quot;:66264.5,
+    &quot;mark_iv&quot;:null,
+    &quot;mark_price&quot;:66265.56,
+    &quot;max_price&quot;:68254.0,
+    &quot;min_price&quot;:64277.5,
+    &quot;open_interest&quot;:7.0092997e8,
+    &quot;settlement_price&quot;:66421.48,
+    &quot;state&quot;:&quot;open&quot;,
+    &quot;stats&quot;:{
+      &quot;high&quot;:66798.0,
+      &quot;low&quot;:64620.5,
+      &quot;price_change&quot;:0.0521,
+      &quot;volume&quot;:9341.58521281,
+      &quot;volume_usd&quot;:6.1459374e8
+    },
+    &quot;timestamp&quot;:&quot;2024-05-17T12:09:18.761999872&quot;,
+    &quot;underlying_index&quot;:null,
+    &quot;underlying_price&quot;:null
+  }
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/f785baa4b7ec0aa4518e1362d6c301fb903b1373/src/Deribit/Common/API/OrderBook.jl#L87-L177">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Deribit.Common.Ticker.ticker" href="#CryptoExchangeAPIs.Deribit.Common.Ticker.ticker"><code>CryptoExchangeAPIs.Deribit.Common.Ticker.ticker</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">ticker(client::DeribitClient, query::TickerQuery)
+ticker(client::DeribitClient = Deribit.Common.public_client; kw...)</code></pre><p>Get ticker for an instrument.</p><p><a href="https://docs.deribit.com/#public-ticker"><code>GET api/v2/public/ticker</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">instrument_name</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Deribit
+
+result = Deribit.Common.ticker(;
+    instrument_name = &quot;BTC-PERPETUAL&quot;,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;id&quot;:null,
+  &quot;jsonrpc&quot;:&quot;2.0&quot;,
+  &quot;testnet&quot;:false,
+  &quot;usDiff&quot;:209,
+  &quot;usOut&quot;:&quot;2024-05-17T12:10:28.639980032&quot;,
+  &quot;usIn&quot;:&quot;2024-05-17T12:10:28.639770880&quot;,
+  &quot;result&quot;:{
+    &quot;ask_iv&quot;:null,
+    &quot;best_ask_amount&quot;:227380.0,
+    &quot;best_ask_price&quot;:66265.0,
+    &quot;best_bid_amount&quot;:27200.0,
+    &quot;best_bid_price&quot;:66264.5,
+    &quot;bid_iv&quot;:null,
+    &quot;current_funding&quot;:2.428e-5,
+    &quot;delivery_price&quot;:null,
+    &quot;estimated_delivery_price&quot;:66245.52,
+    &quot;funding_8h&quot;:2.703e-5,
+    &quot;greeks&quot;:null,
+    &quot;index_price&quot;:66245.52,
+    &quot;instrument_name&quot;:&quot;BTC-PERPETUAL&quot;,
+    &quot;interest_rate&quot;:null,
+    &quot;interest_value&quot;:0.011170326646787519,
+    &quot;last_price&quot;:66265.0,
+    &quot;mark_iv&quot;:null,
+    &quot;mark_price&quot;:66263.69,
+    &quot;max_price&quot;:68252.0,
+    &quot;min_price&quot;:64275.5,
+    &quot;open_interest&quot;:7.0092983e8,
+    &quot;settlement_price&quot;:66421.48,
+    &quot;state&quot;:&quot;open&quot;,
+    &quot;stats&quot;:{
+      &quot;high&quot;:66798.0,
+      &quot;low&quot;:64620.5,
+      &quot;price_change&quot;:-0.0121,
+      &quot;volume&quot;:9331.58638298,
+      &quot;volume_usd&quot;:6.139311e8
+    },
+    &quot;timestamp&quot;:&quot;2024-05-17T12:10:28.576&quot;,
+    &quot;underlying_index&quot;:null,
+    &quot;underlying_price&quot;:null
+  }
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/f785baa4b7ec0aa4518e1362d6c301fb903b1373/src/Deribit/Common/API/Ticker.jl#L68-L142">source</a></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../Cryptocom/">« Cryptocom</a><a class="docs-footer-nextpage" href="../Gateio/">Gateio »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.7.0 on <span class="colophon-date" title="Tuesday 17 September 2024 18:46">Tuesday 17 September 2024</span>. Using Julia version 1.10.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
