@@ -111,7 +111,7 @@ end
 include("Utils.jl")
 include("Errors.jl")
 
-include("Spot/Spot.jl")
-using .Spot
+include("ExchangeAPI/ExchangeAPI.jl")
+using .ExchangeAPI
 
 end

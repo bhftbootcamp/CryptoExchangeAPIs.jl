@@ -121,9 +121,6 @@ end
 include("Utils.jl")
 include("Errors.jl")
 
-include("CoinMFutures/CoinMFutures.jl")
-using .CoinMFutures
-
 include("USDMFutures/USDMFutures.jl")
 using .USDMFutures
 
