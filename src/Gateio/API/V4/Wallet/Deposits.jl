@@ -1,16 +1,17 @@
-module Deposit
+module Deposits
 
-export DepositQuery,
-    DepositData,
-    deposit
+export DepositsQuery,
+    DepositsData,
+    deposits
 
 using Serde
 using Dates, NanoDates, TimeZones
+using EnumX
 
 using CryptoExchangeAPIs.Gateio
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-@enum RecordStatus begin
+@enumx RecordStatus begin
     DONE
     CANCEL
     REQUEST
@@ -26,7 +27,7 @@ using CryptoExchangeAPIs: Maybe, APIsRequest
     SPLITPEND
 end
 
-Base.@kwdef mutable struct DepositQuery <: GateioPrivateQuery
+Base.@kwdef mutable struct DepositsQuery <: GateioPrivateQuery
     currency::Maybe{String} = nothing
     from::Maybe{DateTime} = nothing
     limit::Maybe{Int64} = nothing
@@ -37,7 +38,7 @@ Base.@kwdef mutable struct DepositQuery <: GateioPrivateQuery
     signTimestamp::Maybe{DateTime} = nothing
 end
 
-struct DepositData <: GateioData
+struct DepositsData <: GateioData
     address::String
     amount::Float64
     chain::String
@@ -45,19 +46,19 @@ struct DepositData <: GateioData
     fee::Maybe{Float64}
     id::Int64
     memo::Maybe{String}
-    status::RecordStatus
+    status::RecordStatus.T
     timestamp::NanoDate
     txid::Int128
     withdraw_order_id::String
 end
 
-function Serde.isempty(::Type{<:DepositData}, x)::Bool
+function Serde.isempty(::Type{<:DepositsData}, x)::Bool
     return x === ""
 end
 
 """
-    deposit(client::GateioClient, query::CandleQuery)
-    deposit(client::GateioClient; kw...)
+    deposits(client::GateioClient, query::CandleQuery)
+    deposits(client::GateioClient; kw...)
 
 Retrieve deposit records.
 
@@ -87,7 +88,7 @@ gateio_client = GateioClient(;
     secret_key = ENV["GATEIO_SECRET_KEY"],
 )
 
-result = Gateio.Spot.deposit(gateio_client)
+result = Gateio.API.V4.Wallet.deposits(gateio_client)
 
 to_pretty_json(result.result)
 ```
@@ -113,12 +114,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function deposit(client::GateioClient, query::DepositQuery)
-    return APIsRequest{Vector{DepositData}}("GET", "api/v4/wallet/deposits", query)(client)
+function deposits(client::GateioClient, query::DepositsQuery)
+    return APIsRequest{Vector{DepositsData}}("GET", "api/v4/wallet/deposits", query)(client)
 end
 
-function deposit(client::GateioClient; kw...)
-    return deposit(client, DepositQuery(; kw...))
+function deposits(client::GateioClient; kw...)
+    return deposits(client, DepositsQuery(; kw...))
 end
 
 end

@@ -1,40 +1,41 @@
-module Candle
+module Candlesticks
 
-export CandleQuery,
-    CandleData,
-    candle
+export CandlesticksQuery,
+    CandlesticksData,
+    candlesticks
 
 using Serde
 using Dates, NanoDates, TimeZones
+using EnumX
 
 using CryptoExchangeAPIs.Gateio
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-@enum TimeInterval s10 m1 m5 m15 m30 h1 h4 h8 d1 d7 d30
+@enumx TimeInterval s10 m1 m5 m15 m30 h1 h4 h8 d1 d7 d30
 
-Base.@kwdef struct CandleQuery <: GateioPublicQuery
+Base.@kwdef struct CandlesticksQuery <: GateioPublicQuery
     currency_pair::String
     from::Maybe{DateTime} = nothing
-    interval::Maybe{TimeInterval} = nothing
+    interval::Maybe{TimeInterval.T} = nothing
     limit::Maybe{Int64} = nothing
     to::Maybe{DateTime} = nothing
 end
 
-function Serde.ser_type(::Type{<:CandleQuery}, x::TimeInterval)::String
-    x == s10 && return "10s"
-    x == m1  && return "1m"
-    x == m5  && return "5m"
-    x == m15 && return "15m"
-    x == m30 && return "30m"
-    x == h1  && return "1h"
-    x == h4  && return "4h"
-    x == h8  && return "8h"
-    x == d1  && return "1d"
-    x == d7  && return "7d"
-    x == d30 && return "30d"
+function Serde.ser_type(::Type{<:CandlesticksQuery}, x::TimeInterval.T)::String
+    x == TimeInterval.s10 && return "10s"
+    x == TimeInterval.m1  && return "1m"
+    x == TimeInterval.m5  && return "5m"
+    x == TimeInterval.m15 && return "15m"
+    x == TimeInterval.m30 && return "30m"
+    x == TimeInterval.h1  && return "1h"
+    x == TimeInterval.h4  && return "4h"
+    x == TimeInterval.h8  && return "8h"
+    x == TimeInterval.d1  && return "1d"
+    x == TimeInterval.d7  && return "7d"
+    x == TimeInterval.d30 && return "30d"
 end
 
-struct CandleData <: GateioData
+struct CandlesticksData <: GateioData
     timestamp::Maybe{NanoDate}
     quote_volume::Maybe{Float64}
     close_price::Maybe{Float64}
@@ -45,8 +46,8 @@ struct CandleData <: GateioData
 end
 
 """
-    candle(client::GateioClient, query::CandleQuery)
-    candle(client::GateioClient = Gateio.Spot.public_client; kw...)
+    candlesticks(client::GateioClient, query::CandlesticksQuery)
+    candlesticks(client::GateioClient = Gateio.public_client; kw...)
 
 Market candlesticks.
 
@@ -68,9 +69,9 @@ Market candlesticks.
 using Serde
 using CryptoExchangeAPIs.Gateio
 
-result = Gateio.Spot.candle(;
+result = Gateio.API.V4.Spot.candlesticks(;
     currency_pair = "BTC_USDT",
-    interval = Gateio.Spot.Candle.d1,
+    interval = Gateio.API.V4.Spot.Candlesticks.TimeInterval.d1,
 )
 
 to_pretty_json(result.result)
@@ -93,12 +94,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function candle(client::GateioClient, query::CandleQuery)
-    return APIsRequest{Vector{CandleData}}("GET", "api/v4/spot/candlesticks", query)(client)
+function candlesticks(client::GateioClient, query::CandlesticksQuery)
+    return APIsRequest{Vector{CandlesticksData}}("GET", "api/v4/spot/candlesticks", query)(client)
 end
 
-function candle(client::GateioClient = Gateio.Spot.public_client; kw...)
-    return candle(client, CandleQuery(; kw...))
+function candlesticks(client::GateioClient = Gateio.public_client; kw...)
+    return candlesticks(client, CandlesticksQuery(; kw...))
 end
 
 end

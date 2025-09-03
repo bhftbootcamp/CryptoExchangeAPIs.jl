@@ -1,26 +1,27 @@
-module Contract
+module Contracts
 
-export ContractQuery,
-    ContractData,
-    contract
+export ContractsQuery,
+    ContractsData,
+    contracts
 
 using Serde
 using Dates, NanoDates, TimeZones
+using EnumX
 
 using CryptoExchangeAPIs.Gateio
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-@enum Settle btc usdt usd
+@enumx Settle btc usdt usd
 
-Base.@kwdef struct ContractQuery <: GateioPublicQuery
-    settle::Settle
+Base.@kwdef struct ContractsQuery <: GateioPublicQuery
+    settle::Settle.T
     limit::Maybe{Int64} = nothing
     offset::Maybe{Int64} = nothing
 end
 
-Serde.SerQuery.ser_ignore_field(::Type{ContractQuery}, ::Val{:settle}) = true
+Serde.SerQuery.ser_ignore_field(::Type{ContractsQuery}, ::Val{:settle}) = true
 
-struct ContractData <: GateioData
+struct ContractsData <: GateioData
     name::String
     type::String
     quanto_multiplier::Maybe{Float64}
@@ -66,8 +67,8 @@ struct ContractData <: GateioData
 end
 
 """
-    contract(client::GateioClient, query::ContractQuery)
-    contract(client::GateioClient = Gateio.Futures.public_client; kw...)
+    contracts(client::GateioClient, query::ContractsQuery)
+    contracts(client::GateioClient = Gateio.public_client; kw...)
 
 List all futures contracts.
 
@@ -87,7 +88,9 @@ List all futures contracts.
 using Serde
 using CryptoExchangeAPIs.Gateio
 
-result = Gateio.Futures.contract(; settle = Gateio.Futures.Contract.btc)
+result = Gateio.API.V4.Futures.contracts(;
+    settle = Gateio.API.V4.Futures.Contracts.Settle.btc,
+)
 
 to_pretty_json(result.result)
 ```
@@ -143,12 +146,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function contract(client::GateioClient, query::ContractQuery)
-    return APIsRequest{Vector{ContractData}}("GET", "api/v4/futures/$(query.settle)/contracts", query)(client)
+function contracts(client::GateioClient, query::ContractsQuery)
+    return APIsRequest{Vector{ContractsData}}("GET", "api/v4/futures/$(query.settle)/contracts", query)(client)
 end
 
-function contract(client::GateioClient = Gateio.Futures.public_client; kw...)
-    return contract(client, ContractQuery(; kw...))
+function contracts(client::GateioClient = Gateio.public_client; kw...)
+    return contracts(client, ContractsQuery(; kw...))
 end
 
 end

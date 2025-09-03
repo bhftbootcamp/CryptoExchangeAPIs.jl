@@ -6,15 +6,16 @@ export OrderBookQuery,
 
 using Serde
 using Dates, NanoDates, TimeZones
+using EnumX
 
 using CryptoExchangeAPIs.Gateio
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-@enum Settle btc usdt usd
+@enumx Settle btc usdt usd
 
 Base.@kwdef struct OrderBookQuery <: GateioPublicQuery
     contract::String
-    settle::Settle
+    settle::Settle.T
     interval::Maybe{String} = nothing
     limit::Maybe{Int64} = nothing
     with_id::Maybe{Bool} = nothing
@@ -41,7 +42,7 @@ end
 
 """
     order_book(client::GateioClient, query::OrderBookQuery)
-    order_book(client::GateioClient = Gateio.Futures.public_client; kw...)
+    order_book(client::GateioClient = Gateio.public_client; kw...)
 
 Futures order book.
 
@@ -63,8 +64,8 @@ Futures order book.
 using Serde
 using CryptoExchangeAPIs.Gateio
 
-result = Gateio.Futures.order_book(; 
-    settle = Gateio.Futures.OrderBook.usdt,
+result = Gateio.API.V4.Futures.order_book(; 
+    settle = Gateio.API.V4.Futures.OrderBook.Settle.usdt,
     contract = "BTC_USDT",
 )
 
@@ -99,7 +100,7 @@ function order_book(client::GateioClient, query::OrderBookQuery)
     return APIsRequest{OrderBookData}("GET", "api/v4/futures/$(query.settle)/order_book", query)(client)
 end
 
-function order_book(client::GateioClient = Gateio.Futures.public_client; kw...)
+function order_book(client::GateioClient = Gateio.public_client; kw...)
     return order_book(client, OrderBookQuery(; kw...))
 end
 

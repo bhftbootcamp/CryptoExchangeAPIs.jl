@@ -1,8 +1,8 @@
-module Currency
+module Currencies
 
-export CurrencyQuery,
-    CurrencyData,
-    currency
+export CurrenciesQuery,
+    CurrenciesData,
+    currencies
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -10,11 +10,11 @@ using Dates, NanoDates, TimeZones
 using CryptoExchangeAPIs.Gateio
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct CurrencyQuery <: GateioPublicQuery
+Base.@kwdef struct CurrenciesQuery <: GateioPublicQuery
     #__ empty
 end
 
-struct CurrencyData <: GateioData
+struct CurrenciesData <: GateioData
     chain::String
     currency::String
     delisted::Bool
@@ -26,8 +26,8 @@ struct CurrencyData <: GateioData
 end
 
 """
-    currency(client::GateioClient, query::CurrencyQuery)
-    currency(client::GateioClient = Gateio.Spot.public_client; kw...)
+    currencies(client::GateioClient, query::CurrenciesQuery)
+    currencies(client::GateioClient = Gateio.public_client; kw...)
 
 List all currencies' details.
 
@@ -39,7 +39,7 @@ List all currencies' details.
 using Serde
 using CryptoExchangeAPIs.Gateio
 
-result = Gateio.Spot.currency()
+result = Gateio.API.V4.Spot.currencies()
 
 to_pretty_json(result.result)
 ```
@@ -62,12 +62,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function currency(client::GateioClient, query::CurrencyQuery)
-    return APIsRequest{Vector{CurrencyData}}("GET", "api/v4/spot/currencies", query)(client)
+function currencies(client::GateioClient, query::CurrenciesQuery)
+    return APIsRequest{Vector{CurrenciesData}}("GET", "api/v4/spot/currencies", query)(client)
 end
 
-function currency(client::GateioClient = Gateio.Spot.public_client; kw...)
-    return currency(client, CurrencyQuery(; kw...))
+function currencies(client::GateioClient = Gateio.public_client; kw...)
+    return currencies(client, CurrenciesQuery(; kw...))
 end
 
 end

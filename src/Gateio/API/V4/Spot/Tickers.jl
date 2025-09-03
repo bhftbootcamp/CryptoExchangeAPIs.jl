@@ -1,8 +1,8 @@
-module Ticker
+module Tickers
 
-export TickerQuery,
-    TickerData,
-    ticker
+export TickersQuery,
+    TickersData,
+    tickers
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -10,12 +10,12 @@ using Dates, NanoDates, TimeZones
 using CryptoExchangeAPIs.Gateio
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct TickerQuery <: GateioPublicQuery
+Base.@kwdef struct TickersQuery <: GateioPublicQuery
     currency_pair::Maybe{String} = nothing
     timezone::Maybe{String} = nothing
 end
 
-struct TickerData <: GateioData
+struct TickersData <: GateioData
     currency_pair::String
     base_volume::Maybe{Float64}
     change_percentage::Float64
@@ -33,13 +33,13 @@ struct TickerData <: GateioData
     quote_volume::Maybe{Float64}
 end
 
-function Serde.isempty(::Type{TickerData}, x)::Bool
+function Serde.isempty(::Type{TickersData}, x)::Bool
     return x === ""
 end
 
 """
-    ticker(client::GateioClient, query::TickerQuery)
-    ticker(client::GateioClient = Gateio.Spot.public_client; kw...)
+    tickers(client::GateioClient, query::TickersQuery)
+    tickers(client::GateioClient = Gateio.public_client; kw...)
 
 Retrieve ticker information.
 
@@ -58,7 +58,7 @@ Retrieve ticker information.
 using Serde
 using CryptoExchangeAPIs.Gateio
 
-result = Gateio.Spot.ticker(;
+result = Gateio.API.V4.Spot.tickers(;
     currency_pair = "ADA_USDT",
 )
 
@@ -89,12 +89,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function ticker(client::GateioClient, query::TickerQuery)
-    return APIsRequest{Vector{TickerData}}("GET", "api/v4/spot/tickers", query)(client)
+function tickers(client::GateioClient, query::TickersQuery)
+    return APIsRequest{Vector{TickersData}}("GET", "api/v4/spot/tickers", query)(client)
 end
 
-function ticker(client::GateioClient = Gateio.Spot.public_client; kw...)
-    return ticker(client, TickerQuery(; kw...))
+function tickers(client::GateioClient = Gateio.public_client; kw...)
+    return tickers(client, TickersQuery(; kw...))
 end
 
 end

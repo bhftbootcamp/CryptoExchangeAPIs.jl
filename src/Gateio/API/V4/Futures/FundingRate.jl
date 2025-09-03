@@ -6,15 +6,16 @@ export FundingRateQuery,
 
 using Serde
 using Dates, NanoDates, TimeZones
+using EnumX
 
 using CryptoExchangeAPIs.Gateio
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-@enum Settle btc usdt usd
+@enumx Settle btc usdt usd
 
 Base.@kwdef struct FundingRateQuery <: GateioPublicQuery
     contract::String
-    settle::Settle
+    settle::Settle.T
     limit::Maybe{Int64} = nothing
 end
 
@@ -27,7 +28,7 @@ end
 
 """
     funding_rate(client::GateioClient, query::FundingRateQuery)
-    funding_rate(client::GateioClient = Gateio.Futures.public_client; kw...)
+    funding_rate(client::GateioClient = Gateio.public_client; kw...)
 
 Funding rate history.
 
@@ -47,8 +48,8 @@ Funding rate history.
 using Serde
 using CryptoExchangeAPIs.Gateio
 
-result = Gateio.Futures.funding_rate(; 
-    settle = Gateio.Futures.FundingRate.usdt,
+result = Gateio.API.V4.Futures.funding_rate(; 
+    settle = Gateio.API.V4.Futures.FundingRate.Settle.usdt,
     contract = "BTC_USDT",
 )
 
@@ -71,7 +72,7 @@ function funding_rate(client::GateioClient, query::FundingRateQuery)
     return APIsRequest{Vector{FundingRateData}}("GET", "api/v4/futures/$(query.settle)/funding_rate", query)(client)
 end
 
-function funding_rate(client::GateioClient = Gateio.Futures.public_client; kw...)
+function funding_rate(client::GateioClient = Gateio.public_client; kw...)
     return funding_rate(client, FundingRateQuery(; kw...))
 end
 

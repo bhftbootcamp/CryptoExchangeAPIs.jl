@@ -38,7 +38,7 @@ end
 
 """
     currency_pair(client::GateioClient, query::CurrencyPairQuery)
-    currency_pair(client::GateioClient = Gateio.Spot.public_client; kw...)
+    currency_pair(client::GateioClient = Gateio.public_client; kw...)
 
 Get details of a specifc currency pair.
 
@@ -56,7 +56,7 @@ Get details of a specifc currency pair.
 using Serde
 using CryptoExchangeAPIs.Gateio
 
-result = Gateio.Spot.currency_pair(; 
+result = Gateio.API.V4.Spot.currency_pair(; 
     currency_pair = "ETH_BTC",
 )
 
@@ -88,13 +88,13 @@ function currency_pair(client::GateioClient, query::CurrencyPairQuery)
     return APIsRequest{CurrencyPairData}("GET", end_piont, query)(client)
 end
 
-function currency_pair(client::GateioClient = Gateio.Spot.public_client; kw...)
+function currency_pair(client::GateioClient = Gateio.public_client; kw...)
     return currency_pair(client, CurrencyPairQuery(; kw...))
 end
 
 """
     currency_pairs(client::GateioClient, query::CurrencyPairsQuery)
-    currency_pairs(client::GateioClient = Gateio.Spot.public_client; kw...)
+    currency_pairs(client::GateioClient = Gateio.public_client; kw...)
 
 List all currency pairs supported.
 
@@ -106,7 +106,7 @@ List all currency pairs supported.
 using Serde
 using CryptoExchangeAPIs.Gateio
 
-result = Gateio.Spot.currency_pairs()
+result = Gateio.API.V4.Spot.currency_pairs()
 
 to_pretty_json(result.result)
 ```
@@ -139,7 +139,7 @@ function currency_pairs(client::GateioClient, query::CurrencyPairsQuery)
     return APIsRequest{Vector{CurrencyPairData}}("GET", end_piont, query)(client)
 end
 
-function currency_pairs(client::GateioClient = Gateio.Spot.public_client; kw...)
+function currency_pairs(client::GateioClient = Gateio.public_client; kw...)
     return currency_pairs(client, CurrencyPairsQuery(; kw...))
 end
 

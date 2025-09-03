@@ -1,8 +1,8 @@
-module Ticker
+module Tickers
 
-export TickerQuery,
-    TickerData,
-    ticker
+export TickersQuery,
+    TickersData,
+    tickers
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -10,11 +10,11 @@ using Dates, NanoDates, TimeZones
 using CryptoExchangeAPIs.Bitfinex
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct TickerQuery <: BitfinexPublicQuery
+Base.@kwdef struct TickersQuery <: BitfinexPublicQuery
     symbols::String = "ALL"
 end
 
-struct TickerData <: BitfinexData
+struct TickersData <: BitfinexData
     symbol::String
     bid::Maybe{Float64}
     bidSize::Maybe{Float64}
@@ -29,8 +29,8 @@ struct TickerData <: BitfinexData
 end
 
 """
-    ticker(client::BitfinexClient, query::TickerQuery)
-    ticker(client::BitfinexClient = Bitfinex.Spot.public_client; kw...)
+    tickers(client::BitfinexClient, query::TickersQuery)
+    tickers(client::BitfinexClient = Bitfinex.public_client; kw...)
 
 The tickers endpoint provides a high level overview of the state of the market.
 It shows the current best bid and ask, the last traded price, as well as information on the daily volume and price movement over the last day.
@@ -50,7 +50,7 @@ The endpoint can retrieve multiple tickers with a single query.
 using Serde
 using CryptoExchangeAPIs.Bitfinex
 
-result = Bitfinex.Spot.ticker(;
+result = Bitfinex.V2.tickers(;
     symbols = "tBTCUSD"
 )
 
@@ -77,12 +77,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function ticker(client::BitfinexClient, query::TickerQuery)
-    return APIsRequest{Vector{TickerData}}("GET", "v2/tickers", query)(client)
+function tickers(client::BitfinexClient, query::TickersQuery)
+    return APIsRequest{Vector{TickersData}}("GET", "v2/tickers", query)(client)
 end
 
-function ticker(client::BitfinexClient = Bitfinex.Spot.public_client; kw...)
-    return ticker(client, TickerQuery(; kw...))
+function tickers(client::BitfinexClient = Bitfinex.public_client; kw...)
+    return tickers(client, TickersQuery(; kw...))
 end
 
 end

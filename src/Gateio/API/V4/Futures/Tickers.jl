@@ -1,25 +1,26 @@
-module Ticker
+module Tickers
 
-export TickerQuery,
-    TickerData,
-    ticker
+export TickersQuery,
+    TickersData,
+    tickers
 
 using Serde
 using Dates, NanoDates, TimeZones
+using EnumX
 
 using CryptoExchangeAPIs.Gateio
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-@enum Settle btc usdt usd
+@enumx Settle btc usdt usd
 
-Base.@kwdef struct TickerQuery <: GateioPublicQuery
-    settle::Settle
+Base.@kwdef struct TickersQuery <: GateioPublicQuery
+    settle::Settle.T
     contract::Maybe{String} = nothing
 end
 
-Serde.SerQuery.ser_ignore_field(::Type{TickerQuery}, ::Val{:settle}) = true
+Serde.SerQuery.ser_ignore_field(::Type{TickersQuery}, ::Val{:settle}) = true
 
-struct TickerData <: GateioData
+struct TickersData <: GateioData
     contract::String
     last::Maybe{Float64}
     low_24h::Maybe{Float64}
@@ -41,8 +42,8 @@ struct TickerData <: GateioData
 end
 
 """
-    ticker(client::GateioClient, query::TickerQuery)
-    ticker(client::GateioClient = Gateio.Futures.public_client; kw...)
+    tickers(client::GateioClient, query::TickersQuery)
+    tickers(client::GateioClient = Gateio.public_client; kw...)
 
 List futures tickers.
 
@@ -61,7 +62,9 @@ List futures tickers.
 using Serde
 using CryptoExchangeAPIs.Gateio
 
-result = Gateio.Futures.ticker(; settle = Gateio.Futures.Ticker.btc)
+result = Gateio.API.V4.Futures.tickers(;
+    settle = Gateio.API.V4.Futures.Tickers.Settle.btc,
+)
 
 to_pretty_json(result.result)
 ```
@@ -93,12 +96,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function ticker(client::GateioClient, query::TickerQuery)
-    return APIsRequest{Vector{TickerData}}("GET", "api/v4/futures/$(query.settle)/tickers", query)(client)
+function tickers(client::GateioClient, query::TickersQuery)
+    return APIsRequest{Vector{TickersData}}("GET", "api/v4/futures/$(query.settle)/tickers", query)(client)
 end
 
-function ticker(client::GateioClient = Gateio.Futures.public_client; kw...)
-    return ticker(client, TickerQuery(; kw...))
+function tickers(client::GateioClient = Gateio.public_client; kw...)
+    return tickers(client, TickersQuery(; kw...))
 end
 
 end

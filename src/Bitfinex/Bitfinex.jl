@@ -47,6 +47,11 @@ Base.@kwdef struct BitfinexClient <: AbstractAPIsClient
 end
 
 """
+    public_client = BitfinexClient(; base_url = "https://api-pub.bitfinex.com")
+"""
+const public_client = BitfinexClient(; base_url = "https://api-pub.bitfinex.com")
+
+"""
     BitfinexAPIError{T} <: AbstractAPIsError
 
 Exception thrown when an API method fails with code `T`.
@@ -109,7 +114,7 @@ end
 include("Utils.jl")
 include("Errors.jl")
 
-include("Spot/Spot.jl")
-using .Spot
+include("V2/V2.jl")
+using .V2
 
 end
