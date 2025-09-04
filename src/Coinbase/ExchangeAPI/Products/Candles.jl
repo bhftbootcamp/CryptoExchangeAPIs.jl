@@ -1,8 +1,8 @@
-module ProductsCandles
+module Candles
 
-export ProductsCandlesQuery,
-    ProductsCandlesData,
-    products_candles
+export CandlesQuery,
+    CandlesData,
+    candles
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -13,16 +13,16 @@ using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enumx TimeInterval m1 m5 m15 h1 h6 d1
 
-Base.@kwdef struct ProductsCandlesQuery <: CoinbasePublicQuery
+Base.@kwdef struct CandlesQuery <: CoinbasePublicQuery
     granularity::TimeInterval.T
     product_id::String
     start::Maybe{DateTime} = nothing
     _end::Maybe{DateTime} = nothing
 end
 
-Serde.SerQuery.ser_ignore_field(::Type{ProductsCandlesQuery}, ::Val{:product_id}) = true
+Serde.SerQuery.ser_ignore_field(::Type{CandlesQuery}, ::Val{:product_id}) = true
 
-function Serde.ser_type(::Type{<:ProductsCandlesQuery}, x::TimeInterval.T)::String
+function Serde.ser_type(::Type{<:CandlesQuery}, x::TimeInterval.T)::String
     x == TimeInterval.m1  && return "60"
     x == TimeInterval.m5  && return "300"
     x == TimeInterval.m15 && return "900"
@@ -31,7 +31,7 @@ function Serde.ser_type(::Type{<:ProductsCandlesQuery}, x::TimeInterval.T)::Stri
     x == TimeInterval.d1  && return "86400"
 end
 
-struct ProductsCandlesData <: CoinbaseData
+struct CandlesData <: CoinbaseData
     time::Maybe{NanoDate}
     low::Maybe{Float64}
     high::Maybe{Float64}
@@ -41,8 +41,8 @@ struct ProductsCandlesData <: CoinbaseData
 end
 
 """
-    products_candles(client::CoinbaseClient, query::ProductsCandlesQuery)
-    products_candles(client::CoinbaseClient = Coinbase.ExhcangeAPI.public_client; kw...)
+    candles(client::CoinbaseClient, query::CandlesQuery)
+    candles(client::CoinbaseClient = Coinbase.ExchangeAPI.public_client; kw...)
 
 Get rates for a single product by product ID, grouped in buckets.
 
@@ -63,8 +63,8 @@ Get rates for a single product by product ID, grouped in buckets.
 using Serde
 using CryptoExchangeAPIs.Coinbase
 
-result = Coinbase.ExchangeAPI.products_candles(;
-    granularity = Coinbase.ExchangeAPI.ProductsCandles.TimeInterval.d1,
+result = Coinbase.ExchangeAPI.Products.candles(;
+    granularity = Coinbase.ExchangeAPI.Products.Candles.TimeInterval.d1,
     product_id = "BTC-USD",
 )
 
@@ -87,12 +87,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function products_candles(client::CoinbaseClient, query::ProductsCandlesQuery;)
-    return APIsRequest{Vector{ProductsCandlesData}}("GET", "products/$(query.product_id)/candles", query)(client)
+function candles(client::CoinbaseClient, query::CandlesQuery;)
+    return APIsRequest{Vector{CandlesData}}("GET", "products/$(query.product_id)/candles", query)(client)
 end
 
-function products_candles(client::CoinbaseClient = Coinbase.ExchangeAPI.public_client; kw...)
-    return products_candles(client, ProductsCandlesQuery(; kw...))
+function candles(client::CoinbaseClient = Coinbase.ExchangeAPI.public_client; kw...)
+    return candles(client, CandlesQuery(; kw...))
 end
 
 end

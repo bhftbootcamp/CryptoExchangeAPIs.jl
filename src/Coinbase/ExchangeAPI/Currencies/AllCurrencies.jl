@@ -1,8 +1,8 @@
-module Currencies
+module AllCurrencies
 
-export CurrenciesQuery,
-    CurrenciesData,
-    currencies
+export AllCurrenciesQuery,
+    AllCurrenciesData,
+    all_currencies
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -10,7 +10,7 @@ using Dates, NanoDates, TimeZones
 using CryptoExchangeAPIs.Coinbase
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct CurrenciesQuery <: CoinbasePublicQuery
+Base.@kwdef struct AllCurrenciesQuery <: CoinbasePublicQuery
     #__ empty
 end
 
@@ -27,7 +27,7 @@ struct SupportedNetwork <: CoinbaseData
     processing_time_seconds::Maybe{Int32}
 end
 
-struct CurrenciesDetails <: CoinbaseData
+struct AllCurrenciesDetails <: CoinbaseData
     type::Maybe{String}
     symbol::Maybe{String}
     network_confirmations::Maybe{Int32}
@@ -42,7 +42,7 @@ struct CurrenciesDetails <: CoinbaseData
     max_withdrawal_amount::Maybe{Float64}
 end
 
-struct CurrenciesData <: CoinbaseData
+struct AllCurrenciesData <: CoinbaseData
     id::String
     name::Maybe{String}
     min_size::Maybe{String}
@@ -50,18 +50,18 @@ struct CurrenciesData <: CoinbaseData
     message::Maybe{String}
     max_precision::Maybe{Float64}
     convertible_to::Maybe{Vector{String}}
-    details::Maybe{CurrenciesDetails}
+    details::Maybe{AllCurrenciesDetails}
     default_network::Maybe{String}
     supported_networks::Maybe{Vector{SupportedNetwork}}
 end
 
-function Serde.isempty(::Type{CurrenciesData}, x)::Bool
+function Serde.isempty(::Type{AllCurrenciesData}, x)::Bool
     return x === ""
 end
 
 """
-    currencies(client::CoinbaseClient, query::CurrenciesQuery)
-    currencies(client::CoinbaseClient = Coinbase.ExchangeAPI.public_client; kw...)
+    all_currencies(client::CoinbaseClient, query::AllCurrenciesQuery)
+    all_currencies(client::CoinbaseClient = Coinbase.ExchangeAPI.public_client; kw...)
 
 Gets a list of all known currencies.
 
@@ -73,7 +73,7 @@ Gets a list of all known currencies.
 using Serde
 using CryptoExchangeAPIs.Coinbase
 
-result = Coinbase.ExchangeAPI.currencies()
+result = Coinbase.ExchangeAPI.Currencies.all_currencies()
 
 to_pretty_json(result.result)
 ```
@@ -130,12 +130,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function currencies(client::CoinbaseClient, query::CurrenciesQuery)
-    return APIsRequest{Vector{CurrenciesData}}("GET", "currencies", query)(client)
+function all_currencies(client::CoinbaseClient, query::AllCurrenciesQuery)
+    return APIsRequest{Vector{AllCurrenciesData}}("GET", "currencies", query)(client)
 end
 
-function currencies(client::CoinbaseClient = Coinbase.ExchangeAPI.public_client; kw...)
-    return currencies(client, CurrenciesQuery(; kw...))
+function all_currencies(client::CoinbaseClient = Coinbase.ExchangeAPI.public_client; kw...)
+    return all_currencies(client, AllCurrenciesQuery(; kw...))
 end
 
 end

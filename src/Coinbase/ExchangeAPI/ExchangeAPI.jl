@@ -7,19 +7,13 @@ using CryptoExchangeAPIs.Coinbase
 """
 const public_client = CoinbaseClient(; base_url = "https://api.exchange.coinbase.com")
 
-include("ProductsCandles.jl")
-using .ProductsCandles
-
-include("Currencies.jl")
+include("Currencies/Currencies.jl")
 using .Currencies
 
-include("WithdrawalsFeeEstimate.jl")
-using .WithdrawalsFeeEstimate
-
-include("Products.jl")
+include("Products/Products.jl")
 using .Products
 
-include("ProductsTicker.jl")
-using .ProductsTicker
+include("Withdrawals/Withdrawals.jl")
+using .Withdrawals
 
 end

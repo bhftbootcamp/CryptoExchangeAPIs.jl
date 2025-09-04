@@ -1,8 +1,8 @@
-module DataOpenInterestHist
+module OpenInterestHist
 
-export DataOpenInterestHistQuery,
-    DataOpenInterestHistData,
-    data_open_interest_hist
+export OpenInterestHistQuery,
+    OpenInterestHistData,
+    open_interest_hist
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -13,7 +13,7 @@ using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enumx TimeInterval m5 m15 m30 h1 h2 h4 h6 h12 d1
 
-Base.@kwdef struct DataOpenInterestHistQuery <: BinancePublicQuery
+Base.@kwdef struct OpenInterestHistQuery <: BinancePublicQuery
     symbol::String
     period::TimeInterval.T
     limit::Maybe{Int64} = nothing
@@ -21,7 +21,7 @@ Base.@kwdef struct DataOpenInterestHistQuery <: BinancePublicQuery
     startTime::Maybe{DateTime} = nothing
 end
 
-function Serde.ser_type(::Type{<:DataOpenInterestHistQuery}, x::TimeInterval.T)::String
+function Serde.ser_type(::Type{<:OpenInterestHistQuery}, x::TimeInterval.T)::String
     x == TimeInterval.m5  && return "5m"
     x == TimeInterval.m15 && return "15m"
     x == TimeInterval.m30 && return "30m"
@@ -33,7 +33,7 @@ function Serde.ser_type(::Type{<:DataOpenInterestHistQuery}, x::TimeInterval.T):
     x == TimeInterval.d1  && return "1d"
 end
 
-struct DataOpenInterestHistData <: BinanceData
+struct OpenInterestHistData <: BinanceData
     symbol::String
     sumOpenInterest::Maybe{Float64}
     sumOpenInterestValue::Maybe{Float64}
@@ -41,8 +41,8 @@ struct DataOpenInterestHistData <: BinanceData
 end
 
 """
-    data_open_interest_hist(client::BinanceClient, query::DataOpenInterestHistQuery)
-    data_open_interest_hist(client::BinanceClient = Binance.USDMFutures.public_client; kw...)
+    open_interest_hist(client::BinanceClient, query::OpenInterestHistQuery)
+    open_interest_hist(client::BinanceClient = Binance.USDMFutures.public_client; kw...)
 
 [`GET futures/data/openInterestHist`](https://binance-docs.github.io/apidocs/futures/en/#open-interest-statistics)
 
@@ -62,9 +62,9 @@ end
 using Serde
 using CryptoExchangeAPIs.Binance
 
-result = Binance.USDMFutures.Futures.data_open_interest_hist(;
+result = Binance.USDMFutures.Futures.Data.open_interest_hist(;
     symbol = "BTCUSDT",
-    period = Binance.USDMFutures.Futures.DataOpenInterestHist.TimeInterval.h1,
+    period = Binance.USDMFutures.Futures.Data.OpenInterestHist.TimeInterval.h1,
 )
 
 to_pretty_json(result.result)
@@ -84,12 +84,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function data_open_interest_hist(client::BinanceClient, query::DataOpenInterestHistQuery)
-    return APIsRequest{Vector{DataOpenInterestHistData}}("GET", "futures/data/openInterestHist", query)(client)
+function open_interest_hist(client::BinanceClient, query::OpenInterestHistQuery)
+    return APIsRequest{Vector{OpenInterestHistData}}("GET", "futures/data/openInterestHist", query)(client)
 end
 
-function data_open_interest_hist(client::BinanceClient = Binance.USDMFutures.public_client; kw...)
-    return data_open_interest_hist(client, DataOpenInterestHistQuery(; kw...))
+function open_interest_hist(client::BinanceClient = Binance.USDMFutures.public_client; kw...)
+    return open_interest_hist(client, OpenInterestHistQuery(; kw...))
 end
 
 end

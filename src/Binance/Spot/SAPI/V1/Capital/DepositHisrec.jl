@@ -1,8 +1,8 @@
-module CapitalDepositHisrec
+module DepositHisrec
 
-export CapitalDepositHisrecQuery,
-    CapitalDepositHisrecData,
-    capital_deposit_hisrec
+export DepositHisrecQuery,
+    DepositHisrecData,
+    deposit_hisrec
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -19,7 +19,7 @@ using CryptoExchangeAPIs: Maybe, APIsRequest
     WAITING_USER_CONFIRM = 8
 end
 
-Base.@kwdef mutable struct CapitalDepositHisrecQuery <: BinancePrivateQuery
+Base.@kwdef mutable struct DepositHisrecQuery <: BinancePrivateQuery
     coin::Maybe{String} = nothing
     endTime::Maybe{DateTime} = nothing
     limit::Maybe{Int64} = 1000
@@ -33,11 +33,11 @@ Base.@kwdef mutable struct CapitalDepositHisrecQuery <: BinancePrivateQuery
     signature::Maybe{String} = nothing
 end
 
-function Serde.SerQuery.ser_type(::Type{<:CapitalDepositHisrecQuery}, x::DepositStatus.T)::Int64
+function Serde.SerQuery.ser_type(::Type{<:DepositHisrecQuery}, x::DepositStatus.T)::Int64
     return Int64(x)
 end
 
-struct CapitalDepositHisrecData <: BinanceData
+struct DepositHisrecData <: BinanceData
     address::String
     addressTag::String
     amount::Float64
@@ -54,8 +54,8 @@ struct CapitalDepositHisrecData <: BinanceData
 end
 
 """
-    capital_deposit_hisrec(client::BinanceClient, query::CapitalDepositHisrecQuery)
-    capital_deposit_hisrec(client::BinanceClient; kw...)
+    deposit_hisrec(client::BinanceClient, query::DepositHisrecQuery)
+    deposit_hisrec(client::BinanceClient; kw...)
 
 Fetch deposit history.
 
@@ -88,7 +88,7 @@ binance_client = BinanceClient(;
     secret_key = ENV["BINANCE_SECRET_KEY"],
 )
 
-result = Binance.Spot.SAPI.V1.capital_deposit_hisrec(binance_client)
+result = Binance.Spot.SAPI.V1.Capital.deposit_hisrec(binance_client)
 
 to_pretty_json(result.result)
 ```
@@ -116,12 +116,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function capital_deposit_hisrec(client::BinanceClient, query::CapitalDepositHisrecQuery)
-    return APIsRequest{Vector{CapitalDepositHisrecData}}("GET", "sapi/v1/capital/deposit/hisrec", query)(client)
+function deposit_hisrec(client::BinanceClient, query::DepositHisrecQuery)
+    return APIsRequest{Vector{DepositHisrecData}}("GET", "sapi/v1/capital/deposit/hisrec", query)(client)
 end
 
-function capital_deposit_hisrec(client::BinanceClient; kw...)
-    return capital_deposit_hisrec(client, CapitalDepositHisrecQuery(; kw...))
+function deposit_hisrec(client::BinanceClient; kw...)
+    return deposit_hisrec(client, DepositHisrecQuery(; kw...))
 end
 
 end

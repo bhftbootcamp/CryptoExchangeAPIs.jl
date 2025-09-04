@@ -1,8 +1,8 @@
-module TradesHist
+module Trades
 
-export TradesHistQuery,
-    TradesHistData,
-    trades_hist
+export TradesQuery,
+    TradesData,
+    trades
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -10,16 +10,16 @@ using Dates, NanoDates, TimeZones
 using CryptoExchangeAPIs.Bitfinex
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct TradesHistQuery <: BitfinexPublicQuery
+Base.@kwdef struct TradesQuery <: BitfinexPublicQuery
     symbol::String
     _end::Maybe{DateTime} = nothing
     limit::Int64 = 125
     start::Maybe{DateTime} = nothing
 end
 
-Serde.SerQuery.ser_ignore_field(::Type{TradesHistQuery}, ::Val{:symbol}) = true
+Serde.SerQuery.ser_ignore_field(::Type{TradesQuery}, ::Val{:symbol}) = true
 
-struct TradesHistData <: BitfinexData
+struct TradesData <: BitfinexData
     ID::Int64
     timestamp::NanoDate
     amount::Float64
@@ -27,8 +27,8 @@ struct TradesHistData <: BitfinexData
 end
 
 """
-    trades_hist(client::BitfinexClient, query::TradesHistQuery)
-    trades_hist(client::BitfinexClient = Bitfinex.public_client; kw...)
+    trades(client::BitfinexClient, query::TradesQuery)
+    trades(client::BitfinexClient = Bitfinex.public_client; kw...)
 
 The trades endpoint allows the retrieval of past public trades and includes details such as price, size, and time.
 Optional parameters can be used to limit the number of results; you can specify a start and end timestamp, a limit, and a sorting method.
@@ -51,7 +51,7 @@ using Dates
 using Serde
 using CryptoExchangeAPIs.Bitfinex
 
-result = Bitfinex.V2.trades_hist(;
+result = Bitfinex.V2.trades(;
     symbol = "tBTCUSD",
     start = DateTime("2024-03-17T12:00:00"),
 )
@@ -73,12 +73,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function trades_hist(client::BitfinexClient, query::TradesHistQuery)
-    return APIsRequest{Vector{TradesHistData}}("GET", "v2/trades/$(query.symbol)/hist", query)(client)
+function trades(client::BitfinexClient, query::TradesQuery)
+    return APIsRequest{Vector{TradesData}}("GET", "v2/trades/$(query.symbol)/hist", query)(client)
 end
 
-function trades_hist(client::BitfinexClient = Bitfinex.public_client; kw...)
-    return trades_hist(client, TradesHistQuery(; kw...))
+function trades(client::BitfinexClient = Bitfinex.public_client; kw...)
+    return trades(client, TradesQuery(; kw...))
 end
 
 end

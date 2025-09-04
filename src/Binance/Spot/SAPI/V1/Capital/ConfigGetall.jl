@@ -1,8 +1,8 @@
-module CapitalConfigGetall
+module ConfigGetall
 
-export CapitalConfigGetallQuery,
-    CapitalConfigGetallData,
-    capital_config_getall
+export ConfigGetallQuery,
+    ConfigGetallData,
+    config_getall
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -10,7 +10,7 @@ using Dates, NanoDates, TimeZones
 using CryptoExchangeAPIs.Binance
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-Base.@kwdef mutable struct CapitalConfigGetallQuery <: BinancePrivateQuery
+Base.@kwdef mutable struct ConfigGetallQuery <: BinancePrivateQuery
     recvWindow::Maybe{Int64} = nothing
     signature::Maybe{String} = nothing
     timestamp::Maybe{DateTime} = nothing
@@ -44,7 +44,7 @@ struct Networklist <: BinanceData
     withdrawMin::Float64
 end
 
-struct CapitalConfigGetallData <: BinanceData
+struct ConfigGetallData <: BinanceData
     coin::String
     depositAllEnable::Bool
     free::Float64
@@ -62,8 +62,8 @@ struct CapitalConfigGetallData <: BinanceData
 end
 
 """
-    capital_config_getall(client::BinanceClient, query::CapitalConfigGetallQuery)
-    capital_config_getall(client::BinanceClient; kw...)
+    config_getall(client::BinanceClient, query::ConfigGetallQuery)
+    config_getall(client::BinanceClient; kw...)
 
 Get information of coins (available for deposit and withdraw) for user.
 
@@ -89,7 +89,7 @@ binance_client = BinanceClient(;
     secret_key = ENV["BINANCE_SECRET_KEY"],
 )
 
-result = Binance.Spot.SAPI.V1.capital_config_getall(binance_client)
+result = Binance.Spot.SAPI.V1.Capital.config_getall(binance_client)
 
 to_pretty_json(result.result)
 ```
@@ -146,12 +146,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function capital_config_getall(client::BinanceClient, query::CapitalConfigGetallQuery)
-    return APIsRequest{Vector{CapitalConfigGetallData}}("GET", "sapi/v1/capital/config/getall", query)(client)
+function config_getall(client::BinanceClient, query::ConfigGetallQuery)
+    return APIsRequest{Vector{ConfigGetallData}}("GET", "sapi/v1/capital/config/getall", query)(client)
 end
 
-function capital_config_getall(client::BinanceClient; kw...)
-    return capital_config_getall(client, CapitalConfigGetallQuery(; kw...))
+function config_getall(client::BinanceClient; kw...)
+    return config_getall(client, ConfigGetallQuery(; kw...))
 end
 
 end

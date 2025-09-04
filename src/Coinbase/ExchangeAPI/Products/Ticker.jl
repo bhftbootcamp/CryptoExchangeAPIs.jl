@@ -1,8 +1,8 @@
-module ProductsTicker
+module Ticker
 
-export ProductsTickerQuery,
-    ProductsTickerData,
-    products_ticker
+export TickerQuery,
+    TickerData,
+    ticker
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -10,13 +10,13 @@ using Dates, NanoDates, TimeZones
 using CryptoExchangeAPIs.Coinbase
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct ProductsTickerQuery <: CoinbasePublicQuery
+Base.@kwdef struct TickerQuery <: CoinbasePublicQuery
     product_id::String
 end
 
-Serde.SerQuery.ser_ignore_field(::Type{ProductsTickerQuery}, ::Val{:product_id}) = true
+Serde.SerQuery.ser_ignore_field(::Type{TickerQuery}, ::Val{:product_id}) = true
 
-struct ProductsTickerData <: CoinbaseData
+struct TickerData <: CoinbaseData
     ask::Float64
     bid::Float64
     volume::Float64
@@ -27,8 +27,8 @@ struct ProductsTickerData <: CoinbaseData
 end
 
 """
-    products_ticker(client::CoinbaseClient, query::ProductsTickerQuery)
-    products_ticker(client::CoinbaseClient = Coinbase.ExchangeAPI.public_client; kw...)
+    ticker(client::CoinbaseClient, query::TickerQuery)
+    ticker(client::CoinbaseClient = Coinbase.ExchangeAPI.public_client; kw...)
 
 Gets snapshot information about the last trade (tick), best bid/ask and 24h volume.
 
@@ -46,7 +46,7 @@ Gets snapshot information about the last trade (tick), best bid/ask and 24h volu
 using Serde
 using CryptoExchangeAPIs.Coinbase
 
-result = Coinbase.ExchangeAPI.products_ticker(
+result = Coinbase.ExchangeAPI.Products.ticker(
     product_id = "ADA-USDT",
 ) 
 
@@ -67,12 +67,12 @@ to_pretty_json(result.result)
 }
 ```
 """
-function products_ticker(client::CoinbaseClient, query::ProductsTickerQuery;)
-    return APIsRequest{ProductsTickerData}("GET", "products/$(query.product_id)/ticker", query)(client)
+function ticker(client::CoinbaseClient, query::TickerQuery;)
+    return APIsRequest{TickerData}("GET", "products/$(query.product_id)/ticker", query)(client)
 end
 
-function products_ticker(client::CoinbaseClient = Coinbase.ExchangeAPI.public_client; kw...)
-    return products_ticker(client, ProductsTickerQuery(; kw...))
+function ticker(client::CoinbaseClient = Coinbase.ExchangeAPI.public_client; kw...)
+    return ticker(client, TickerQuery(; kw...))
 end
 
 end

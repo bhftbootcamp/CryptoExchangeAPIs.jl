@@ -1,8 +1,8 @@
-module CapitalWithdrawHistory
+module WithdrawHistory
 
-export CapitalWithdrawHistoryQuery,
-    CapitalWithdrawHistoryData,
-    capital_withdraw_history
+export WithdrawHistoryQuery,
+    WithdrawHistoryData,
+    withdraw_history
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -21,7 +21,7 @@ using CryptoExchangeAPIs: Maybe, APIsRequest
     COMPLETED = 6
 end
 
-Base.@kwdef mutable struct CapitalWithdrawHistoryQuery <: BinancePrivateQuery
+Base.@kwdef mutable struct WithdrawHistoryQuery <: BinancePrivateQuery
     coin::Maybe{String} = nothing
     endTime::Maybe{DateTime} = nothing
     limit::Maybe{Int64} = 1000
@@ -35,11 +35,11 @@ Base.@kwdef mutable struct CapitalWithdrawHistoryQuery <: BinancePrivateQuery
     signature::Maybe{String} = nothing
 end
 
-function Serde.SerQuery.ser_type(::Type{<:CapitalWithdrawHistoryQuery}, x::WithdrawStatus.T)::Int64
+function Serde.SerQuery.ser_type(::Type{<:WithdrawHistoryQuery}, x::WithdrawStatus.T)::Int64
     return Int64(x)
 end
 
-struct CapitalWithdrawHistoryData <: BinanceData
+struct WithdrawHistoryData <: BinanceData
     address::String
     amount::Float64
     applyTime::NanoDate
@@ -58,8 +58,8 @@ struct CapitalWithdrawHistoryData <: BinanceData
 end
 
 """
-    capital_withdraw_history(client::BinanceClient, query::CapitalWithdrawHistoryQuery)
-    capital_withdraw_history(client::BinanceClient; kw...)
+    withdraw_history(client::BinanceClient, query::WithdrawHistoryQuery)
+    withdraw_history(client::BinanceClient; kw...)
 
 Fetch withdraw history.
 
@@ -92,7 +92,7 @@ binance_client = BinanceClient(;
     secret_key = ENV["BINANCE_SECRET_KEY"],
 )
 
-result = Binance.Spot.SAPI.V1.capital_withdraw_history(binance_client)
+result = Binance.Spot.SAPI.V1.Capital.withdraw_history(binance_client)
 
 to_pretty_json(result.result)
 ```
@@ -122,12 +122,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function capital_withdraw_history(client::BinanceClient, query::CapitalWithdrawHistoryQuery)
-    return APIsRequest{Vector{CapitalWithdrawHistoryData}}("GET", "sapi/v1/capital/withdraw/history", query)(client)
+function withdraw_history(client::BinanceClient, query::WithdrawHistoryQuery)
+    return APIsRequest{Vector{WithdrawHistoryData}}("GET", "sapi/v1/capital/withdraw/history", query)(client)
 end
 
-function capital_withdraw_history(client::BinanceClient; kw...)
-    return capital_withdraw_history(client, CapitalWithdrawHistoryQuery(; kw...))
+function withdraw_history(client::BinanceClient; kw...)
+    return withdraw_history(client, WithdrawHistoryQuery(; kw...))
 end
 
 end 

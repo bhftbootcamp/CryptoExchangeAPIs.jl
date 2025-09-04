@@ -1,8 +1,8 @@
-module WithdrawalsFeeEstimate
+module FeeEstimate
 
-export WithdrawalsFeeEstimateQuery,
-    WithdrawalsFeeEstimateData,
-    withdrawals_fee_estimate
+export FeeEstimateQuery,
+    FeeEstimateData,
+    fee_estimate
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -10,7 +10,7 @@ using Dates, NanoDates, TimeZones
 using CryptoExchangeAPIs.Coinbase
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-Base.@kwdef mutable struct WithdrawalsFeeEstimateQuery <: CoinbasePrivateQuery
+Base.@kwdef mutable struct FeeEstimateQuery <: CoinbasePrivateQuery
     currency::Maybe{String} = nothing
     crypto_address::Maybe{String} = nothing
     network::Maybe{String} = nothing
@@ -19,14 +19,14 @@ Base.@kwdef mutable struct WithdrawalsFeeEstimateQuery <: CoinbasePrivateQuery
     signature::Maybe{String} = nothing
 end
 
-struct WithdrawalsFeeEstimateData <: CoinbaseData
+struct FeeEstimateData <: CoinbaseData
     fee::Maybe{Float64}
     fee_before_subsidy::Maybe{Float64}
 end
 
 """
-    withdrawals_fee_estimate(client::CoinbaseClient, query::WithdrawalsFeeEstimateQuery)
-    withdrawals_fee_estimate(client::CoinbaseClient; kw...)
+    fee_estimate(client::CoinbaseClient, query::FeeEstimateQuery)
+    fee_estimate(client::CoinbaseClient; kw...)
 
 Gets the fee estimate for the crypto withdrawal to crypto address.
 
@@ -55,7 +55,7 @@ coinbase_client = CoinbaseClient(;
     passphrase = ENV["COINBASE_PASSPHRASE"],
 )
 
-result = Coinbase.ExchangeAPI.withdrawals_fee_estimate(coinbase_client)
+result = Coinbase.ExchangeAPI.Withdrawals.fee_estimate(coinbase_client)
 
 to_pretty_json(result.result)
 ```
@@ -69,12 +69,12 @@ to_pretty_json(result.result)
 }
 ```
 """
-function withdrawals_fee_estimate(client::CoinbaseClient, query::WithdrawalsFeeEstimateQuery)
-    return APIsRequest{WithdrawalsFeeEstimateData}("GET", "withdrawals/fee-estimate", query)(client)
+function fee_estimate(client::CoinbaseClient, query::FeeEstimateQuery)
+    return APIsRequest{FeeEstimateData}("GET", "withdrawals/fee-estimate", query)(client)
 end
 
-function withdrawals_fee_estimate(client::CoinbaseClient; kw...)
-    return withdrawals_fee_estimate(client, WithdrawalsFeeEstimateQuery(; kw...))
+function fee_estimate(client::CoinbaseClient; kw...)
+    return fee_estimate(client, FeeEstimateQuery(; kw...))
 end
 
 end

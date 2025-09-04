@@ -1,8 +1,8 @@
-module DataTakerLongShortRatio
+module LongShortRatio
 
-export DataTakerLongShortRatioQuery,
-    DataTakerLongShortRatioData,
-    data_taker_long_short_ratio
+export LongShortRatioQuery,
+    LongShortRatioData,
+    long_short_ratio
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -13,7 +13,7 @@ using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enumx TimeInterval m5 m15 m30 h1 h2 h4 h6 h12 d1
 
-Base.@kwdef struct DataTakerLongShortRatioQuery <: BinancePublicQuery
+Base.@kwdef struct LongShortRatioQuery <: BinancePublicQuery
     symbol::String
     period::TimeInterval.T
     limit::Maybe{Int64} = nothing
@@ -21,7 +21,7 @@ Base.@kwdef struct DataTakerLongShortRatioQuery <: BinancePublicQuery
     startTime::Maybe{DateTime} = nothing
 end
 
-function Serde.ser_type(::Type{<:DataTakerLongShortRatioQuery}, x::TimeInterval.T)::String
+function Serde.ser_type(::Type{<:LongShortRatioQuery}, x::TimeInterval.T)::String
     x == TimeInterval.m5  && return "5m"
     x == TimeInterval.m15 && return "15m"
     x == TimeInterval.m30 && return "30m"
@@ -33,18 +33,19 @@ function Serde.ser_type(::Type{<:DataTakerLongShortRatioQuery}, x::TimeInterval.
     x == TimeInterval.d1  && return "1d"
 end
 
-struct DataTakerLongShortRatioData <: BinanceData
-    buySellRatio::Maybe{Float64}
-    buyVol::Maybe{Float64}
-    sellVol::Maybe{Float64}
+struct LongShortRatioData <: BinanceData
+    symbol::String
+    longShortRatio::Maybe{Float64}
+    longAccount::Maybe{Float64}
+    shortAccount::Maybe{Float64}
     timestamp::NanoDate
 end
 
 """
-    data_taker_long_short_ratio(client::BinanceClient, query::DataTakerLongShortRatioQuery)
-    data_taker_long_short_ratio(client::BinanceClient = Binance.USDMFutures.public_client; kw...)
+    long_short_ratio(client::BinanceClient, query::LongShortRatioQuery)
+    long_short_ratio(client::BinanceClient = Binance.USDMFutures.public_client; kw...)
 
-[`GET futures/data/takerlongshortRatio`](https://binance-docs.github.io/apidocs/futures/en/#taker-buy-sell-volume)
+[`GET futures/data/globalLongShortAccountRatio`](https://binance-docs.github.io/apidocs/futures/en/#long-short-ratio)
 
 ## Parameters:
 
@@ -62,9 +63,9 @@ end
 using Serde
 using CryptoExchangeAPIs.Binance
 
-result = Binance.USDMFutures.Futures.data_taker_long_short_ratio(;
+result = Binance.USDMFutures.Futures.Data.long_short_ratio(;
     symbol = "BTCUSDT",
-    period = Binance.USDMFutures.Futures.DataTakerLongShortRatio.TimeInterval.h1,
+    period = Binance.USDMFutures.Futures.Data.LongShortRatio.TimeInterval.h1,
 )
 
 to_pretty_json(result.result)
@@ -75,21 +76,22 @@ to_pretty_json(result.result)
 ```json
 [
   {
-    "buySellRatio":0.6366,
-    "buyVol":1277.042,
-    "sellVol":2005.878,
-    "timestamp":"2024-03-30T14:00:00"
+    "symbol":"BTCUSDT",
+    "longShortRatio":1.3305,
+    "longAccount":0.5709,
+    "shortAccount":0.4291,
+    "timestamp":"2024-03-29T12:00:00"
   },
   ...
 ]
 ```
 """
-function data_taker_long_short_ratio(client::BinanceClient, query::DataTakerLongShortRatioQuery)
-    return APIsRequest{Vector{DataTakerLongShortRatioData}}("GET", "futures/data/takerlongshortRatio", query)(client)
+function long_short_ratio(client::BinanceClient, query::LongShortRatioQuery)
+    return APIsRequest{Vector{LongShortRatioData}}("GET", "futures/data/globalLongShortAccountRatio", query)(client)
 end
 
-function data_taker_long_short_ratio(client::BinanceClient = Binance.USDMFutures.public_client; kw...)
-    return data_taker_long_short_ratio(client, DataTakerLongShortRatioQuery(; kw...))
+function long_short_ratio(client::BinanceClient = Binance.USDMFutures.public_client; kw...)
+    return long_short_ratio(client, LongShortRatioQuery(; kw...))
 end
 
 end
