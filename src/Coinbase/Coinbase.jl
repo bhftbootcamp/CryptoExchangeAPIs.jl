@@ -48,6 +48,11 @@ Base.@kwdef struct CoinbaseClient <: AbstractAPIsClient
 end
 
 """
+    public_client = CoinbaseClient(; base_url = "https://api.exchange.coinbase.com")
+"""
+const public_client = CoinbaseClient(; base_url = "https://api.exchange.coinbase.com")
+
+"""
     CoinbaseAPIError{T} <: AbstractAPIsError
 
 Exception thrown when an API method fails with code `T`.
@@ -111,7 +116,13 @@ end
 include("Utils.jl")
 include("Errors.jl")
 
-include("ExchangeAPI/ExchangeAPI.jl")
-using .ExchangeAPI
+include("Currencies/Currencies.jl")
+using .Currencies
+
+include("Products/Products.jl")
+using .Products
+
+include("Withdrawals/Withdrawals.jl")
+using .Withdrawals
 
 end

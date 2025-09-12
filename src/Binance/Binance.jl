@@ -121,10 +121,16 @@ end
 include("Utils.jl")
 include("Errors.jl")
 
-include("USDMFutures/USDMFutures.jl")
-using .USDMFutures
+include("API/API.jl")
+using .API
 
-include("Spot/Spot.jl")
-using .Spot
+include("SAPI/SAPI.jl")
+using .SAPI
+
+include("FAPI/FAPI.jl")
+using .FAPI
+
+include("Futures/Futures.jl")
+using .Futures
 
 end
