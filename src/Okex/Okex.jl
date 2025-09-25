@@ -67,6 +67,11 @@ Base.@kwdef struct OkexClient <: AbstractAPIsClient
 end
 
 """
+    public_client = OkexClient(; base_url = "https://www.okx.com")
+"""
+const public_client = OkexClient(; base_url = "https://www.okx.com")
+
+"""
     OkexAPIError{T} <: AbstractAPIsError
 
 Exception thrown when an API method fails with code `T`.
@@ -135,10 +140,6 @@ end
 include("Utils.jl")
 include("Errors.jl")
 
-include("Spot/Spot.jl")
-using .Spot
-
-include("Common/Common.jl")
-using .Common
+include("API/API.jl")
 
 end

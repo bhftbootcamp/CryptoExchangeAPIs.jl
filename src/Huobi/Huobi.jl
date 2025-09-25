@@ -88,6 +88,11 @@ Base.@kwdef struct HuobiClient <: AbstractAPIsClient
 end
 
 """
+    public_client = HuobiClient(; base_url = "https://api.huobi.pro")
+"""
+const public_client = HuobiClient(; base_url = "https://api.huobi.pro")
+
+"""
     HuobiAPIError{T} <: AbstractAPIsError
 
 Exception thrown when an API method fails with code `T`.
@@ -163,7 +168,7 @@ end
 include("Utils.jl")
 include("Errors.jl")
 
-include("Spot/Spot.jl")
-using .Spot
+include("Market/Market.jl")
+include("V1/V1.jl")
 
 end

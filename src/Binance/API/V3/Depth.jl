@@ -78,7 +78,7 @@ function depth(client::BinanceClient, query::DepthQuery)
     return APIsRequest{DepthData}("GET", "api/v3/depth", query)(client)
 end
 
-function depth(client::BinanceClient = Binance.API.public_client; kw...)
+function depth(client::BinanceClient = Binance.public_client; kw...)
     return depth(client, DepthQuery(; kw...))
 end
 

@@ -76,7 +76,7 @@ function funding_rate(client::BinanceClient, query::FundingRateQuery)
     return APIsRequest{Vector{FundingRateData}}("GET", "fapi/v1/fundingRate", query)(client)
 end
 
-function funding_rate(client::BinanceClient = Binance.FAPI.public_client; kw...)
+function funding_rate(client::BinanceClient = Binance.public_fapi_client; kw...)
     return funding_rate(client, FundingRateQuery(; kw...))
 end
 

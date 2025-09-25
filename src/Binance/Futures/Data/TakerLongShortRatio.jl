@@ -88,7 +88,7 @@ function taker_long_short_ratio(client::BinanceClient, query::TakerLongShortRati
     return APIsRequest{Vector{TakerLongShortRatioData}}("GET", "futures/data/takerlongshortRatio", query)(client)
 end
 
-function taker_long_short_ratio(client::BinanceClient = Binance.Futures.public_client; kw...)
+function taker_long_short_ratio(client::BinanceClient = Binance.public_fapi_client; kw...)
     return taker_long_short_ratio(client, TakerLongShortRatioQuery(; kw...))
 end
 

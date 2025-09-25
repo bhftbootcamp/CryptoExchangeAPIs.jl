@@ -111,7 +111,7 @@ function klines(client::BinanceClient, query::KlinesQuery)
     return APIsRequest{Vector{KlinesData}}("GET", "fapi/v1/klines", query)(client)
 end
 
-function klines(client::BinanceClient = Binance.FAPI.public_client; kw...)
+function klines(client::BinanceClient = Binance.public_fapi_client; kw...)
     return klines(client, KlinesQuery(; kw...))
 end
 

@@ -82,7 +82,7 @@ function depth(client::BinanceClient, query::DepthQuery)
     return APIsRequest{DepthData}("GET", "fapi/v1/depth", query)(client)
 end
 
-function depth(client::BinanceClient = Binance.FAPI.public_client; kw...)
+function depth(client::BinanceClient = Binance.public_fapi_client; kw...)
     return depth(client, DepthQuery(; kw...))
 end
 

@@ -47,6 +47,16 @@ Base.@kwdef struct BinanceClient <: AbstractAPIsClient
 end
 
 """
+    public_client = BinanceClient(; base_url = "https://api.binance.com")
+"""
+const public_client = BinanceClient(; base_url = "https://api.binance.com")
+
+"""
+    public_client = BinanceClient(; base_url = "https://fapi.binance.com")
+"""
+const public_fapi_client = BinanceClient(; base_url = "https://fapi.binance.com")
+
+"""
     BinanceAPIError{T} <: AbstractAPIsError
 
 Exception thrown when an API method fails with code `T`.

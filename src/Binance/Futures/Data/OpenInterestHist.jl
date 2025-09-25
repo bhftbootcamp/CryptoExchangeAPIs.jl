@@ -88,7 +88,7 @@ function open_interest_hist(client::BinanceClient, query::OpenInterestHistQuery)
     return APIsRequest{Vector{OpenInterestHistData}}("GET", "futures/data/openInterestHist", query)(client)
 end
 
-function open_interest_hist(client::BinanceClient = Binance.Futures.public_client; kw...)
+function open_interest_hist(client::BinanceClient = Binance.public_fapi_client; kw...)
     return open_interest_hist(client, OpenInterestHistQuery(; kw...))
 end
 

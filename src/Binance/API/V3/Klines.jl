@@ -110,7 +110,7 @@ function klines(client::BinanceClient, query::KlinesQuery)
     return APIsRequest{Vector{KlinesData}}("GET", "api/v3/klines", query)(client)
 end
 
-function klines(client::BinanceClient = Binance.API.public_client; kw...)
+function klines(client::BinanceClient = Binance.public_client; kw...)
     return klines(client, KlinesQuery(; kw...))
 end
 

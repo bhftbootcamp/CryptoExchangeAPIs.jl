@@ -47,6 +47,11 @@ Base.@kwdef struct PoloniexClient <: AbstractAPIsClient
 end
 
 """
+    public_client = PoloniexClient(; base_url = "https://api.poloniex.com")
+"""
+const public_client = PoloniexClient(; base_url = "https://api.poloniex.com")
+
+"""
     PoloniexAPIError{T} <: AbstractAPIsError
 
 Exception thrown when an API method fails with code `T`.
@@ -117,7 +122,6 @@ end
 include("Utils.jl")
 include("Errors.jl")
 
-include("Spot/Spot.jl")
-using .Spot
+include("Markets/Markets.jl")
 
 end

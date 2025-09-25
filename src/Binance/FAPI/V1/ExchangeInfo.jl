@@ -204,7 +204,7 @@ function exchange_info(client::BinanceClient, query::ExchangeInfoQuery)
     return APIsRequest{ExchangeInfoData}("GET", "fapi/v1/exchangeInfo", query)(client)
 end
 
-function exchange_info(client::BinanceClient = Binance.FAPI.public_client; kw...)
+function exchange_info(client::BinanceClient = Binance.public_fapi_client; kw...)
     return exchange_info(client, ExchangeInfoQuery(; kw...))
 end
 
