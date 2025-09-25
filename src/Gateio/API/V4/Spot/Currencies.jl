@@ -15,7 +15,7 @@ Base.@kwdef struct CurrenciesQuery <: GateioPublicQuery
 end
 
 struct CurrenciesData <: GateioData
-    chain::String
+    chain::Maybe{String}
     currency::String
     delisted::Bool
     deposit_disabled::Bool
@@ -24,6 +24,8 @@ struct CurrenciesData <: GateioData
     withdraw_delayed::Bool
     withdraw_disabled::Bool
 end
+
+Serde.isempty(::Type{CurrenciesData}, x::AbstractString) = isempty(x)
 
 """
     currencies(client::GateioClient, query::CurrenciesQuery)

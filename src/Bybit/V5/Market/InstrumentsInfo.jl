@@ -44,8 +44,8 @@ struct PriceFilter <: BybitData
 end
 
 struct RiskParameters <: BybitData
-  limitParameter::Float64
-  marketParameter::Float64
+  limitParameter::Maybe{Float64}
+  marketParameter::Maybe{Float64}
 end
 
 struct InstrumentsInfoData <: BybitData
