@@ -1,5 +1,6 @@
 module Public
 
-include("Candle.jl")
+include("Candlestick.jl")
+using .Candlestick
 
 end
