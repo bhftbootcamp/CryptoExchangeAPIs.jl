@@ -30,7 +30,7 @@ end
 
 """
     funding_rate(client::BinanceClient, query::FundingRateQuery)
-    funding_rate(client::BinanceClient = Binance.FAPI.public_client; kw...)
+    funding_rate(client::BinanceClient = Binance.BinanceClient(Binance.public_fapi_config); kw...)
 
 Get funding rate history.
 
@@ -76,7 +76,10 @@ function funding_rate(client::BinanceClient, query::FundingRateQuery)
     return APIsRequest{Vector{FundingRateData}}("GET", "fapi/v1/fundingRate", query)(client)
 end
 
-function funding_rate(client::BinanceClient = Binance.public_fapi_client; kw...)
+function funding_rate(
+    client::BinanceClient = Binance.BinanceClient(Binance.public_fapi_config);
+    kw...,
+)
     return funding_rate(client, FundingRateQuery(; kw...))
 end
 

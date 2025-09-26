@@ -42,7 +42,7 @@ end
 
 """
     taker_long_short_ratio(client::BinanceClient, query::TakerLongShortRatioQuery)
-    taker_long_short_ratio(client::BinanceClient = Binance.Futures.public_client; kw...)
+    taker_long_short_ratio(client::BinanceClient = Binance.BinanceClient(Binance.public_fapi_config); kw...)
 
 [`GET futures/data/takerlongshortRatio`](https://binance-docs.github.io/apidocs/futures/en/#taker-buy-sell-volume)
 
@@ -88,7 +88,10 @@ function taker_long_short_ratio(client::BinanceClient, query::TakerLongShortRati
     return APIsRequest{Vector{TakerLongShortRatioData}}("GET", "futures/data/takerlongshortRatio", query)(client)
 end
 
-function taker_long_short_ratio(client::BinanceClient = Binance.public_fapi_client; kw...)
+function taker_long_short_ratio(
+    client::BinanceClient = Binance.BinanceClient(Binance.public_fapi_config);
+    kw...,
+)
     return taker_long_short_ratio(client, TakerLongShortRatioQuery(; kw...))
 end
 

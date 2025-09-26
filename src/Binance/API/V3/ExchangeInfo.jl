@@ -105,7 +105,7 @@ end
 
 """
     exchange_info(client::BinanceClient, query::ExchangeInfoQuery)
-    exchange_info(client::BinanceClient = Binance.API.public_client; kw...)
+    exchange_info(client::BinanceClient = Binance.BinanceClient(Binance.public_config); kw...)
 
 Current exchange trading rules and symbol information.
 
@@ -223,7 +223,10 @@ function exchange_info(client::BinanceClient, query::ExchangeInfoQuery)
     return APIsRequest{ExchangeInfoData}("GET", "api/v3/exchangeInfo", query)(client)
 end
 
-function exchange_info(client::BinanceClient = Binance.public_client; kw...)
+function exchange_info(
+    client::BinanceClient = Binance.BinanceClient(Binance.public_config);
+    kw...,
+)
     return exchange_info(client, ExchangeInfoQuery(; kw...))
 end
 

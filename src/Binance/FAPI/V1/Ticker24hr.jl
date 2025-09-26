@@ -35,7 +35,7 @@ end
 
 """
     ticker24hr(client::BinanceClient, query::Ticker24hrQuery)
-    ticker24hr(client::BinanceClient = Binance.FAPI.public_client; kw...)
+    ticker24hr(client::BinanceClient = Binance.BinanceClient(Binance.public_fapi_config); kw...)
 
 24 hour rolling window price change statistics.
 
@@ -91,7 +91,10 @@ function ticker24hr(client::BinanceClient, query::Ticker24hrQuery)
     end
 end
 
-function ticker24hr(client::BinanceClient = Binance.public_fapi_client; kw...)
+function ticker24hr(
+    client::BinanceClient = Binance.BinanceClient(Binance.public_fapi_config);
+    kw...,
+)
     return ticker24hr(client, Ticker24hrQuery(; kw...))
 end
 

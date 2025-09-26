@@ -2,7 +2,7 @@
 
 function log_msg(client::AbstractAPIsClient, query::APIsRequest)
     return (
-        base_url = client.base_url,
+        base_url = client.config.base_url,
         method = query.method,
         endpoint = query.endpoint,
         query = Serde.to_json(query.query),
@@ -14,13 +14,14 @@ function perform_request(client::AbstractAPIsClient, query::APIsRequest)
     request_sign!(client, query.query, query.endpoint)
     @debug "sending request" log_msg(client, query)...
     req = http_request(
+        client.curl_client,
         query.method,
-        curl_joinurl(client.base_url, query.endpoint);
+        curl_joinurl(client.config.base_url, query.endpoint);
         headers = request_headers(client, query.query),
         body = request_body(query.query),
         query = request_query(query.query),
-        interface = client.interface,
-        proxy = client.proxy,
+        interface = client.config.interface,
+        proxy = client.config.proxy,
         read_timeout = 60,
         connect_timeout = 60,
         status_exception = false,
@@ -65,14 +66,14 @@ function (query::APIsRequest{T})(client::AbstractAPIsClient)::APIsResult where {
             catch ex
                 @error ex
             end
-            throw(APIsResult{typeof(err)}(client, query, APIsResponse(headers, response.status), err))
+            throw(APIsResult{typeof(err)}(client.config, query, APIsResponse(headers, response.status), err))
         end
-        APIsResult{T}(client, query, nothing, payload_data)
+        APIsResult{T}(client.config, query, nothing, payload_data)
     catch ex
         err = if ex isa APIsResult
             ex
         else
-            APIsResult{typeof(ex)}(client, query, nothing, ex)
+            APIsResult{typeof(ex)}(client.config, query, nothing, ex)
         end
         if isretriable(err) && retry_maxcount(err) >= query.num_calls[]
             @warn err log_msg(client, query)...

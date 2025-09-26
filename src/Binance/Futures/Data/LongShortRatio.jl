@@ -43,7 +43,7 @@ end
 
 """
     long_short_ratio(client::BinanceClient, query::LongShortRatioQuery)
-    long_short_ratio(client::BinanceClient = Binance.Futures.public_client; kw...)
+    long_short_ratio(client::BinanceClient = Binance.BinanceClient(Binance.public_fapi_config); kw...)
 
 [`GET futures/data/globalLongShortAccountRatio`](https://binance-docs.github.io/apidocs/futures/en/#long-short-ratio)
 
@@ -90,7 +90,10 @@ function long_short_ratio(client::BinanceClient, query::LongShortRatioQuery)
     return APIsRequest{Vector{LongShortRatioData}}("GET", "futures/data/globalLongShortAccountRatio", query)(client)
 end
 
-function long_short_ratio(client::BinanceClient = Binance.public_fapi_client; kw...)
+function long_short_ratio(
+    client::BinanceClient = Binance.BinanceClient(Binance.public_fapi_config);
+    kw...,
+)
     return long_short_ratio(client, LongShortRatioQuery(; kw...))
 end
 

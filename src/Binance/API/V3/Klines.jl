@@ -55,7 +55,7 @@ end
 
 """
     klines(client::BinanceClient, query::KlinesQuery)
-    klines(client::BinanceClient = Binance.API.public_client; kw...)
+    klines(client::BinanceClient = Binance.BinanceClient(Binance.public_config); kw...)
 
 Kline/candlestick bars for a symbol.
 
@@ -110,7 +110,10 @@ function klines(client::BinanceClient, query::KlinesQuery)
     return APIsRequest{Vector{KlinesData}}("GET", "api/v3/klines", query)(client)
 end
 
-function klines(client::BinanceClient = Binance.public_client; kw...)
+function klines(
+    client::BinanceClient = Binance.BinanceClient(Binance.public_config);
+    kw...,
+)
     return klines(client, KlinesQuery(; kw...))
 end
 

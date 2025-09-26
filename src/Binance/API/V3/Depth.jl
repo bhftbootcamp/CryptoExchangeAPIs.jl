@@ -28,7 +28,7 @@ end
 
 """
     depth(client::BinanceClient, query::DepthQuery)
-    depth(client::BinanceClient = Binance.API.public_client; kw...)
+    depth(client::BinanceClient = Binance.BinanceClient(Binance.public_config); kw...)
 
 [`GET api/v3/depth`](https://binance-docs.github.io/apidocs/spot/en/#order-book)
 
@@ -78,7 +78,10 @@ function depth(client::BinanceClient, query::DepthQuery)
     return APIsRequest{DepthData}("GET", "api/v3/depth", query)(client)
 end
 
-function depth(client::BinanceClient = Binance.public_client; kw...)
+function depth(
+    client::BinanceClient = Binance.BinanceClient(Binance.public_config);
+    kw...,
+)
     return depth(client, DepthQuery(; kw...))
 end
 
