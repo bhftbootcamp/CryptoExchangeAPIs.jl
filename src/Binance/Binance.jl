@@ -61,16 +61,16 @@ Client for interacting with Binance exchange API.
 - `config::BinanceConfig`: Configuration with base URL, API keys, and settings
 - `curl_client::CurlClient`: HTTP client for API requests
 """
-Base.@kwdef mutable struct BinanceClient <: AbstractAPIsClient
+mutable struct BinanceClient <: AbstractAPIsClient
     config::BinanceConfig
     curl_client::CurlClient
 
-    function BinanceClient(config::BinanceConfig, curl_client::CurlClient)
-        new(config, curl_client)
-    end
-
     function BinanceClient(config::BinanceConfig)
         new(config, CurlClient())
+    end
+
+    function BinanceClient(; kw...)
+        return BinanceClient(BinanceConfig(; kw...))
     end
 end
 
@@ -87,21 +87,6 @@ Base.isopen(c::BinanceClient) = isopen(c.curl_client)
 Closes the `client` instance and free associated resources.
 """
 Base.close(c::BinanceClient) = close(c.curl_client)
-
-function binance_client(; kw...)
-    return BinanceClient(BinanceConfig(; kw...))
-end
-
-binance_client(config::BinanceConfig) = BinanceClient(config)
-
-function binance_client(f::Function, x...; kw...)
-    client = binance_client(x...; kw...)
-    try
-        f(client)
-    finally
-        close(client)
-    end
-end
 
 """
     public_config = BinanceConfig(; base_url = "https://api.binance.com")
