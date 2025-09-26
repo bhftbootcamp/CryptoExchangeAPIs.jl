@@ -47,6 +47,11 @@ Base.@kwdef struct UpbitClient <: AbstractAPIsClient
     description::Maybe{String} = nothing
 end
 
+"""
+    public_client = UpbitClient(; base_url = "https://api.upbit.com")
+"""
+const public_client = UpbitClient(; base_url = "https://api.upbit.com")
+
 struct UpbitAPIsErrorMsg
     name::Int64
     message::String
@@ -129,7 +134,6 @@ end
 include("Utils.jl")
 include("Errors.jl")
 
-include("Spot/Spot.jl")
-using .Spot
+include("V1/V1.jl")
 
 end

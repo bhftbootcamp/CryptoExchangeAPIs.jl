@@ -45,6 +45,11 @@ Base.@kwdef struct AevoClient <: AbstractAPIsClient
 end
 
 """
+    public_client = AevoClient(; base_url = "https://api.aevo.xyz")
+"""
+const public_client = AevoClient(; base_url = "https://api.aevo.xyz")
+
+"""
     AevoAPIError{T} <: AbstractAPIsError
 
 Exception thrown when an API method fails with code `T`.
@@ -87,7 +92,10 @@ end
 include("Utils.jl")
 include("Errors.jl")
 
-include("Futures/Futures.jl")
-using .Futures
+include("FundingHistory.jl")
+using .FundingHistory
+
+include("Statistics.jl")
+using .Statistics
 
 end

@@ -63,6 +63,11 @@ Base.@kwdef struct CryptocomClient <: AbstractAPIsClient
 end
 
 """
+    public_client = CryptocomClient(; base_url = "https://api.crypto.com/exchange/v1")
+"""
+const public_client = CryptocomClient(; base_url = "https://api.crypto.com/exchange/v1")
+
+"""
     CryptocomAPIError{T} <: AbstractAPIsError
 
 Exception thrown when an API method fails with code `T`.
@@ -115,7 +120,6 @@ end
 
 include("Utils.jl")
 
-include("Spot/Spot.jl")
-using .Spot
+include("Public/Public.jl")
 
 end

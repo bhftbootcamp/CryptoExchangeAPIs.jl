@@ -47,6 +47,11 @@ Base.@kwdef struct GateioClient <: AbstractAPIsClient
 end
 
 """
+    public_client = GateioClient(; base_url = "https://api.gateio.ws")
+"""
+const public_client = GateioClient(; base_url = "https://api.gateio.ws")
+
+"""
     GateioAPIError{T} <: AbstractAPIsError
 
 Exception thrown when an API method fails with code `T`.
@@ -116,10 +121,7 @@ end
 include("Utils.jl")
 include("Errors.jl")
 
-include("Spot/Spot.jl")
-using .Spot
-
-include("Futures/Futures.jl")
-using .Futures
+include("API/API.jl")
+using .API
 
 end

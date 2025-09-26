@@ -59,6 +59,11 @@ Base.@kwdef struct KrakenClient <: AbstractAPIsClient
 end
 
 """
+    public_client = KrakenClient(; base_url = "https://api.kraken.com")
+"""
+const public_client = KrakenClient(; base_url = "https://api.kraken.com")
+
+"""
     KrakenAPIError{T} <: AbstractAPIsError
 
 Exception thrown when an API method fails with code `T`.
@@ -131,7 +136,6 @@ end
 include("Utils.jl")
 include("Errors.jl")
 
-include("Spot/Spot.jl")
-using .Spot
+include("V0/V0.jl")
 
 end

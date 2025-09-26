@@ -6,6 +6,7 @@ using EasyCurl, Serde
 using Dates, NanoDates, TimeZones
 
 abstract type AbstractAPIsQuery end
+abstract type AbstractAPIsConfig end
 abstract type AbstractAPIsClient end
 abstract type AbstractAPIsData end
 abstract type AbstractAPIsError <: Exception end
@@ -78,7 +79,7 @@ end
 Result `T` of the API method .
 
 ## Required fields
-- `client::AbstractAPIsClient`: Request client.
+- `config::AbstractAPIsClient`: Request config.
 - `query::APIsRequest`: Request parameter query.
 - `result::T`: Result of the API request method.
 
@@ -86,7 +87,7 @@ Result `T` of the API method .
 - `response::APIsResponse`: API response.
 """
 struct APIsResult{T}
-    client::AbstractAPIsClient
+    config::AbstractAPIsConfig
     query::APIsRequest
     response::Maybe{APIsResponse}
     result::T
@@ -102,12 +103,12 @@ function iserror(x::APIsResult{T})::Bool where {T}
 end
 
 """
-    cex_client(x::APIsResult)
+    cex_config(x::APIsResult)
 
-Getter function for obtaining information about the request client.
+Getter function for obtaining information about the request config.
 """
-function cex_client(x::APIsResult)
-    return x.client
+function cex_config(x::APIsResult)
+    return x.config
 end
 
 """
@@ -137,7 +138,7 @@ function Base.show(io::IO, x::APIsResult{E}) where {E<:Exception}
         "\"",
         ", base_url = ",
         "\"",
-        x.client.base_url,
+        x.config.base_url,
         "\"",
         ", endpoint = ",
         "\"",

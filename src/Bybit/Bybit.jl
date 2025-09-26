@@ -95,6 +95,11 @@ Base.@kwdef struct BybitClient <: AbstractAPIsClient
 end
 
 """
+    public_client = BybitClient(; base_url = "https://api.bybit.com")
+"""
+const public_client = BybitClient(; base_url = "https://api.bybit.com")
+
+"""
     BybitAPIError{T} <: AbstractAPIsError
 
 Exception thrown when an API method fails with code `T`.
@@ -167,10 +172,6 @@ end
 include("Utils.jl")
 include("Errors.jl")
 
-include("Spot/Spot.jl")
-using .Spot
-
-include("Common/Common.jl")
-using .Common
+include("V5/V5.jl")
 
 end

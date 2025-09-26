@@ -78,6 +78,16 @@ Base.@kwdef struct KucoinClient <: AbstractAPIsClient
 end
 
 """
+    public_client = KucoinClient(; base_url = "https://api.kucoin.com")
+"""
+const public_client = KucoinClient(; base_url = "https://api.kucoin.com")
+
+"""
+    public_client = KucoinClient(; base_url = "https://api-futures.kucoin.com")
+"""
+const public_futures_client = KucoinClient(; base_url = "https://api-futures.kucoin.com")
+
+"""
     KucoinAPIError{T} <: AbstractAPIsError
 
 Exception thrown when an API method fails with code `T`.
@@ -142,10 +152,6 @@ end
 include("Utils.jl")
 include("Errors.jl")
 
-include("Futures/Futures.jl")
-using .Futures
-
-include("Spot/Spot.jl")
-using .Spot
+include("API/API.jl")
 
 end

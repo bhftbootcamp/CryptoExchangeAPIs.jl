@@ -9,10 +9,16 @@ export BinanceCommonQuery,
     BinanceData
 
 using Serde
-using Dates, NanoDates, TimeZones, Base64, Nettle
+using Dates, NanoDates, TimeZones, Base64, Nettle, EasyCurl
 
 using ..CryptoExchangeAPIs
-import ..CryptoExchangeAPIs: Maybe, AbstractAPIsError, AbstractAPIsData, AbstractAPIsQuery, AbstractAPIsClient
+
+import ..CryptoExchangeAPIs: Maybe,
+    AbstractAPIsError,
+    AbstractAPIsData,
+    AbstractAPIsQuery,
+    AbstractAPIsClient,
+    AbstractAPIsConfig
 
 abstract type BinanceData <: AbstractAPIsData end
 abstract type BinanceCommonQuery  <: AbstractAPIsQuery end
@@ -21,9 +27,9 @@ abstract type BinanceAccessQuery  <: BinanceCommonQuery end
 abstract type BinancePrivateQuery <: BinanceCommonQuery end
 
 """
-    BinanceClient <: AbstractAPIsClient
+    BinanceConfig <: AbstractAPIsConfig
 
-Client info.
+Binance client config.
 
 ## Required fields
 - `base_url::String`: Base URL for the client. 
@@ -36,7 +42,7 @@ Client info.
 - `account_name::String`: Account name associated with the client.
 - `description::String`: Description of the client.
 """
-Base.@kwdef struct BinanceClient <: AbstractAPIsClient
+Base.@kwdef struct BinanceConfig <: AbstractAPIsConfig
     base_url::String
     public_key::Maybe{String} = nothing
     secret_key::Maybe{String} = nothing
@@ -45,6 +51,52 @@ Base.@kwdef struct BinanceClient <: AbstractAPIsClient
     account_name::Maybe{String} = nothing
     description::Maybe{String} = nothing
 end
+
+"""
+    BinanceClient <: AbstractAPIsClient
+
+Client for interacting with Binance exchange API.
+
+## Fields
+- `config::BinanceConfig`: Configuration with base URL, API keys, and settings
+- `curl_client::CurlClient`: HTTP client for API requests
+"""
+mutable struct BinanceClient <: AbstractAPIsClient
+    config::BinanceConfig
+    curl_client::CurlClient
+
+    function BinanceClient(config::BinanceConfig)
+        new(config, CurlClient())
+    end
+
+    function BinanceClient(; kw...)
+        return BinanceClient(BinanceConfig(; kw...))
+    end
+end
+
+"""
+    isopen(client::BinanceClient) -> Bool
+
+Checks if the `client` instance is open and ready for API requests.
+"""
+Base.isopen(c::BinanceClient) = isopen(c.curl_client)
+
+"""
+    close(client::BinanceClient)
+
+Closes the `client` instance and free associated resources.
+"""
+Base.close(c::BinanceClient) = close(c.curl_client)
+
+"""
+    public_config = BinanceConfig(; base_url = "https://api.binance.com")
+"""
+const public_config = BinanceConfig(; base_url = "https://api.binance.com")
+
+"""
+    public_fapi_config = BinanceConfig(; base_url = "https://fapi.binance.com")
+"""
+const public_fapi_config = BinanceConfig(; base_url = "https://fapi.binance.com")
 
 """
     BinanceAPIError{T} <: AbstractAPIsError
@@ -82,7 +134,7 @@ function CryptoExchangeAPIs.request_sign!(client::BinanceClient, query::Q, ::Str
     query.timestamp = Dates.now(UTC)
     query.signature = nothing
     str_query = Serde.to_query(query)
-    query.signature = hexdigest("sha256", client.secret_key, str_query)
+    query.signature = hexdigest("sha256", client.config.secret_key, str_query)
     return query
 end
 
@@ -107,27 +159,30 @@ end
 function CryptoExchangeAPIs.request_headers(client::BinanceClient, ::BinancePrivateQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json",
-        "X-MBX-APIKEY" => client.public_key,
+        "X-MBX-APIKEY" => client.config.public_key,
     ]
 end
 
 function CryptoExchangeAPIs.request_headers(client::BinanceClient, ::BinanceAccessQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json",
-        "X-MBX-APIKEY" => client.public_key,
+        "X-MBX-APIKEY" => client.config.public_key,
     ]
 end
 
 include("Utils.jl")
 include("Errors.jl")
 
-include("CoinMFutures/CoinMFutures.jl")
-using .CoinMFutures
+include("API/API.jl")
+using .API
 
-include("USDMFutures/USDMFutures.jl")
-using .USDMFutures
+include("SAPI/SAPI.jl")
+using .SAPI
 
-include("Spot/Spot.jl")
-using .Spot
+include("FAPI/FAPI.jl")
+using .FAPI
+
+include("Futures/Futures.jl")
+using .Futures
 
 end

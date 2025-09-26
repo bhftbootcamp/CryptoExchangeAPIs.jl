@@ -71,6 +71,11 @@ Base.@kwdef struct DeribitClient <: AbstractAPIsClient
 end
 
 """
+    public_client = DeribitClient(; base_url = "https://www.deribit.com")
+"""
+const public_client = DeribitClient(; base_url = "https://www.deribit.com")
+
+"""
     DeribitAPIsErrorMsg <: AbstractAPIsError
 
 ## Required fields
@@ -141,6 +146,6 @@ end
 include("Utils.jl")
 include("Errors.jl")
 
-include("Common/Common.jl")
+include("API/API.jl")
 
 end

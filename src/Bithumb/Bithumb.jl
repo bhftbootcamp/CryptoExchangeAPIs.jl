@@ -63,6 +63,11 @@ Base.@kwdef struct BithumbClient <: AbstractAPIsClient
 end
 
 """
+    public_client = BithumbClient(; base_url = "https://api.bithumb.com")
+"""
+const public_client = BithumbClient(; base_url = "https://api.bithumb.com")
+
+"""
     BithumbAPIError{T} <: AbstractAPIsError
 
 Exception thrown when an API method fails with code `T`.
@@ -131,7 +136,10 @@ end
 include("Utils.jl")
 include("Errors.jl")
 
-include("Spot/Spot.jl")
-using .Spot
+include("Public/Public.jl")
+using .Public
+
+include("V1/V1.jl")
+using .V1
 
 end
