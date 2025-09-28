@@ -54,7 +54,7 @@ using Serde
 using CryptoExchangeAPIs.Kraken
 
 result = Kraken.Spot.ticker(;
-    air = "XBTUSD",
+    pair = "XBTUSD",
 )
 
 to_pretty_json(result.result)
