@@ -14,16 +14,18 @@ Base.@kwdef struct PerpDexsQuery <: HyperliquidPublicQuery
     type::String = "perpDexs"
 end
 
-struct PerpDex <: HyperliquidData
-    name::String
-    fullName::String
-    deployer::String
-    oracleUpdater::Maybe{String}
-    feeRecipient::Maybe{String}
-    assetToStreamingOiCap::Vector{Tuple{String,String}}
+#Response is heterogeneous array with nulls and objects - just wrap the raw parsed JSON
+struct PerpDexsData <: HyperliquidData
+    items::Vector{Any}
+    
+    # Constructor that accepts the raw parsed array directly
+    PerpDexsData(items::Vector) = new(items)
 end
 
-const PerpDexsData = Vector{Maybe{PerpDex}}
+# Tell Serde to deserialize the top-level array directly into our wrapper
+function Serde.deser(::Serde.CustomType, ::Type{PerpDexsData}, x::Vector)
+    return PerpDexsData(x)
+end
 
 """
     perp_dexs(client::HyperliquidClient, query::PerpDexsQuery)

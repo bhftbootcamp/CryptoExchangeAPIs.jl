@@ -36,7 +36,7 @@ end
 
 struct MetaData <: HyperliquidData
     universe::Vector{AssetInfo}
-    marginTables::Vector{Tuple{Int,MarginTable}}
+    marginTables::Vector{Any}
 end
 
 """

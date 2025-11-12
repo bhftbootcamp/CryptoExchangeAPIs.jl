@@ -28,12 +28,12 @@ end
 struct AssetContext <: HyperliquidData
     dayNtlVlm::String
     funding::String
-    impactPxs::Vector{String}
+    impactPxs::Maybe{Vector{String}}
     markPx::String
     midPx::Maybe{String}
     openInterest::String
     oraclePx::String
-    premium::String
+    premium::Maybe{String}
     prevDayPx::String
 end
 

@@ -16,11 +16,20 @@ Base.@kwdef struct AlignedQuoteTokenInfoQuery <: HyperliquidPublicQuery
 end
 
 struct AlignedQuoteTokenInfoData <: HyperliquidData
-    isAligned::Bool
-    firstAlignedTime::NanoDate
-    evmMintedSupply::String
-    dailyAmountOwed::Vector{Tuple{String,String}}
-    predictedRate::String
+    isAligned::Maybe{Bool}
+    firstAlignedTime::Maybe{NanoDate}
+    evmMintedSupply::Maybe{String}
+    dailyAmountOwed::Maybe{Vector{Vector{String}}}
+    predictedRate::Maybe{String}
+end
+
+function Serde.isempty(::Type{AlignedQuoteTokenInfoData}, x)::Bool
+    return x === nothing
+end
+
+# Handle null response from API
+function Serde.deser(::Serde.CustomType, ::Type{AlignedQuoteTokenInfoData}, ::Nothing)
+    return AlignedQuoteTokenInfoData(nothing, nothing, nothing, nothing, nothing)
 end
 
 """

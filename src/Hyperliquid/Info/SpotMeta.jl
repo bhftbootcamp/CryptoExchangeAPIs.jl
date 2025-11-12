@@ -14,6 +14,11 @@ Base.@kwdef struct SpotMetaQuery <: HyperliquidPublicQuery
     type::String = "spotMeta"
 end
 
+struct EvmContract <: HyperliquidData
+    address::String
+    evm_extra_wei_decimals::Maybe{Int}
+end
+
 struct TokenInfo <: HyperliquidData
     name::String
     szDecimals::Int
@@ -21,7 +26,7 @@ struct TokenInfo <: HyperliquidData
     index::Int
     tokenId::String
     isCanonical::Bool
-    evmContract::Maybe{String}
+    evmContract::Maybe{EvmContract}
     fullName::Maybe{String}
 end
 

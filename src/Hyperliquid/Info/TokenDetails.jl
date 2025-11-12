@@ -30,10 +30,10 @@ struct TokenDetailsData <: HyperliquidData
     midPx::String
     markPx::String
     prevDayPx::String
-    genesis::GenesisInfo
-    deployer::String
-    deployGas::String
-    deployTime::String
+    genesis::Maybe{GenesisInfo}
+    deployer::Maybe{String}
+    deployGas::Maybe{String}
+    deployTime::Maybe{String}
     seededUsdc::String
     nonCirculatingUserBalances::Vector{Any}
     futureEmissions::String
