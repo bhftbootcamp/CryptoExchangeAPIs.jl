@@ -1,0 +1,76 @@
+module Meta
+
+export MetaQuery,
+    MetaData,
+    meta
+
+using Serde
+using Dates, NanoDates, TimeZones
+
+using CryptoExchangeAPIs.Hyperliquid
+using CryptoExchangeAPIs: Maybe, APIsRequest
+
+Base.@kwdef struct MetaQuery <: HyperliquidPublicQuery
+    type::String = "meta"
+    dex::Maybe{String} = nothing
+end
+
+struct AssetInfo <: HyperliquidData
+    name::String
+    szDecimals::Int
+    maxLeverage::Int
+    onlyIsolated::Maybe{Bool}
+    isDelisted::Maybe{Bool}
+    marginMode::Maybe{String}
+end
+
+struct MarginTier <: HyperliquidData
+    lowerBound::String
+    maxLeverage::Int
+end
+
+struct MarginTable <: HyperliquidData
+    description::String
+    marginTiers::Vector{MarginTier}
+end
+
+struct MetaData <: HyperliquidData
+    universe::Vector{AssetInfo}
+    marginTables::Vector{Tuple{Int,MarginTable}}
+end
+
+"""
+    meta(client::HyperliquidClient, query::MetaQuery)
+    meta(client::HyperliquidClient = Hyperliquid.HyperliquidClient(Hyperliquid.public_config); kw...)
+
+Retrieve perpetuals metadata (universe and margin tables).
+
+[`POST /info`](https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/info-endpoint/perpetuals#retrieve-perpetuals-metadata-universe-and-margin-tables)
+
+## Parameters:
+
+| Parameter | Type   | Required | Description                                                           |
+|:----------|:-------|:---------|:----------------------------------------------------------------------|
+| dex       | String | false    | Perp dex name. Defaults to empty string (first perp dex).             |
+
+## Code samples:
+
+```julia
+using CryptoExchangeAPIs.Hyperliquid
+
+result = Hyperliquid.Info.meta()
+```
+"""
+function meta(client::HyperliquidClient, query::MetaQuery)
+    return APIsRequest{MetaData}("POST", "info", query)(client)
+end
+
+function meta(
+    client::HyperliquidClient = Hyperliquid.HyperliquidClient(Hyperliquid.public_config);
+    kw...,
+)
+    return meta(client, MetaQuery(; kw...))
+end
+
+end
+
