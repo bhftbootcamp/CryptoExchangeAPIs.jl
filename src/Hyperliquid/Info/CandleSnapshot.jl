@@ -18,6 +18,11 @@ struct CandleReq <: HyperliquidData
     endTime::Maybe{Int}
 end
 
+# Drop optional fields that are unset when serializing nested request payload
+function Serde.SerJson.ser_ignore_field(::Type{CandleReq}, ::Val{:endTime}, x)::Bool
+    return x === nothing
+end
+
 Base.@kwdef struct CandleSnapshotQuery <: HyperliquidPublicQuery
     type::String = "candleSnapshot"
     req::CandleReq
@@ -93,4 +98,3 @@ function candle_snapshot(
 end
 
 end
-

@@ -34,9 +34,21 @@ struct MarginTable <: HyperliquidData
     marginTiers::Vector{MarginTier}
 end
 
+struct MarginTableEntry <: HyperliquidData
+    id::Int
+    table::MarginTable
+end
+
+function Serde.deser(::Serde.CustomType, ::Type{MarginTableEntry}, data::AbstractVector)
+    length(data) == 2 || throw(ArgumentError("MarginTableEntry expects [id, table] tuple"))
+    id = Serde.deser(Int, data[1])
+    table = Serde.deser(MarginTable, data[2])
+    return MarginTableEntry(id, table)
+end
+
 struct MetaData <: HyperliquidData
     universe::Vector{AssetInfo}
-    marginTables::Vector{Any}
+    marginTables::Vector{MarginTableEntry}
 end
 
 """
@@ -73,4 +85,3 @@ function meta(
 end
 
 end
-
