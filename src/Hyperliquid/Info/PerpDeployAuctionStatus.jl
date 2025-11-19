@@ -10,8 +10,12 @@ using Dates, NanoDates, TimeZones
 using CryptoExchangeAPIs.Hyperliquid
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct PerpDeployAuctionStatusQuery <: HyperliquidPublicQuery
-    type::String = "perpDeployAuctionStatus"
+struct PerpDeployAuctionStatusQuery <: HyperliquidPublicQuery
+    type::String
+    
+    function PerpDeployAuctionStatusQuery()
+        new("perpDeployAuctionStatus")
+    end
 end
 
 struct PerpDeployAuctionStatusData <: HyperliquidData

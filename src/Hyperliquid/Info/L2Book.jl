@@ -10,11 +10,15 @@ using Dates, NanoDates, TimeZones
 using CryptoExchangeAPIs.Hyperliquid
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct L2BookQuery <: HyperliquidPublicQuery
-    type::String = "l2Book"
+struct L2BookQuery <: HyperliquidPublicQuery
+    type::String
     coin::String
-    nSigFigs::Maybe{Int} = nothing
-    mantissa::Maybe{Int} = nothing
+    nSigFigs::Maybe{Int}
+    mantissa::Maybe{Int}
+    
+    function L2BookQuery(; coin::String, nSigFigs::Maybe{Int} = nothing, mantissa::Maybe{Int} = nothing)
+        new("l2Book", coin, nSigFigs, mantissa)
+    end
 end
 
 struct BookLevel <: HyperliquidData

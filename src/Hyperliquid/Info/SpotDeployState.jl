@@ -10,9 +10,13 @@ using Dates, NanoDates, TimeZones
 using CryptoExchangeAPIs.Hyperliquid
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct SpotDeployStateQuery <: HyperliquidPublicQuery
-    type::String = "spotDeployState"
+struct SpotDeployStateQuery <: HyperliquidPublicQuery
+    type::String
     user::String
+    
+    function SpotDeployStateQuery(; user::String)
+        new("spotDeployState", user)
+    end
 end
 
 struct TokenSpec <: HyperliquidData

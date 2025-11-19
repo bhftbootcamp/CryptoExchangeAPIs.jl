@@ -10,8 +10,12 @@ using Dates, NanoDates, TimeZones
 using CryptoExchangeAPIs.Hyperliquid
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct SpotMetaAndAssetCtxsQuery <: HyperliquidPublicQuery
-    type::String = "spotMetaAndAssetCtxs"
+struct SpotMetaAndAssetCtxsQuery <: HyperliquidPublicQuery
+    type::String
+    
+    function SpotMetaAndAssetCtxsQuery()
+        new("spotMetaAndAssetCtxs")
+    end
 end
 
 struct EvmContract <: HyperliquidData

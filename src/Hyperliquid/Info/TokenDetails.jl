@@ -10,9 +10,13 @@ using Dates, NanoDates, TimeZones
 using CryptoExchangeAPIs.Hyperliquid
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct TokenDetailsQuery <: HyperliquidPublicQuery
-    type::String = "tokenDetails"
+struct TokenDetailsQuery <: HyperliquidPublicQuery
+    type::String
     tokenId::String
+    
+    function TokenDetailsQuery(; tokenId::String)
+        new("tokenDetails", tokenId)
+    end
 end
 
 struct GenesisInfo <: HyperliquidData

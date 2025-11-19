@@ -23,9 +23,13 @@ function Serde.SerJson.ser_ignore_field(::Type{CandleReq}, ::Val{:endTime}, x)::
     return x === nothing
 end
 
-Base.@kwdef struct CandleSnapshotQuery <: HyperliquidPublicQuery
-    type::String = "candleSnapshot"
+struct CandleSnapshotQuery <: HyperliquidPublicQuery
+    type::String
     req::CandleReq
+    
+    function CandleSnapshotQuery(; req::CandleReq)
+        new("candleSnapshot", req)
+    end
 end
 
 struct CandleData <: HyperliquidData

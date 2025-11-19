@@ -10,9 +10,13 @@ using Dates, NanoDates, TimeZones
 using CryptoExchangeAPIs.Hyperliquid
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct AllMidsQuery <: HyperliquidPublicQuery
-    type::String = "allMids"
-    dex::Maybe{String} = nothing
+struct AllMidsQuery <: HyperliquidPublicQuery
+    type::String
+    dex::Maybe{String}
+    
+    function AllMidsQuery(; dex::Maybe{String} = nothing)
+        new("allMids", dex)
+    end
 end
 
 # Response is a Dict{String, String} where keys are coin names and values are mid prices

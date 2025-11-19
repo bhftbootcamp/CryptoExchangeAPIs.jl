@@ -10,9 +10,13 @@ using Dates, NanoDates, TimeZones
 using CryptoExchangeAPIs.Hyperliquid
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct AlignedQuoteTokenInfoQuery <: HyperliquidPublicQuery
-    type::String = "alignedQuoteTokenInfo"
+struct AlignedQuoteTokenInfoQuery <: HyperliquidPublicQuery
+    type::String
     token::Int
+    
+    function AlignedQuoteTokenInfoQuery(; token::Int)
+        new("alignedQuoteTokenInfo", token)
+    end
 end
 
 struct AlignedQuoteTokenInfoData <: HyperliquidData

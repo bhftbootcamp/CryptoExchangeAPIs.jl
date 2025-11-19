@@ -10,8 +10,12 @@ using Dates, NanoDates, TimeZones
 using CryptoExchangeAPIs.Hyperliquid
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct PerpDexsQuery <: HyperliquidPublicQuery
-    type::String = "perpDexs"
+struct PerpDexsQuery <: HyperliquidPublicQuery
+    type::String
+    
+    function PerpDexsQuery()
+        new("perpDexs")
+    end
 end
 
 #Response is heterogeneous array with nulls and objects - just wrap the raw parsed JSON

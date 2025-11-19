@@ -10,9 +10,13 @@ using Dates, NanoDates, TimeZones
 using CryptoExchangeAPIs.Hyperliquid
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct PerpDexLimitsQuery <: HyperliquidPublicQuery
-    type::String = "perpDexLimits"
+struct PerpDexLimitsQuery <: HyperliquidPublicQuery
+    type::String
     dex::String
+    
+    function PerpDexLimitsQuery(; dex::String)
+        new("perpDexLimits", dex)
+    end
 end
 
 struct PerpDexLimitsData <: HyperliquidData

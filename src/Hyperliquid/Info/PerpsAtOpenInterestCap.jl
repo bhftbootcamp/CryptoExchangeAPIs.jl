@@ -10,8 +10,12 @@ using Dates, NanoDates, TimeZones
 using CryptoExchangeAPIs.Hyperliquid
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct PerpsAtOpenInterestCapQuery <: HyperliquidPublicQuery
-    type::String = "perpsAtOpenInterestCap"
+struct PerpsAtOpenInterestCapQuery <: HyperliquidPublicQuery
+    type::String
+    
+    function PerpsAtOpenInterestCapQuery()
+        new("perpsAtOpenInterestCap")
+    end
 end
 
 const PerpsAtOpenInterestCapData = Vector{String}
