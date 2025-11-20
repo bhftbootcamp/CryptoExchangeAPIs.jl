@@ -106,6 +106,9 @@ function Base.show(io::IO, e::HyperliquidAPIError)
     return print(io, "message = ", "\"", e.message, "\"")
 end
 
+# Handle null response from API as error
+Serde.deser(::Type{HyperliquidAPIError}, ::Nothing) = HyperliquidAPIError("null response")
+
 function CryptoExchangeAPIs.request_sign!(::HyperliquidClient, query::Q, ::String)::Q where {Q<:HyperliquidPublicQuery}
     return query
 end
