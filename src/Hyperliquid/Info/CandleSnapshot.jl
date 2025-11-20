@@ -3,19 +3,40 @@ module CandleSnapshot
 export CandleSnapshotQuery,
     CandleSnapshotData,
     CandleData,
+    TimeInterval,
     candle_snapshot
 
 using Serde
 using Dates, NanoDates, TimeZones
+using EnumX
 
 using CryptoExchangeAPIs.Hyperliquid
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
+@enumx TimeInterval m1 m3 m5 m15 m30 h1 h2 h4 h8 h12 d1 d3 w1 M1
+
 struct CandleReq <: HyperliquidData
     coin::String
-    interval::String
+    interval::TimeInterval.T
     startTime::DateTime
     endTime::Maybe{DateTime}
+end
+
+function Serde.SerJson.ser_type(::Type{CandleReq}, x::TimeInterval.T)::String
+    x == TimeInterval.m1  && return "1m"
+    x == TimeInterval.m3  && return "3m"
+    x == TimeInterval.m5  && return "5m"
+    x == TimeInterval.m15 && return "15m"
+    x == TimeInterval.m30 && return "30m"
+    x == TimeInterval.h1  && return "1h"
+    x == TimeInterval.h2  && return "2h"
+    x == TimeInterval.h4  && return "4h"
+    x == TimeInterval.h8  && return "8h"
+    x == TimeInterval.h12 && return "12h"
+    x == TimeInterval.d1  && return "1d"
+    x == TimeInterval.d3  && return "3d"
+    x == TimeInterval.w1  && return "1w"
+    x == TimeInterval.M1  && return "1M"
 end
 
 # Drop optional fields that are unset when serializing nested request payload
@@ -50,22 +71,20 @@ const CandleSnapshotData = Vector{CandleData}
 """
     candle_snapshot(client::HyperliquidClient, query::CandleSnapshotQuery)
     candle_snapshot(client::HyperliquidClient = Hyperliquid.HyperliquidClient(Hyperliquid.public_config); 
-                    coin::String, interval::String, startTime::DateTime, endTime::Maybe{DateTime}=nothing)
+                    coin::String, interval::TimeInterval.T, startTime::DateTime, endTime::Maybe{DateTime}=nothing)
 
 Candle snapshot. Only the most recent 5000 candles are available.
-
-Supported intervals: "1m", "3m", "5m", "15m", "30m", "1h", "2h", "4h", "8h", "12h", "1d", "3d", "1w", "1M"
 
 [`POST /info`](https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/info-endpoint#candle-snapshot)
 
 ## Parameters:
 
-| Parameter | Type     | Required | Description                        |
-|:----------|:---------|:---------|:-----------------------------------|
-| coin      | String   | true     | Coin name                          |
-| interval  | String   | true     | Candle interval                    |
-| startTime | DateTime | true     | Start time (sent as milliseconds)  |
-| endTime   | DateTime | false    | End time (sent as milliseconds)    |
+| Parameter | Type         | Required | Description                                                       |
+|:----------|:-------------|:---------|:------------------------------------------------------------------|
+| coin      | String       | true     | Coin name                                                         |
+| interval  | TimeInterval | true     | m1 m3 m5 m15 m30 h1 h2 h4 h8 h12 d1 d3 w1 M1 (sent as "1m", ...) |
+| startTime | DateTime     | true     | Start time (sent as milliseconds)                                 |
+| endTime   | DateTime     | false    | End time (sent as milliseconds)                                   |
 
 ## Code samples:
 
@@ -74,13 +93,13 @@ using CryptoExchangeAPIs.Hyperliquid
 
 result = Hyperliquid.Info.candle_snapshot(;
     coin = "BTC",
-    interval = "1h",
+    interval = Hyperliquid.Info.CandleSnapshot.TimeInterval.h1,
     startTime = DateTime("2023-04-19T15:00:00")
 )
 
 result = Hyperliquid.Info.candle_snapshot(;
     coin = "ETH",
-    interval = "15m",
+    interval = Hyperliquid.Info.CandleSnapshot.TimeInterval.m15,
     startTime = DateTime("2023-04-19T15:00:00"),
     endTime = DateTime("2023-04-19T16:00:00")
 )
@@ -93,7 +112,7 @@ end
 function candle_snapshot(
     client::HyperliquidClient = Hyperliquid.HyperliquidClient(Hyperliquid.public_config);
     coin::String,
-    interval::String,
+    interval::TimeInterval.T,
     startTime::DateTime,
     endTime::Maybe{DateTime} = nothing,
 )

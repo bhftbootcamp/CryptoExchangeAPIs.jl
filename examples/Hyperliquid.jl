@@ -26,13 +26,13 @@ Hyperliquid.Info.l2_book(;
 # Get candle snapshot
 Hyperliquid.Info.candle_snapshot(;
     coin = "BTC",
-    interval = "1h",
+    interval = Hyperliquid.Info.CandleSnapshot.TimeInterval.h1,
     startTime = DateTime("2025-11-15T00:00:00")
 )
 
 Hyperliquid.Info.candle_snapshot(;
     coin = "kSHIB",
-    interval = "15m",
+    interval = Hyperliquid.Info.CandleSnapshot.TimeInterval.m15,
     startTime = DateTime("2025-11-15T00:00:00"),
     endTime = DateTime("2025-11-16T00:00:00")
 )
