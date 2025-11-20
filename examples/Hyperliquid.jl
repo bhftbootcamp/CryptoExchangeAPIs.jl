@@ -27,14 +27,14 @@ Hyperliquid.Info.l2_book(;
 Hyperliquid.Info.candle_snapshot(;
     coin = "BTC",
     interval = "1h",
-    startTime = 1762851600000
+    startTime = DateTime("2025-11-15T00:00:00")
 )
 
 Hyperliquid.Info.candle_snapshot(;
-    coin = "ETH",
+    coin = "kSHIB",
     interval = "15m",
-    startTime = 1762851600000,
-    endTime = 1762938000000
+    startTime = DateTime("2025-11-15T00:00:00"),
+    endTime = DateTime("2025-11-16T00:00:00")
 )
 
 
