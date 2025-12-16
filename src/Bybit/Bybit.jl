@@ -67,12 +67,22 @@ end
 - `retExtInfo::Dict{String,Any}`: Request extended information.
 - `time::NanoDate`: Current timestamp (ms).
 """
-struct Data{D<:Maybe{<:AbstractAPIsData}} <: AbstractAPIsData
+struct Data{D} <: AbstractAPIsData
     retCode::Int64
     retMsg::String
     result::D
     retExtInfo::Dict{String,Any}
     time::NanoDate
+    function Data{D}(
+        retCode::Int64,
+        retMsg::String,
+        result::D,
+        retExtInfo::Dict{String,Any},
+        time::NanoDate,
+    ) where {D<:Maybe{AbstractAPIsData}}
+        !iszero(retCode) && throw(ArgumentError("API response code must be zero"))
+        return new{D}(retCode, retMsg, result, retExtInfo, time)
+    end
 end
 
 """
@@ -160,7 +170,7 @@ struct BybitAPIError{T} <: AbstractAPIsError
     time::NanoDate
 
     function BybitAPIError(retCode::Int64, x...)
-        @assert !iszero(retCode) # retCode = 0 means success
+        iszero(retCode) && throw(ArgumentError("API response code must not be zero"))
         return new{retCode}(retCode, x...)
     end
 end
