@@ -119,15 +119,9 @@ Closes the `client` instance and free associated resources.
 """
 Base.close(c::KucoinClient) = close(c.curl_client)
 
-"""
-    public_config = KucoinConfig(; base_url = "https://api.kucoin.com")
-"""
-const public_config = KucoinConfig(; base_url = "https://api.kucoin.com")
-
-"""
-    public_config = KucoinConfig(; base_url = "https://api-futures.kucoin.com")
-"""
+const public_config         = KucoinConfig(; base_url = "https://api.kucoin.com")
 const public_futures_config = KucoinConfig(; base_url = "https://api-futures.kucoin.com")
+const public_web_config     = KucoinConfig(; base_url = "https://www.kucoin.com")
 
 """
     KucoinAPIError{T} <: AbstractAPIsError
@@ -195,5 +189,6 @@ include("Utils.jl")
 include("Errors.jl")
 
 include("API/API.jl")
+include("_API/_API.jl")
 
 end

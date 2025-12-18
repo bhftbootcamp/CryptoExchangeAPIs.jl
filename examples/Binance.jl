@@ -224,3 +224,6 @@ Binance.DAPI.V1.income(
     endTime = now(UTC),
     limit = 100
 )
+
+
+Binance.BAPI.DEFI.V1.Public.Alpha.token_list()

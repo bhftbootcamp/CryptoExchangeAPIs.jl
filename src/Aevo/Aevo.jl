@@ -134,6 +134,9 @@ end
 include("Utils.jl")
 include("Errors.jl")
 
+include("Assets.jl")
+using .Assets
+
 include("FundingHistory.jl")
 using .FundingHistory
 

@@ -13,6 +13,8 @@ using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enumx Settle btc usdt
 
+@enumx ContractType direct inverse
+
 Base.@kwdef struct ContractsQuery <: GateioPublicQuery
     settle::Settle.T
     limit::Maybe{Int64} = nothing
@@ -23,7 +25,7 @@ Serde.SerQuery.ser_ignore_field(::Type{ContractsQuery}, ::Val{:settle}) = true
 
 struct ContractsData <: GateioData
     name::String
-    type::String
+    type::ContractType.T
     quanto_multiplier::Maybe{Float64}
     ref_discount_rate::Maybe{Float64}
     order_price_deviate::Maybe{Float64}
