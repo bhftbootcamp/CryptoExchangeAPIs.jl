@@ -27,14 +27,14 @@ end
 
 struct StatisticsData <: AevoData
     asset::String
-    open_interest::OpenInterest
-    daily_volume::Float64
+    open_interest::Maybe{OpenInterest}
+    daily_volume::Maybe{Float64}
     daily_buy_volume::Maybe{Float64}
     daily_sell_volume::Maybe{Float64}
     daily_volume_premium::Maybe{Float64}
-    total_volume::Float64
+    total_volume::Maybe{Float64}
     total_volume_premium::Maybe{Float64}
-    daily_volume_contracts::Float64
+    daily_volume_contracts::Maybe{Float64}
     index_price::Float64
     index_daily_change::Float64
     mark_price::Maybe{Float64}

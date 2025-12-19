@@ -11,7 +11,7 @@ using CryptoExchangeAPIs.Gateio
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef mutable struct WithdrawStatusQuery <: GateioPrivateQuery
-    currency::String
+    currency::Maybe{String} = nothing
 
     signature::Maybe{String} = nothing
     signTimestamp::Maybe{DateTime} = nothing
