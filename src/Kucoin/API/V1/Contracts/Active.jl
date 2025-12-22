@@ -6,10 +6,23 @@ export ActiveQuery,
 
 using Serde
 using Dates, NanoDates, TimeZones
+using EnumX
 
 using CryptoExchangeAPIs.Kucoin
 using CryptoExchangeAPIs.Kucoin: Data
 using CryptoExchangeAPIs: Maybe, APIsRequest
+
+@enumx ContractStatus begin
+    Init
+    Open
+    BeingSettled
+    Settled
+    Paused
+    Closed
+    CancelOnly
+end
+
+@enumx ContractType FFWCSX FFICSX
 
 Base.@kwdef struct ActiveQuery <: KucoinPublicQuery
     #__ empty
@@ -18,7 +31,7 @@ end
 struct ActiveData <: KucoinData
     symbol::String
     rootSymbol::String
-    type::String
+    type::ContractType.T
     firstOpenDate::NanoDate
     expireDate::Maybe{NanoDate}
     settleDate::Maybe{NanoDate}
@@ -51,7 +64,7 @@ struct ActiveData <: KucoinData
     fundingRateSymbol::Maybe{String}
     indexSymbol::Maybe{String}
     settlementSymbol::Maybe{String}
-    status::String
+    status::ContractStatus.T
     fundingFeeRate::Maybe{Float64}
     predictedFundingFeeRate::Maybe{Float64}
     openInterest::Maybe{String}

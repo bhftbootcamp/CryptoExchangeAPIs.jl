@@ -65,6 +65,7 @@ Base.close(c::BinanceClient)  = close(c.curl_client)
 const public_config      = BinanceConfig(; base_url = "https://api.binance.com")
 const public_fapi_config = BinanceConfig(; base_url = "https://fapi.binance.com")
 const public_dapi_config = BinanceConfig(; base_url = "https://dapi.binance.com")
+const public_bapi_config = BinanceConfig(; base_url = "https://www.binance.com")
 
 # ---------------------------------------------------------------------------
 
@@ -161,6 +162,7 @@ include("API/API.jl");     using .API
 include("SAPI/SAPI.jl");   using .SAPI
 include("FAPI/FAPI.jl");   using .FAPI
 include("DAPI/DAPI.jl");   using .DAPI
+include("BAPI/BAPI.jl");   using .BAPI
 include("Futures/Futures.jl"); using .Futures
 
 end

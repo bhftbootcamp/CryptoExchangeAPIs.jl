@@ -10,6 +10,9 @@ using .L2Book
 include("CandleSnapshot.jl")
 using .CandleSnapshot
 
+include("RecentTrades.jl")
+using .RecentTrades
+
 # Perpetuals metadata
 include("Meta.jl")
 using .Meta

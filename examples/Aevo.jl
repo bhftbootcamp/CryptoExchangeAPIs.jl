@@ -5,6 +5,7 @@ using Dates
 using CryptoExchangeAPIs
 using CryptoExchangeAPIs.Aevo
 
+Aevo.assets()
 
 Aevo.funding_history(; instrument_name = "ETH-PERP")
 

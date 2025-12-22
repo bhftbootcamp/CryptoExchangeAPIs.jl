@@ -104,3 +104,8 @@ Gateio.API.V4.Wallet.deposits(
 Gateio.API.V4.Wallet.currency_chains(;
     currency = "BTC"
 )
+
+
+Gateio.API.V4.Delivery.contracts(;
+    settle = Gateio.API.V4.Delivery.Contracts.Settle.usdt
+)

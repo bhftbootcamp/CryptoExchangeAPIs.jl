@@ -44,7 +44,7 @@ Gate.io client config. Transport options live in `request_options::RequestOption
 - `request_options::RequestOptions` (interface/proxy/timeouts)
 """
 Base.@kwdef struct GateioConfig <: AbstractAPIsConfig
-    base_url::String
+    base_url::String = "https://api.gateio.ws"
     public_key::Maybe{String} = nothing
     secret_key::Maybe{String} = nothing
     account_name::Maybe{String} = nothing
