@@ -4,6 +4,7 @@ export KrakenCommonQuery,
     KrakenPublicQuery,
     KrakenAccessQuery,
     KrakenPrivateQuery,
+    KrakenInternalPublicQuery,
     KrakenAPIError,
     KrakenConfig,
     KrakenClient,
@@ -26,6 +27,7 @@ abstract type KrakenCommonQuery  <: AbstractAPIsQuery end
 abstract type KrakenPublicQuery  <: KrakenCommonQuery end
 abstract type KrakenAccessQuery  <: KrakenCommonQuery end
 abstract type KrakenPrivateQuery <: KrakenCommonQuery end
+abstract type KrakenInternalPublicQuery <: KrakenPublicQuery end
 
 """
     Data{D} <: AbstractAPIsData
@@ -36,6 +38,10 @@ abstract type KrakenPrivateQuery <: KrakenCommonQuery end
 """
 struct Data{D} <: AbstractAPIsData
     error::Vector{Any}
+    result::D
+end
+
+struct InternalData{D} <: AbstractAPIsData
     result::D
 end
 
@@ -88,8 +94,9 @@ end
 Base.isopen(c::KrakenClient) = isopen(c.curl_client)
 Base.close(c::KrakenClient)  = close(c.curl_client)
 
-const public_config        = KrakenConfig(; base_url = "https://api.kraken.com")
-const public_status_config = KrakenConfig(; base_url = "https://status.kraken.com")
+const public_config          = KrakenConfig(; base_url = "https://api.kraken.com")
+const public_status_config   = KrakenConfig(; base_url = "https://status.kraken.com")
+const public_internal_config = KrakenConfig(; base_url = "https://iapi.kraken.com")
 
 """
     KrakenAPIError{T} <: AbstractAPIsError
@@ -150,6 +157,13 @@ end
 function CryptoExchangeAPIs.request_headers(::KrakenClient, ::KrakenPublicQuery)::Vector{Pair{String,String}}
     return Pair{String,String}[
         "Content-Type" => "application/json",
+    ]
+end
+
+function CryptoExchangeAPIs.request_headers(::KrakenClient, ::KrakenInternalPublicQuery)
+    return Pair{String,String}[
+        "Content-Type" => "application/json",
+        "Referer" => "https://support.kraken.com/",
     ]
 end
 
