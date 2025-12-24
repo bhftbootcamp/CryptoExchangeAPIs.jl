@@ -44,6 +44,13 @@ struct Data{D<:Union{A,Vector{A},Dict{String,A}} where {A<:AbstractAPIsData}} <:
     data::D
 end
 
+struct WebData{D}
+    status::Int
+    code::String
+    message::String
+    data::D
+end
+
 """
     BithumbConfig <: AbstractAPIsConfig
 
@@ -104,10 +111,8 @@ Closes the `client` instance and free associated resources.
 """
 Base.close(c::BithumbClient) = close(c.curl_client)
 
-"""
-    public_config = BithumbConfig(; base_url = "https://api.bithumb.com")
-"""
 const public_config = BithumbConfig(; base_url = "https://api.bithumb.com")
+const public_web_config = BithumbConfig(; base_url = "https://gw.bithumb.com")
 
 """
     BithumbAPIError{T} <: AbstractAPIsError
@@ -125,6 +130,7 @@ struct BithumbAPIError{T} <: AbstractAPIsError
     message::Maybe{String}
 
     function BithumbAPIError(status::Int64, x...)
+        iszero(status) && throw(ArgumentError("API response code must not be non-zero"))
         return new{status}(status, x...)
     end
 end
@@ -186,5 +192,8 @@ using .V1
 
 include("Info/Info.jl")
 using .Info
+
+include("Exchange/Exchange.jl")
+using .Exchange
 
 end

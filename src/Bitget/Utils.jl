@@ -14,13 +14,14 @@ function Serde.deser(
     ::Type{NanoDate},
     x::Int64,
 )
-    return unixnanos2nanodate(x * 10^6)
+    return x == -1 ? nothing : unixnanos2nanodate(x * 10^6)
 end
 
 function Serde.deser(
     ::Type{<:BitgetData},
     ::Type{NanoDate},
-    x::String,
+    s::String,
 )
-    return unixnanos2nanodate(parse(Int64, x) * 10^6)
+    x = parse(Int, s)
+    return x == -1 ? nothing : unixnanos2nanodate(x * 10^6)
 end
