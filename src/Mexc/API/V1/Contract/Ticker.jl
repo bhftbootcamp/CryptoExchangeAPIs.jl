@@ -38,11 +38,11 @@ struct TickerData <: MexcData
     high24Price::Float64
     riseFallRate::Float64
     riseFallValue::Float64
-    indexPrice::Float64
-    fairPrice::Float64
-    fundingRate::Float64
-    maxBidPrice::Float64
-    minAskPrice::Float64
+    indexPrice::Maybe{Float64}
+    fairPrice::Maybe{Float64}
+    fundingRate::Maybe{Float64}
+    maxBidPrice::Maybe{Float64}
+    minAskPrice::Maybe{Float64}
     timestamp::NanoDate
     riseFallRates::RiseFallRates
     riseFallRatesOfTimezone::Vector{Float64}
