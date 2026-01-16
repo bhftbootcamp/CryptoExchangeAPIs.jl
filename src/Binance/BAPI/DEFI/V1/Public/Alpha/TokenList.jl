@@ -23,14 +23,14 @@ struct Token <: BinanceData
     chainName::String
     circulatingSupply::Float64
     contractAddress::String
-    count24h::Int64
+    count24h::Maybe{Int64}
     decimals::Int64
     denomination::Int64
     fdv::Float64
     holders::Int64
     hotTag::Bool
     iconUrl::String
-    liquidity::Float64
+    liquidity::Maybe{Float64}
     listingCex::Bool
     listingTime::NanoDate
     marketCap::Float64
@@ -40,17 +40,17 @@ struct Token <: BinanceData
     offsell::Bool
     onlineAirdrop::Bool
     onlineTge::Bool
-    percentChange24h::Float64
+    percentChange24h::Maybe{Float64}
     price::Float64
-    priceHigh24h::Float64
-    priceLow24h::Float64
+    priceHigh24h::Maybe{Float64}
+    priceLow24h::Maybe{Float64}
     score::Int64
     stockState::Bool
     symbol::String
     tokenId::String
     totalSupply::Float64
     tradeDecimal::Int64
-    volume24h::Float64
+    volume24h::Maybe{Float64}
 end
 
 Serde.isempty(::Type{Token}, x) = isempty(x)
