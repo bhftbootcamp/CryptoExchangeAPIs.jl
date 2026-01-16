@@ -42,3 +42,8 @@ Okx.API.V5.Market.candles(
     after = now(UTC) - Day(6),
     before = now(UTC)
 )
+
+Okx.API.V5.Public.insurance_fund(
+    instType = Okx.API.V5.Public.InsuranceFund.InstType.FUTURES,
+    instFamily = "BTC-USDT",
+)
