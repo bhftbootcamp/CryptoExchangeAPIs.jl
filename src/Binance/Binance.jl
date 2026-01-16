@@ -74,6 +74,7 @@ struct BinanceAPIError{T} <: AbstractAPIsError
     type::Maybe{String}
     msg::Maybe{String}
     function BinanceAPIError(code::Int64, x...)
+        iszero(code) && throw(ArgumentError("API response code must be non-zero"))
         new{code}(code, x...)
     end
 end
