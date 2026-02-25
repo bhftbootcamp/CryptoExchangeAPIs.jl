@@ -24,6 +24,8 @@ struct FundingRateData <: BinanceData
     markPrice::Maybe{Float64}
 end
 
+Serde.isempty(::Type{FundingRateData}, x::AbstractString) = isempty(x)
+
 """
     funding_rate(client::BinanceClient, query::FundingRateQuery)
     funding_rate(client::BinanceClient = Binance.BinanceClient(Binance.public_dapi_config); kw...)
