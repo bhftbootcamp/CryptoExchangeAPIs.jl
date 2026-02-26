@@ -9,4 +9,7 @@ using .Tickers
 include("OpenInterest.jl")
 using .OpenInterest
 
+include("HistoryFundRate.jl")
+using .HistoryFundRate
+
 end

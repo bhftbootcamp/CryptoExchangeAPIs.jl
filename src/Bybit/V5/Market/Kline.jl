@@ -12,23 +12,19 @@ using CryptoExchangeAPIs.Bybit
 using CryptoExchangeAPIs.Bybit: Data, List, Rows
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-@enumx Category SPOT LINEAR INVERSE
-@enumx TimeInterval m1 m3 m5 m15 m30 h1 h2 h4 h6 h8 h12 d1 d3 w1 M1
+@enumx Category spot linear inverse
+@enumx TimeInterval m1 m3 m5 m15 m30 h1 h2 h4 h6 h8 h12 d1 w1 M1
 
 Base.@kwdef struct KlineQuery <: BybitPublicQuery
     category::Category.T
     symbol::String
     interval::TimeInterval.T
-    endTime::Maybe{DateTime} = nothing
-    limit::Maybe{Int64} = nothing
-    startTime::Maybe{DateTime} = nothing
+    _end::Maybe{DateTime} = nothing
+    start::Maybe{DateTime} = nothing
+    limit::Maybe{Int} = nothing
 end
 
-function Serde.ser_type(::Type{<:KlineQuery}, x::Category.T)::String
-  x == Category.SPOT    && return "spot"
-  x == Category.LINEAR  && return "linear"
-  x == Category.INVERSE && return "inverse"
-end
+Serde.SerQuery.ser_name(::Type{<:KlineQuery}, ::Val{:_end}) = "end"
 
 function Serde.ser_type(::Type{<:KlineQuery}, x::TimeInterval.T)::String
     x == TimeInterval.m1  && return "1"
@@ -47,7 +43,7 @@ function Serde.ser_type(::Type{<:KlineQuery}, x::TimeInterval.T)::String
 end
 
 struct KlineData <: BybitData
-    start::Maybe{NanoDate}
+    start::NanoDate
     open::Maybe{Float64}
     high::Maybe{Float64}
     low::Maybe{Float64}
@@ -66,11 +62,11 @@ end
 
 | Parameter | Type         | Required | Description                               |
 |:----------|:-------------|:---------|:------------------------------------------|
-| category  | Category     | true     | SPOT LINEAR INVERSE                       |
+| category  | Category     | true     | spot linear inverse                       |
 | symbol    | String       | true     |                                           |
 | interval  | TimeInterval | true     | m1 m3 m5 m15 m30 h1 h2 h4 h6 h12 d1 w1 M1 |
 | endTime   | DateTime     | false    |                                           |
-| limit     | Int64        | false    |                                           |
+| limit     | Int          | false    |                                           |
 | startTime | DateTime     | false    |                                           |
 
 ## Code samples:
@@ -79,7 +75,7 @@ end
 using CryptoExchangeAPIs.Bybit
 
 result = Bybit.V5.Market.kline(;
-    category = Bybit.V5.Market.Kline.Category.SPOT,
+    category = Bybit.V5.Market.Kline.Category.spot,
     symbol = "ADAUSDT",
     interval = Bybit.V5.Market.Kline.TimeInterval.M1,
 )

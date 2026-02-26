@@ -16,6 +16,8 @@ function Serde.deser(::Type{<:BybitAPIError}, ::Type{<:Maybe{NanoDate}}, x::Int6
     return unixnanos2nanodate(x * 1e6)
 end
 
+Serde.isempty(::Type{<:BybitData}, x::String) = isempty(x)
+
 function Serde.ser_ignore_field(::Type{<:BybitCommonQuery}, ::Val{:timestamp})::Bool
     return true
 end
