@@ -16,6 +16,10 @@ function Serde.deser(::Type{Data}, ::Type{<:Maybe{NanoDate}}, x::AbstractString)
     return unixnanos2nanodate(parse(Int64, x) * 1e6)
 end
 
+function Serde.deser(::Type{<:BithumbData}, ::Type{DateTime}, x::AbstractString)::DateTime
+    return DateTime(x, "yyyy-mm-ddTHH:MM:SS")
+end
+
 function Serde.ser_ignore_field(::Type{<:BithumbCommonQuery}, ::Val{:nonce})::Bool
     return true
 end

@@ -15,4 +15,7 @@ using .Tickers
 include("Insurance.jl")
 using .Insurance
 
+include("Funding/Funding.jl")
+using .Funding
+
 end
