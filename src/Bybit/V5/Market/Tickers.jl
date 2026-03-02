@@ -44,7 +44,7 @@ struct TickersData <: BybitData
     usdIndexPrice::Maybe{Float64}
 end
 
-function Serde.isempty(::Type{<:TickersData}, x)::Bool
+function Serde.isempty(::Type{<:TickersData}, x::String)::Bool
     return x === ""
 end
 
