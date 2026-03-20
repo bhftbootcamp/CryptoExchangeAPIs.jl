@@ -61,11 +61,6 @@ isretriable(e::APIsResult{BitfinexAPIError{10401}}) = false
 # Not ready, try again later
 isretriable(e::APIsResult{BitfinexAPIError{11000}}) = true
 
-# Ratelimit error
-isretriable(e::APIsResult{BitfinexAPIError{11010}}) = true
-retry_timeout(e::APIsResult{BitfinexAPIError{11010}}) = 2
-retry_maxcount(e::APIsResult{BitfinexAPIError{11010}}) = 50
-
 # Websocket server stopping, please reconnect later
 isretriable(e::APIsResult{BitfinexAPIError{20051}}) = true
 

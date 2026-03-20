@@ -140,6 +140,9 @@ using .Assets
 include("FundingHistory.jl")
 using .FundingHistory
 
+include("Markets.jl")
+using .Markets
+
 include("Statistics.jl")
 using .Statistics
 

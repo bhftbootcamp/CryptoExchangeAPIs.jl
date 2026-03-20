@@ -23,18 +23,18 @@ struct Token <: BinanceData
     chainName::String
     circulatingSupply::Float64
     contractAddress::String
-    count24h::Maybe{Int64}
-    decimals::Int64
-    denomination::Int64
-    fdv::Float64
-    holders::Int64
+    count24h::Maybe{Int}
+    decimals::Int
+    denomination::Int
+    fdv::Maybe{Float64}
+    holders::Maybe{Int}
     hotTag::Bool
     iconUrl::String
     liquidity::Maybe{Float64}
     listingCex::Bool
     listingTime::NanoDate
     marketCap::Float64
-    mulPoint::Int64
+    mulPoint::Int
     name::String
     offline::Bool
     offsell::Bool
@@ -44,12 +44,12 @@ struct Token <: BinanceData
     price::Float64
     priceHigh24h::Maybe{Float64}
     priceLow24h::Maybe{Float64}
-    score::Int64
+    score::Int
     stockState::Bool
     symbol::String
     tokenId::String
-    totalSupply::Float64
-    tradeDecimal::Int64
+    totalSupply::Maybe{Float64}
+    tradeDecimal::Int
     volume24h::Maybe{Float64}
 end
 

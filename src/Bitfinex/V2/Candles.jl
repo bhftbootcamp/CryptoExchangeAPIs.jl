@@ -15,13 +15,16 @@ using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enumx Section last hist
 
+@enumx Sort asc desc
+
 Base.@kwdef struct CandlesQuery <: BitfinexPublicQuery
     timeframe::TimeInterval.T
     symbol::String
     section::Section.T = Section.hist
-    limit::Int64 = 125
+    limit::Int64 = nothing
     start::Maybe{DateTime} = nothing
     _end::Maybe{DateTime} = nothing
+    sort::Maybe{Sort.T} = nothing
 end
 
 Serde.SerQuery.ser_ignore_field(::Type{CandlesQuery}, ::Val{:timeframe}) = true
@@ -42,6 +45,8 @@ function Serde.ser_type(::Type{CandlesQuery}, x::TimeInterval.T)::String
     x == TimeInterval.d14 && return "14D"
     x == TimeInterval.M1  && return "1M"
 end
+
+Serde.ser_type(::Type{CandlesQuery}, x::Sort.T) = x == Sort.asc ? 1 : -1
 
 struct CandlesData <: BitfinexData
     timestamp::NanoDate
