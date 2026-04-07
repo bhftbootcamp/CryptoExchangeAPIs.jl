@@ -95,7 +95,7 @@ struct DetailData <: MexcData
     threshold::Int
     baseCoinIconUrl::String
     id::Int
-    vid::String
+    vid::Maybe{String}
     baseCoinId::String
     createTime::NanoDate
     openingTime::NanoDate
