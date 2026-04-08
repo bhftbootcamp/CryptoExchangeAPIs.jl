@@ -46,7 +46,7 @@ Get contract funding rate.
 using Serde
 using CryptoExchangeAPIs.Mexc
 
-result = Mexc.API.V1.funding_rate(;
+result = Mexc.API.V1.Contract.funding_rate(;
     symbol = "BTC_USDT",
 )
 

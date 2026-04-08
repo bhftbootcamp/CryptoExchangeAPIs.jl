@@ -1,8 +1,8 @@
-module WithdrawalLog
+module History
 
-export WithdrawalLogQuery,
-    WithdrawalLogData,
-    withdrawal_log
+export HistoryQuery,
+    HistoryData,
+    history
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -10,7 +10,7 @@ using Dates, NanoDates, TimeZones
 using CryptoExchangeAPIs.Mexc
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-Base.@kwdef mutable struct WithdrawalLogQuery <: MexcSpotPrivateQuery
+Base.@kwdef mutable struct HistoryQuery <: MexcSpotPrivateQuery
     coin::Maybe{String} = nothing
     status::Maybe{Int64} = nothing
     limit::Maybe{Int64} = nothing
@@ -21,7 +21,7 @@ Base.@kwdef mutable struct WithdrawalLogQuery <: MexcSpotPrivateQuery
     signature::Maybe{String} = nothing
 end
 
-struct WithdrawalLogData <: MexcData
+struct HistoryData <: MexcData
     id::Maybe{String}
     txId::Maybe{String}
     coin::Maybe{String}
@@ -42,8 +42,8 @@ struct WithdrawalLogData <: MexcData
 end
 
 """
-    withdrawal_log(client::MexcClient, query::WithdrawalLogQuery)
-    withdrawal_log(client::MexcClient; kw...)
+    history(client::MexcClient, query::HistoryQuery)
+    history(client::MexcClient; kw...)
 
 Fetch withdraw history.
 
@@ -73,7 +73,7 @@ mexc_client = MexcClient(;
     secret_key = ENV["MEXC_SECRET_KEY"],
 )
 
-result = Mexc.API.V3.withdrawal_log(mexc_client)
+result = Mexc.API.V3.Capital.Withdraw.history(mexc_client)
 
 to_pretty_json(result.result)
 ```
@@ -105,12 +105,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function withdrawal_log(client::MexcClient, query::WithdrawalLogQuery)
-    return APIsRequest{Vector{WithdrawalLogData}}("GET", "api/v3/capital/withdraw/history", query)(client)
+function history(client::MexcClient, query::HistoryQuery)
+    return APIsRequest{Vector{HistoryData}}("GET", "api/v3/capital/withdraw/history", query)(client)
 end
 
-function withdrawal_log(client::MexcClient; kw...)
-    return withdrawal_log(client, WithdrawalLogQuery(; kw...))
+function history(client::MexcClient; kw...)
+    return history(client, HistoryQuery(; kw...))
 end
 
 end

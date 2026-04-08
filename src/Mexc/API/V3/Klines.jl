@@ -1,8 +1,8 @@
-module Candle
+module Klines
 
-export CandleQuery,
-    CandleData,
-    candle
+export KlinesQuery,
+    KlinesData,
+    klines
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -13,7 +13,7 @@ using EnumX
 
 @enumx TimeInterval m1 m5 m15 m30 m60 h4 h8 d1 w1 M1
 
-Base.@kwdef struct CandleQuery <: MexcPublicQuery
+Base.@kwdef struct KlinesQuery <: MexcPublicQuery
     symbol::String
     interval::TimeInterval.T
     limit::Maybe{Int64} = nothing
@@ -21,7 +21,7 @@ Base.@kwdef struct CandleQuery <: MexcPublicQuery
     startTime::Maybe{DateTime} = nothing
 end
 
-function Serde.ser_type(::Type{<:CandleQuery}, x::TimeInterval.T)::String
+function Serde.ser_type(::Type{<:KlinesQuery}, x::TimeInterval.T)::String
     x == TimeInterval.m1  && return "1m"
     x == TimeInterval.m5  && return "5m"
     x == TimeInterval.m15 && return "15m"
@@ -34,7 +34,7 @@ function Serde.ser_type(::Type{<:CandleQuery}, x::TimeInterval.T)::String
     x == TimeInterval.M1  && return "1M"
 end
 
-struct CandleData <: MexcData
+struct KlinesData <: MexcData
     openTime::Maybe{NanoDate}
     openPrice::Maybe{Float64}
     highPrice::Maybe{Float64}
@@ -46,8 +46,8 @@ struct CandleData <: MexcData
 end
 
 """
-    candle(client::MexcClient, query::CandleQuery)
-    candle(client::MexcClient = MexcSpotClient(Mexc.public_spot_config); kw...)
+    klines(client::MexcClient, query::KlinesQuery)
+    klines(client::MexcClient = MexcSpotClient(Mexc.public_spot_config); kw...)
 
 Kline/candlestick bars for a symbol.
 
@@ -69,9 +69,9 @@ Kline/candlestick bars for a symbol.
 using Serde
 using CryptoExchangeAPIs.Mexc
 
-result = Mexc.API.V3.candle(;
+result = Mexc.API.V3.klines(;
     symbol = "BTCUSDT",
-    interval = Mexc.API.V3.Candle.TimeInterval.d1,
+    interval = Mexc.API.V3.Klines.TimeInterval.d1,
 )
 
 to_pretty_json(result.result)
@@ -95,12 +95,12 @@ to_pretty_json(result.result)
 ]
 ```
 """
-function candle(client::MexcClient, query::CandleQuery)
-    return APIsRequest{Vector{CandleData}}("GET", "api/v3/klines", query)(client)
+function klines(client::MexcClient, query::KlinesQuery)
+    return APIsRequest{Vector{KlinesData}}("GET", "api/v3/klines", query)(client)
 end
 
-function candle(client::MexcClient = MexcSpotClient(Mexc.public_spot_config); kw...)
-    return candle(client, CandleQuery(; kw...))
+function klines(client::MexcClient = MexcSpotClient(Mexc.public_spot_config); kw...)
+    return klines(client, KlinesQuery(; kw...))
 end
 
 end

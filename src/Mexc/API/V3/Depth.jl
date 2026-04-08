@@ -1,8 +1,8 @@
-module OrderBook
+module Depth
 
-export OrderBookQuery,
-    OrderBookData,
-    order_book
+export DepthQuery,
+    DepthData,
+    depth
 
 using Serde
 using Dates, NanoDates, TimeZones
@@ -10,7 +10,7 @@ using Dates, NanoDates, TimeZones
 using CryptoExchangeAPIs.Mexc
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-Base.@kwdef struct OrderBookQuery <: MexcPublicQuery
+Base.@kwdef struct DepthQuery <: MexcPublicQuery
     symbol::String
     limit::Maybe{Int64} = nothing
 end
@@ -20,15 +20,15 @@ struct Level <: MexcData
     size::Float64
 end
 
-struct OrderBookData <: MexcData
+struct DepthData <: MexcData
     asks::Vector{Level}
     bids::Vector{Level}
     lastUpdateId::Maybe{Int64}
 end
 
 """
-    order_book(client::MexcClient, query::OrderBookQuery)
-    order_book(client::MexcClient = MexcSpotClient(Mexc.public_spot_config); kw...)
+    depth(client::MexcClient, query::DepthQuery)
+    depth(client::MexcClient = MexcSpotClient(Mexc.public_spot_config); kw...)
 
 Order book depth.
 
@@ -47,7 +47,7 @@ Order book depth.
 using Serde
 using CryptoExchangeAPIs.Mexc
 
-result = Mexc.API.V3.order_book(;
+result = Mexc.API.V3.depth(;
     symbol = "BTCUSDT"
 )
 
@@ -76,12 +76,12 @@ to_pretty_json(result.result)
 }
 ```
 """
-function order_book(client::MexcClient, query::OrderBookQuery)
-    return APIsRequest{OrderBookData}("GET", "api/v3/depth", query)(client)
+function depth(client::MexcClient, query::DepthQuery)
+    return APIsRequest{DepthData}("GET", "api/v3/depth", query)(client)
 end
 
-function order_book(client::MexcClient = MexcSpotClient(Mexc.public_spot_config); kw...)
-    return order_book(client, OrderBookQuery(; kw...))
+function depth(client::MexcClient = MexcSpotClient(Mexc.public_spot_config); kw...)
+    return depth(client, DepthQuery(; kw...))
 end
 
 end

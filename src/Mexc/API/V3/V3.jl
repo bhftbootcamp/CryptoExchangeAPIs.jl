@@ -9,28 +9,16 @@ using .ExchangeInfo
 include("Ticker24hr.jl")
 using .Ticker24hr
 
-include("AccountTrade.jl")
-using .AccountTrade
-
 include("AvgPrice.jl")
 using .AvgPrice
 
-include("Candle.jl")
-using .Candle
+include("Depth.jl")
+using .Depth
 
-include("CoinInformation.jl")
-using .CoinInformation
+include("Klines.jl")
+using .Klines
 
-include("DepositLog.jl")
-using .DepositLog
-
-include("OrderBook.jl")
-using .OrderBook
-
-include("ServerTime.jl")
-using .ServerTime
-
-include("WithdrawalLog.jl")
-using .WithdrawalLog
+include("Time.jl")
+using .Time
 
 end

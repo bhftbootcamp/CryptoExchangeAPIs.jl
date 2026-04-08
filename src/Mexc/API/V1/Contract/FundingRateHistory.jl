@@ -52,7 +52,7 @@ Get contract funding rate history.
 using Serde
 using CryptoExchangeAPIs.Mexc
 
-result = Mexc.API.V1.funding_rate_history(;
+result = Mexc.API.V1.Contract.funding_rate_history(;
     symbol = "BTC_USDT",
     page_num = 1,
     page_size = 3,
