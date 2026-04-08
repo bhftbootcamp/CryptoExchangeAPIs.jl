@@ -172,6 +172,7 @@ include("Okex/Okex.jl")
 include("Poloniex/Poloniex.jl")
 include("Kraken/Kraken.jl")
 include("Kucoin/Kucoin.jl")
+include("Mexc/Mexc.jl")
 include("Upbit/Upbit.jl")
 
 end
