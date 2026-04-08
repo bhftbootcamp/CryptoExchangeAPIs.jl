@@ -9,7 +9,9 @@ export MexcCommonQuery,
        MexcSpotClient,
        MexcFuturesClient,
        MexcConfig,
-       MexcData
+       MexcData,
+       SpotData,
+       FuturesData
 
 using Serde
 using Dates, NanoDates, TimeZones, SHA, Base64, Nettle, EasyCurl
