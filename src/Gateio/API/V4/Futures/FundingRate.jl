@@ -11,12 +11,14 @@ using EnumX
 using CryptoExchangeAPIs.Gateio
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-@enumx Settle btc usdt usd
+@enumx Settle btc usdt
 
 Base.@kwdef struct FundingRateQuery <: GateioPublicQuery
     contract::String
     settle::Settle.T
     limit::Maybe{Int64} = nothing
+    from::Maybe{DateTime} = nothing
+    to::Maybe{DateTime} = nothing
 end
 
 Serde.SerQuery.ser_ignore_field(::Type{FundingRateQuery}, ::Val{:settle}) = true
@@ -36,11 +38,13 @@ Funding rate history.
 
 ## Parameters:
 
-| Parameter | Type     | Required | Description  |
-|:----------|:---------|:---------|:-------------|
-| settle    | Settle   | true     | btc usdt usd |
-| contract  | String   | true     |              |
-| limit     | Int64    | false    |              |
+| Parameter | Type     | Required | Description                                                                 |
+|:----------|:---------|:---------|:----------------------------------------------------------------------------|
+| settle    | Settle   | true     | btc usdt                                                                    |
+| contract  | String   | true     | Futures contract (e.g. BTC\\_USDT).                                         |
+| limit     | Int64    | false    | Maximum number of records returned.                                         |
+| from      | DateTime | false    | Start timestamp. Defaults to the start of the range implied by `to`+`limit`.|
+| to        | DateTime | false    | End timestamp. Defaults to current time.                                    |
 
 ## Code samples:
 
