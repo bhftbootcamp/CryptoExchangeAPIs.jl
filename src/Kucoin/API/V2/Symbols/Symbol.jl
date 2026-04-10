@@ -33,6 +33,8 @@ struct SymbolData <: KucoinData
     baseMinSize::Maybe{Float64}
     name::String
     quoteMaxSize::Maybe{Float64}
+    tradingStartTime::Maybe{Int64}
+
 end
 
 """
