@@ -5,10 +5,13 @@ export SymbolsQuery,
     symbols
 
 using Serde
+using EnumX
 using Dates, NanoDates, TimeZones
 
 using CryptoExchangeAPIs.Poloniex
 using CryptoExchangeAPIs: Maybe, APIsRequest
+
+@enumx State NORMAL PAUSE POST_ONLY
 
 Base.@kwdef struct SymbolsQuery <: PoloniexPublicQuery
     symbol::Maybe{String} = nothing
@@ -37,7 +40,7 @@ struct SymbolsData <: PoloniexData
     baseCurrencyName::String
     quoteCurrencyName::String
     displayName::String
-    state::String
+    state::State.T
     visibleStartTime::NanoDate
     tradableStartTime::NanoDate
     symbolTradeLimit::SymbolTradeLimit
@@ -63,7 +66,7 @@ Get all symbols and their tradeLimit info.
 ```julia
 using CryptoExchangeAPIs.Poloniex
 
-result = Poloniex.Markets.Symbols.symbols(;
+result = Poloniex.Markets.symbols(;
     symbol = "BTC_USDT",
 )
 ```
