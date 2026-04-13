@@ -4,6 +4,9 @@ module Info
 include("AllMids.jl")
 using .AllMids
 
+include("FundingHistory.jl")
+using .FundingHistory
+
 include("L2Book.jl")
 using .L2Book
 
