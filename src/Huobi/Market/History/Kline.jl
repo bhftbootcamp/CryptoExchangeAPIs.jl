@@ -25,7 +25,7 @@ function Serde.ser_type(::Type{<:KlineQuery}, x::TimeInterval.T)::String
     x == TimeInterval.m5  && return "5min"
     x == TimeInterval.m15 && return "15min"
     x == TimeInterval.m30 && return "30min"
-    x == TimeInterval.h1  && return "60min"
+    x == TimeInterval.m60 && return "60min"
     x == TimeInterval.h4  && return "4hour"
     x == TimeInterval.d1  && return "1day"
     x == TimeInterval.M1  && return "1mon"
