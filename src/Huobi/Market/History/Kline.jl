@@ -17,7 +17,7 @@ using CryptoExchangeAPIs: Maybe, APIsRequest
 Base.@kwdef struct KlineQuery <: HuobiPublicQuery
     period::TimeInterval.T
     symbol::String
-    size::Int64 = 150       # Default size 150 [1-2000]
+    size::Maybe{Int} = nothing
 end
 
 function Serde.ser_type(::Type{<:KlineQuery}, x::TimeInterval.T)::String

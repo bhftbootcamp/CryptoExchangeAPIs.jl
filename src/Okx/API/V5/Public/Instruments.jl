@@ -20,6 +20,15 @@ using CryptoExchangeAPIs: Maybe, APIsRequest
     OPTION
 end
 
+@enumx State begin
+    live
+    suspend
+    rebase
+    preopen
+    test
+    settling
+end
+
 Base.@kwdef struct InstrumentsQuery <: OkxPublicQuery
     instType::InstType.T
     uly::Maybe{String} = nothing
@@ -37,9 +46,9 @@ struct InstrumentsData <: OkxData
     ctValCcy::Maybe{String}
     expTime::Maybe{NanoDate}
     instFamily::Maybe{String}
-    instType::String
+    instType::InstType.T
     lever::Maybe{Float64}
-    listTime::Maybe{NanoDate}
+    listTime::NanoDate
     lotSz::Maybe{Float64}
     maxIcebergSz::Maybe{Float64}
     maxLmtAmt::Maybe{Float64}
@@ -52,7 +61,7 @@ struct InstrumentsData <: OkxData
     minSz::Maybe{Float64}
     optType::Maybe{String}
     settleCcy::Maybe{String}
-    state::Maybe{String}
+    state::State.T
     ruleType::Maybe{String}
     stk::Maybe{Float64}
     tickSz::Maybe{Float64}

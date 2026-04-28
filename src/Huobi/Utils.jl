@@ -9,11 +9,11 @@ function Serde.deser(::Type{<:Union{Data,DataTick}}, ::Type{<:Maybe{NanoDate}}, 
 end
 
 function Serde.deser(::Type{<:HuobiData}, ::Type{<:Maybe{NanoDate}}, x::Int64)::NanoDate
-    return unixnanos2nanodate(x * 1e6)
+    return unixnanos2nanodate(x * 1e9)
 end
 
 function Serde.deser(::Type{<:HuobiData}, ::Type{<:Maybe{NanoDate}}, x::AbstractString)::NanoDate
-    return unixnanos2nanodate(parse(Int64, x) * 1e6)
+    return unixnanos2nanodate(parse(Int64, x) * 1e9)
 end
 
 function Serde.custom_name(::Type{<:HuobiData}, ::Val{x}) where {x}

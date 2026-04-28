@@ -18,6 +18,8 @@ using CryptoExchangeAPIs: Maybe, APIsRequest
 
 @enumx AssetPairInfo info leverage fees
 
+@enumx Status online cancel_only post_only limit_only reduce_only
+
 Base.@kwdef struct AssetPairsQuery <: KrakenPublicQuery
     pair::Maybe{String} = nothing
     info::AssetPairInfo.T = AssetPairInfo.info
@@ -48,7 +50,7 @@ struct AssetPairsInfoData <: KrakenData
     margin_stop::Int64
     ordermin::Maybe{Float64}
     pair_decimals::Int64
-    status::String
+    status::Status.T
     tick_size::Maybe{Float64}
     wsname::String
 end

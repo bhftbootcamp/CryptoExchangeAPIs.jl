@@ -38,17 +38,17 @@ struct ActiveData <: KucoinData
     baseCurrency::String
     quoteCurrency::String
     settleCurrency::String
-    maxOrderQty::Maybe{Int64}
+    maxOrderQty::Maybe{Int}
     maxPrice::Maybe{Float64}
-    lotSize::Maybe{Int64}
+    lotSize::Maybe{Int}
     tickSize::Maybe{Float64}
     indexPriceTickSize::Maybe{Float64}
     multiplier::Maybe{Float64}
     initialMargin::Maybe{Float64}
     maintainMargin::Maybe{Float64}
-    maxRiskLimit::Maybe{Int64}
-    minRiskLimit::Maybe{Int64}
-    riskStep::Maybe{Int64}
+    maxRiskLimit::Maybe{Int}
+    minRiskLimit::Maybe{Int}
+    riskStep::Maybe{Int}
     makerFeeRate::Maybe{Float64}
     takerFeeRate::Maybe{Float64}
     takerFixFee::Maybe{Float64}
@@ -73,8 +73,8 @@ struct ActiveData <: KucoinData
     markPrice::Maybe{Float64}
     indexPrice::Maybe{Float64}
     lastTradePrice::Maybe{Float64}
-    nextFundingRateTime::Maybe{Int64}
-    maxLeverage::Maybe{Int64}
+    nextFundingRateTime::Maybe{Int}
+    maxLeverage::Maybe{Int}
     sourceExchanges::Maybe{Vector}
     premiumsSymbol1M::Maybe{String}
     premiumsSymbol8H::Maybe{String}
@@ -84,6 +84,7 @@ struct ActiveData <: KucoinData
     highPrice::Maybe{Float64}
     priceChgPct::Maybe{Float64}
     priceChg::Maybe{Float64}
+    fundingRateGranularity::Maybe{Int}
 end
 
 """

@@ -52,24 +52,6 @@ result = Mexc.API.V1.Contract.funding_rate(;
 
 to_pretty_json(result.result)
 ```
-
-## Result:
-
-```json
-{
-  "success":true,
-  "code":0,
-  "data":{
-    "symbol":"BTC_USDT",
-    "fundingRate":-0.000489,
-    "maxFundingRate":0.001,
-    "minFundingRate":-0.001,
-    "collectCycle":8,
-    "nextSettleTime":"2021-01-05T08:00:00",
-    "timestamp":"2021-01-05T06:56:47.577000000"
-  }
-}
-```
 """
 function funding_rate(client::MexcClient, query::FundingRateQuery)
     return APIsRequest{FuturesData{FundingRateData}}("GET", "api/v1/contract/funding_rate/$(query.symbol)", query)(client)
