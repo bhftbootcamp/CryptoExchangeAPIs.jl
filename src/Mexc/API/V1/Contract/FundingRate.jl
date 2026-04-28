@@ -49,8 +49,6 @@ using CryptoExchangeAPIs.Mexc
 result = Mexc.API.V1.Contract.funding_rate(;
     symbol = "BTC_USDT",
 )
-
-to_pretty_json(result.result)
 ```
 """
 function funding_rate(client::MexcClient, query::FundingRateQuery)

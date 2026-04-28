@@ -57,8 +57,6 @@ result = Mexc.API.V1.Contract.funding_rate_history(;
     page_num = 1,
     page_size = 3,
 )
-
-to_pretty_json(result.result)
 ```
 """
 function funding_rate_history(client::MexcClient, query::FundingRateHistoryQuery)
