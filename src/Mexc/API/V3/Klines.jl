@@ -58,9 +58,9 @@ Kline/candlestick bars for a symbol.
 | Parameter | Type         | Required | Description                                  |
 |:----------|:-------------|:---------|:---------------------------------------------|
 | symbol    | String       | true     |                                              |
-| interval  | TimeInterval | true     | m1 m5 m15 m30 m60 h4 h8 d1 w1 M1            |
+| interval  | TimeInterval | true     | m1 m5 m15 m30 m60 h4 h8 d1 w1 M1             |
 | endTime   | DateTime     | false    |                                              |
-| limit     | Int64        | false    | Default 500; max 1000                        |
+| limit     | Int64        | false    | Default 500; max 500                         |
 | startTime | DateTime     | false    |                                              |
 
 ## Code samples:
@@ -73,26 +73,6 @@ result = Mexc.API.V3.klines(;
     symbol = "BTCUSDT",
     interval = Mexc.API.V3.Klines.TimeInterval.d1,
 )
-
-to_pretty_json(result.result)
-```
-
-## Result:
-
-```json
-[
-  {
-    "openTime":"2024-01-01T00:00:00",
-    "openPrice":42283.36,
-    "highPrice":42500.01,
-    "lowPrice":42100.50,
-    "closePrice":42436.10,
-    "volume":1732.461487,
-    "closeTime":"2024-01-01T23:59:59.999000064",
-    "quoteAssetVolume":168387.3
-  },
-  ...
-]
 ```
 """
 function klines(client::MexcClient, query::KlinesQuery)

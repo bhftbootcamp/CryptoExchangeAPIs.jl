@@ -29,10 +29,11 @@ struct AllSymbolsData <: KucoinData
     priceLimitRate::Maybe{Float64}
     minFunds::Maybe{Float64}
     isMarginEnabled::Maybe{Bool}
-    enableTrading::Maybe{Bool}
+    enableTrading::Bool
     baseMinSize::Maybe{Float64}
     name::String
     quoteMaxSize::Maybe{Float64}
+    tradingStartTime::Maybe{NanoDate}
 end
 
 """
@@ -52,8 +53,7 @@ result = Kucoin.API.V2.Symbols.all_symbols()
 ```
 """
 function all_symbols(client::KucoinClient, query::AllSymbolsQuery)
-    end_point = "api/v2/symbols"
-    return APIsRequest{Data{Vector{AllSymbolsData}}}("GET", end_point, query)(client)
+    return APIsRequest{Data{Vector{AllSymbolsData}}}("GET", "api/v2/symbols", query)(client)
 end
 
 function all_symbols(client::KucoinClient = Kucoin.KucoinClient(Kucoin.public_config); kw...)

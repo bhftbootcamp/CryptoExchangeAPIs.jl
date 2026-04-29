@@ -98,7 +98,7 @@ struct DetailData <: MexcData
     vid::Maybe{String}
     baseCoinId::String
     createTime::NanoDate
-    openingTime::NanoDate
+    openingTime::Maybe{NanoDate}
     openingCountdownOption::Int
     showBeforeOpen::Bool
     isMaxLeverage::Bool
@@ -114,6 +114,10 @@ end
 
 function Serde.deser(::Type{DetailData}, ::Type{ContractState.T}, x::Int)
     return ContractState.T(x)
+end
+
+function Serde.deser(::Type{DetailData}, ::Type{NanoDate}, x::Int)
+    return iszero(x) ? nothing : unixnanos2nanodate(x * 10^6)
 end
 
 """

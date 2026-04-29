@@ -13,14 +13,20 @@ using CryptoExchangeAPIs: Maybe, APIsRequest
 
 Base.@kwdef struct FundingRatesQuery <: KucoinPublicQuery
     symbol::String
-    from::NanoDate
-    to::NanoDate
+    from::DateTime
+    to::DateTime
 end
+
+Serde.SerQuery.ser_type(::Type{FundingRatesQuery}, x::DateTime) = round(Int, datetime2unix(x) * 10^3)
 
 struct FundingRatesData <: KucoinData
     symbol::String
     timepoint::Maybe{NanoDate}
     fundingRate::Maybe{Float64}
+end
+
+function Serde.nulltype(::Type{Vector{FundingRatesData}})
+    return FundingRatesData[]
 end
 
 """
@@ -43,12 +49,11 @@ Query the funding rate at each settlement time point within a certain time range
 
 ```julia
 using CryptoExchangeAPIs.Kucoin
-using NanoDates
 
 result = Kucoin.API.V1.Contract.funding_rates(;
     symbol = "XBTUSDTM",
-    from = NanoDate("2023-11-18T12:31:40"),
-    to = NanoDate("2023-12-11T16:05:00"),
+    from = DateTime("2025-01-01"),
+    to = DateTime("2025-02-01"),
 )
 ```
 """

@@ -33,6 +33,8 @@ struct SymbolData <: KucoinData
     baseMinSize::Maybe{Float64}
     name::String
     quoteMaxSize::Maybe{Float64}
+    tradingStartTime::Maybe{Int64}
+
 end
 
 """
@@ -58,8 +60,7 @@ result = Kucoin.API.V2.Symbols.symbol(;
 ```
 """
 function symbol(client::KucoinClient, query::SymbolQuery)
-    end_point = "api/v2/symbols/$(query.symbol)"
-    return APIsRequest{Data{SymbolData}}("GET", end_point, query)(client)
+    return APIsRequest{Data{SymbolData}}("GET", "api/v2/symbols/$(query.symbol)", query)(client)
 end
 
 function symbol(client::KucoinClient = Kucoin.KucoinClient(Kucoin.public_config); kw...)

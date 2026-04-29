@@ -57,31 +57,6 @@ result = Mexc.API.V1.Contract.funding_rate_history(;
     page_num = 1,
     page_size = 3,
 )
-
-to_pretty_json(result.result)
-```
-
-## Result:
-
-```json
-{
-  "success":true,
-  "code":0,
-  "data":{
-    "pageSize":3,
-    "totalCount":1000,
-    "totalPage":334,
-    "currentPage":1,
-    "resultList":[
-      {
-        "symbol":"BTC_USDT",
-        "fundingRate":0.000266,
-        "settleTime":"2021-01-05T00:00:00"
-      },
-      ...
-    ]
-  }
-}
 ```
 """
 function funding_rate_history(client::MexcClient, query::FundingRateHistoryQuery)
