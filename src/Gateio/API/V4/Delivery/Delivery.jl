@@ -6,4 +6,7 @@ using .Contracts
 include("Tickers.jl")
 using .Tickers
 
+include("Candlesticks.jl")
+using .Candlesticks
+
 end

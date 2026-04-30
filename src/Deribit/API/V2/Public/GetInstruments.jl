@@ -15,7 +15,7 @@ using CryptoExchangeAPIs.Deribit
 using CryptoExchangeAPIs.Deribit: Data
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-@enumx Currency BTC ETH USDC USDT
+@enumx Currency BTC ETH USDC USDT EURR any
 
 @enumx InstrumentKind begin
     future
@@ -36,13 +36,13 @@ end
 @enumx OptionType put call
 
 struct GetInstrumentsData <: DeribitData
-    instrument_name::Maybe{String}
-    base_currency::Maybe{String}
-    quote_currency::Maybe{String}
+    instrument_name::String
+    base_currency::String
+    quote_currency::String
     block_trade_commission::Maybe{Float64}
     block_trade_min_trade_amount::Maybe{Float64}
     block_trade_tick_size::Maybe{Float64}
-    contract_size::Maybe{Float64}
+    contract_size::Float64
     counter_currency::Maybe{String}
     creation_timestamp::NanoDate
     expiration_timestamp::NanoDate
@@ -50,19 +50,19 @@ struct GetInstrumentsData <: DeribitData
     instrument_id::Int64
     instrument_type::Maybe{String}
     is_active::Bool
-    kind::Maybe{InstrumentKind.T}
+    kind::InstrumentKind.T
     maker_commission::Maybe{Float64}
     max_leverage::Maybe{Float64}
     max_liquidation_commission::Maybe{Float64}
-    min_trade_amount::Maybe{Float64}
+    min_trade_amount::Float64
     option_type::Maybe{OptionType.T}
-    price_index::Maybe{String}
+    price_index::String
     rfq::Maybe{Bool}
     settlement_currency::Maybe{String}
     settlement_period::Maybe{String}
     strike::Maybe{Float64}
     taker_commission::Maybe{Float64}
-    tick_size::Maybe{Float64}
+    tick_size::Float64
 end
 
 """
@@ -75,11 +75,11 @@ Retrieves available trading instruments. This method can be used to see which in
 
 ## Parameters:
 
-| Parameter | Type           | Required | Description               |
-|:----------|:---------------|:---------|:--------------------------|
-| currency  | Currency       | true     | `BTC` `ETH` `USDC` `USDT` |
-| expired   | Bool           | false    |                           |
-| kind      | InstrumentKind | false    | `option` `spot` `future` `future_combo` `option_combo` |
+| Parameter | Type           | Required | Description                                             |
+|:----------|:---------------|:---------|:--------------------------------------------------------|
+| currency  | Currency       | true     | `BTC` `ETH` `USDC` `USDT` `EURR` `any` (all currencies) |
+| expired   | Bool           | false    |                                                         |
+| kind      | InstrumentKind | false    | `option` `spot` `future` `future_combo` `option_combo`  |
 
 
 ## Code samples:

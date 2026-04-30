@@ -36,14 +36,14 @@ struct ContractsData <: GateioData
     index_price::Maybe{Float64}
     funding_rate_indicative::Maybe{Float64}
     mark_price_round::Maybe{Float64}
-    funding_offset::Maybe{Int64}
-    in_delisting::Maybe{Bool}
+    funding_offset::Int64
+    in_delisting::Bool
     risk_limit_base::Maybe{Float64}
     interest_rate::Maybe{Float64}
     order_price_round::Maybe{Float64}
     order_size_min::Maybe{Int64}
     ref_rebate_rate::Maybe{Float64}
-    funding_interval::Maybe{Int64}
+    funding_interval::Int64
     risk_limit_step::Maybe{Float64}
     leverage_min::Maybe{Float64}
     leverage_max::Maybe{Float64}
@@ -64,7 +64,7 @@ struct ContractsData <: GateioData
     orderbook_id::Maybe{Int64}
     enable_bonus::Maybe{Bool}
     enable_credit::Maybe{Bool}
-    create_time::Maybe{NanoDate}
+    create_time::NanoDate
     funding_cap_ratio::Maybe{Float64}
 end
 

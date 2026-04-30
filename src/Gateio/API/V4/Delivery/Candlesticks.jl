@@ -2,6 +2,8 @@ module Candlesticks
 
 export CandlesticksQuery,
     CandlesticksData,
+    Settle,
+    TimeInterval,
     candlesticks
 
 using Serde
@@ -11,11 +13,11 @@ using EnumX
 using CryptoExchangeAPIs.Gateio
 using CryptoExchangeAPIs: Maybe, APIsRequest
 
-@enumx TimeInterval s10 m1 m5 m15 m30 h1 h4 h8 d1 d7 d30
+@enumx TimeInterval s10 s30 m1 m5 m15 m30 h1 h2 h4 h6 h8 h12 d1 d7 w1 d30
 
 @enumx ContractType mark index
 
-@enumx Settle btc usdt
+@enumx Settle usdt
 
 struct Contract
     type::Maybe{ContractType.T}
@@ -27,7 +29,7 @@ struct CandlesticksQuery <: GateioPublicQuery
     settle::Settle.T
     from::Maybe{DateTime}
     to::Maybe{DateTime}
-    limit::Maybe{Int64} 
+    limit::Maybe{Int64}
     interval::Maybe{TimeInterval.T}
 end
 
@@ -51,15 +53,20 @@ end
 
 function Serde.ser_type(::Type{<:CandlesticksQuery}, x::TimeInterval.T)::String
     x == TimeInterval.s10 && return "10s"
+    x == TimeInterval.s30 && return "30s"
     x == TimeInterval.m1  && return "1m"
     x == TimeInterval.m5  && return "5m"
     x == TimeInterval.m15 && return "15m"
     x == TimeInterval.m30 && return "30m"
     x == TimeInterval.h1  && return "1h"
+    x == TimeInterval.h2  && return "2h"
     x == TimeInterval.h4  && return "4h"
+    x == TimeInterval.h6  && return "6h"
     x == TimeInterval.h8  && return "8h"
+    x == TimeInterval.h12 && return "12h"
     x == TimeInterval.d1  && return "1d"
     x == TimeInterval.d7  && return "7d"
+    x == TimeInterval.w1  && return "1w"
     x == TimeInterval.d30 && return "30d"
 end
 
@@ -70,42 +77,44 @@ struct CandlesticksData <: GateioData
     h::Maybe{Float64}
     l::Maybe{Float64}
     o::Maybe{Float64}
-    sum::Maybe{Float64}
 end
 
 """
     candlesticks(client::GateioClient, query::CandlesticksQuery)
     candlesticks(client::GateioClient = Gateio.GateioClient(Gateio.public_config); kw...)
 
-Get futures candlesticks.
+Get delivery futures candlesticks. If `type` is `mark` or `index`, contract name is
+prefixed accordingly and volume is not returned. Maximum of 2000 points per query.
+`limit` conflicts with `from`/`to`; if either is specified, `limit` is rejected.
 
-[`GET api/v4/futures/{settle}/candlesticks`](https://www.gate.io/docs/developers/apiv4/en/#get-futures-candlesticks)
+[`GET api/v4/delivery/{settle}/candlesticks`](https://www.gate.com/docs/developers/apiv4/en/#futures-market-k-line-chart-2)
 
 ## Parameters:
 
-| Parameter | Type         | Required | Description                          |
-|:----------|:-------------|:---------|:-------------------------------------|
-| contract  | String       | true     |                                      |
-| settle    | Settle       | true     | btc usdt usd                         |
-| interval  | TimeInterval | false    | s10 m1 m5 m15 m30 h1 h4 h8 d1 d7 d30 |
-| from      | DateTime     | false    |                                      |
-| to        | DateTime     | false    |                                      |
-| limit     | Int64        | false    |                                      |
+| Parameter | Type         | Required | Description                                                                   |
+|:----------|:-------------|:---------|:------------------------------------------------------------------------------|
+| type      | ContractType | true     | mark index (prefix applied to contract name)                                  |
+| name      | String       | true     | Contract name (e.g. BTC\\_USDT\\_20200814).                                   |
+| settle    | Settle       | true     | usdt                                                                          |
+| interval  | TimeInterval | false    | s10 s30 m1 m5 m15 m30 h1 h2 h4 h6 h8 h12 d1 d7 w1 d30. Default: 5m.           |
+| from      | DateTime     | false    | Start time (Unix seconds). Conflicts with limit.                              |
+| to        | DateTime     | false    | End time (Unix seconds). Conflicts with limit.                                |
+| limit     | Int64        | false    | Max recent points. Default 100. Conflicts with from/to.                       |
 
 ## Code samples:
 
 ```julia
 using CryptoExchangeAPIs.Gateio
 
-result = Gateio.API.V4.Futures.candlesticks(;
-    name = "BTC_USDT",
-    settle = Gateio.API.V4.Futures.Candlesticks.Settle.usdt,
-    interval = Gateio.API.V4.Futures.Candlesticks.TimeInterval.d30,
+result = Gateio.API.V4.Delivery.candlesticks(;
+    name     = "DOGE_USDT_20260410",
+    settle   = Gateio.API.V4.Delivery.Candlesticks.Settle.usdt,
+    interval = Gateio.API.V4.Delivery.Candlesticks.TimeInterval.d1,
 )
 ```
 """
 function candlesticks(client::GateioClient, query::CandlesticksQuery)
-    return APIsRequest{Vector{CandlesticksData}}("GET", "api/v4/futures/$(query.settle)/candlesticks", query)(client)
+    return APIsRequest{Vector{CandlesticksData}}("GET", "api/v4/delivery/$(query.settle)/candlesticks", query)(client)
 end
 
 function candlesticks(
