@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Gateio · CryptoExchangeAPIs.jl</title><meta name="title" content="Gateio · CryptoExchangeAPIs.jl"/><meta property="og:title" content="Gateio · CryptoExchangeAPIs.jl"/><meta property="twitter:title" content="Gateio · CryptoExchangeAPIs.jl"/><meta name="description" content="Documentation for CryptoExchangeAPIs.jl."/><meta property="og:description" content="Documentation for CryptoExchangeAPIs.jl."/><meta property="twitter:description" content="Documentation for CryptoExchangeAPIs.jl."/><meta property="og:url" content="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/pages/Gateio/"/><meta property="twitter:url" content="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/pages/Gateio/"/><link rel="canonical" href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/pages/Gateio/"/><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../search_index.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script><link href="../../assets/favicon.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../../">CryptoExchangeAPIs.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><a class="tocitem" href="../api_reference/">API Reference</a></li><li><a class="tocitem" href="../Aevo/">Aevo</a></li><li><a class="tocitem" href="../Binance/">Binance</a></li><li><a class="tocitem" href="../Bitfinex/">Bitfinex</a></li><li><a class="tocitem" href="../Bithumb/">Bithumb</a></li><li><a class="tocitem" href="../Bybit/">Bybit</a></li><li><a class="tocitem" href="../Coinbase/">Coinbase</a></li><li><a class="tocitem" href="../Cryptocom/">Cryptocom</a></li><li><a class="tocitem" href="../Deribit/">Deribit</a></li><li class="is-active"><a class="tocitem" href>Gateio</a><ul class="internal"><li><a class="tocitem" href="#Spot"><span>Spot</span></a></li><li><a class="tocitem" href="#Futures"><span>Futures</span></a></li></ul></li><li><a class="tocitem" href="../Huobi/">Huobi</a></li><li><a class="tocitem" href="../Kraken/">Kraken</a></li><li><a class="tocitem" href="../Kucoin/">Kucoin</a></li><li><a class="tocitem" href="../Okex/">Okex</a></li><li><a class="tocitem" href="../Poloniex/">Poloniex</a></li><li><a class="tocitem" href="../Upbit/">Upbit</a></li><li><span class="tocitem">For Developers</span><ul><li><a class="tocitem" href="../docs_miniguide/">Docs mini-guide</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Gateio</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Gateio</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/master/docs/src/pages/Gateio.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Gateio"><a class="docs-heading-anchor" href="#Gateio">Gateio</a><a id="Gateio-1"></a><a class="docs-heading-anchor-permalink" href="#Gateio" title="Permalink"></a></h1><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Gateio.GateioClient" href="#CryptoExchangeAPIs.Gateio.GateioClient"><code>CryptoExchangeAPIs.Gateio.GateioClient</code></a> — <span class="docstring-category">Type</span></header><section><div><pre><code class="language-julia hljs">GateioClient &lt;: AbstractAPIsClient</code></pre><p>Client info.</p><p><strong>Required fields</strong></p><ul><li><code>base_url::String</code>: Base URL for the client.</li></ul><p><strong>Optional fields</strong></p><ul><li><code>public_key::String</code>: Public key for authentication.</li><li><code>secret_key::String</code>: Secret key for authentication.</li><li><code>interface::String</code>: Interface for the client.</li><li><code>proxy::String</code>: Proxy information for the client.</li><li><code>account_name::String</code>: Account name associated with the client.</li><li><code>description::String</code>: Description of the client.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Gateio/Gateio.jl#L23-L38">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Gateio.GateioAPIError" href="#CryptoExchangeAPIs.Gateio.GateioAPIError"><code>CryptoExchangeAPIs.Gateio.GateioAPIError</code></a> — <span class="docstring-category">Type</span></header><section><div><pre><code class="language-julia hljs">GateioAPIError{T} &lt;: AbstractAPIsError</code></pre><p>Exception thrown when an API method fails with code <code>T</code>.</p><p><strong>Required fields</strong></p><ul><li><code>label::String</code>: Error label.</li><li><code>message::String</code>: Error message.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Gateio/Gateio.jl#L49-L57">source</a></section></article><h2 id="Spot"><a class="docs-heading-anchor" href="#Spot">Spot</a><a id="Spot-1"></a><a class="docs-heading-anchor-permalink" href="#Spot" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Gateio.Spot.public_client" href="#CryptoExchangeAPIs.Gateio.Spot.public_client"><code>CryptoExchangeAPIs.Gateio.Spot.public_client</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia hljs">public_client = GateioClient(; base_url = &quot;https://api.gateio.ws&quot;)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Gateio/Spot/Spot.jl#L5-L7">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Gateio.Spot.Candle.candle" href="#CryptoExchangeAPIs.Gateio.Spot.Candle.candle"><code>CryptoExchangeAPIs.Gateio.Spot.Candle.candle</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">candle(client::GateioClient, query::CandleQuery)
+candle(client::GateioClient = Gateio.Spot.public_client; kw...)</code></pre><p>Market candlesticks.</p><p><a href="https://www.gate.io/docs/developers/apiv4/#market-candlesticks"><code>GET api/v4/spot/candlesticks</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">currency_pair</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">from</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">interval</td><td style="text-align: left">TimeInterval</td><td style="text-align: left">false</td><td style="text-align: left">s10 m1 m5 m15 m30 h1 h4 h8 d1 d7 d30</td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">_end</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Gateio
+
+result = Gateio.Spot.candle(;
+    currency_pair = &quot;BTC_USDT&quot;,
+    interval = Gateio.Spot.Candle.d1,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;timestamp&quot;:&quot;2023-12-17T00:00:00&quot;,
+    &quot;quote_volume&quot;:2.43940917037979e8,
+    &quot;close_price&quot;:41378.4,
+    &quot;high_price&quot;:42421.6,
+    &quot;low_price&quot;:41240.1,
+    &quot;open_price&quot;:42275.6,
+    &quot;base_amount&quot;:5819.36674398
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Gateio/Spot/API/Candle.jl#L47-L95">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Gateio.Spot.Currency.currency" href="#CryptoExchangeAPIs.Gateio.Spot.Currency.currency"><code>CryptoExchangeAPIs.Gateio.Spot.Currency.currency</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">currency(client::GateioClient, query::CurrencyQuery)
+currency(client::GateioClient = Gateio.Spot.public_client; kw...)</code></pre><p>List all currencies&#39; details.</p><p><a href="https://www.gate.io/docs/developers/apiv4/#list-all-currencies-details"><code>GET api/v4/spot/currencies</code></a></p><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Gateio
+
+result = Gateio.Spot.currency()
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;chain&quot;:&quot;BSC&quot;,
+    &quot;currency&quot;:&quot;100X&quot;,
+    &quot;delisted&quot;:false,
+    &quot;deposit_disabled&quot;:true,
+    &quot;fixed_rate&quot;:null,
+    &quot;trade_disabled&quot;:true,
+    &quot;withdraw_delayed&quot;:false,
+    &quot;withdraw_disabled&quot;:false
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Gateio/Spot/API/Currency.jl#L28-L64">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Gateio.Spot.Deposit.deposit" href="#CryptoExchangeAPIs.Gateio.Spot.Deposit.deposit"><code>CryptoExchangeAPIs.Gateio.Spot.Deposit.deposit</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">deposit(client::GateioClient, query::CandleQuery)
+deposit(client::GateioClient; kw...)</code></pre><p>Retrieve deposit records.</p><p><a href="https://www.gate.io/docs/developers/apiv4/#retrieve-deposit-records"><code>GET api/v4/wallet/deposits</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">currency</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">from</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">offset</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">to</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">sign</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">signTimestamp</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Gateio
+
+gateio_client = GateioClient(;
+    base_url = &quot;https://api.Gateio.ws&quot;,
+    public_key = ENV[&quot;GATEIO_PUBLIC_KEY&quot;],
+    secret_key = ENV[&quot;GATEIO_SECRET_KEY&quot;],
+)
+
+result = Gateio.Spot.deposit(gateio_client)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;address&quot;: &quot;1HkxtBAMrA3tP5EYY2CZortjZvFDH5Cs&quot;,
+    &quot;amount&quot;: 222.61,
+    &quot;chain&quot;: &quot;TRX&quot;
+    &quot;currency&quot;: &quot;USDT&quot;,
+    &quot;fee&quot;: null,
+    &quot;id&quot;: 210496,
+    &quot;memo&quot;: null,
+    &quot;status&quot;: &quot;DONE&quot;,
+    &quot;timestamp&quot;: &quot;2018-11-12T05:20:00&quot;,
+    &quot;txid&quot;: 128988928203223323290,
+    &quot;withdraw_order_id&quot;: &quot;order_123456&quot;,
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Gateio/Spot/API/Deposit.jl#L58-L115">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Gateio.Spot.Ticker.ticker" href="#CryptoExchangeAPIs.Gateio.Spot.Ticker.ticker"><code>CryptoExchangeAPIs.Gateio.Spot.Ticker.ticker</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">ticker(client::GateioClient, query::TickerQuery)
+ticker(client::GateioClient = Gateio.Spot.public_client; kw...)</code></pre><p>Retrieve ticker information.</p><p><a href="https://www.gate.io/docs/developers/apiv4/#retrieve-ticker-information"><code>GET api/v4/spot/tickers</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">currency_pair</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">timezone</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Gateio
+
+result = Gateio.Spot.ticker(;
+    currency_pair = &quot;ADA_USDT&quot;,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;base_volume&quot;:2.0167711540647e7,
+    &quot;change_percentage&quot;:-4.77,
+    &quot;change_utc0&quot;:null,
+    &quot;change_utc8&quot;:null,
+    &quot;currency_pair&quot;:&quot;ADA_USDT&quot;,
+    &quot;etf_leverage&quot;:null,
+    &quot;etf_net_value&quot;:null,
+    &quot;etf_pre_net_value&quot;:null,
+    &quot;etf_pre_timestamp&quot;:null,
+    &quot;high_24h&quot;:0.623,
+    &quot;highest_bid&quot;:0.5869,
+    &quot;last&quot;:0.5869,
+    &quot;low_24h&quot;:0.5721,
+    &quot;lowest_ask&quot;:0.587,
+    &quot;quote_volume&quot;:1.1922473751288e7
+  }
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Gateio/Spot/API/Ticker.jl#L40-L91">source</a></section></article><h2 id="Futures"><a class="docs-heading-anchor" href="#Futures">Futures</a><a id="Futures-1"></a><a class="docs-heading-anchor-permalink" href="#Futures" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Gateio.Futures.public_client" href="#CryptoExchangeAPIs.Gateio.Futures.public_client"><code>CryptoExchangeAPIs.Gateio.Futures.public_client</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia hljs">public_client = GateioClient(; base_url = &quot;https://api.gateio.ws&quot;)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Gateio/Futures/Futures.jl#L5-L7">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Gateio.Futures.Candle.candle" href="#CryptoExchangeAPIs.Gateio.Futures.Candle.candle"><code>CryptoExchangeAPIs.Gateio.Futures.Candle.candle</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">candle(client::GateioClient, query::CandleQuery)
+candle(client::GateioClient = Gateio.Futures.public_client; kw...)</code></pre><p>Get futures candlesticks.</p><p><a href="https://www.gate.io/docs/developers/apiv4/en/#get-futures-candlesticks"><code>GET api/v4/futures/{settle}/candlesticks</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">contract</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">interval</td><td style="text-align: left">TimeInterval</td><td style="text-align: left">false</td><td style="text-align: left">s10 m1 m5 m15 m30 h1 h4 h8 d1 d7 d30</td></tr><tr><td style="text-align: left">from</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">to</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Gateio
+
+result = Gateio.Futures.candle(; 
+    type = Gateio.Futures.Candle.mark,
+    name = &quot;BTC_USDT&quot;,
+    settle = Gateio.Futures.Candle.usdt,
+    interval = Gateio.Futures.Candle.d30,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;t&quot;:&quot;2024-03-01T00:00:00&quot;,
+    &quot;v&quot;:5932942626,
+    &quot;c&quot;:71360.4,
+    &quot;h&quot;:73879.3,
+    &quot;l&quot;:59059.0,
+    &quot;o&quot;:62415.7,
+    &quot;sum&quot;:4.003183751397624e10
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Gateio/Futures/API/Candle.jl#L71-L121">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Gateio.Futures.Contract.contract" href="#CryptoExchangeAPIs.Gateio.Futures.Contract.contract"><code>CryptoExchangeAPIs.Gateio.Futures.Contract.contract</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">contract(client::GateioClient, query::ContractQuery)
+contract(client::GateioClient = Gateio.Futures.public_client; kw...)</code></pre><p>List all futures contracts.</p><p><a href="https://www.gate.io/docs/developers/apiv4/en/#list-all-futures-contracts"><code>GET api/v4/futures/{settle}/contracts</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">offset</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Gateio
+
+result = Gateio.Futures.contract(; settle = Gateio.Futures.Contract.btc)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;name&quot;:&quot;BTC_USD&quot;,
+    &quot;type&quot;:&quot;inverse&quot;,
+    &quot;quanto_multiplier&quot;:0.0,
+    &quot;ref_discount_rate&quot;:0.0,
+    &quot;order_price_deviate&quot;:0.5,
+    &quot;maintenance_rate&quot;:0.005,
+    &quot;mark_type&quot;:&quot;index&quot;,
+    &quot;last_price&quot;:62583.8,
+    &quot;mark_price&quot;:62646.43,
+    &quot;index_price&quot;:62642.32,
+    &quot;funding_rate_indicative&quot;:7.5e-5,
+    &quot;mark_price_round&quot;:0.01,
+    &quot;funding_offset&quot;:0,
+    &quot;in_delisting&quot;:false,
+    &quot;risk_limit_base&quot;:100.0,
+    &quot;interest_rate&quot;:0.0003,
+    &quot;order_price_round&quot;:0.1,
+    &quot;order_size_min&quot;:1,
+    &quot;ref_rebate_rate&quot;:0.2,
+    &quot;funding_interval&quot;:28800,
+    &quot;risk_limit_step&quot;:100.0,
+    &quot;leverage_min&quot;:1.0,
+    &quot;leverage_max&quot;:100.0,
+    &quot;risk_limit_max&quot;:800.0,
+    &quot;maker_fee_rate&quot;:-0.0002,
+    &quot;taker_fee_rate&quot;:0.00075,
+    &quot;funding_rate&quot;:7.5e-5,
+    &quot;order_size_max&quot;:1000000,
+    &quot;funding_next_apply&quot;:&quot;2024-04-17T00:00:00&quot;,
+    &quot;short_users&quot;:163,
+    &quot;config_change_time&quot;:&quot;2023-08-18T02:49:39&quot;,
+    &quot;trade_size&quot;:57555397672,
+    &quot;position_size&quot;:12785272,
+    &quot;long_users&quot;:544,
+    &quot;funding_impact_value&quot;:1.0,
+    &quot;orders_limit&quot;:50,
+    &quot;trade_id&quot;:42816960,
+    &quot;orderbook_id&quot;:4467223346,
+    &quot;enable_bonus&quot;:false,
+    &quot;enable_credit&quot;:true,
+    &quot;create_time&quot;:&quot;1970-01-01T00:00:00&quot;,
+    &quot;funding_cap_ratio&quot;:0.75
+  }
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Gateio/Futures/API/Contract.jl#L65-L141">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Gateio.Futures.FundingRate.funding_rate" href="#CryptoExchangeAPIs.Gateio.Futures.FundingRate.funding_rate"><code>CryptoExchangeAPIs.Gateio.Futures.FundingRate.funding_rate</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">funding_rate(client::GateioClient, query::FundingRateQuery)
+funding_rate(client::GateioClient = Gateio.Futures.public_client; kw...)</code></pre><p>Funding rate history.</p><p><a href="https://www.gate.io/docs/developers/apiv4/en/#funding-rate-history"><code>GET api/v4/futures/{settle}/funding_rate</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">contract</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Gateio
+
+result = Gateio.Futures.funding_rate(; 
+    settle = Gateio.Futures.FundingRate.usdt,
+    contract = &quot;BTC_USDT&quot;,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;t&quot;:&quot;2024-04-16T08:00:00&quot;,
+    &quot;r&quot;:0.0001
+  },
+  ...
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Gateio/Futures/API/FundingRate.jl#L25-L65">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Gateio.Futures.OrderBook.order_book" href="#CryptoExchangeAPIs.Gateio.Futures.OrderBook.order_book"><code>CryptoExchangeAPIs.Gateio.Futures.OrderBook.order_book</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">order_book(client::GateioClient, query::OrderBookQuery)
+order_book(client::GateioClient = Gateio.Futures.public_client; kw...)</code></pre><p>Futures order book.</p><p><a href="https://www.gate.io/docs/developers/apiv4/en/#futures-order-book"><code>GET api/v4/futures/{settle}/order_book</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">contract</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">interval</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">limit</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">with_id</td><td style="text-align: left">Bool</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Gateio
+
+result = Gateio.Futures.order_book(; 
+    settle = Gateio.Futures.OrderBook.usdt,
+    contract = &quot;BTC_USDT&quot;,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;id&quot;:null,
+  &quot;current&quot;:1.713214908609e9,
+  &quot;update&quot;:1.713214908589e9,
+  &quot;asks&quot;:[
+    {
+      &quot;p&quot;:&quot;63167.4&quot;,
+      &quot;s&quot;:1903
+    },
+    ...
+  ],
+  &quot;bids&quot;:[
+    {
+      &quot;p&quot;:&quot;63167.3&quot;,
+      &quot;s&quot;:10650
+    },
+    ...
+  ]
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Gateio/Futures/API/OrderBook.jl#L39-L93">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoExchangeAPIs.Gateio.Futures.Ticker.ticker" href="#CryptoExchangeAPIs.Gateio.Futures.Ticker.ticker"><code>CryptoExchangeAPIs.Gateio.Futures.Ticker.ticker</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">ticker(client::GateioClient, query::TickerQuery)
+ticker(client::GateioClient = Gateio.Futures.public_client; kw...)</code></pre><p>List futures tickers.</p><p><a href="https://www.gate.io/docs/developers/apiv4/en/#list-futures-tickers"><code>GET api/v4/futures/{settle}/tickers</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">contract</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoExchangeAPIs.Gateio
+
+result = Gateio.Futures.ticker(; settle = Gateio.Futures.Ticker.btc)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">[
+  {
+    &quot;contract&quot;:&quot;BTC_USD&quot;,
+    &quot;last&quot;:62157.4,
+    &quot;low_24h&quot;:61568.7,
+    &quot;high_24h&quot;:64746.7,
+    &quot;change_percentage&quot;:-3.12,
+    &quot;total_size&quot;:12791802,
+    &quot;volume_24h&quot;:21362145,
+    &quot;volume_24h_btc&quot;:343,
+    &quot;volume_24h_usd&quot;:21362145,
+    &quot;volume_24h_base&quot;:343,
+    &quot;volume_24h_quote&quot;:21362145,
+    &quot;volume_24h_settle&quot;:343,
+    &quot;mark_price&quot;:62221.82,
+    &quot;funding_rate&quot;:0.0001,
+    &quot;funding_rate_indicative&quot;:0.0001,
+    &quot;index_price&quot;:62216.21,
+    &quot;highest_bid&quot;:62129.9,
+    &quot;lowest_ask&quot;:62133.1
+  }
+]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoExchangeAPIs.jl/blob/3a6502c3f08da9984c993bfe89be143848022010/src/Gateio/Futures/API/Ticker.jl#L40-L91">source</a></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../Deribit/">« Deribit</a><a class="docs-footer-nextpage" href="../Huobi/">Huobi »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.5.0 on <span class="colophon-date" title="Thursday 1 August 2024 13:48">Thursday 1 August 2024</span>. Using Julia version 1.10.4.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

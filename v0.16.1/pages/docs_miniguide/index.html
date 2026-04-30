@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Docs mini-guide · CryptoAPIs.jl</title><meta name="title" content="Docs mini-guide · CryptoAPIs.jl"/><meta property="og:title" content="Docs mini-guide · CryptoAPIs.jl"/><meta property="twitter:title" content="Docs mini-guide · CryptoAPIs.jl"/><meta name="description" content="Documentation for CryptoAPIs.jl."/><meta property="og:description" content="Documentation for CryptoAPIs.jl."/><meta property="twitter:description" content="Documentation for CryptoAPIs.jl."/><meta property="og:url" content="https://bhftbootcamp.github.io/CryptoAPIs.jl/pages/docs_miniguide/"/><meta property="twitter:url" content="https://bhftbootcamp.github.io/CryptoAPIs.jl/pages/docs_miniguide/"/><link rel="canonical" href="https://bhftbootcamp.github.io/CryptoAPIs.jl/pages/docs_miniguide/"/><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../search_index.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script><link href="../../assets/favicon.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../../">CryptoAPIs.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><a class="tocitem" href="../api_reference/">API Reference</a></li><li><a class="tocitem" href="../Binance/">Binance</a></li><li><a class="tocitem" href="../Bybit/">Bybit</a></li><li><a class="tocitem" href="../Coinbase/">Coinbase</a></li><li><a class="tocitem" href="../Cryptocom/">Cryptocom</a></li><li><a class="tocitem" href="../Gateio/">Gateio</a></li><li><a class="tocitem" href="../Okex/">Okex</a></li><li><a class="tocitem" href="../Upbit/">Upbit</a></li><li><span class="tocitem">For Developers</span><ul><li class="is-active"><a class="tocitem" href>Docs mini-guide</a><ul class="internal"><li><a class="tocitem" href="#new_exchange"><span>New exchange</span></a></li><li><a class="tocitem" href="#New-market"><span>New market</span></a></li><li><a class="tocitem" href="#New-API-method"><span>New API method</span></a></li><li><a class="tocitem" href="#Example"><span>Example</span></a></li></ul></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">For Developers</a></li><li class="is-active"><a href>Docs mini-guide</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Docs mini-guide</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/bhftbootcamp/CryptoAPIs.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/master/docs/src/pages/docs_miniguide.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Docs-mini-guide"><a class="docs-heading-anchor" href="#Docs-mini-guide">Docs mini-guide</a><a id="Docs-mini-guide-1"></a><a class="docs-heading-anchor-permalink" href="#Docs-mini-guide" title="Permalink"></a></h1><p>Here&#39;s a quick reference about what changes you need to make to the package description and documentation when adding new content.</p><h2 id="new_exchange"><a class="docs-heading-anchor" href="#new_exchange">New exchange</a><a id="new_exchange-1"></a><a class="docs-heading-anchor-permalink" href="#new_exchange" title="Permalink"></a></h2><p>When adding a new exchange to the package, you need to make the following changes:</p><hr/><blockquote><p><code>README.md</code></p></blockquote><p>In the <a href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/master/README.md#supported-exchange-apis"><code>Supported Exchange APIs</code></a> table in the README.md you need to add a new row with links to relevant resources:</p><pre><code class="language-html hljs">...
+&lt;tr&gt;
+    &lt;td&gt;&lt;img src=&quot;docs/src/assets/EXCHANGE_LOGO.png&quot; alt=&quot;Exchange Logo&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;https://EXCHANGE_LINK&quot;&gt;EXCHANGE_NAME&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;https://EXCHANGE_MARKET_LINK&quot;&gt;MARKET_TYPE&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;src/EXCHANGE_NAME/MARKET_TYPE&quot;&gt;CryptoAPIs.EXCHANGE_NAME.MARKET_TYPE&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/EXCHANGE_NAME/#MARKET_TYPE&quot;&gt;MARKET_TYPE&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+...</code></pre><hr/><blockquote><p><code>docs/src/index.md</code></p></blockquote><p>Similarly, add a new line to the table on the main documentation page in the file <code>docs/src/index.md</code> (the only difference will be the path of the logo: <code>&lt;img src=&quot;assets/EXCHANGE_LOGO.png&quot; ...&gt;</code>).</p><pre><code class="language-html hljs">...
+&lt;tr&gt;
+    &lt;td&gt;&lt;img src=&quot;assets/EXCHANGE_LOGO.png&quot; alt=&quot;Exchange Logo&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;https://EXCHANGE_LINK&quot;&gt;EXCHANGE_NAME&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;https://EXCHANGE_MARKET_LINK&quot;&gt;MARKET_TYPE&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;src/EXCHANGE_NAME/MARKET_TYPE&quot;&gt;CryptoAPIs.EXCHANGE_NAME.MARKET_TYPE&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/EXCHANGE_NAME/#MARKET_TYPE&quot;&gt;MARKET_TYPE&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+...</code></pre><hr/><blockquote><p><code>src/EXCHANGE_NAME/EXCHANGE_NAME.jl</code></p></blockquote><p>Add a docstring describing key types and methods (clients, errors, etc.).</p><hr/><blockquote><p><code>docs/src/pages/EXCHANGE_NAME.md</code></p></blockquote><p>Create a new documentation page in the <code>docs/src/pages/</code> folder in markdown format with the appropriate exchange name, for example <code>docs/src/pages/Binance.md</code>. The documentation page should have the following section structure:</p><pre><code class="nohighlight hljs"># EXCHANGE_NAME
+
+```@docs
+CryptoAPIs.EXCHANGE_NAME.&lt;...&gt;
+&lt;!-- Here list everything that is directly related to the
+general description of the exchange (clients, errors, etc.) --&gt;
+```
+
+&lt;!-- Sections related to exchange markets begin here --&gt;</code></pre><h2 id="New-market"><a class="docs-heading-anchor" href="#New-market">New market</a><a id="New-market-1"></a><a class="docs-heading-anchor-permalink" href="#New-market" title="Permalink"></a></h2><p>When adding a new market type for an exchange, you need to make the following changes:</p><hr/><blockquote><p><code>README.md</code> and <code>docs/src/index.md</code></p></blockquote><p>Similar to <a href="#new_exchange">adding a new exchange</a>, you need to add a new row to the table with <a href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/master/README.md#supported-exchange-apis"><code>Supported Exchange APIs</code></a> (in the README.md and on the main page of the documentation <code>docs/src/index.md</code>) corresponding to the new type of market.</p><hr/><blockquote><p><code>src/EXCHANGE_NAME/MARKET_TYPE/MARKET_TYPE.jl</code></p></blockquote><p>Add a docstring describing key types and methods related to the market (public client, etc.).</p><hr/><blockquote><p><code>docs/src/pages/EXCHANGE_NAME.md</code></p></blockquote><p>Add a new section corresponding to the exchange market in the file <code>docs/src/pages/EXCHANGE_NAME.md</code>:</p><pre><code class="nohighlight hljs">## MARKET_TYPE
+
+```@docs
+CryptoAPIs.EXCHANGE_NAME.MARKET_TYPE.&lt;...&gt;
+&lt;!-- Here list everything that is related to the market (public client, etc.) --&gt;
+```
+
+```@docs
+CryptoAPIs.EXCHANGE_NAME.MARKET_TYPE.&lt;...&gt;
+&lt;!-- Here list the API methods for the market --&gt;
+```</code></pre><h2 id="New-API-method"><a class="docs-heading-anchor" href="#New-API-method">New API method</a><a id="New-API-method-1"></a><a class="docs-heading-anchor-permalink" href="#New-API-method" title="Permalink"></a></h2><blockquote><p><code>src/EXCHANGE_NAME/MARKET_TYPE/API/METHOD_NAME.jl</code></p></blockquote><p>When adding a new API method, it is enough to add a docstring with a description of the method according to <a href="#template">template</a>.</p><hr/><blockquote><p><code>docs/src/pages/EXCHANGE_NAME.md</code></p></blockquote><p>After that, add the method to the section of the corresponding market in the documentation (in the file <code>docs/src/pages/EXCHANGE_NAME.md</code>):</p><pre><code class="nohighlight hljs">## MARKET_TYPE
+
+...
+
+```@docs
+CryptoAPIs.EXCHANGE_NAME.MARKET_TYPE.&lt;...&gt;
+&lt;!-- Here list the API methods for the market --&gt;
+```</code></pre><h3 id="template"><a class="docs-heading-anchor" href="#template">Template for API method docs</a><a id="template-1"></a><a class="docs-heading-anchor-permalink" href="#template" title="Permalink"></a></h3><pre><code class="language-julia hljs">&quot;&quot;&quot;
+    METHOD_NAME(client::EXCHANGE_CLIENT, query::METHOD_QUERY)
+    METHOD_NAME(client::EXCHANGE_CLIENT = EXCHANGE_MODULE.SUB_MODULE.public_client; kw...)
+
+DESCRIPTION.
+
+[`GET HTTP_REQUEST`](METHOD_URL)
+
+## Parameters:
+
+| Parameter | Type     | Required | Description |
+|:----------|:---------|:---------|:------------|
+| name      | type     | bool     | description |
+
+## Code samples:
+
+```julia
+using Serde
+using CryptoAPIs.EXCHANGE_MODULE
+
+result = EXCHANGE_MODULE.SUB_MODULE.METHOD_NAME(;
+    ...
+)
+
+to_pretty_json(result.result)
+```
+
+## Result:
+
+```json
+{
+    JSON_RESULT
+}
+```
+&quot;&quot;&quot;</code></pre><h2 id="Example"><a class="docs-heading-anchor" href="#Example">Example</a><a id="Example-1"></a><a class="docs-heading-anchor-permalink" href="#Example" title="Permalink"></a></h2><blockquote><p><code>README.md</code></p></blockquote><pre><code class="language-html hljs">## Supported Exchange APIs
+
+&lt;html&gt;
+    &lt;body&gt;
+        &lt;table&gt;
+            &lt;tr&gt;
+                &lt;th&gt;#&lt;/th&gt;
+                &lt;th&gt;Exchange&lt;/th&gt;
+                &lt;th&gt;API Documentation&lt;/th&gt;
+                &lt;th&gt;Module&lt;/th&gt;
+                &lt;th&gt;Documentation&lt;/th&gt;
+            &lt;/tr&gt;
+            ...
+            &lt;tr&gt;
+                &lt;td&gt;&lt;img src=&quot;docs/src/assets/binance.png&quot; alt=&quot;Binance Logo&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;https://www.binance.com/en/trade&quot;&gt;Binance&lt;/a&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;https://binance-docs.github.io/apidocs/spot/en/&quot;&gt;Spot&lt;/a&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;src/Binance/Spot&quot;&gt;CryptoAPIs.Binance.Spot&lt;/a&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Binance/#Spot&quot;&gt;Spot&lt;/a&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            ...
+        &lt;/table&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre><hr/><blockquote><p><code>docs/src/index.md</code></p></blockquote><pre><code class="nohighlight hljs">## Supported Exchange APIs
+
+```@raw html
+&lt;html&gt;
+    &lt;body&gt;
+        &lt;table&gt;
+            &lt;tr&gt;
+                &lt;th&gt;#&lt;/th&gt;
+                &lt;th&gt;Exchange&lt;/th&gt;
+                &lt;th&gt;API Documentation&lt;/th&gt;
+                &lt;th&gt;Module&lt;/th&gt;
+                &lt;th&gt;Documentation&lt;/th&gt;
+            &lt;/tr&gt;
+            ...
+            &lt;tr&gt;
+                &lt;td&gt;&lt;img src=&quot;assets/binance.png&quot; alt=&quot;Binance Logo&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;https://www.binance.com/en/trade&quot;&gt;Binance&lt;/a&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;https://binance-docs.github.io/apidocs/spot/en/&quot;&gt;Spot&lt;/a&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;src/Binance/Spot&quot;&gt;CryptoAPIs.Binance.Spot&lt;/a&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;https://bhftbootcamp.github.io/CryptoAPIs.jl/stable/pages/Binance/#Spot&quot;&gt;Spot&lt;/a&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            ...
+        &lt;/table&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+```</code></pre><hr/><blockquote><p><code>docs/src/pages/EXCHANGE_NAME.md</code></p></blockquote><pre><code class="nohighlight hljs"># Binance
+
+```@docs
+CryptoAPIs.Binance.BinanceClient
+CryptoAPIs.Binance.BinanceAPIError
+```
+
+## Spot
+
+```@docs
+CryptoAPIs.Binance.Spot.public_client
+```
+
+```@docs
+CryptoAPIs.Binance.Spot.candle
+CryptoAPIs.Binance.Spot.avg_price
+...
+```
+
+## USDMFutures
+
+```@docs
+CryptoAPIs.Binance.USDMFutures.public_client
+```
+
+```@docs
+CryptoAPIs.Binance.USDMFutures.candle
+CryptoAPIs.Binance.USDMFutures.exchange_info
+...
+```
+</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../Upbit/">« Upbit</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.4.1 on <span class="colophon-date" title="Monday 6 May 2024 17:10">Monday 6 May 2024</span>. Using Julia version 1.10.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

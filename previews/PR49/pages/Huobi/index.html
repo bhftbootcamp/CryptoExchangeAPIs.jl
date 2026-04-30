@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Huobi · CryptoAPIs.jl</title><meta name="title" content="Huobi · CryptoAPIs.jl"/><meta property="og:title" content="Huobi · CryptoAPIs.jl"/><meta property="twitter:title" content="Huobi · CryptoAPIs.jl"/><meta name="description" content="Documentation for CryptoAPIs.jl."/><meta property="og:description" content="Documentation for CryptoAPIs.jl."/><meta property="twitter:description" content="Documentation for CryptoAPIs.jl."/><meta property="og:url" content="https://bhftbootcamp.github.io/CryptoAPIs.jl/pages/Huobi/"/><meta property="twitter:url" content="https://bhftbootcamp.github.io/CryptoAPIs.jl/pages/Huobi/"/><link rel="canonical" href="https://bhftbootcamp.github.io/CryptoAPIs.jl/pages/Huobi/"/><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../search_index.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script><link href="../../assets/favicon.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../../">CryptoAPIs.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><a class="tocitem" href="../api_reference/">API Reference</a></li><li><a class="tocitem" href="../Aevo/">Aevo</a></li><li><a class="tocitem" href="../Binance/">Binance</a></li><li><a class="tocitem" href="../Bitfinex/">Bitfinex</a></li><li><a class="tocitem" href="../Bithumb/">Bithumb</a></li><li><a class="tocitem" href="../Bybit/">Bybit</a></li><li><a class="tocitem" href="../Coinbase/">Coinbase</a></li><li><a class="tocitem" href="../Cryptocom/">Cryptocom</a></li><li><a class="tocitem" href="../Deribit/">Deribit</a></li><li><a class="tocitem" href="../Gateio/">Gateio</a></li><li class="is-active"><a class="tocitem" href>Huobi</a><ul class="internal"><li><a class="tocitem" href="#Spot"><span>Spot</span></a></li></ul></li><li><a class="tocitem" href="../Kraken/">Kraken</a></li><li><a class="tocitem" href="../Kucoin/">Kucoin</a></li><li><a class="tocitem" href="../Okex/">Okex</a></li><li><a class="tocitem" href="../Poloniex/">Poloniex</a></li><li><a class="tocitem" href="../Upbit/">Upbit</a></li><li><span class="tocitem">For Developers</span><ul><li><a class="tocitem" href="../docs_miniguide/">Docs mini-guide</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Huobi</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Huobi</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/bhftbootcamp/CryptoAPIs.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/master/docs/src/pages/Huobi.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Huobi"><a class="docs-heading-anchor" href="#Huobi">Huobi</a><a id="Huobi-1"></a><a class="docs-heading-anchor-permalink" href="#Huobi" title="Permalink"></a></h1><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Huobi.HuobiClient" href="#CryptoAPIs.Huobi.HuobiClient"><code>CryptoAPIs.Huobi.HuobiClient</code></a> — <span class="docstring-category">Type</span></header><section><div><pre><code class="language-julia hljs">HuobiClient &lt;: AbstractAPIsClient</code></pre><p>Client info.</p><p><strong>Required fields</strong></p><ul><li><code>base_url::String</code>: Base URL for the client.</li></ul><p><strong>Optional fields</strong></p><ul><li><code>public_key::String</code>: Public key for authentication.</li><li><code>secret_key::String</code>: Secret key for authentication.</li><li><code>interface::String</code>: Interface for the client.</li><li><code>proxy::String</code>: Proxy information for the client.</li><li><code>account_name::String</code>: Account name associated with the client.</li><li><code>description::String</code>: Description of the client.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/d403bda0e74e001bee86fdaf298abaa3ca4bb59a/src/Huobi/Huobi.jl#L64-L79">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Huobi.HuobiAPIError" href="#CryptoAPIs.Huobi.HuobiAPIError"><code>CryptoAPIs.Huobi.HuobiAPIError</code></a> — <span class="docstring-category">Type</span></header><section><div><pre><code class="language-julia hljs">HuobiAPIError{T} &lt;: AbstractAPIsError</code></pre><p>Exception thrown when an API method fails with code <code>T</code>.</p><p><strong>Required fields</strong></p><ul><li><code>err_code::String</code>: Error code.</li><li><code>err_msg::String</code>: Error message.</li></ul><p><strong>Optional fields</strong></p><ul><li><code>ts::NanoDate</code>: he UTC timestamp when API respond.</li><li><code>status::String</code>: Status of API response.</li><li><code>code::Int64</code>: Response code.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/d403bda0e74e001bee86fdaf298abaa3ca4bb59a/src/Huobi/Huobi.jl#L90-L103">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Huobi.Data" href="#CryptoAPIs.Huobi.Data"><code>CryptoAPIs.Huobi.Data</code></a> — <span class="docstring-category">Type</span></header><section><div><pre><code class="language-julia hljs">Data{D} &lt;: AbstractAPIsData</code></pre><p><strong>Required fields</strong></p><ul><li><code>data::D</code>: The body data in response.</li></ul><p><strong>Optional fields</strong></p><ul><li><code>status::Status</code>: Status of API response.</li><li><code>ch::String</code>: The data stream. It may be empty as some API doesn&#39;t have data stream.</li><li><code>ts::NanoDate</code>: The UTC timestamp when API respond, the unit is millisecond.</li><li><code>code::Int64</code>: Response code.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/d403bda0e74e001bee86fdaf298abaa3ca4bb59a/src/Huobi/Huobi.jl#L28-L39">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Huobi.DataTick" href="#CryptoAPIs.Huobi.DataTick"><code>CryptoAPIs.Huobi.DataTick</code></a> — <span class="docstring-category">Type</span></header><section><div><pre><code class="language-julia hljs">DataTick{D} &lt;: AbstractAPIsData</code></pre><p><strong>Required fields</strong></p><ul><li><code>tick::D</code>: The body tick in response.</li><li><code>status::Status</code>: Status of API response.</li><li><code>ch::String</code>: The data stream. It may be empty as some API doesn&#39;t have data stream.</li><li><code>ts::NanoDate</code>: The UTC timestamp when API respond.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/d403bda0e74e001bee86fdaf298abaa3ca4bb59a/src/Huobi/Huobi.jl#L48-L56">source</a></section></article><h2 id="Spot"><a class="docs-heading-anchor" href="#Spot">Spot</a><a id="Spot-1"></a><a class="docs-heading-anchor-permalink" href="#Spot" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Huobi.Spot.public_client" href="#CryptoAPIs.Huobi.Spot.public_client"><code>CryptoAPIs.Huobi.Spot.public_client</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia hljs">public_client = HuobiClient(; base_url = &quot;https://api.huobi.pro&quot;)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/d403bda0e74e001bee86fdaf298abaa3ca4bb59a/src/Huobi/Spot/Spot.jl#L5-L7">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Huobi.Spot.Candle.candle" href="#CryptoAPIs.Huobi.Spot.Candle.candle"><code>CryptoAPIs.Huobi.Spot.Candle.candle</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">candle(client::HuobiClient, query::CandleQuery)
+candle(client::HuobiClient = Huobi.Spot.public_client; kw...)</code></pre><p>This endpoint retrieves all klines in a specific range.</p><p><a href="https://huobiapi.github.io/docs/spot/v1/en/#get-klines-candles"><code>GET market/history/kline</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">period</td><td style="text-align: left">TimeInterval</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">size</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left">Default: <code>150</code></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoAPIs.Huobi
+
+result = Huobi.Spot.candle(;
+    symbol = &quot;btcusdt&quot;,
+    period = CryptoAPIs.Huobi.Spot.Candle.m1,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;status&quot;:&quot;ok&quot;,
+  &quot;ch&quot;:&quot;market.btcusdt.kline.1min&quot;,
+  &quot;ts&quot;:&quot;2024-05-16T12:50:25.071000064&quot;,
+  &quot;code&quot;:null,
+  &quot;data&quot;:[
+    {
+      &quot;amount&quot;:0.298096,
+      &quot;close&quot;:66300.0,
+      &quot;count&quot;:34,
+      &quot;high&quot;:66318.86,
+      &quot;id&quot;:&quot;2024-05-16T12:50:00&quot;,
+      &quot;low&quot;:66268.18,
+      &quot;open&quot;:66268.18,
+      &quot;vol&quot;:19766.85497792
+    },
+    ...
+  ]
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/d403bda0e74e001bee86fdaf298abaa3ca4bb59a/src/Huobi/Spot/API/Candle.jl#L45-L98">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Huobi.Spot.Currency.currency" href="#CryptoAPIs.Huobi.Spot.Currency.currency"><code>CryptoAPIs.Huobi.Spot.Currency.currency</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">currency(client::HuobiClient, query::CurrencyQuery)
+currency(client::HuobiClient; kw...)</code></pre><p>API user could query static reference information for each currency, as well as its corresponding chain(s).</p><p><a href="https://www.htx.com/en-in/opend/newApiPages/?id=7ec516fc-7773-11ed-9966-0242ac110003"><code>GET v2/reference/currencies</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">AccessKeyId</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">Signature</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">SignatureMethod</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">SignatureVersion</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">Timestamp</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">authorizedUser</td><td style="text-align: left">Bool</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">currency</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoAPIs.Huobi
+
+huobi_client = CryptoAPIs.Huobi.HuobiClient(;
+    base_url = &quot;https://api.huobi.pro&quot;,
+    public_key = ENV[&quot;HUOBI_PUBLIC_KEY&quot;],
+    secret_key = ENV[&quot;HUOBI_SECRET_KEY&quot;],
+)
+
+result = Huobi.Spot.currency(
+    huobi_client;
+    currency = &quot;usdt&quot;,
+    authorizedUser = true,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;code&quot;:200
+  &quot;data&quot;:[
+    {
+      &quot;chains&quot;:[
+        {
+          &quot;chain&quot;:&quot;trc20usdt&quot;,
+          &quot;displayName&quot;:&quot;&quot;,
+          &quot;baseChain&quot;:&quot;TRX&quot;,
+          &quot;baseChainProtocol&quot;:&quot;TRC20&quot;,
+          &quot;isDynamic&quot;:false,
+          &quot;depositStatus&quot;:&quot;allowed&quot;,
+          &quot;maxTransactFeeWithdraw&quot;:1.0,
+          &quot;maxWithdrawAmt&quot;:280000.0,
+          &quot;minDepositAmt&quot;:100.0,
+          &quot;minTransactFeeWithdraw&quot;:0.1,
+          &quot;minWithdrawAmt&quot;:0.01,
+          &quot;numOfConfirmations&quot;:999.0,
+          &quot;numOfFastConfirmations&quot;:999.0,
+          &quot;withdrawFeeType&quot;:&quot;circulated&quot;,
+          &quot;withdrawPrecision&quot;:5.0,
+          &quot;withdrawQuotaPerDay&quot;:280000.0,
+          &quot;withdrawQuotaPerYear&quot;:2800000.0,
+          &quot;withdrawQuotaTotal&quot;:2800000.0,
+          &quot;withdrawStatus&quot;:&quot;allowed&quot;,
+        },
+        ...
+      ]
+      &quot;currency&quot;:&quot;usdt&quot;
+      &quot;instStatus&quot;:&quot;normal&quot;
+    },
+    ...
+  ]
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/d403bda0e74e001bee86fdaf298abaa3ca4bb59a/src/Huobi/Spot/API/Currency.jl#L66-L145">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Huobi.Spot.DepositWithdrawal.deposit_withdrawal" href="#CryptoAPIs.Huobi.Spot.DepositWithdrawal.deposit_withdrawal"><code>CryptoAPIs.Huobi.Spot.DepositWithdrawal.deposit_withdrawal</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">deposit_withdrawal(client::HuobiClient, query::DepositWithdrawalQuery)
+deposit_withdrawal(client::HuobiClient; kw...)</code></pre><p>Parent user and sub user search for all existed withdraws and deposits and return their latest status.</p><p><a href="https://huobiapi.github.io/docs/spot/v1/en/#search-for-existed-withdraws-and-deposits"><code>GET v1/query/deposit-withdraw</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">type</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">AccessKeyId</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">Signature</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">SignatureMethod</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">SignatureVersion</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">Timestamp</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">currency</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">direct</td><td style="text-align: left">DirectQuery</td><td style="text-align: left">false</td><td style="text-align: left"><code>prev</code> <code>next</code></td></tr><tr><td style="text-align: left">from</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">size</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoAPIs.Huobi
+
+huobi_client = CryptoAPIs.Huobi.HuobiClient(;
+    base_url = &quot;https://api.huobi.pro&quot;,
+    public_key = ENV[&quot;HUOBI_PUBLIC_KEY&quot;],
+    secret_key = ENV[&quot;HUOBI_SECRET_KEY&quot;],
+)
+
+result = Huobi.Spot.deposit_withdrawal(
+    huobi_client;
+    currency = &quot;usdt&quot;,
+    from = &quot;1&quot;,
+    size = 500,
+    type = &quot;withdraw&quot;,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;status&quot;:&quot;ok&quot;,
+  &quot;data&quot;:[
+    {
+      &quot;id&quot;:45182894,
+      &quot;type&quot;:&quot;withdraw&quot;,
+      &quot;sub-type&quot;:&quot;FAST&quot;,
+      &quot;currency&quot;:&quot;usdt&quot;,
+      &quot;chain&quot;:&quot;trc20usdt&quot;,
+      &quot;tx-hash&quot;:&quot;&quot;,
+      &quot;amount&quot;:400,
+      &quot;from-addr-tag&quot;:&quot;&quot;,
+      &quot;address&quot;:&quot;TRwkUYHWgUh23jbKpgTcYHgE9CcBzhGno9&quot;,
+      &quot;address-tag&quot;:&quot;&quot;,
+      &quot;fee&quot;:0,
+      &quot;state&quot;:&quot;confirmed&quot;,
+      &quot;created-at&quot;:&quot;2021-02-02T10:22:10&quot;,
+      &quot;updated-at&quot;:&quot;2021-02-02T10:23:09&quot;
+    },
+    ...
+  ]
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/d403bda0e74e001bee86fdaf298abaa3ca4bb59a/src/Huobi/Spot/API/DepositWithdrawal.jl#L50-L122">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Huobi.Spot.OrderBook.order_book" href="#CryptoAPIs.Huobi.Spot.OrderBook.order_book"><code>CryptoAPIs.Huobi.Spot.OrderBook.order_book</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">order_book(client::HuobiClient, query::OrderBookQuery)
+order_book(client::HuobiClient = Huobi.Spot.public_client; kw...)</code></pre><p>This endpoint retrieves the current order book of a specific pair.</p><p><a href="https://huobiapi.github.io/docs/spot/v1/en/#get-market-depth"><code>GET market/depth</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">true</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">depth</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">type</td><td style="text-align: left">StepType</td><td style="text-align: left">false</td><td style="text-align: left">Default: <code>step0</code>, Available: <code>step1</code>, <code>step2</code>, <code>step3</code>, <code>step4</code>, <code>step5</code></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoAPIs.Huobi
+
+result = Huobi.Spot.order_book(;
+    symbol = &quot;btcusdt&quot;,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;status&quot;:&quot;ok&quot;,
+  &quot;ch&quot;:&quot;market.btcusdt.depth.step0&quot;,
+  &quot;ts&quot;:&quot;2024-05-16T12:57:01.596999936&quot;,
+  &quot;tick&quot;:{
+    &quot;asks&quot;:[
+      {
+        &quot;price&quot;:66089.57,
+        &quot;size&quot;:0.256781
+      },
+      ...
+    ],
+    &quot;bids&quot;:[
+      {
+        &quot;price&quot;:66089.56,
+        &quot;size&quot;:0.170774
+      },
+      ...
+    ],
+    &quot;ts&quot;:&quot;2024-05-16T12:57:01.400999936&quot;,
+    &quot;version&quot;:170820034651
+  }
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/d403bda0e74e001bee86fdaf298abaa3ca4bb59a/src/Huobi/Spot/API/OrderBook.jl#L41-L97">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Huobi.Spot.OrderLog.order_log" href="#CryptoAPIs.Huobi.Spot.OrderLog.order_log"><code>CryptoAPIs.Huobi.Spot.OrderLog.order_log</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">order_log(client::HuobiClient, query::OrderLogQuery)
+order_log(client::HuobiClient; kw...)</code></pre><p>This endpoint returns orders based on a specific searching criteria. The orders created via API will no longer be queryable after being cancelled for more than 2 hours.</p><p><a href="https://huobiapi.github.io/docs/spot/v1/en/#search-past-orders"><code>GET v1/order/history</code></a></p><p><strong>Parameters:</strong></p><table><tr><th style="text-align: left">Parameter</th><th style="text-align: left">Type</th><th style="text-align: left">Required</th><th style="text-align: left">Description</th></tr><tr><td style="text-align: left">AccessKeyId</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">Signature</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">SignatureMethod</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">SignatureVersion</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">Timestamp</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">direct</td><td style="text-align: left">DirectQuery</td><td style="text-align: left">false</td><td style="text-align: left"><code>prev</code> <code>next</code></td></tr><tr><td style="text-align: left">end_time</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">size</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">start_time</td><td style="text-align: left">DateTime</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">symbol</td><td style="text-align: left">String</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr><tr><td style="text-align: left">size</td><td style="text-align: left">Int64</td><td style="text-align: left">false</td><td style="text-align: left"></td></tr></table><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoAPIs.Huobi
+
+huobi_client = CryptoAPIs.Huobi.HuobiClient(;
+    base_url = &quot;https://api.huobi.pro&quot;,
+    public_key = ENV[&quot;HUOBI_PUBLIC_KEY&quot;],
+    secret_key = ENV[&quot;HUOBI_SECRET_KEY&quot;],
+)
+
+result = Huobi.Spot.order_log(
+    huobi_client;
+    start_time = now(UTC) - Day(1),
+    end_time = now(UTC) - Hour(1),
+    size = 1000,
+)
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;status&quot;:&quot;ok&quot;,
+  &quot;data&quot;:[
+    {
+      &quot;id&quot;:345487249132375,
+      &quot;symbol&quot;:&quot;polyusdt&quot;,
+      &quot;account-id&quot;:13496526,
+      &quot;client-order-id&quot;:&quot;&quot;,
+      &quot;amount&quot;:50.0,
+      &quot;price&quot;:0.0,
+      &quot;created-at&quot;:&quot;2021-02-02T10:22:10&quot;,
+      &quot;type&quot;:&quot;buy-market&quot;,
+      &quot;field-amount&quot;:147.92899,
+      &quot;field-cash-amount&quot;:49.99999,
+      &quot;field-fees&quot;:0.29585,
+      &quot;finished-at&quot;:1629443051838,
+      &quot;source&quot;:&quot;spot-web&quot;,
+      &quot;state&quot;:&quot;filled&quot;,
+      &quot;canceled-at&quot;:0
+    },
+    ...
+  ]
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/d403bda0e74e001bee86fdaf298abaa3ca4bb59a/src/Huobi/Spot/API/OrderLog.jl#L51-L124">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="CryptoAPIs.Huobi.Spot.Ticker.ticker" href="#CryptoAPIs.Huobi.Spot.Ticker.ticker"><code>CryptoAPIs.Huobi.Spot.Ticker.ticker</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">ticker(client::HuobiClient, query::TickerQuery)
+ticker(client::HuobiClient = Huobi.Spot.public_client; kw...)</code></pre><p>This endpoint retrieves the latest tickers for all supported pairs.</p><p><a href="https://huobiapi.github.io/docs/spot/v1/en/#get-latest-tickers-for-all-pairs"><code>GET market/tickers</code></a></p><p><strong>Code samples:</strong></p><pre><code class="language-julia hljs">using Serde
+using CryptoAPIs.Huobi
+
+result = Huobi.Spot.ticker()
+
+to_pretty_json(result.result)</code></pre><p><strong>Result:</strong></p><pre><code class="language-json hljs">{
+  &quot;status&quot;:&quot;ok&quot;,
+  &quot;ch&quot;:null,
+  &quot;ts&quot;:&quot;2024-05-16T12:50:57.844&quot;,
+  &quot;code&quot;:null,
+  &quot;data&quot;:[
+    {
+      &quot;amount&quot;:5.379805390589e8,
+      &quot;ask&quot;:0.001716,
+      &quot;askSize&quot;:90895.4464,
+      &quot;bid&quot;:0.001697,
+      &quot;bidSize&quot;:53912.9097,
+      &quot;close&quot;:0.001706,
+      &quot;count&quot;:12134,
+      &quot;high&quot;:0.001773,
+      &quot;low&quot;:0.001683,
+      &quot;open&quot;:0.001716,
+      &quot;symbol&quot;:&quot;sylousdt&quot;,
+      &quot;vol&quot;:924950.6866947605
+    },
+    ...
+  ]
+}</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bhftbootcamp/CryptoAPIs.jl/blob/d403bda0e74e001bee86fdaf298abaa3ca4bb59a/src/Huobi/Spot/API/Ticker.jl#L33-L79">source</a></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../Gateio/">« Gateio</a><a class="docs-footer-nextpage" href="../Kraken/">Kraken »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.5.0 on <span class="colophon-date" title="Tuesday 23 July 2024 12:26">Tuesday 23 July 2024</span>. Using Julia version 1.10.4.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
