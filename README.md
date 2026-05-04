@@ -121,7 +121,7 @@ Then, to install CryptoExchangeAPIs, simply use the Julia package manager:
                 <td><img src="docs/src/assets/huobi.png" alt="Huobi Logo" width="20" height="20"></td>
                 <td><a href="https://www.htx.com/">Huobi</a></td>
                 <td><a href="https://www.htx.com/en-us/opend/newApiPages">Spot</a></td>
-                <td><a href="src/Huobi/Futures">CryptoExchangeAPIs.Huobi.Spot</a></td>
+                <td><a href="src/Huobi/Spot">CryptoExchangeAPIs.Huobi.Spot</a></td>
                 <td><a href="https://bhftbootcamp.github.io/CryptoExchangeAPIs.jl/stable/pages/Huobi/#Spot">Spot</a></td>
             </tr>
             <tr>
