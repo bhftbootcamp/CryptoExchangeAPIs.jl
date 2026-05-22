@@ -75,7 +75,7 @@ struct Symbol <: MexcData
     maxQuoteAmountMarket::Float64
     fullName::String
     tradeSideType::TradeSide.T
-    contractAddress::String
+    contractAddress::Maybe{String}
     st::Bool
 end
 

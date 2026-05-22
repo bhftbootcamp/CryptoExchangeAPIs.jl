@@ -1,3 +1,5 @@
+Serde.isempty(::Type{<:MexcData}, x::String) = isempty(x)
+
 function Serde.SerQuery.ser_type(::Type{<:MexcCommonQuery}, dt::DateTime)
     return round(Int, 1000 * datetime2unix(dt))
 end

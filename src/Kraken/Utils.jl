@@ -1,5 +1,7 @@
 # Kraken/Utils
 
+Serde.isempty(::Type{<:KrakenData}, x::String) = isempty(x)
+
 function Serde.deser(::Type{<:KrakenData}, ::Type{<:Maybe{NanoDate}}, x::Real)::NanoDate
     return unixnanos2nanodate(x * 1e9)
 end

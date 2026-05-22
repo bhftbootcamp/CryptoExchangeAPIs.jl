@@ -1,5 +1,7 @@
 # Upbit/Utils
 
+Serde.isempty(::Type{<:UpbitData}, x::String) = isempty(x)
+
 function Serde.deser(::Type{<:UpbitData}, ::Type{<:Maybe{NanoDate}}, x::Int64)::NanoDate
     return unixnanos2nanodate(x * 1e6)
 end

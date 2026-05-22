@@ -55,7 +55,7 @@ struct Symbols <: BinanceData
     quoteAsset::String
     quotePrecision::Int64
     requiredMarginPercent::Float64
-    settlePlan::Union{Nothing,Int64}
+    settlePlan::Maybe{Int64}
     status::String
     symbol::String
     timeInForce::Vector{String}

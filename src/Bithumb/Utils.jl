@@ -1,5 +1,7 @@
 # Bithumb/Utils
 
+Serde.isempty(::Type{<:BithumbData}, x::String) = isempty(x)
+
 function Serde.deser(::Type{<:BithumbData}, ::Type{<:Maybe{NanoDate}}, x::Int64)::NanoDate
     return unixnanos2nanodate(x * 1e6)
 end

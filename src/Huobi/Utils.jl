@@ -1,4 +1,6 @@
-# Houbi/Utils
+# Huobi/Utils
+
+Serde.isempty(::Type{<:HuobiData}, x::String) = isempty(x)
 
 function Serde.deser(::Type{<:Union{Data,DataTick}}, ::Type{<:Maybe{NanoDate}}, x::Int64)::NanoDate
     return unixnanos2nanodate(x * 1e6)

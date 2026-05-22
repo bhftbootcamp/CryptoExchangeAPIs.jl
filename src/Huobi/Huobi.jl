@@ -171,7 +171,7 @@ function CryptoExchangeAPIs.request_sign!(::HuobiClient, query::Q, ::String)::Q 
     return query
 end
 
-function CryptoExchangeAPIs.request_sign!(client::HuobiClient, query::Q, endpoint::String)::Nothing where {Q<:HuobiPrivateQuery}
+function CryptoExchangeAPIs.request_sign!(client::HuobiClient, query::Q, endpoint::String)::Q where {Q<:HuobiPrivateQuery}
     query.AccessKeyId = client.config.public_key
     query.Timestamp = now(UTC)
     query.SignatureMethod = "HmacSHA256"
@@ -182,7 +182,7 @@ function CryptoExchangeAPIs.request_sign!(client::HuobiClient, query::Q, endpoin
     host = last(split(client.config.base_url, "//"))
     salt = join(["GET", host, endpoint, body], "\n")
     query.Signature = Base64.base64encode(digest("sha256", client.config.secret_key, salt))
-    return nothing
+    return query
 end
 
 function CryptoExchangeAPIs.request_body(::Q)::String where {Q<:HuobiPublicQuery}
