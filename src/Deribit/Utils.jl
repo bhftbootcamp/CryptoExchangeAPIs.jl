@@ -1,5 +1,7 @@
 # Deribit/Utils
 
+Serde.isempty(::Type{<:DeribitData}, x::String) = isempty(x)
+
 function Serde.deser(::Type{<:DeribitData}, ::Type{<:Maybe{NanoDate}}, x::Int64)::NanoDate
     return unixnanos2nanodate(x * 1e6)
 end

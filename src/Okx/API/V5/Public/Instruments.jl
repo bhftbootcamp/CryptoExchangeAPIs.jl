@@ -61,12 +61,12 @@ struct InstrumentsData <: OkxData
     lotSz::Maybe{Float64}
     maxIcebergSz::Maybe{Float64}
     maxLmtAmt::Maybe{Float64}
-    maxLmtSz::Maybe{Int64}
+    maxLmtSz::Maybe{Float64}
     maxMktAmt::Maybe{Float64}
-    maxMktSz::Maybe{Int64}
+    maxMktSz::Maybe{Float64}
     maxPlatOICoinLmt::Maybe{String}
     maxPlatOILmt::Maybe{String}
-    maxStopSz::Maybe{Int64}
+    maxStopSz::Maybe{Float64}
     maxTriggerSz::Maybe{Float64}
     maxTwapSz::Maybe{Float64}
     method::Maybe{String}

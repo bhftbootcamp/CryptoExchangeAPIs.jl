@@ -1,5 +1,7 @@
 # Aevo/Utils
 
+Serde.isempty(::Type{<:AevoData}, x::String) = isempty(x)
+
 function Serde.deser(::Type{<:AevoData}, ::Type{<:Maybe{NanoDate}}, x::String)::NanoDate
     return unixnanos2nanodate(parse(Int64, x))
 end

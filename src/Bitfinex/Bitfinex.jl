@@ -123,11 +123,11 @@ function CryptoExchangeAPIs.request_sign!(::BitfinexClient, query::Q, ::String):
     return query
 end
 
-function CryptoExchangeAPIs.request_sign!(client::BitfinexClient, query::Q, endpoint::String)::Nothing where {Q<:BitfinexPrivateQuery}
-    query.nonce = string(round(Int64, 1000 * datetime2unix(now(UTC))))   
+function CryptoExchangeAPIs.request_sign!(client::BitfinexClient, query::Q, endpoint::String)::Q where {Q<:BitfinexPrivateQuery}
+    query.nonce = string(round(Int64, 1000 * datetime2unix(now(UTC))))
     signature_payload = string("/api/", endpoint, query.nonce)
     query.signature = hexdigest("sha384", client.config.secret_key, signature_payload)
-    return nothing
+    return query
 end
 
 function CryptoExchangeAPIs.request_body(::Q)::String where {Q<:BitfinexCommonQuery}

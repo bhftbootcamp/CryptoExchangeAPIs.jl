@@ -1,5 +1,7 @@
 # Bitfinex/Utils
 
+Serde.isempty(::Type{<:BitfinexData}, x::String) = isempty(x)
+
 function Serde.deser(::Type{<:BitfinexData}, ::Type{<:Maybe{NanoDate}}, x::Int64)::NanoDate
     return unixnanos2nanodate(x * 1e6)
 end
