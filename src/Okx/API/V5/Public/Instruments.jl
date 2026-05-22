@@ -37,35 +37,56 @@ Base.@kwdef struct InstrumentsQuery <: OkxPublicQuery
 end
 
 struct InstrumentsData <: OkxData
-    instId::String
+    alias::Maybe{String}
+    auctionEndTime::Maybe{String}
     baseCcy::Maybe{String}
-    quoteCcy::Maybe{String}
+    category::Maybe{String}
+    contTdSwTime::Maybe{String}
     ctMult::Maybe{String}
     ctType::Maybe{String}
     ctVal::Maybe{Float64}
     ctValCcy::Maybe{String}
     expTime::Maybe{NanoDate}
+    freq::Maybe{String}
+    futureSettlement::Maybe{Bool}
+    groupId::Maybe{String}
+    instCategory::Maybe{String}
     instFamily::Maybe{String}
+    instId::String
+    instIdCode::Maybe{Int64}
     instType::InstType.T
     lever::Maybe{Float64}
     listTime::NanoDate
+    longPosRemainingQuota::Maybe{String}
     lotSz::Maybe{Float64}
     maxIcebergSz::Maybe{Float64}
     maxLmtAmt::Maybe{Float64}
     maxLmtSz::Maybe{Int64}
     maxMktAmt::Maybe{Float64}
     maxMktSz::Maybe{Int64}
+    maxPlatOICoinLmt::Maybe{String}
+    maxPlatOILmt::Maybe{String}
     maxStopSz::Maybe{Int64}
     maxTriggerSz::Maybe{Float64}
     maxTwapSz::Maybe{Float64}
+    method::Maybe{String}
     minSz::Maybe{Float64}
+    openType::Maybe{String}
     optType::Maybe{String}
-    settleCcy::Maybe{String}
-    state::State.T
+    posLmtAmt::Maybe{String}
+    posLmtPct::Maybe{String}
+    preMktSwTime::Maybe{String}
+    quoteCcy::Maybe{String}
     ruleType::Maybe{String}
+    seriesId::Maybe{String}
+    settleCcy::Maybe{String}
+    shortPosRemainingQuota::Maybe{String}
+    state::State.T
     stk::Maybe{Float64}
     tickSz::Maybe{Float64}
+    tradeQuoteCcyList::Maybe{Vector{Any}}
     uly::Maybe{String}
+    upcChg::Maybe{Vector{Any}}
 end
 
 function Serde.isempty(::Type{InstrumentsData}, x)
