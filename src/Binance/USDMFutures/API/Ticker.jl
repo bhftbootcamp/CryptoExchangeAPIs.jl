@@ -27,7 +27,7 @@ struct TickerData <: BinanceData
     openTime::NanoDate
     priceChange::Float64
     priceChangePercent::Float64
-    quoteVolume::Float64
+    quoteVolume::Maybe{Float64}
     symbol::String
     volume::Float64
     weightedAvgPrice::Float64
